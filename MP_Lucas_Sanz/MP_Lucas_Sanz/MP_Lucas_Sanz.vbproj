@@ -77,6 +77,18 @@
     <Compile Include="View\ApplicationEvents.vb" />
     <Compile Include="Model\ConnectionDB.vb" />
     <Compile Include="Model\Empresa.vb" />
+    <Compile Include="View\Empresa\frmNuevaEmpresa.Designer.vb">
+      <DependentUpon>frmNuevaEmpresa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\Empresa\frmNuevaEmpresa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Empresa\frmNuevoNombreEmpresa.Designer.vb">
+      <DependentUpon>frmNuevoNombreEmpresa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\Empresa\frmNuevoNombreEmpresa.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -99,10 +111,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="View\frmSeleccionEmpresa.Designer.vb">
+    <Compile Include="View\Empresa\frmSeleccionEmpresa.Designer.vb">
       <DependentUpon>frmSeleccionEmpresa.vb</DependentUpon>
     </Compile>
-    <Compile Include="View\frmSeleccionEmpresa.vb">
+    <Compile Include="View\Empresa\frmSeleccionEmpresa.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\VariablesGlobales.vb" />
@@ -114,10 +126,16 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Empresa\frmNuevaEmpresa.resx">
+      <DependentUpon>frmNuevaEmpresa.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Empresa\frmNuevoNombreEmpresa.resx">
+      <DependentUpon>frmNuevoNombreEmpresa.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\frmSeleccionEmpresa.resx">
+    <EmbeddedResource Include="View\Empresa\frmSeleccionEmpresa.resx">
       <DependentUpon>frmSeleccionEmpresa.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>

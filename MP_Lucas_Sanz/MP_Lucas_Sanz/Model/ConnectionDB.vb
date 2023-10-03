@@ -17,10 +17,8 @@ Public Class ConnectionDB
 
     Public Sub ConectarDB()
         connectionDB.Open()
-        MessageBox.Show("Conexión con BD realizada")
     End Sub
     Public Sub DesconectarDB()
         connectionDB.Close()
-        MessageBox.Show("Desconexión con BD")
     End Sub
 End Class
