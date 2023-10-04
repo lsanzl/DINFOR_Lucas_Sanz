@@ -22,6 +22,7 @@ Partial Class frmSeleccionEmpresa
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSeleccionEmpresa))
         Me.dg_empresas = New System.Windows.Forms.DataGridView()
         Me.btn_seleccionar = New System.Windows.Forms.Button()
         Me.btn_modificar = New System.Windows.Forms.Button()
@@ -35,18 +36,21 @@ Partial Class frmSeleccionEmpresa
         Me.dg_empresas.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dg_empresas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dg_empresas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dg_empresas.Location = New System.Drawing.Point(12, 12)
+        Me.dg_empresas.MultiSelect = False
         Me.dg_empresas.Name = "dg_empresas"
         Me.dg_empresas.ReadOnly = True
-        Me.dg_empresas.Size = New System.Drawing.Size(778, 392)
+        Me.dg_empresas.Size = New System.Drawing.Size(581, 231)
         Me.dg_empresas.TabIndex = 0
         '
         'btn_seleccionar
         '
         Me.btn_seleccionar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btn_seleccionar.Enabled = False
         Me.btn_seleccionar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_seleccionar.Location = New System.Drawing.Point(12, 415)
+        Me.btn_seleccionar.Location = New System.Drawing.Point(12, 254)
         Me.btn_seleccionar.Name = "btn_seleccionar"
         Me.btn_seleccionar.Size = New System.Drawing.Size(85, 23)
         Me.btn_seleccionar.TabIndex = 1
@@ -56,8 +60,9 @@ Partial Class frmSeleccionEmpresa
         'btn_modificar
         '
         Me.btn_modificar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_modificar.Enabled = False
         Me.btn_modificar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_modificar.Location = New System.Drawing.Point(553, 415)
+        Me.btn_modificar.Location = New System.Drawing.Point(356, 254)
         Me.btn_modificar.Name = "btn_modificar"
         Me.btn_modificar.Size = New System.Drawing.Size(75, 23)
         Me.btn_modificar.TabIndex = 2
@@ -67,8 +72,9 @@ Partial Class frmSeleccionEmpresa
         'btn_eliminar
         '
         Me.btn_eliminar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_eliminar.Enabled = False
         Me.btn_eliminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_eliminar.Location = New System.Drawing.Point(634, 415)
+        Me.btn_eliminar.Location = New System.Drawing.Point(437, 254)
         Me.btn_eliminar.Name = "btn_eliminar"
         Me.btn_eliminar.Size = New System.Drawing.Size(75, 23)
         Me.btn_eliminar.TabIndex = 3
@@ -79,7 +85,7 @@ Partial Class frmSeleccionEmpresa
         '
         Me.btn_añadir.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_añadir.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_añadir.Location = New System.Drawing.Point(715, 415)
+        Me.btn_añadir.Location = New System.Drawing.Point(518, 254)
         Me.btn_añadir.Name = "btn_añadir"
         Me.btn_añadir.Size = New System.Drawing.Size(75, 23)
         Me.btn_añadir.TabIndex = 4
@@ -90,13 +96,17 @@ Partial Class frmSeleccionEmpresa
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(603, 289)
         Me.Controls.Add(Me.btn_añadir)
         Me.Controls.Add(Me.btn_eliminar)
         Me.Controls.Add(Me.btn_modificar)
         Me.Controls.Add(Me.btn_seleccionar)
         Me.Controls.Add(Me.dg_empresas)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MinimizeBox = False
         Me.Name = "frmSeleccionEmpresa"
+        Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.Text = "frmSeleccionEmpresa"
         CType(Me.dg_empresas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

@@ -3,8 +3,6 @@
     Private codigoEmp As String
     Public nombreAntiguo As String
 
-    Public managerEmpresa As ManagerEmpresas = New ManagerEmpresas()
-
     Public Property NombreEmpresa() As String
         Get
             Return nombreEmp
@@ -29,20 +27,33 @@
     End Sub
     Public Sub New()
         MyBase.New()
-        nombreEmp = ""
-        codigoEmp = ""
     End Sub
 
     Public Function getEmpresas() As List(Of Empresa)
-        Return managerEmpresa.getEmpresas()
+        Return managerEmpAux.getEmpresas()
     End Function
     Public Sub addEmpresa(nombreEmp As String)
-        managerEmpresa.addEmpresa(nombreEmp)
+        managerEmpAux.addEmpresa(nombreEmp)
     End Sub
     Public Sub modifyEmpresa()
-        managerEmpresa.modificarEmpresa(NombreEmpresa, nombreAntiguo)
+        managerEmpAux.modificarEmpresa(NombreEmpresa, nombreAntiguo)
     End Sub
     Public Sub deleteEmpresa()
-        managerEmpresa.deleteEmpresa(Me.NombreEmpresa)
+        managerEmpAux.deleteEmpresa(Me.NombreEmpresa)
     End Sub
+
+    Public Function checkNombre(nombre As String) As Boolean
+        If Not nombre.StartsWith("Emp") Then
+            Return False
+        End If
+        Dim codigo As String = Right(nombre, nombre.Length - 3)
+        If Not IsNumeric(codigo) Then
+            Return False
+        End If
+        Return True
+    End Function
+
+    Public Function checkEmpresaDB(nombreEmpresa As String) As Boolean
+        Return managerEmpAux.checkEmpresa(nombreEmpresa)
+    End Function
 End Class

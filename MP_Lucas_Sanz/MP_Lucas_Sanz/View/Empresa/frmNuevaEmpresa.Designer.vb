@@ -22,6 +22,7 @@ Partial Class frmNuevaEmpresa
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmNuevaEmpresa))
         Me.txt_nueva_empresa = New System.Windows.Forms.TextBox()
         Me.lbl_nueva_empresa = New System.Windows.Forms.Label()
         Me.btn_confirmar_nueva_empresa = New System.Windows.Forms.Button()
@@ -29,6 +30,8 @@ Partial Class frmNuevaEmpresa
         '
         'txt_nueva_empresa
         '
+        Me.txt_nueva_empresa.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txt_nueva_empresa.Location = New System.Drawing.Point(189, 18)
         Me.txt_nueva_empresa.Name = "txt_nueva_empresa"
         Me.txt_nueva_empresa.Size = New System.Drawing.Size(237, 20)
@@ -36,6 +39,8 @@ Partial Class frmNuevaEmpresa
         '
         'lbl_nueva_empresa
         '
+        Me.lbl_nueva_empresa.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lbl_nueva_empresa.AutoSize = True
         Me.lbl_nueva_empresa.Location = New System.Drawing.Point(28, 21)
         Me.lbl_nueva_empresa.Name = "lbl_nueva_empresa"
@@ -45,6 +50,7 @@ Partial Class frmNuevaEmpresa
         '
         'btn_confirmar_nueva_empresa
         '
+        Me.btn_confirmar_nueva_empresa.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_confirmar_nueva_empresa.Location = New System.Drawing.Point(351, 63)
         Me.btn_confirmar_nueva_empresa.Name = "btn_confirmar_nueva_empresa"
         Me.btn_confirmar_nueva_empresa.Size = New System.Drawing.Size(75, 23)
@@ -60,7 +66,14 @@ Partial Class frmNuevaEmpresa
         Me.Controls.Add(Me.btn_confirmar_nueva_empresa)
         Me.Controls.Add(Me.txt_nueva_empresa)
         Me.Controls.Add(Me.lbl_nueva_empresa)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "frmNuevaEmpresa"
+        Me.ShowInTaskbar = False
+        Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "frmNuevaEmpresa"
         Me.ResumeLayout(False)
         Me.PerformLayout()
