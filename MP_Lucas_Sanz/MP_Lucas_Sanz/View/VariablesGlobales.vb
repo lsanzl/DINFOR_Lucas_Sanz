@@ -7,9 +7,6 @@
     Public bancoAux As Banco = New Banco()
     Public formaPagoAux As FormaPago = New FormaPago()
 
-    ' ----- OBJETOS AUXILIARES DE CONTROLADORES ---
-    Public ctrBancoAux As ctrBanco = New ctrBanco()
-
     ' ----- MANAGERS AUXILIARES DE CADA CLASE -----
     Public managerEmpAux As ManagerEmpresa = New ManagerEmpresa()
     Public managerBancoAux As ManagerBanco = New ManagerBanco()

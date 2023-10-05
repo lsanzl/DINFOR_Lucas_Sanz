@@ -2,7 +2,7 @@
     Dim listaEmpresas As List(Of Empresa)
     Dim filaSeleccionada As Integer
     Dim empresaSeleccionada As Empresa
-    Dim empresaAux As Empresa = New Empresa("", "")
+    Dim empresaAux As Empresa = New Empresa()
 
     Private Sub frmSeleccionEmpresa_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AjustarFormulario(Me)
@@ -20,6 +20,8 @@
         btn_seleccionar.Enabled = False
         btn_modificar.Enabled = False
         btn_eliminar.Enabled = False
+
+        dg_empresas.ClearSelection()
     End Sub
 
     Private Sub click_btn_seleccionar(sender As Object, e As EventArgs) Handles btn_seleccionar.Click
@@ -53,10 +55,12 @@
             Return
         End If
         frmNuevoNombreEmpresa.Text = "Modificación nombre de empresa"
+        frmNuevoNombreEmpresa.txt_nuevo_nombre_empresa.Text = empresaSeleccionada.NombreEmpresa
         frmNuevoNombreEmpresa.ShowDialog()
+        frmNuevoNombreEmpresa.txt_nuevo_nombre_empresa.Clear()
 
         If frmNuevoNombreEmpresa.estaAceptado() Then
-            empresaSeleccionada.nombreAntiguo = empresaSeleccionada.NombreEmpresa
+            empresaSeleccionada.setNombreAntiguo(empresaSeleccionada.NombreEmpresa)
             empresaSeleccionada.NombreEmpresa = frmNuevoNombreEmpresa.getNuevoNombre()
             empresaSeleccionada.modifyEmpresa()
             fillDataGrid()

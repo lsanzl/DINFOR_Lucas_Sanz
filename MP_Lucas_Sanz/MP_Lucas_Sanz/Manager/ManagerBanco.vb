@@ -21,19 +21,19 @@ Public Class ManagerBanco
         Return listaBancos
     End Function
 
-    Public Sub addBanco(nombreBanco As String, codigoBanco As Integer)
+    Public Sub addBanco(bancoTemp As Banco)
         cmd = New SqlCommand($"INSERT INTO BANCOS (CODIGOBANCO, NOMBREBANCO)
-                                VALUES ({codigoBanco}, '{nombreBanco}');", connectionDBManager)
+                                VALUES ({bancoTemp.CodigoDeBanco}, '{bancoTemp.NombreDeBanco}');", connectionDBManager)
         If cmd.ExecuteNonQuery > 0 Then
             MessageBox.Show("Banco introducido")
         Else
             MessageBox.Show("Banco no introducido")
         End If
     End Sub
-    Public Sub modifyBanco(nombreBanco As String, codigoBanco As Integer)
+    Public Sub modifyBanco(bancoTemp As Banco)
         cmd = New SqlCommand($"UPDATE BANCOS
-                                SET NOMBREBANCO = '{nombreBanco}'
-                                WHERE CODIGOBANCO = '{codigoBanco}';", connectionDBManager)
+                                SET NOMBREBANCO = '{bancoTemp.NombreDeBanco}'
+                                WHERE CODIGOBANCO = '{bancoTemp.CodigoDeBanco}';", connectionDBManager)
         If cmd.ExecuteNonQuery > 0 Then
             MessageBox.Show("Banco modificado")
         Else
@@ -41,9 +41,9 @@ Public Class ManagerBanco
         End If
     End Sub
 
-    Public Sub deleteBanco(codigoBanco As String)
+    Public Sub deleteBanco(bancoTemp As Banco)
         cmd = New SqlCommand($"DELETE FROM BANCOS
-                                WHERE CODIGOBANCO = {codigoBanco};", connectionDBManager)
+                                WHERE CODIGOBANCO = {bancoTemp.CodigoDeBanco};", connectionDBManager)
         If cmd.ExecuteNonQuery > 0 Then
             MessageBox.Show("Banco eliminado")
         Else

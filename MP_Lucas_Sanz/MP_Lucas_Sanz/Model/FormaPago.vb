@@ -1,7 +1,7 @@
 ﻿Public Class FormaPago
     Private codigoPago As String
     Private nombrePago As String
-    Private bancoAsignadoPago As Banco
+    Private bancoAsignadoPago As Integer
     Private estadoPago As Integer
     Private numPlazosPago As Integer
     Private diasPrimerPlazo As Integer
@@ -23,11 +23,11 @@
             nombrePago = value
         End Set
     End Property
-    Public Property BancoAsignado() As Banco
+    Public Property BancoAsignado() As Integer
         Get
             Return bancoAsignadoPago
         End Get
-        Set(value As Banco)
+        Set(value As Integer)
             bancoAsignadoPago = value
         End Set
     End Property
@@ -68,7 +68,7 @@
         MyBase.New()
     End Sub
 
-    Public Sub New(codigoPagoP As String, nombrePagoP As String, bancoAsignadoP As Banco,
+    Public Sub New(codigoPagoP As String, nombrePagoP As String, bancoAsignadoP As Integer,
                    estadoPagoP As Integer, numPlazosPagoP As Integer, diasPrimerPlazoP As Integer,
                    diasEntrePlazosP As Integer)
         MyBase.New()
@@ -82,8 +82,16 @@
     End Sub
 
     Public Sub addFormaPago()
-        'managerFormaPagoAux.addFormaPago()
+        managerFormaPagoAux.addFormaPago(Me)
     End Sub
-
+    Public Sub modifyFormaPago()
+        managerFormaPagoAux.modifyFormaPago(Me)
+    End Sub
+    Public Sub deleteFormaPago()
+        managerFormaPagoAux.deleteFormaPago(Me)
+    End Sub
+    Public Function getFormasPago() As List(Of FormaPago)
+        Return managerFormaPagoAux.getFormaPagos()
+    End Function
 
 End Class

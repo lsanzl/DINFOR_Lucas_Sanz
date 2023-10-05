@@ -34,15 +34,15 @@
     End Function
 
     Public Sub addBanco()
-        managerBancoAux.addBanco(Me.nombreBanco, Me.codigoBanco)
+        managerBancoAux.addBanco(Me)
     End Sub
 
     Public Sub modifyBanco()
-        managerBancoAux.modifyBanco(Me.nombreBanco, Me.codigoBanco)
+        managerBancoAux.modifyBanco(Me)
     End Sub
 
     Public Sub deleteBanco()
-        managerBancoAux.deleteBanco(Me.codigoBanco)
+        managerBancoAux.deleteBanco(Me)
     End Sub
 
     Public Function checkBancoDB(nombreBanco As String) As Boolean

@@ -1,7 +1,7 @@
 ﻿Public Class Empresa
     Private nombreEmp As String
     Private codigoEmp As String
-    Public nombreAntiguo As String
+    Private nombreAntiguo As String
 
     Public Property NombreEmpresa() As String
         Get
@@ -20,26 +20,35 @@
         End Set
     End Property
 
-    Public Sub New(ByVal nombreEmpVal As String, ByVal codigoEmpVal As String)
-        MyBase.New()
-        nombreEmp = nombreEmpVal
-        codigoEmp = codigoEmpVal
+    Public Sub setNombreAntiguo(nombreAntiguoP As String)
+        nombreAntiguo = nombreAntiguoP
     End Sub
+    Public Function getNombreAntiguo() As String
+        Return nombreAntiguo
+    End Function
+
     Public Sub New()
         MyBase.New()
     End Sub
 
+    Public Sub New(nombreEmpresaP As String)
+        MyBase.New()
+        nombreEmp = nombreEmpresaP
+        codigoEmp = Right(nombreEmpresaP, nombreEmpresaP.Length - 3)
+    End Sub
+
+
     Public Function getEmpresas() As List(Of Empresa)
         Return managerEmpAux.getEmpresas()
     End Function
-    Public Sub addEmpresa(nombreEmp As String)
-        managerEmpAux.addEmpresa(nombreEmp)
+    Public Sub addEmpresa()
+        managerEmpAux.addEmpresa(Me)
     End Sub
     Public Sub modifyEmpresa()
-        managerEmpAux.modificarEmpresa(NombreEmpresa, nombreAntiguo)
+        managerEmpAux.modificarEmpresa(Me)
     End Sub
     Public Sub deleteEmpresa()
-        managerEmpAux.deleteEmpresa(Me.NombreEmpresa)
+        managerEmpAux.deleteEmpresa(Me)
     End Sub
 
     Public Function checkNombre(nombre As String) As Boolean

@@ -17,8 +17,7 @@ Public Class ManagerEmpresa
             dr.Read()
             Do
                 If dr(0).ToString().StartsWith("Emp") Then
-                    codigoTemp = Right(dr(0).ToString(), dr(0).ToString().Length - 3)
-                    empresaTemp = New Empresa(dr(0).ToString(), codigoTemp)
+                    empresaTemp = New Empresa(dr(0).ToString())
                     listaEmpresas.Add(empresaTemp)
                 End If
             Loop While dr.Read()
@@ -27,8 +26,8 @@ Public Class ManagerEmpresa
         Return listaEmpresas
     End Function
 
-    Public Sub modificarEmpresa(nuevoNombre As String, nombreAntiguo As String)
-        cmd = New SqlCommand("ALTER DATABASE " + nombreAntiguo + " MODIFY NAME = " + nuevoNombre + ";", connectionDBManager)
+    Public Sub modificarEmpresa(empTemp As Empresa)
+        cmd = New SqlCommand($"ALTER DATABASE {empTemp.getNombreAntiguo()} MODIFY NAME = {empTemp.NombreEmpresa};", connectionDBManager)
         If cmd.ExecuteNonQuery() = -1 Then
             MessageBox.Show("Empresa actualizada")
             frmSeleccionEmpresa.fillDataGrid()
@@ -36,22 +35,22 @@ Public Class ManagerEmpresa
             MessageBox.Show("Ninguna empresa actualizada")
         End If
     End Sub
-    Public Sub deleteEmpresa(nombreEmpresa As String)
-        cmd = New SqlCommand("DROP DATABASE " + nombreEmpresa, connectionDBManager)
+    Public Sub deleteEmpresa(empAux As Empresa)
+        cmd = New SqlCommand($"DROP DATABASE {empAux.NombreEmpresa};", connectionDBManager)
         If cmd.ExecuteNonQuery() = -1 Then
             MessageBox.Show("Empresa eliminada")
         Else
             MessageBox.Show("Ninguna empresa eliminada")
         End If
     End Sub
-    Public Sub addEmpresa(nombreEmpresa As String)
-        cmd = New SqlCommand("CREATE DATABASE " + nombreEmpresa, connectionDBManager)
+    Public Sub addEmpresa(empAux As Empresa)
+        cmd = New SqlCommand($"CREATE DATABASE {empAux.NombreEmpresa};", connectionDBManager)
         If cmd.ExecuteNonQuery() = -1 Then
             MessageBox.Show("Empresa creada")
         Else
             MessageBox.Show("Ninguna empresa creada")
         End If
-        selectEmpresa(nombreEmpresa)
+        selectEmpresa(empAux.NombreEmpresa)
         cmd = New SqlCommand("CREATE TABLE BANCOS(
                             CODIGOBANCO INT PRIMARY KEY,
                             NOMBREBANCO VARCHAR(100)
@@ -65,7 +64,6 @@ Public Class ManagerEmpresa
                                 NUMEROPLAZOS INTEGER,
                                 PRIMERPLAZO INTEGER,
                                 DIASENTREPLAZOS INTEGER,
-                                FOREIGN KEY (BANCO) REFERENCES BANCOS(CODIGOBANCO) ON DELETE CASCADE
                                 );", connectionDBManager)
         cmd.ExecuteNonQuery()
     End Sub

@@ -73,6 +73,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\ctrFormasPago.vb" />
     <Compile Include="Manager\ManagerBanco.vb" />
     <Compile Include="Manager\ManagerEmpresa.vb" />
     <Compile Include="Manager\ManagerFormaPago.vb" />
@@ -81,7 +82,7 @@
     <Compile Include="View\ApplicationEvents.vb" />
     <Compile Include="Model\ConnectionDB.vb" />
     <Compile Include="Model\Empresa.vb" />
-    <Compile Include="View\Banco\ctrBanco.vb" />
+    <Compile Include="Controller\ctrBanco.vb" />
     <Compile Include="View\Banco\frmNuevoBanco.Designer.vb">
       <DependentUpon>frmNuevoBanco.vb</DependentUpon>
     </Compile>
@@ -98,6 +99,12 @@
       <DependentUpon>frmNuevoNombreEmpresa.vb</DependentUpon>
     </Compile>
     <Compile Include="View\Empresa\frmNuevoNombreEmpresa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormaPago\frmNuevaFormaPago.Designer.vb">
+      <DependentUpon>frmNuevaFormaPago.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormaPago\frmNuevaFormaPago.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\frmMain.vb">
@@ -146,6 +153,9 @@
     <EmbeddedResource Include="View\Empresa\frmNuevoNombreEmpresa.resx">
       <DependentUpon>frmNuevoNombreEmpresa.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FormaPago\frmNuevaFormaPago.resx">
+      <DependentUpon>frmNuevaFormaPago.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
     </EmbeddedResource>
@@ -158,6 +168,8 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Include="My Project\DataSources\Banco.datasource" />
+    <None Include="My Project\DataSources\FormaPago.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>

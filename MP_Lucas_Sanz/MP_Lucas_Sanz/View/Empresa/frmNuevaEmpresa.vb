@@ -8,7 +8,8 @@
             MessageBox.Show("Esa empresa ya existe")
             Return
         End If
-        empresaAux.addEmpresa(txt_nueva_empresa.Text)
+        Dim empTemp As Empresa = New Empresa(txt_nueva_empresa.Text)
+        empTemp.addEmpresa()
         Close()
     End Sub
 End Class

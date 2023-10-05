@@ -4,7 +4,6 @@
 
     Private Sub frmNuevoNombreEmpresa_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PosicionarCentro(Me)
-        txt_nuevo_nombre_empresa.Clear()
         aceptado = False
     End Sub
 
