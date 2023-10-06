@@ -93,5 +93,13 @@
     Public Function getFormasPago() As List(Of FormaPago)
         Return managerFormaPagoAux.getFormaPagos()
     End Function
+    Public Sub changeEstado()
+        If Me.Activo = 1 Then
+            Me.Activo = 0
+        Else
+            Me.Activo = 1
+        End If
+        managerFormaPagoAux.changeEstado(Me)
+    End Sub
 
 End Class

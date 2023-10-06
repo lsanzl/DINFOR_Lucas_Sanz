@@ -6,11 +6,13 @@
     Public empresaAux As Empresa = New Empresa()
     Public bancoAux As Banco = New Banco()
     Public formaPagoAux As FormaPago = New FormaPago()
+    Public grupoAux As Grupo = New Grupo()
 
     ' ----- MANAGERS AUXILIARES DE CADA CLASE -----
     Public managerEmpAux As ManagerEmpresa = New ManagerEmpresa()
     Public managerBancoAux As ManagerBanco = New ManagerBanco()
     Public managerFormaPagoAux As ManagerFormaPago = New ManagerFormaPago()
+    Public managerGrupoAux As ManagerGrupo = New ManagerGrupo()
 
 
     ' ------------ VARIABLES GLOBALES -------------

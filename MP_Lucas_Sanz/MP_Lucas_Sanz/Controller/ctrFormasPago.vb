@@ -10,6 +10,7 @@
 
         AddHandler frmFormasPago.btn_añadir_forma_pago.Click, AddressOf click_btn_añadir_forma_pago
         AddHandler frmFormasPago.btn_modificar_forma_pago.Click, AddressOf click_btn_modificar_forma_pago
+        AddHandler frmFormasPago.btn_eliminar_forma_pago.Click, AddressOf click_btn_eliminar_forma_pago
         AddHandler frmFormasPago.dg_formas_pago.CellClick, AddressOf click_cell_formas_pago
         AddHandler frmFormasPago.tab_main.SelectedIndexChanged, AddressOf tab_main_SelectedIndexChanged
     End Sub
@@ -28,6 +29,14 @@
     End Sub
 
     Private Sub click_cell_formas_pago(sender As Object, e As DataGridViewCellEventArgs)
+        Dim currentCelll As DataGridViewCell = frmFormasPago.dg_formas_pago.CurrentCell
+        If currentCelll.OwningColumn.HeaderText.Equals("Activo") Then
+            formaPagoTemp = frmFormasPago.dg_formas_pago.Rows(e.RowIndex).DataBoundItem
+            formaPagoTemp.changeEstado()
+            fillDGFormasPago()
+            Return
+        End If
+
         frmFormasPago.btn_modificar_forma_pago.Enabled = True
         frmFormasPago.btn_eliminar_forma_pago.Enabled = True
         formaPagoTemp = frmFormasPago.dg_formas_pago.Rows(e.RowIndex).DataBoundItem
@@ -53,7 +62,14 @@
         frmNuevaFormaPago.txt_dias_entre_plazos.Text = formaPagoTemp.DiasPlazos
         frmNuevaFormaPago.checkb_estado_forma_pago.CheckState = formaPagoTemp.Activo
 
+        frmNuevaFormaPago.setBancoAsignadoMod(formaPagoTemp.BancoAsignado)
         frmNuevaFormaPago.ShowDialog()
+        frmNuevaFormaPago.clearFields()
+        fillDGFormasPago()
+    End Sub
+
+    Private Sub click_btn_eliminar_forma_pago(sender As Object, e As EventArgs)
+        formaPagoTemp.deleteFormaPago()
         fillDGFormasPago()
     End Sub
 

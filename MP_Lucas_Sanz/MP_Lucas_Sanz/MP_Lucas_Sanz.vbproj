@@ -74,11 +74,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ctrFormasPago.vb" />
+    <Compile Include="Controller\ctrGrupo.vb" />
     <Compile Include="Manager\ManagerBanco.vb" />
     <Compile Include="Manager\ManagerEmpresa.vb" />
     <Compile Include="Manager\ManagerFormaPago.vb" />
+    <Compile Include="Manager\ManagerGrupo.vb" />
     <Compile Include="Model\Banco.vb" />
     <Compile Include="Model\FormaPago.vb" />
+    <Compile Include="Model\Grupo.vb" />
     <Compile Include="View\ApplicationEvents.vb" />
     <Compile Include="Model\ConnectionDB.vb" />
     <Compile Include="Model\Empresa.vb" />
@@ -135,6 +138,12 @@
     <Compile Include="View\Empresa\frmSeleccionEmpresa.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\Grupo\frmNuevoGrupo.Designer.vb">
+      <DependentUpon>frmNuevoGrupo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\Grupo\frmNuevoGrupo.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\VariablesGlobales.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +171,9 @@
     <EmbeddedResource Include="View\Empresa\frmSeleccionEmpresa.resx">
       <DependentUpon>frmSeleccionEmpresa.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Grupo\frmNuevoGrupo.resx">
+      <DependentUpon>frmNuevoGrupo.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
@@ -170,6 +182,7 @@
     </None>
     <None Include="My Project\DataSources\Banco.datasource" />
     <None Include="My Project\DataSources\FormaPago.datasource" />
+    <None Include="My Project\DataSources\Grupo.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>

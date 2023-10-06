@@ -66,6 +66,11 @@ Public Class ManagerEmpresa
                                 DIASENTREPLAZOS INTEGER,
                                 );", connectionDBManager)
         cmd.ExecuteNonQuery()
+        cmd = New SqlCommand("CREATE TABLE GRUPOS(
+                            CODIGOGRUPO VARCHAR(5) PRIMARY KEY,
+                            NOMBREGRUPO VARCHAR(100)
+                            );", connectionDBManager)
+        cmd.ExecuteNonQuery()
     End Sub
     Public Function checkEmpresa(nombreEmpresa As String) As Boolean
         cmd = New SqlCommand("SELECT NAME

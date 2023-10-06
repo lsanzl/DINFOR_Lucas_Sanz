@@ -37,7 +37,6 @@
         codigoEmp = Right(nombreEmpresaP, nombreEmpresaP.Length - 3)
     End Sub
 
-
     Public Function getEmpresas() As List(Of Empresa)
         Return managerEmpAux.getEmpresas()
     End Function

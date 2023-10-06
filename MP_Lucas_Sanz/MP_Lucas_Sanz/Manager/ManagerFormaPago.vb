@@ -69,6 +69,17 @@ Public Class ManagerFormaPago
         End If
     End Sub
 
+    Public Sub changeEstado(formaPagoSql As FormaPago)
+        cmd = New SqlCommand($"UPDATE FORMASPAGO
+                                SET ESTADO = {formaPagoSql.Activo}
+                                WHERE CODIGOPAGO = '{formaPagoSql.CodigoDePago}';", connectionDBManager)
+        If cmd.ExecuteNonQuery() > 0 Then
+            MessageBox.Show("Estado modificado")
+        Else
+            MessageBox.Show("Estado no modificado")
+        End If
+    End Sub
+
     Public Function checkFormaPago(codigoForma As String)
         cmd = New SqlCommand($"SELECT * FROM FORMASPAGO
                             WHERE CODIGOPAGO = '{codigoForma}';", connectionDBManager)

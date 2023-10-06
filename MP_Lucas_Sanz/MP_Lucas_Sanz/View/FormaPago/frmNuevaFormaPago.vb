@@ -1,19 +1,35 @@
 ﻿Public Class frmNuevaFormaPago
     Private Sub frmNuevaFormaPago_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        clearFields()
         fillCBBancos()
+        If btn_confirmar_forma_pago.Text.Equals("Confirmar") Then
+            clearFields()
+        End If
     End Sub
 
-    Dim bancoSeleccionado As String = Nothing
+    Private bancoSeleccionado As String = Nothing
+    Private bancoAsignadoMod As Integer
+    Private bancoYaSeleccionado As Integer = -1
+    Private contador As Integer = 0
 
     Private Sub fillCBBancos()
+        contador = 0
+        bancoYaSeleccionado = -1
         cb_banco_asignado.Items.Clear()
+
         Dim listaBancosTemp As List(Of Banco) = bancoAux.getBancos()
         Dim nombreBanco As String
+
         For Each Banco In listaBancosTemp
+            If Not bancoAsignadoMod = Nothing Then
+                If Banco.CodigoDeBanco = bancoAsignadoMod Then
+                    bancoYaSeleccionado = contador
+                End If
+            End If
             nombreBanco = $"{Banco.NombreDeBanco} - {Banco.CodigoDeBanco}"
             cb_banco_asignado.Items.Add(nombreBanco)
+            contador += 1
         Next
+        cb_banco_asignado.SelectedIndex = bancoYaSeleccionado
     End Sub
 
     Public Sub change_cb_banco_asignado(sender As Object, e As EventArgs) Handles cb_banco_asignado.SelectedIndexChanged
@@ -27,7 +43,7 @@
             Return
         End If
 
-        If Not managerFormaPagoAux.checkFormaPago(txt_codigo_forma_pago.Text) Then
+        If Not managerFormaPagoAux.checkFormaPago(txt_codigo_forma_pago.Text) And btn_confirmar_forma_pago.Text.Equals("Confirmar") Then
             MessageBox.Show("Código ya existente")
             Return
         End If
@@ -55,8 +71,12 @@
 
         Dim formaPagoTemp As FormaPago = New FormaPago(codigoFormaPago, nombreFormaPago, bancoAsignado,
                                                     estadoFormaPago, numPlazos, diasPrimerPlazo, diasEntrePlazos)
-        formaPagoTemp.addFormaPago()
 
+        If btn_confirmar_forma_pago.Text.Equals("Confirmar") Then
+            formaPagoTemp.addFormaPago()
+        Else
+            formaPagoTemp.modifyFormaPago()
+        End If
         Close()
     End Sub
 
@@ -88,7 +108,7 @@
         End If
     End Function
 
-    Private Sub clearFields()
+    Public Sub clearFields()
         txt_codigo_forma_pago.Clear()
         txt_nombre_forma_pago.Clear()
         txt_numero_plazos.Clear()
@@ -96,5 +116,11 @@
         txt_dias_primer_plazo.Clear()
         checkb_estado_forma_pago.CheckState = False
         cb_banco_asignado.SelectedIndex = -1
+        txt_codigo_forma_pago.Enabled = True
+        bancoAsignadoMod = Nothing
+    End Sub
+
+    Public Sub setBancoAsignadoMod(numBanco As Integer)
+        bancoAsignadoMod = numBanco
     End Sub
 End Class

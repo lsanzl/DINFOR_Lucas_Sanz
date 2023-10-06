@@ -9,5 +9,6 @@ Public Class frmMain
         frmSeleccionEmpresa.ShowDialog()
         Dim ctrBancoController As ctrBanco = New ctrBanco(Me)
         Dim ctrFormaPagoController As ctrFormasPago = New ctrFormasPago(Me)
+        Dim ctrGrupoController As ctrGrupo = New ctrGrupo(Me)
     End Sub
 End Class
