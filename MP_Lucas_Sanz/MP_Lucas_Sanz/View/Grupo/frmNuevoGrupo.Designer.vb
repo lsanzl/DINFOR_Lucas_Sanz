@@ -108,6 +108,7 @@ Partial Class frmNuevoGrupo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(447, 138)
         Me.Controls.Add(Me.btn_confirmar_nuevo_grupo)
         Me.Controls.Add(Me.TableLayoutPanel1)

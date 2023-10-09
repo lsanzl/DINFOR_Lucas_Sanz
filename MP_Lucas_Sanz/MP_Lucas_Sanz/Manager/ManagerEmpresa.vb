@@ -71,6 +71,26 @@ Public Class ManagerEmpresa
                             NOMBREGRUPO VARCHAR(100)
                             );", connectionDBManager)
         cmd.ExecuteNonQuery()
+        cmd = New SqlCommand("CREATE TABLE CLIENTES(
+                            CODIGOCLIENTE VARCHAR(6) PRIMARY KEY,
+                            NOMBRECLIENTE VARCHAR(100),
+                            NIFCLIENTE VARCHAR(12),
+                            DIRECCIONCLIENTE VARCHAR(150),
+                            FECHANACIMIENTOCLIENTE DATE,
+                            BANCOCLIENTE INT,
+                            GRUPOCLIENTE INT,
+                            EMAILCLIENTE VARCHAR(100)
+                            );", connectionDBManager)
+        cmd.ExecuteNonQuery()
+        cmd = New SqlCommand("CREATE TABLE PROVEEDORES(
+                            CODIGOPROVEEDOR VARCHAR(6) PRIMARY KEY,
+                            NOMBREPROVEEDOR VARCHAR(100),
+                            NIFPROVEEDOR VARCHAR(12),
+                            DIRECCIONPROVEEDOR VARCHAR(100),
+                            POBLACIONPROVEEDOR VARCHAR(100),
+                            TELEFONOPROVEEDOR INT
+                            );", connectionDBManager)
+        cmd.ExecuteNonQuery()
     End Sub
     Public Function checkEmpresa(nombreEmpresa As String) As Boolean
         cmd = New SqlCommand("SELECT NAME

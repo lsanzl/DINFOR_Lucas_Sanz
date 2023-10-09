@@ -11,15 +11,21 @@
         AddHandler frmGrupo.btn_modificar_grupo.Click, AddressOf click_btn_modificar_grupo
         AddHandler frmGrupo.btn_eliminar_grupo.Click, AddressOf click_btn_eliminar_grupo
         AddHandler frmGrupo.dg_grupos.CellClick, AddressOf click_cell_dg_grupos
+        AddHandler frmGrupo.tab_main.SelectedIndexChanged, AddressOf tab_main_SelectedIndexChanged
 
     End Sub
 
     Public Sub fillDGGrupos()
         frmMain.btn_modificar_grupo.Enabled = False
         frmMain.btn_eliminar_grupo.Enabled = False
+
         frmNuevoGrupo.btn_confirmar_nuevo_grupo.Text = "Confirmar"
+        frmNuevoGrupo.txt_codigo_grupo.Clear()
+        frmNuevoGrupo.txt_nombre_grupo.Clear()
+
         frmGrupo.dg_grupos.DataSource = Nothing
         frmGrupo.dg_grupos.Rows.Clear()
+
         listaGrupos = grupoAux.getGrupos()
         frmGrupo.dg_grupos.DataSource = listaGrupos
         frmGrupo.dg_grupos.ClearSelection()
@@ -58,7 +64,7 @@
     End Sub
 
     Private Sub tab_main_SelectedIndexChanged(sender As Object, e As EventArgs)
-        If frmGrupo.tab_main.SelectedIndex = 2 Then
+        If frmGrupo.tab_main.SelectedTab.Text.Equals("CLIENTES/GRUPOS") Then
             fillDGGrupos()
         End If
     End Sub

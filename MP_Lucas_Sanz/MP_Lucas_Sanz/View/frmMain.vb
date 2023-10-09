@@ -8,7 +8,9 @@ Public Class frmMain
         frmSeleccionEmpresa.Text = "Seleccione empresa con la que desea trabajar"
         frmSeleccionEmpresa.ShowDialog()
         Dim ctrBancoController As ctrBanco = New ctrBanco(Me)
-        Dim ctrFormaPagoController As ctrFormasPago = New ctrFormasPago(Me)
+        Dim ctrFormaPagoController As ctrFormaPago = New ctrFormaPago(Me)
         Dim ctrGrupoController As ctrGrupo = New ctrGrupo(Me)
+        Dim ctrCliente As ctrCliente = New ctrCliente(Me)
+        Dim ctrProveedor As ctrProveedor = New ctrProveedor(Me)
     End Sub
 End Class

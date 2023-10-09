@@ -18,6 +18,7 @@
 
         Dim listaBancosTemp As List(Of Banco) = bancoAux.getBancos()
         Dim nombreBanco As String
+        cb_banco_asignado.Items.Add("")
 
         For Each Banco In listaBancosTemp
             If Not bancoAsignadoMod = Nothing Then
@@ -50,7 +51,7 @@
 
         Dim stringBanco() As String
         Dim bancoAsignado As Integer = 0
-        If Not bancoSeleccionado = Nothing Then
+        If Not bancoSeleccionado = Nothing And cb_banco_asignado.SelectedIndex > 0 Then
             stringBanco = bancoSeleccionado.Split(" - ")
             bancoAsignado = Convert.ToInt32(stringBanco(2))
         Else

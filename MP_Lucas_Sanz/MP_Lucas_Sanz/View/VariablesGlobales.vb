@@ -1,19 +1,23 @@
 ﻿Module VariablesGlobales
 
-
     ' ------ OBJETOS AUXILIARES DE MODELOS --------
     Public connectionDB As ConnectionDB = New ConnectionDB
     Public empresaAux As Empresa = New Empresa()
     Public bancoAux As Banco = New Banco()
     Public formaPagoAux As FormaPago = New FormaPago()
     Public grupoAux As Grupo = New Grupo()
+    Public clienteAux As Cliente = New Cliente()
+    Public proveedorAux As Proveedor = New Proveedor()
+    Public articuloAux As Articulo = New Articulo()
 
     ' ----- MANAGERS AUXILIARES DE CADA CLASE -----
     Public managerEmpAux As ManagerEmpresa = New ManagerEmpresa()
     Public managerBancoAux As ManagerBanco = New ManagerBanco()
     Public managerFormaPagoAux As ManagerFormaPago = New ManagerFormaPago()
     Public managerGrupoAux As ManagerGrupo = New ManagerGrupo()
-
+    Public managerClienteAux As ManagerCliente = New ManagerCliente()
+    Public managerProveedorAux As ManagerProveedor = New ManagerProveedor()
+    Public managerArticuloAux As ManagerArticulo = New ManagerArticulo()
 
     ' ------------ VARIABLES GLOBALES -------------
     Private empresaSeleccionadaDB As String = Nothing
@@ -49,7 +53,6 @@
         Formulario.Width = CInt(AnchoFormularioDestino)
         Formulario.Height = CInt(AltoFormularioDestino)
     End Sub
-
     Public Sub PosicionarCentro(ByVal form As Form)
         form.Left = CType((Screen.PrimaryScreen.WorkingArea.Width - form.Width) / 2, Integer)
         form.Top = CType((Screen.PrimaryScreen.WorkingArea.Height - form.Height) / 2, Integer)

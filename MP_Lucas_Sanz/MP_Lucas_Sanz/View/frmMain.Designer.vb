@@ -24,10 +24,11 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.tab_main = New System.Windows.Forms.TabControl()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.tab_menu_principal = New System.Windows.Forms.TabPage()
         Me.tab_bancos_pagos = New System.Windows.Forms.TabPage()
         Me.tlp_main_bancos_pagos = New System.Windows.Forms.TableLayoutPanel()
         Me.dg_bancos = New System.Windows.Forms.DataGridView()
@@ -48,11 +49,24 @@ Partial Class frmMain
         Me.btn_modificar_grupo = New System.Windows.Forms.Button()
         Me.btn_eliminar_grupo = New System.Windows.Forms.Button()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.btn_añadir_cliente = New System.Windows.Forms.Button()
+        Me.btn_modificar_cliente = New System.Windows.Forms.Button()
+        Me.btn_eliminar_cliente = New System.Windows.Forms.Button()
         Me.dg_grupos = New System.Windows.Forms.DataGridView()
+        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.tab_articulos_proveedores = New System.Windows.Forms.TabPage()
+        Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
+        Me.dg_articulos = New System.Windows.Forms.DataGridView()
+        Me.TableLayoutPanel5 = New System.Windows.Forms.TableLayoutPanel()
+        Me.btn_añadir_proveedor = New System.Windows.Forms.Button()
+        Me.btn_modificar_proveedor = New System.Windows.Forms.Button()
+        Me.btn_eliminar_proveedor = New System.Windows.Forms.Button()
+        Me.TableLayoutPanel6 = New System.Windows.Forms.TableLayoutPanel()
+        Me.btn_añadir_articulo = New System.Windows.Forms.Button()
+        Me.btn_modificar_articulo = New System.Windows.Forms.Button()
+        Me.btn_eliminar_articulo = New System.Windows.Forms.Button()
+        Me.dg_proveedores = New System.Windows.Forms.DataGridView()
+        Me.datos = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.NombreDeBancoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CodigoDeBancoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BancoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -64,16 +78,30 @@ Partial Class frmMain
         Me.PrimerPlazoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DiasPlazosDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FormaPagoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CodigoDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NombreDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NifDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DireccionDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaDeNacimientoDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BancoDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GrupoDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmailDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClienteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CodigoDeGrupoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NombreDeGrupoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GrupoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CodigoDeProveedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NombreDeProveedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProveedorBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GrupoBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.tab_main.SuspendLayout()
         Me.tab_bancos_pagos.SuspendLayout()
         Me.tlp_main_bancos_pagos.SuspendLayout()
@@ -87,9 +115,18 @@ Partial Class frmMain
         Me.TableLayoutPanel2.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
         CType(Me.dg_grupos, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tab_articulos_proveedores.SuspendLayout()
+        Me.TableLayoutPanel4.SuspendLayout()
+        CType(Me.dg_articulos, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TableLayoutPanel5.SuspendLayout()
+        Me.TableLayoutPanel6.SuspendLayout()
+        CType(Me.dg_proveedores, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BancoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FormaPagoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ClienteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GrupoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ProveedorBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GrupoBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tab_main
@@ -97,9 +134,10 @@ Partial Class frmMain
         Me.tab_main.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tab_main.Controls.Add(Me.TabPage2)
+        Me.tab_main.Controls.Add(Me.tab_menu_principal)
         Me.tab_main.Controls.Add(Me.tab_bancos_pagos)
         Me.tab_main.Controls.Add(Me.tab_clientes_grupos)
+        Me.tab_main.Controls.Add(Me.tab_articulos_proveedores)
         Me.tab_main.ImageList = Me.ImageList1
         Me.tab_main.ItemSize = New System.Drawing.Size(78, 50)
         Me.tab_main.Location = New System.Drawing.Point(0, 2)
@@ -108,16 +146,16 @@ Partial Class frmMain
         Me.tab_main.Size = New System.Drawing.Size(799, 449)
         Me.tab_main.TabIndex = 1
         '
-        'TabPage2
+        'tab_menu_principal
         '
-        Me.TabPage2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabPage2.Location = New System.Drawing.Point(4, 54)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(791, 391)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "TabPage2"
-        Me.TabPage2.UseVisualStyleBackColor = True
+        Me.tab_menu_principal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tab_menu_principal.Location = New System.Drawing.Point(4, 54)
+        Me.tab_menu_principal.Name = "tab_menu_principal"
+        Me.tab_menu_principal.Padding = New System.Windows.Forms.Padding(3)
+        Me.tab_menu_principal.Size = New System.Drawing.Size(791, 391)
+        Me.tab_menu_principal.TabIndex = 1
+        Me.tab_menu_principal.Text = "MENÚ"
+        Me.tab_menu_principal.UseVisualStyleBackColor = True
         '
         'tab_bancos_pagos
         '
@@ -150,23 +188,25 @@ Partial Class frmMain
         Me.tlp_main_bancos_pagos.RowCount = 2
         Me.tlp_main_bancos_pagos.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.0!))
         Me.tlp_main_bancos_pagos.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.0!))
-        Me.tlp_main_bancos_pagos.Size = New System.Drawing.Size(791, 391)
+        Me.tlp_main_bancos_pagos.Size = New System.Drawing.Size(799, 399)
         Me.tlp_main_bancos_pagos.TabIndex = 0
         '
         'dg_bancos
         '
         Me.dg_bancos.AllowUserToAddRows = False
         Me.dg_bancos.AllowUserToDeleteRows = False
+        Me.dg_bancos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dg_bancos.AutoGenerateColumns = False
         Me.dg_bancos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dg_bancos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dg_bancos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NombreDeBancoDataGridViewTextBoxColumn, Me.CodigoDeBancoDataGridViewTextBoxColumn})
         Me.dg_bancos.DataSource = Me.BancoBindingSource
-        Me.dg_bancos.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dg_bancos.Location = New System.Drawing.Point(6, 6)
         Me.dg_bancos.Name = "dg_bancos"
         Me.dg_bancos.ReadOnly = True
-        Me.dg_bancos.Size = New System.Drawing.Size(268, 321)
+        Me.dg_bancos.Size = New System.Drawing.Size(271, 328)
         Me.dg_bancos.TabIndex = 0
         '
         'dg_formas_pago
@@ -179,10 +219,10 @@ Partial Class frmMain
         Me.dg_formas_pago.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoDePagoDataGridViewTextBoxColumn, Me.NombreDePagoDataGridViewTextBoxColumn, Me.BancoAsignadoDataGridViewTextBoxColumn, Me.ActivoDataGridViewTextBoxColumn, Me.NumeroPlazosPagoDataGridViewTextBoxColumn, Me.PrimerPlazoDataGridViewTextBoxColumn, Me.DiasPlazosDataGridViewTextBoxColumn})
         Me.dg_formas_pago.DataSource = Me.FormaPagoBindingSource
         Me.dg_formas_pago.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dg_formas_pago.Location = New System.Drawing.Point(280, 6)
+        Me.dg_formas_pago.Location = New System.Drawing.Point(283, 6)
         Me.dg_formas_pago.MultiSelect = False
         Me.dg_formas_pago.Name = "dg_formas_pago"
-        Me.dg_formas_pago.Size = New System.Drawing.Size(505, 321)
+        Me.dg_formas_pago.Size = New System.Drawing.Size(510, 328)
         Me.dg_formas_pago.TabIndex = 1
         '
         'tlp_bancos
@@ -197,19 +237,19 @@ Partial Class frmMain
         Me.tlp_bancos.Controls.Add(Me.btn_añadir_banco, 0, 0)
         Me.tlp_bancos.Controls.Add(Me.btn_modificar_banco, 1, 0)
         Me.tlp_bancos.Controls.Add(Me.btn_eliminar_banco, 2, 0)
-        Me.tlp_bancos.Location = New System.Drawing.Point(6, 333)
+        Me.tlp_bancos.Location = New System.Drawing.Point(6, 340)
         Me.tlp_bancos.Name = "tlp_bancos"
         Me.tlp_bancos.RowCount = 1
         Me.tlp_bancos.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tlp_bancos.Size = New System.Drawing.Size(268, 52)
+        Me.tlp_bancos.Size = New System.Drawing.Size(271, 53)
         Me.tlp_bancos.TabIndex = 2
         '
         'btn_añadir_banco
         '
         Me.btn_añadir_banco.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_añadir_banco.Location = New System.Drawing.Point(3, 8)
+        Me.btn_añadir_banco.Location = New System.Drawing.Point(3, 9)
         Me.btn_añadir_banco.Name = "btn_añadir_banco"
-        Me.btn_añadir_banco.Size = New System.Drawing.Size(83, 35)
+        Me.btn_añadir_banco.Size = New System.Drawing.Size(84, 35)
         Me.btn_añadir_banco.TabIndex = 0
         Me.btn_añadir_banco.Text = "Añadir Banco"
         Me.btn_añadir_banco.UseVisualStyleBackColor = True
@@ -218,9 +258,9 @@ Partial Class frmMain
         '
         Me.btn_modificar_banco.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_modificar_banco.Enabled = False
-        Me.btn_modificar_banco.Location = New System.Drawing.Point(92, 8)
+        Me.btn_modificar_banco.Location = New System.Drawing.Point(93, 9)
         Me.btn_modificar_banco.Name = "btn_modificar_banco"
-        Me.btn_modificar_banco.Size = New System.Drawing.Size(83, 35)
+        Me.btn_modificar_banco.Size = New System.Drawing.Size(84, 35)
         Me.btn_modificar_banco.TabIndex = 1
         Me.btn_modificar_banco.Text = "Modificar Banco"
         Me.btn_modificar_banco.UseVisualStyleBackColor = True
@@ -229,9 +269,9 @@ Partial Class frmMain
         '
         Me.btn_eliminar_banco.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_eliminar_banco.Enabled = False
-        Me.btn_eliminar_banco.Location = New System.Drawing.Point(181, 8)
+        Me.btn_eliminar_banco.Location = New System.Drawing.Point(183, 9)
         Me.btn_eliminar_banco.Name = "btn_eliminar_banco"
-        Me.btn_eliminar_banco.Size = New System.Drawing.Size(84, 35)
+        Me.btn_eliminar_banco.Size = New System.Drawing.Size(85, 35)
         Me.btn_eliminar_banco.TabIndex = 2
         Me.btn_eliminar_banco.Text = "Eliminar Banco"
         Me.btn_eliminar_banco.UseVisualStyleBackColor = True
@@ -248,19 +288,19 @@ Partial Class frmMain
         Me.tlp_pagos.Controls.Add(Me.btn_añadir_forma_pago, 0, 0)
         Me.tlp_pagos.Controls.Add(Me.btn_modificar_forma_pago, 1, 0)
         Me.tlp_pagos.Controls.Add(Me.btn_eliminar_forma_pago, 2, 0)
-        Me.tlp_pagos.Location = New System.Drawing.Point(280, 333)
+        Me.tlp_pagos.Location = New System.Drawing.Point(283, 340)
         Me.tlp_pagos.Name = "tlp_pagos"
         Me.tlp_pagos.RowCount = 1
         Me.tlp_pagos.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tlp_pagos.Size = New System.Drawing.Size(505, 52)
+        Me.tlp_pagos.Size = New System.Drawing.Size(510, 53)
         Me.tlp_pagos.TabIndex = 3
         '
         'btn_añadir_forma_pago
         '
         Me.btn_añadir_forma_pago.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_añadir_forma_pago.Location = New System.Drawing.Point(3, 8)
+        Me.btn_añadir_forma_pago.Location = New System.Drawing.Point(3, 9)
         Me.btn_añadir_forma_pago.Name = "btn_añadir_forma_pago"
-        Me.btn_añadir_forma_pago.Size = New System.Drawing.Size(162, 35)
+        Me.btn_añadir_forma_pago.Size = New System.Drawing.Size(164, 35)
         Me.btn_añadir_forma_pago.TabIndex = 0
         Me.btn_añadir_forma_pago.Text = "Añadir Forma Pago"
         Me.btn_añadir_forma_pago.UseVisualStyleBackColor = True
@@ -269,9 +309,9 @@ Partial Class frmMain
         '
         Me.btn_modificar_forma_pago.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_modificar_forma_pago.Enabled = False
-        Me.btn_modificar_forma_pago.Location = New System.Drawing.Point(171, 8)
+        Me.btn_modificar_forma_pago.Location = New System.Drawing.Point(173, 9)
         Me.btn_modificar_forma_pago.Name = "btn_modificar_forma_pago"
-        Me.btn_modificar_forma_pago.Size = New System.Drawing.Size(162, 35)
+        Me.btn_modificar_forma_pago.Size = New System.Drawing.Size(164, 35)
         Me.btn_modificar_forma_pago.TabIndex = 1
         Me.btn_modificar_forma_pago.Text = "Modificar Forma Pago"
         Me.btn_modificar_forma_pago.UseVisualStyleBackColor = True
@@ -280,9 +320,9 @@ Partial Class frmMain
         '
         Me.btn_eliminar_forma_pago.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_eliminar_forma_pago.Enabled = False
-        Me.btn_eliminar_forma_pago.Location = New System.Drawing.Point(339, 8)
+        Me.btn_eliminar_forma_pago.Location = New System.Drawing.Point(343, 9)
         Me.btn_eliminar_forma_pago.Name = "btn_eliminar_forma_pago"
-        Me.btn_eliminar_forma_pago.Size = New System.Drawing.Size(163, 35)
+        Me.btn_eliminar_forma_pago.Size = New System.Drawing.Size(164, 35)
         Me.btn_eliminar_forma_pago.TabIndex = 2
         Me.btn_eliminar_forma_pago.Text = "Eliminar Forma Pago"
         Me.btn_eliminar_forma_pago.UseVisualStyleBackColor = True
@@ -311,13 +351,13 @@ Partial Class frmMain
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel2, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel3, 1, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.dg_grupos, 0, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(8, 8)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.Padding = New System.Windows.Forms.Padding(3)
         Me.TableLayoutPanel1.RowCount = 2
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(791, 391)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(799, 399)
         Me.TableLayoutPanel1.TabIndex = 1
         '
         'dg_clientes
@@ -335,13 +375,13 @@ Partial Class frmMain
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dg_clientes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dg_clientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_clientes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewCheckBoxColumn1, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8})
-        Me.dg_clientes.DataSource = Me.FormaPagoBindingSource
+        Me.dg_clientes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoDelClienteDataGridViewTextBoxColumn, Me.NombreDelClienteDataGridViewTextBoxColumn, Me.NifDelClienteDataGridViewTextBoxColumn, Me.DireccionDelClienteDataGridViewTextBoxColumn, Me.FechaDeNacimientoDelClienteDataGridViewTextBoxColumn, Me.BancoDelClienteDataGridViewTextBoxColumn, Me.GrupoDelClienteDataGridViewTextBoxColumn, Me.EmailDelClienteDataGridViewTextBoxColumn})
+        Me.dg_clientes.DataSource = Me.ClienteBindingSource
         Me.dg_clientes.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dg_clientes.Location = New System.Drawing.Point(280, 6)
+        Me.dg_clientes.Location = New System.Drawing.Point(283, 6)
         Me.dg_clientes.MultiSelect = False
         Me.dg_clientes.Name = "dg_clientes"
-        Me.dg_clientes.Size = New System.Drawing.Size(505, 321)
+        Me.dg_clientes.Size = New System.Drawing.Size(510, 328)
         Me.dg_clientes.TabIndex = 1
         '
         'TableLayoutPanel2
@@ -356,20 +396,20 @@ Partial Class frmMain
         Me.TableLayoutPanel2.Controls.Add(Me.btn_añadir_grupo, 0, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.btn_modificar_grupo, 1, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.btn_eliminar_grupo, 2, 0)
-        Me.TableLayoutPanel2.Location = New System.Drawing.Point(6, 333)
+        Me.TableLayoutPanel2.Location = New System.Drawing.Point(6, 340)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 1
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(268, 52)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(271, 53)
         Me.TableLayoutPanel2.TabIndex = 2
         '
         'btn_añadir_grupo
         '
         Me.btn_añadir_grupo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_añadir_grupo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_añadir_grupo.Location = New System.Drawing.Point(3, 8)
+        Me.btn_añadir_grupo.Location = New System.Drawing.Point(3, 9)
         Me.btn_añadir_grupo.Name = "btn_añadir_grupo"
-        Me.btn_añadir_grupo.Size = New System.Drawing.Size(83, 35)
+        Me.btn_añadir_grupo.Size = New System.Drawing.Size(84, 35)
         Me.btn_añadir_grupo.TabIndex = 0
         Me.btn_añadir_grupo.Text = "Añadir Grupo"
         Me.btn_añadir_grupo.UseVisualStyleBackColor = True
@@ -379,9 +419,9 @@ Partial Class frmMain
         Me.btn_modificar_grupo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_modificar_grupo.Enabled = False
         Me.btn_modificar_grupo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_modificar_grupo.Location = New System.Drawing.Point(92, 8)
+        Me.btn_modificar_grupo.Location = New System.Drawing.Point(93, 9)
         Me.btn_modificar_grupo.Name = "btn_modificar_grupo"
-        Me.btn_modificar_grupo.Size = New System.Drawing.Size(83, 35)
+        Me.btn_modificar_grupo.Size = New System.Drawing.Size(84, 35)
         Me.btn_modificar_grupo.TabIndex = 1
         Me.btn_modificar_grupo.Text = "Modificar Grupo"
         Me.btn_modificar_grupo.UseVisualStyleBackColor = True
@@ -391,9 +431,9 @@ Partial Class frmMain
         Me.btn_eliminar_grupo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_eliminar_grupo.Enabled = False
         Me.btn_eliminar_grupo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_eliminar_grupo.Location = New System.Drawing.Point(181, 8)
+        Me.btn_eliminar_grupo.Location = New System.Drawing.Point(183, 9)
         Me.btn_eliminar_grupo.Name = "btn_eliminar_grupo"
-        Me.btn_eliminar_grupo.Size = New System.Drawing.Size(84, 35)
+        Me.btn_eliminar_grupo.Size = New System.Drawing.Size(85, 35)
         Me.btn_eliminar_grupo.TabIndex = 2
         Me.btn_eliminar_grupo.Text = "Eliminar Grupo"
         Me.btn_eliminar_grupo.UseVisualStyleBackColor = True
@@ -407,60 +447,60 @@ Partial Class frmMain
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel3.Controls.Add(Me.Button4, 0, 0)
-        Me.TableLayoutPanel3.Controls.Add(Me.Button5, 1, 0)
-        Me.TableLayoutPanel3.Controls.Add(Me.Button6, 2, 0)
-        Me.TableLayoutPanel3.Location = New System.Drawing.Point(280, 333)
+        Me.TableLayoutPanel3.Controls.Add(Me.btn_añadir_cliente, 0, 0)
+        Me.TableLayoutPanel3.Controls.Add(Me.btn_modificar_cliente, 1, 0)
+        Me.TableLayoutPanel3.Controls.Add(Me.btn_eliminar_cliente, 2, 0)
+        Me.TableLayoutPanel3.Location = New System.Drawing.Point(283, 340)
         Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
         Me.TableLayoutPanel3.RowCount = 1
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel3.Size = New System.Drawing.Size(505, 52)
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(510, 53)
         Me.TableLayoutPanel3.TabIndex = 3
         '
-        'Button4
+        'btn_añadir_cliente
         '
-        Me.Button4.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button4.Location = New System.Drawing.Point(3, 8)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(162, 35)
-        Me.Button4.TabIndex = 0
-        Me.Button4.Text = "Añadir Forma Pago"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.btn_añadir_cliente.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_añadir_cliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_añadir_cliente.Location = New System.Drawing.Point(3, 9)
+        Me.btn_añadir_cliente.Name = "btn_añadir_cliente"
+        Me.btn_añadir_cliente.Size = New System.Drawing.Size(164, 35)
+        Me.btn_añadir_cliente.TabIndex = 0
+        Me.btn_añadir_cliente.Text = "Añadir Cliente"
+        Me.btn_añadir_cliente.UseVisualStyleBackColor = True
         '
-        'Button5
+        'btn_modificar_cliente
         '
-        Me.Button5.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button5.Enabled = False
-        Me.Button5.Location = New System.Drawing.Point(171, 8)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(162, 35)
-        Me.Button5.TabIndex = 1
-        Me.Button5.Text = "Modificar Forma Pago"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.btn_modificar_cliente.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_modificar_cliente.Enabled = False
+        Me.btn_modificar_cliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_modificar_cliente.Location = New System.Drawing.Point(173, 9)
+        Me.btn_modificar_cliente.Name = "btn_modificar_cliente"
+        Me.btn_modificar_cliente.Size = New System.Drawing.Size(164, 35)
+        Me.btn_modificar_cliente.TabIndex = 1
+        Me.btn_modificar_cliente.Text = "Modificar Cliente"
+        Me.btn_modificar_cliente.UseVisualStyleBackColor = True
         '
-        'Button6
+        'btn_eliminar_cliente
         '
-        Me.Button6.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button6.Enabled = False
-        Me.Button6.Location = New System.Drawing.Point(339, 8)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(163, 35)
-        Me.Button6.TabIndex = 2
-        Me.Button6.Text = "Eliminar Forma Pago"
-        Me.Button6.UseVisualStyleBackColor = True
-        '
-        'ImageList1
-        '
-        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList1.Images.SetKeyName(0, "banco.ico")
-        Me.ImageList1.Images.SetKeyName(1, "cliente.ico")
+        Me.btn_eliminar_cliente.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_eliminar_cliente.Enabled = False
+        Me.btn_eliminar_cliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_eliminar_cliente.Location = New System.Drawing.Point(343, 9)
+        Me.btn_eliminar_cliente.Name = "btn_eliminar_cliente"
+        Me.btn_eliminar_cliente.Size = New System.Drawing.Size(164, 35)
+        Me.btn_eliminar_cliente.TabIndex = 2
+        Me.btn_eliminar_cliente.Text = "Eliminar Cliente"
+        Me.btn_eliminar_cliente.UseVisualStyleBackColor = True
         '
         'dg_grupos
         '
         Me.dg_grupos.AllowUserToAddRows = False
         Me.dg_grupos.AllowUserToDeleteRows = False
+        Me.dg_grupos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dg_grupos.AutoGenerateColumns = False
+        Me.dg_grupos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -472,13 +512,209 @@ Partial Class frmMain
         Me.dg_grupos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dg_grupos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoDeGrupoDataGridViewTextBoxColumn, Me.NombreDeGrupoDataGridViewTextBoxColumn})
         Me.dg_grupos.DataSource = Me.GrupoBindingSource
-        Me.dg_grupos.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dg_grupos.Location = New System.Drawing.Point(6, 6)
         Me.dg_grupos.MultiSelect = False
         Me.dg_grupos.Name = "dg_grupos"
         Me.dg_grupos.ReadOnly = True
-        Me.dg_grupos.Size = New System.Drawing.Size(268, 321)
+        Me.dg_grupos.Size = New System.Drawing.Size(271, 328)
         Me.dg_grupos.TabIndex = 4
+        '
+        'ImageList1
+        '
+        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList1.Images.SetKeyName(0, "banco.ico")
+        Me.ImageList1.Images.SetKeyName(1, "cliente.ico")
+        Me.ImageList1.Images.SetKeyName(2, "articulo.ico")
+        '
+        'tab_articulos_proveedores
+        '
+        Me.tab_articulos_proveedores.Controls.Add(Me.TableLayoutPanel4)
+        Me.tab_articulos_proveedores.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tab_articulos_proveedores.ImageIndex = 2
+        Me.tab_articulos_proveedores.Location = New System.Drawing.Point(4, 54)
+        Me.tab_articulos_proveedores.Name = "tab_articulos_proveedores"
+        Me.tab_articulos_proveedores.Padding = New System.Windows.Forms.Padding(3)
+        Me.tab_articulos_proveedores.Size = New System.Drawing.Size(791, 391)
+        Me.tab_articulos_proveedores.TabIndex = 3
+        Me.tab_articulos_proveedores.Text = "ARTÍCULOS/PROVEEDORES"
+        Me.tab_articulos_proveedores.UseVisualStyleBackColor = True
+        '
+        'TableLayoutPanel4
+        '
+        Me.TableLayoutPanel4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel4.ColumnCount = 2
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.0!))
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.0!))
+        Me.TableLayoutPanel4.Controls.Add(Me.dg_articulos, 1, 0)
+        Me.TableLayoutPanel4.Controls.Add(Me.TableLayoutPanel5, 0, 1)
+        Me.TableLayoutPanel4.Controls.Add(Me.TableLayoutPanel6, 1, 1)
+        Me.TableLayoutPanel4.Controls.Add(Me.dg_proveedores, 0, 0)
+        Me.TableLayoutPanel4.Location = New System.Drawing.Point(-4, -4)
+        Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
+        Me.TableLayoutPanel4.Padding = New System.Windows.Forms.Padding(3)
+        Me.TableLayoutPanel4.RowCount = 2
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.0!))
+        Me.TableLayoutPanel4.Size = New System.Drawing.Size(799, 399)
+        Me.TableLayoutPanel4.TabIndex = 2
+        '
+        'dg_articulos
+        '
+        Me.dg_articulos.AllowUserToAddRows = False
+        Me.dg_articulos.AllowUserToDeleteRows = False
+        Me.dg_articulos.AutoGenerateColumns = False
+        Me.dg_articulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dg_articulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dg_articulos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8})
+        Me.dg_articulos.DataSource = Me.ClienteBindingSource
+        Me.dg_articulos.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dg_articulos.Location = New System.Drawing.Point(283, 6)
+        Me.dg_articulos.MultiSelect = False
+        Me.dg_articulos.Name = "dg_articulos"
+        Me.dg_articulos.Size = New System.Drawing.Size(510, 328)
+        Me.dg_articulos.TabIndex = 1
+        '
+        'TableLayoutPanel5
+        '
+        Me.TableLayoutPanel5.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel5.ColumnCount = 3
+        Me.TableLayoutPanel5.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel5.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel5.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel5.Controls.Add(Me.btn_añadir_proveedor, 0, 0)
+        Me.TableLayoutPanel5.Controls.Add(Me.btn_modificar_proveedor, 1, 0)
+        Me.TableLayoutPanel5.Controls.Add(Me.btn_eliminar_proveedor, 2, 0)
+        Me.TableLayoutPanel5.Location = New System.Drawing.Point(6, 340)
+        Me.TableLayoutPanel5.Name = "TableLayoutPanel5"
+        Me.TableLayoutPanel5.RowCount = 1
+        Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel5.Size = New System.Drawing.Size(271, 53)
+        Me.TableLayoutPanel5.TabIndex = 2
+        '
+        'btn_añadir_proveedor
+        '
+        Me.btn_añadir_proveedor.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_añadir_proveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_añadir_proveedor.Location = New System.Drawing.Point(3, 9)
+        Me.btn_añadir_proveedor.Name = "btn_añadir_proveedor"
+        Me.btn_añadir_proveedor.Size = New System.Drawing.Size(84, 35)
+        Me.btn_añadir_proveedor.TabIndex = 0
+        Me.btn_añadir_proveedor.Text = "Añadir Proveedor"
+        Me.btn_añadir_proveedor.UseVisualStyleBackColor = True
+        '
+        'btn_modificar_proveedor
+        '
+        Me.btn_modificar_proveedor.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_modificar_proveedor.Enabled = False
+        Me.btn_modificar_proveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_modificar_proveedor.Location = New System.Drawing.Point(93, 9)
+        Me.btn_modificar_proveedor.Name = "btn_modificar_proveedor"
+        Me.btn_modificar_proveedor.Size = New System.Drawing.Size(84, 35)
+        Me.btn_modificar_proveedor.TabIndex = 1
+        Me.btn_modificar_proveedor.Text = "Modificar Proveedor"
+        Me.btn_modificar_proveedor.UseVisualStyleBackColor = True
+        '
+        'btn_eliminar_proveedor
+        '
+        Me.btn_eliminar_proveedor.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_eliminar_proveedor.Enabled = False
+        Me.btn_eliminar_proveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_eliminar_proveedor.Location = New System.Drawing.Point(183, 9)
+        Me.btn_eliminar_proveedor.Name = "btn_eliminar_proveedor"
+        Me.btn_eliminar_proveedor.Size = New System.Drawing.Size(85, 35)
+        Me.btn_eliminar_proveedor.TabIndex = 2
+        Me.btn_eliminar_proveedor.Text = "Eliminar Proveedor"
+        Me.btn_eliminar_proveedor.UseVisualStyleBackColor = True
+        '
+        'TableLayoutPanel6
+        '
+        Me.TableLayoutPanel6.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel6.ColumnCount = 3
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel6.Controls.Add(Me.btn_añadir_articulo, 0, 0)
+        Me.TableLayoutPanel6.Controls.Add(Me.btn_modificar_articulo, 1, 0)
+        Me.TableLayoutPanel6.Controls.Add(Me.btn_eliminar_articulo, 2, 0)
+        Me.TableLayoutPanel6.Location = New System.Drawing.Point(283, 340)
+        Me.TableLayoutPanel6.Name = "TableLayoutPanel6"
+        Me.TableLayoutPanel6.RowCount = 1
+        Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel6.Size = New System.Drawing.Size(510, 53)
+        Me.TableLayoutPanel6.TabIndex = 3
+        '
+        'btn_añadir_articulo
+        '
+        Me.btn_añadir_articulo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_añadir_articulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_añadir_articulo.Location = New System.Drawing.Point(3, 9)
+        Me.btn_añadir_articulo.Name = "btn_añadir_articulo"
+        Me.btn_añadir_articulo.Size = New System.Drawing.Size(164, 35)
+        Me.btn_añadir_articulo.TabIndex = 0
+        Me.btn_añadir_articulo.Text = "Añadir Artículo"
+        Me.btn_añadir_articulo.UseVisualStyleBackColor = True
+        '
+        'btn_modificar_articulo
+        '
+        Me.btn_modificar_articulo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_modificar_articulo.Enabled = False
+        Me.btn_modificar_articulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_modificar_articulo.Location = New System.Drawing.Point(173, 9)
+        Me.btn_modificar_articulo.Name = "btn_modificar_articulo"
+        Me.btn_modificar_articulo.Size = New System.Drawing.Size(164, 35)
+        Me.btn_modificar_articulo.TabIndex = 1
+        Me.btn_modificar_articulo.Text = "Modificar Artículo"
+        Me.btn_modificar_articulo.UseVisualStyleBackColor = True
+        '
+        'btn_eliminar_articulo
+        '
+        Me.btn_eliminar_articulo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_eliminar_articulo.Enabled = False
+        Me.btn_eliminar_articulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_eliminar_articulo.Location = New System.Drawing.Point(343, 9)
+        Me.btn_eliminar_articulo.Name = "btn_eliminar_articulo"
+        Me.btn_eliminar_articulo.Size = New System.Drawing.Size(164, 35)
+        Me.btn_eliminar_articulo.TabIndex = 2
+        Me.btn_eliminar_articulo.Text = "Eliminar Artículo"
+        Me.btn_eliminar_articulo.UseVisualStyleBackColor = True
+        '
+        'dg_proveedores
+        '
+        Me.dg_proveedores.AllowUserToAddRows = False
+        Me.dg_proveedores.AllowUserToDeleteRows = False
+        Me.dg_proveedores.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dg_proveedores.AutoGenerateColumns = False
+        Me.dg_proveedores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dg_proveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dg_proveedores.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoDeProveedorDataGridViewTextBoxColumn, Me.NombreDeProveedorDataGridViewTextBoxColumn, Me.datos})
+        Me.dg_proveedores.DataSource = Me.ProveedorBindingSource
+        Me.dg_proveedores.Location = New System.Drawing.Point(6, 6)
+        Me.dg_proveedores.MultiSelect = False
+        Me.dg_proveedores.Name = "dg_proveedores"
+        Me.dg_proveedores.ReadOnly = True
+        Me.dg_proveedores.Size = New System.Drawing.Size(271, 328)
+        Me.dg_proveedores.TabIndex = 4
+        '
+        'datos
+        '
+        Me.datos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.datos.DefaultCellStyle = DataGridViewCellStyle3
+        Me.datos.HeaderText = " "
+        Me.datos.Name = "datos"
+        Me.datos.ReadOnly = True
+        Me.datos.Text = "VER DATOS"
+        Me.datos.UseColumnTextForButtonValue = True
         '
         'NombreDeBancoDataGridViewTextBoxColumn
         '
@@ -563,86 +799,181 @@ Partial Class frmMain
         '
         Me.FormaPagoBindingSource.DataSource = GetType(MP_Lucas_Sanz.FormaPago)
         '
+        'CodigoDelClienteDataGridViewTextBoxColumn
+        '
+        Me.CodigoDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CodigoDelClienteDataGridViewTextBoxColumn.DataPropertyName = "CodigoDelCliente"
+        Me.CodigoDelClienteDataGridViewTextBoxColumn.HeaderText = "Código"
+        Me.CodigoDelClienteDataGridViewTextBoxColumn.Name = "CodigoDelClienteDataGridViewTextBoxColumn"
+        Me.CodigoDelClienteDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'NombreDelClienteDataGridViewTextBoxColumn
+        '
+        Me.NombreDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.NombreDelClienteDataGridViewTextBoxColumn.DataPropertyName = "NombreDelCliente"
+        Me.NombreDelClienteDataGridViewTextBoxColumn.HeaderText = "Nombre"
+        Me.NombreDelClienteDataGridViewTextBoxColumn.Name = "NombreDelClienteDataGridViewTextBoxColumn"
+        Me.NombreDelClienteDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'NifDelClienteDataGridViewTextBoxColumn
+        '
+        Me.NifDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.NifDelClienteDataGridViewTextBoxColumn.DataPropertyName = "NifDelCliente"
+        Me.NifDelClienteDataGridViewTextBoxColumn.HeaderText = "NIF"
+        Me.NifDelClienteDataGridViewTextBoxColumn.Name = "NifDelClienteDataGridViewTextBoxColumn"
+        Me.NifDelClienteDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'DireccionDelClienteDataGridViewTextBoxColumn
+        '
+        Me.DireccionDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DireccionDelClienteDataGridViewTextBoxColumn.DataPropertyName = "DireccionDelCliente"
+        Me.DireccionDelClienteDataGridViewTextBoxColumn.HeaderText = "Dirección"
+        Me.DireccionDelClienteDataGridViewTextBoxColumn.Name = "DireccionDelClienteDataGridViewTextBoxColumn"
+        Me.DireccionDelClienteDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'FechaDeNacimientoDelClienteDataGridViewTextBoxColumn
+        '
+        Me.FechaDeNacimientoDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.FechaDeNacimientoDelClienteDataGridViewTextBoxColumn.DataPropertyName = "FechaDeNacimientoDelCliente"
+        Me.FechaDeNacimientoDelClienteDataGridViewTextBoxColumn.HeaderText = "Fecha Nacimiento"
+        Me.FechaDeNacimientoDelClienteDataGridViewTextBoxColumn.Name = "FechaDeNacimientoDelClienteDataGridViewTextBoxColumn"
+        Me.FechaDeNacimientoDelClienteDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'BancoDelClienteDataGridViewTextBoxColumn
+        '
+        Me.BancoDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.BancoDelClienteDataGridViewTextBoxColumn.DataPropertyName = "BancoDelCliente"
+        Me.BancoDelClienteDataGridViewTextBoxColumn.HeaderText = "Banco"
+        Me.BancoDelClienteDataGridViewTextBoxColumn.Name = "BancoDelClienteDataGridViewTextBoxColumn"
+        Me.BancoDelClienteDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'GrupoDelClienteDataGridViewTextBoxColumn
+        '
+        Me.GrupoDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.GrupoDelClienteDataGridViewTextBoxColumn.DataPropertyName = "GrupoDelCliente"
+        Me.GrupoDelClienteDataGridViewTextBoxColumn.HeaderText = "Grupo"
+        Me.GrupoDelClienteDataGridViewTextBoxColumn.Name = "GrupoDelClienteDataGridViewTextBoxColumn"
+        Me.GrupoDelClienteDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'EmailDelClienteDataGridViewTextBoxColumn
+        '
+        Me.EmailDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.EmailDelClienteDataGridViewTextBoxColumn.DataPropertyName = "EmailDelCliente"
+        Me.EmailDelClienteDataGridViewTextBoxColumn.HeaderText = "Email"
+        Me.EmailDelClienteDataGridViewTextBoxColumn.Name = "EmailDelClienteDataGridViewTextBoxColumn"
+        Me.EmailDelClienteDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ClienteBindingSource
+        '
+        Me.ClienteBindingSource.DataSource = GetType(MP_Lucas_Sanz.Cliente)
+        '
+        'CodigoDeGrupoDataGridViewTextBoxColumn
+        '
+        Me.CodigoDeGrupoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CodigoDeGrupoDataGridViewTextBoxColumn.DataPropertyName = "CodigoDeGrupo"
+        Me.CodigoDeGrupoDataGridViewTextBoxColumn.HeaderText = "Código"
+        Me.CodigoDeGrupoDataGridViewTextBoxColumn.Name = "CodigoDeGrupoDataGridViewTextBoxColumn"
+        Me.CodigoDeGrupoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'NombreDeGrupoDataGridViewTextBoxColumn
+        '
+        Me.NombreDeGrupoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.NombreDeGrupoDataGridViewTextBoxColumn.DataPropertyName = "NombreDeGrupo"
+        Me.NombreDeGrupoDataGridViewTextBoxColumn.HeaderText = "Nombre del Grupo"
+        Me.NombreDeGrupoDataGridViewTextBoxColumn.Name = "NombreDeGrupoDataGridViewTextBoxColumn"
+        Me.NombreDeGrupoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'GrupoBindingSource
+        '
+        Me.GrupoBindingSource.DataSource = GetType(MP_Lucas_Sanz.Grupo)
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "CodigoDelCliente"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Código"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "NombreDelCliente"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Nombre"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        '
         'DataGridViewTextBoxColumn3
         '
         Me.DataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "CodigoDePago"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Código"
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "NifDelCliente"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "NIF"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         Me.DataGridViewTextBoxColumn3.ReadOnly = True
         '
         'DataGridViewTextBoxColumn4
         '
         Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "NombreDePago"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Nombre"
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "DireccionDelCliente"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Dirección"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         Me.DataGridViewTextBoxColumn4.ReadOnly = True
         '
         'DataGridViewTextBoxColumn5
         '
         Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "BancoAsignado"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Banco"
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "FechaDeNacimientoDelCliente"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Fecha Nacimiento"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        '
-        'DataGridViewCheckBoxColumn1
-        '
-        Me.DataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewCheckBoxColumn1.DataPropertyName = "Activo"
-        Me.DataGridViewCheckBoxColumn1.FalseValue = "0"
-        Me.DataGridViewCheckBoxColumn1.HeaderText = "Activo"
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
-        Me.DataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.DataGridViewCheckBoxColumn1.TrueValue = "1"
         '
         'DataGridViewTextBoxColumn6
         '
         Me.DataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "NumeroPlazosPago"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Núm Plazos"
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "BancoDelCliente"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "Banco"
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
         Me.DataGridViewTextBoxColumn6.ReadOnly = True
         '
         'DataGridViewTextBoxColumn7
         '
         Me.DataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "PrimerPlazo"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "Primer Plazo"
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "GrupoDelCliente"
+        Me.DataGridViewTextBoxColumn7.HeaderText = "Grupo"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.ReadOnly = True
         '
         'DataGridViewTextBoxColumn8
         '
         Me.DataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "DiasPlazos"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "Intervalo"
+        Me.DataGridViewTextBoxColumn8.DataPropertyName = "EmailDelCliente"
+        Me.DataGridViewTextBoxColumn8.HeaderText = "Email"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         Me.DataGridViewTextBoxColumn8.ReadOnly = True
         '
-        'CodigoDeGrupoDataGridViewTextBoxColumn
+        'CodigoDeProveedorDataGridViewTextBoxColumn
         '
-        Me.CodigoDeGrupoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.CodigoDeGrupoDataGridViewTextBoxColumn.DataPropertyName = "CodigoDeGrupo"
-        Me.CodigoDeGrupoDataGridViewTextBoxColumn.HeaderText = "Código"
-        Me.CodigoDeGrupoDataGridViewTextBoxColumn.Name = "CodigoDeGrupoDataGridViewTextBoxColumn"
-        Me.CodigoDeGrupoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CodigoDeGrupoDataGridViewTextBoxColumn.Width = 71
+        Me.CodigoDeProveedorDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CodigoDeProveedorDataGridViewTextBoxColumn.DataPropertyName = "CodigoDeProveedor"
+        Me.CodigoDeProveedorDataGridViewTextBoxColumn.HeaderText = "Código Proveedor"
+        Me.CodigoDeProveedorDataGridViewTextBoxColumn.Name = "CodigoDeProveedorDataGridViewTextBoxColumn"
+        Me.CodigoDeProveedorDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'NombreDeGrupoDataGridViewTextBoxColumn
+        'NombreDeProveedorDataGridViewTextBoxColumn
         '
-        Me.NombreDeGrupoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.NombreDeGrupoDataGridViewTextBoxColumn.DataPropertyName = "NombreDeGrupo"
-        Me.NombreDeGrupoDataGridViewTextBoxColumn.HeaderText = "Nombre del Grupo"
-        Me.NombreDeGrupoDataGridViewTextBoxColumn.Name = "NombreDeGrupoDataGridViewTextBoxColumn"
-        Me.NombreDeGrupoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.NombreDeGrupoDataGridViewTextBoxColumn.Width = 92
+        Me.NombreDeProveedorDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.NombreDeProveedorDataGridViewTextBoxColumn.DataPropertyName = "NombreDeProveedor"
+        Me.NombreDeProveedorDataGridViewTextBoxColumn.HeaderText = "Nombre Proveedor"
+        Me.NombreDeProveedorDataGridViewTextBoxColumn.Name = "NombreDeProveedorDataGridViewTextBoxColumn"
+        Me.NombreDeProveedorDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'GrupoBindingSource
+        'ProveedorBindingSource
         '
-        Me.GrupoBindingSource.DataSource = GetType(MP_Lucas_Sanz.Grupo)
+        Me.ProveedorBindingSource.DataSource = GetType(MP_Lucas_Sanz.Proveedor)
+        '
+        'GrupoBindingSource1
+        '
+        Me.GrupoBindingSource1.DataSource = GetType(MP_Lucas_Sanz.Grupo)
         '
         'frmMain
         '
@@ -666,15 +997,24 @@ Partial Class frmMain
         Me.TableLayoutPanel2.ResumeLayout(False)
         Me.TableLayoutPanel3.ResumeLayout(False)
         CType(Me.dg_grupos, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tab_articulos_proveedores.ResumeLayout(False)
+        Me.TableLayoutPanel4.ResumeLayout(False)
+        CType(Me.dg_articulos, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TableLayoutPanel5.ResumeLayout(False)
+        Me.TableLayoutPanel6.ResumeLayout(False)
+        CType(Me.dg_proveedores, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BancoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FormaPagoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ClienteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GrupoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ProveedorBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GrupoBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents tab_main As TabControl
     Friend WithEvents tab_bancos_pagos As TabPage
-    Friend WithEvents TabPage2 As TabPage
+    Friend WithEvents tab_menu_principal As TabPage
     Friend WithEvents ImageList1 As ImageList
     Friend WithEvents tlp_main_bancos_pagos As TableLayoutPanel
     Friend WithEvents dg_bancos As DataGridView
@@ -701,23 +1041,50 @@ Partial Class frmMain
     Friend WithEvents tab_clientes_grupos As TabPage
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents dg_clientes As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
     Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
     Public WithEvents btn_añadir_grupo As Button
     Friend WithEvents btn_modificar_grupo As Button
     Friend WithEvents btn_eliminar_grupo As Button
     Friend WithEvents TableLayoutPanel3 As TableLayoutPanel
-    Friend WithEvents Button4 As Button
-    Friend WithEvents Button5 As Button
-    Friend WithEvents Button6 As Button
+    Friend WithEvents btn_añadir_cliente As Button
+    Friend WithEvents btn_modificar_cliente As Button
+    Friend WithEvents btn_eliminar_cliente As Button
     Friend WithEvents dg_grupos As DataGridView
+    Friend WithEvents GrupoBindingSource As BindingSource
+    Friend WithEvents GrupoBindingSource1 As BindingSource
+    Friend WithEvents ClienteBindingSource As BindingSource
+    Friend WithEvents CodigoDelClienteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents NombreDelClienteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents NifDelClienteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DireccionDelClienteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FechaDeNacimientoDelClienteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents BancoDelClienteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents GrupoDelClienteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents EmailDelClienteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents CodigoDeGrupoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents NombreDeGrupoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents GrupoBindingSource As BindingSource
+    Friend WithEvents tab_articulos_proveedores As TabPage
+    Friend WithEvents TableLayoutPanel4 As TableLayoutPanel
+    Friend WithEvents dg_articulos As DataGridView
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
+    Friend WithEvents TableLayoutPanel5 As TableLayoutPanel
+    Public WithEvents btn_añadir_proveedor As Button
+    Friend WithEvents btn_modificar_proveedor As Button
+    Friend WithEvents btn_eliminar_proveedor As Button
+    Friend WithEvents TableLayoutPanel6 As TableLayoutPanel
+    Friend WithEvents btn_añadir_articulo As Button
+    Friend WithEvents btn_modificar_articulo As Button
+    Friend WithEvents btn_eliminar_articulo As Button
+    Friend WithEvents dg_proveedores As DataGridView
+    Friend WithEvents ProveedorBindingSource As BindingSource
+    Friend WithEvents CodigoDeProveedorDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents NombreDeProveedorDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents datos As DataGridViewButtonColumn
 End Class

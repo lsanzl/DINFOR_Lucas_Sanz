@@ -73,23 +73,44 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\ctrFormasPago.vb" />
+    <Compile Include="Controller\ctrArticulo.vb" />
+    <Compile Include="Controller\ctrCliente.vb" />
+    <Compile Include="Controller\ctrFormaPago.vb" />
     <Compile Include="Controller\ctrGrupo.vb" />
+    <Compile Include="Controller\ctrProveedor.vb" />
+    <Compile Include="Manager\ManagerArticulo.vb" />
     <Compile Include="Manager\ManagerBanco.vb" />
+    <Compile Include="Manager\ManagerCliente.vb" />
     <Compile Include="Manager\ManagerEmpresa.vb" />
     <Compile Include="Manager\ManagerFormaPago.vb" />
     <Compile Include="Manager\ManagerGrupo.vb" />
+    <Compile Include="Manager\ManagerProveedor.vb" />
+    <Compile Include="Model\Articulo.vb" />
     <Compile Include="Model\Banco.vb" />
+    <Compile Include="Model\Cliente.vb" />
     <Compile Include="Model\FormaPago.vb" />
     <Compile Include="Model\Grupo.vb" />
+    <Compile Include="Model\Proveedor.vb" />
     <Compile Include="View\ApplicationEvents.vb" />
     <Compile Include="Model\ConnectionDB.vb" />
     <Compile Include="Model\Empresa.vb" />
     <Compile Include="Controller\ctrBanco.vb" />
+    <Compile Include="View\Articulo\frmNuevoArticulo.Designer.vb">
+      <DependentUpon>frmNuevoArticulo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\Articulo\frmNuevoArticulo.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\Banco\frmNuevoBanco.Designer.vb">
       <DependentUpon>frmNuevoBanco.vb</DependentUpon>
     </Compile>
     <Compile Include="View\Banco\frmNuevoBanco.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Cliente\frmNuevoCliente.Designer.vb">
+      <DependentUpon>frmNuevoCliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\Cliente\frmNuevoCliente.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Empresa\frmNuevaEmpresa.Designer.vb">
@@ -144,6 +165,18 @@
     <Compile Include="View\Grupo\frmNuevoGrupo.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\Proveedor\frmNuevoProveedor.Designer.vb">
+      <DependentUpon>frmNuevoProveedor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\Proveedor\frmNuevoProveedor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Proveedor\frmVerDatosProveedor.Designer.vb">
+      <DependentUpon>frmVerDatosProveedor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\Proveedor\frmVerDatosProveedor.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\VariablesGlobales.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -153,8 +186,14 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Articulo\frmNuevoArticulo.resx">
+      <DependentUpon>frmNuevoArticulo.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Banco\frmNuevoBanco.resx">
       <DependentUpon>frmNuevoBanco.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Cliente\frmNuevoCliente.resx">
+      <DependentUpon>frmNuevoCliente.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Empresa\frmNuevaEmpresa.resx">
       <DependentUpon>frmNuevaEmpresa.vb</DependentUpon>
@@ -174,6 +213,12 @@
     <EmbeddedResource Include="View\Grupo\frmNuevoGrupo.resx">
       <DependentUpon>frmNuevoGrupo.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Proveedor\frmNuevoProveedor.resx">
+      <DependentUpon>frmNuevoProveedor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Proveedor\frmVerDatosProveedor.resx">
+      <DependentUpon>frmVerDatosProveedor.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
@@ -181,8 +226,10 @@
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
     <None Include="My Project\DataSources\Banco.datasource" />
+    <None Include="My Project\DataSources\Cliente.datasource" />
     <None Include="My Project\DataSources\FormaPago.datasource" />
     <None Include="My Project\DataSources\Grupo.datasource" />
+    <None Include="My Project\DataSources\Proveedor.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>

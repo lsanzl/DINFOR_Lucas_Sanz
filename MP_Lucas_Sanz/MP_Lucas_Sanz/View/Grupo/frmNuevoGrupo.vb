@@ -9,7 +9,10 @@
             Return
         End If
         If Not grupoAux.checkNombreGrupo(txt_codigo_grupo.Text) And btn_confirmar_nuevo_grupo.Text = "Confirmar" Then
-            MessageBox.Show("No puede repetirse el código del grupo")
+            Return
+        End If
+        If btn_confirmar_nuevo_grupo.Text = "Confirmar" And managerGrupoAux.checkGrupo(txt_codigo_grupo.Text) Then
+            MessageBox.Show("Nombre ya existente")
             Return
         End If
         Dim grupoTemp As Grupo = New Grupo(txt_codigo_grupo.Text, txt_nombre_grupo.Text)

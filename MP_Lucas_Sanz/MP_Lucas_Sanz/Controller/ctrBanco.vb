@@ -17,7 +17,11 @@
     Public Sub fillDGBancos()
         frmMain.btn_modificar_banco.Enabled = False
         frmMain.btn_eliminar_banco.Enabled = False
+
         frmNuevoBanco.btn_confirmar_nuevo_banco.Text = "Confirmar"
+        frmNuevoBanco.txt_codigo_banco.Clear()
+        frmNuevoBanco.txt_nombre_banco.Clear()
+
         frmBanco.dg_bancos.DataSource = Nothing
         frmBanco.dg_bancos.Rows.Clear()
         listaBancos = bancoAux.getBancos()
@@ -52,13 +56,15 @@
     End Sub
 
     Private Sub click_cell_dg_bancos(sender As Object, e As DataGridViewCellEventArgs)
-        frmBanco.btn_modificar_banco.Enabled = True
-        frmBanco.btn_eliminar_banco.Enabled = True
-        bancoTemp = frmBanco.dg_bancos.Rows(e.RowIndex).DataBoundItem
+        If e.RowIndex >= 0 Then
+            frmBanco.btn_modificar_banco.Enabled = True
+            frmBanco.btn_eliminar_banco.Enabled = True
+            bancoTemp = frmBanco.dg_bancos.Rows(e.RowIndex).DataBoundItem
+        End If
     End Sub
 
     Private Sub tab_main_SelectedIndexChanged(sender As Object, e As EventArgs)
-        If frmBanco.tab_main.SelectedIndex = 1 Then
+        If frmBanco.tab_main.SelectedTab.Text.Equals("BANCOS/PAGOS") Then
             fillDGBancos()
         End If
     End Sub

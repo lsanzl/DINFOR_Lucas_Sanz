@@ -1,4 +1,4 @@
-﻿Public Class ctrFormasPago
+﻿Public Class ctrFormaPago
     Public frmFormasPago As frmMain
     Dim formaPagoSeleccionado As Boolean = False
     Dim listaFormasPago As List(Of FormaPago) = New List(Of FormaPago)
@@ -74,7 +74,7 @@
     End Sub
 
     Private Sub tab_main_SelectedIndexChanged(sender As Object, e As EventArgs)
-        If frmFormasPago.tab_main.SelectedIndex = 1 Then
+        If frmFormasPago.tab_main.SelectedTab.Text.Equals("BANCOS/PAGOS") Then
             fillDGFormasPago()
         End If
     End Sub
