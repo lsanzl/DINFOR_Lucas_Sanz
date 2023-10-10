@@ -15,8 +15,8 @@
     End Sub
 
     Public Sub fillDGBancos()
-        frmMain.btn_modificar_banco.Enabled = False
-        frmMain.btn_eliminar_banco.Enabled = False
+        frmBanco.btn_modificar_banco.Enabled = False
+        frmBanco.btn_eliminar_banco.Enabled = False
 
         frmNuevoBanco.btn_confirmar_nuevo_banco.Text = "Confirmar"
         frmNuevoBanco.txt_codigo_banco.Clear()

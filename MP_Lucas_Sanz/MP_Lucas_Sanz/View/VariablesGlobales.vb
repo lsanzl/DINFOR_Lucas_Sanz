@@ -9,6 +9,8 @@
     Public clienteAux As Cliente = New Cliente()
     Public proveedorAux As Proveedor = New Proveedor()
     Public articuloAux As Articulo = New Articulo()
+    Public familiaAux As Familia = New Familia()
+    Public inventarioAux As Inventario = New Inventario()
 
     ' ----- MANAGERS AUXILIARES DE CADA CLASE -----
     Public managerEmpAux As ManagerEmpresa = New ManagerEmpresa()
@@ -18,6 +20,8 @@
     Public managerClienteAux As ManagerCliente = New ManagerCliente()
     Public managerProveedorAux As ManagerProveedor = New ManagerProveedor()
     Public managerArticuloAux As ManagerArticulo = New ManagerArticulo()
+    Public managerFamiliaAux As ManagerFamilia = New ManagerFamilia()
+    Public managerInventarioAux As ManagerInventario = New ManagerInventario()
 
     ' ------------ VARIABLES GLOBALES -------------
     Private empresaSeleccionadaDB As String = Nothing

@@ -12,5 +12,7 @@ Public Class frmMain
         Dim ctrGrupoController As ctrGrupo = New ctrGrupo(Me)
         Dim ctrCliente As ctrCliente = New ctrCliente(Me)
         Dim ctrProveedor As ctrProveedor = New ctrProveedor(Me)
+        Dim ctrArticulo As ctrArticulo = New ctrArticulo(Me)
+        Dim ctrInventario As ctrInventario = New ctrInventario(Me)
     End Sub
 End Class

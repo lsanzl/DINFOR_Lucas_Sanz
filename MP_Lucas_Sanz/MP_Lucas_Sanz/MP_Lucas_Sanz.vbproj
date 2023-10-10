@@ -77,19 +77,24 @@
     <Compile Include="Controller\ctrCliente.vb" />
     <Compile Include="Controller\ctrFormaPago.vb" />
     <Compile Include="Controller\ctrGrupo.vb" />
+    <Compile Include="Controller\ctrInventario.vb" />
     <Compile Include="Controller\ctrProveedor.vb" />
     <Compile Include="Manager\ManagerArticulo.vb" />
     <Compile Include="Manager\ManagerBanco.vb" />
     <Compile Include="Manager\ManagerCliente.vb" />
     <Compile Include="Manager\ManagerEmpresa.vb" />
+    <Compile Include="Manager\ManagerFamilia.vb" />
     <Compile Include="Manager\ManagerFormaPago.vb" />
     <Compile Include="Manager\ManagerGrupo.vb" />
+    <Compile Include="Manager\ManagerInventario.vb" />
     <Compile Include="Manager\ManagerProveedor.vb" />
     <Compile Include="Model\Articulo.vb" />
     <Compile Include="Model\Banco.vb" />
     <Compile Include="Model\Cliente.vb" />
+    <Compile Include="Model\Familia.vb" />
     <Compile Include="Model\FormaPago.vb" />
     <Compile Include="Model\Grupo.vb" />
+    <Compile Include="Model\Inventario.vb" />
     <Compile Include="Model\Proveedor.vb" />
     <Compile Include="View\ApplicationEvents.vb" />
     <Compile Include="Model\ConnectionDB.vb" />
@@ -123,6 +128,18 @@
       <DependentUpon>frmNuevoNombreEmpresa.vb</DependentUpon>
     </Compile>
     <Compile Include="View\Empresa\frmNuevoNombreEmpresa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Familia\frmFamilias.Designer.vb">
+      <DependentUpon>frmFamilias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\Familia\frmFamilias.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Familia\frmNuevaFamilia.Designer.vb">
+      <DependentUpon>frmNuevaFamilia.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\Familia\frmNuevaFamilia.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\FormaPago\frmNuevaFormaPago.Designer.vb">
@@ -165,6 +182,24 @@
     <Compile Include="View\Grupo\frmNuevoGrupo.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\Inventario\frmAñadirArticuloInventario.Designer.vb">
+      <DependentUpon>frmAñadirArticuloInventario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\Inventario\frmAñadirArticuloInventario.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Inventario\frmConfirmacionUnidadesNegativas.Designer.vb">
+      <DependentUpon>frmConfirmacionUnidadesNegativas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\Inventario\frmConfirmacionUnidadesNegativas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Inventario\frmUnidadesInventario.Designer.vb">
+      <DependentUpon>frmUnidadesInventario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\Inventario\frmUnidadesInventario.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\Proveedor\frmNuevoProveedor.Designer.vb">
       <DependentUpon>frmNuevoProveedor.vb</DependentUpon>
     </Compile>
@@ -201,6 +236,12 @@
     <EmbeddedResource Include="View\Empresa\frmNuevoNombreEmpresa.resx">
       <DependentUpon>frmNuevoNombreEmpresa.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Familia\frmFamilias.resx">
+      <DependentUpon>frmFamilias.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Familia\frmNuevaFamilia.resx">
+      <DependentUpon>frmNuevaFamilia.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormaPago\frmNuevaFormaPago.resx">
       <DependentUpon>frmNuevaFormaPago.vb</DependentUpon>
     </EmbeddedResource>
@@ -212,6 +253,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Grupo\frmNuevoGrupo.resx">
       <DependentUpon>frmNuevoGrupo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Inventario\frmAñadirArticuloInventario.resx">
+      <DependentUpon>frmAñadirArticuloInventario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Inventario\frmConfirmacionUnidadesNegativas.resx">
+      <DependentUpon>frmConfirmacionUnidadesNegativas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Inventario\frmUnidadesInventario.resx">
+      <DependentUpon>frmUnidadesInventario.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Proveedor\frmNuevoProveedor.resx">
       <DependentUpon>frmNuevoProveedor.vb</DependentUpon>
@@ -225,10 +275,13 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Include="My Project\DataSources\Articulo.datasource" />
     <None Include="My Project\DataSources\Banco.datasource" />
     <None Include="My Project\DataSources\Cliente.datasource" />
+    <None Include="My Project\DataSources\Familia.datasource" />
     <None Include="My Project\DataSources\FormaPago.datasource" />
     <None Include="My Project\DataSources\Grupo.datasource" />
+    <None Include="My Project\DataSources\Inventario.datasource" />
     <None Include="My Project\DataSources\Proveedor.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

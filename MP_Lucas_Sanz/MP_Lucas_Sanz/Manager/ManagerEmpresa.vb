@@ -91,11 +91,31 @@ Public Class ManagerEmpresa
                             TELEFONOPROVEEDOR INT
                             );", connectionDBManager)
         cmd.ExecuteNonQuery()
+        cmd = New SqlCommand("CREATE TABLE ARTICULOS(
+                            CODIGOARTICULO VARCHAR(6) PRIMARY KEY,
+                            NOMBREARTICULO VARCHAR(100),
+                            DESCRIPCIONARTICULO VARCHAR(100),
+                            PVPCOMPRAARTICULO DECIMAL(10,2),
+                            PORCBENEFICIOARTICULO DECIMAL(5,2),
+                            TIPOUNIDADARTICULO VARCHAR(50),
+                            FAMILIAARTICULO VARCHAR(100)
+                            );", connectionDBManager)
+        cmd.ExecuteNonQuery()
+        cmd = New SqlCommand("CREATE TABLE FAMILIAS(
+                            CODIGOFAMILIA VARCHAR(6) PRIMARY KEY,
+                            NOMBREFAMILIA VARCHAR(100)
+                            );", connectionDBManager)
+        cmd.ExecuteNonQuery()
+        cmd = New SqlCommand("CREATE TABLE INVENTARIO(
+                            NOMBREARTICULO VARCHAR(50) PRIMARY KEY,
+                            UNIDADESDISPONIBLES INT
+                            );", connectionDBManager)
+        cmd.ExecuteNonQuery()
     End Sub
     Public Function checkEmpresa(nombreEmpresa As String) As Boolean
-        cmd = New SqlCommand("SELECT NAME
+        cmd = New SqlCommand($"SELECT NAME
                                 FROM sys.databases
-                                WHERE NAME = '" + nombreEmpresa + "';", connectionDBManager)
+                                WHERE NAME = '{nombreEmpresa}';", connectionDBManager)
         dr = cmd.ExecuteReader()
         If Not dr.HasRows Then
             dr.Close()
@@ -106,11 +126,11 @@ Public Class ManagerEmpresa
     End Function
 
     Public Sub selectEmpresa()
-        cmd = New SqlCommand("USE " + getEmpresaSeleccionada() + ";", connectionDBManager)
+        cmd = New SqlCommand($"USE {getEmpresaSeleccionada()};", connectionDBManager)
         cmd.ExecuteNonQuery()
     End Sub
     Public Sub selectEmpresa(nombreEmp As String)
-        cmd = New SqlCommand("USE " + nombreEmp + ";", connectionDBManager)
+        cmd = New SqlCommand($"USE {nombreEmp};", connectionDBManager)
         cmd.ExecuteNonQuery()
     End Sub
 End Class

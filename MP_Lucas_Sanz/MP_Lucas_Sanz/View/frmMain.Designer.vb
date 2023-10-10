@@ -25,8 +25,11 @@ Partial Class frmMain
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.tab_main = New System.Windows.Forms.TabControl()
         Me.tab_menu_principal = New System.Windows.Forms.TabPage()
         Me.tab_bancos_pagos = New System.Windows.Forms.TabPage()
@@ -53,7 +56,6 @@ Partial Class frmMain
         Me.btn_modificar_cliente = New System.Windows.Forms.Button()
         Me.btn_eliminar_cliente = New System.Windows.Forms.Button()
         Me.dg_grupos = New System.Windows.Forms.DataGridView()
-        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.tab_articulos_proveedores = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
         Me.dg_articulos = New System.Windows.Forms.DataGridView()
@@ -67,6 +69,10 @@ Partial Class frmMain
         Me.btn_eliminar_articulo = New System.Windows.Forms.Button()
         Me.dg_proveedores = New System.Windows.Forms.DataGridView()
         Me.datos = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.tab_inventario = New System.Windows.Forms.TabPage()
+        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.TableLayoutPanel7 = New System.Windows.Forms.TableLayoutPanel()
+        Me.dg_inventario = New System.Windows.Forms.DataGridView()
         Me.NombreDeBancoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CodigoDeBancoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BancoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -90,18 +96,25 @@ Partial Class frmMain
         Me.CodigoDeGrupoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NombreDeGrupoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GrupoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CodigoDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NombreDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescripcionDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FamiliaDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ArticuloBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CodigoDeProveedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NombreDeProveedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProveedorBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.NombreDeArticuloDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UnidadesDisponiblesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.InventarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GrupoBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TableLayoutPanel8 = New System.Windows.Forms.TableLayoutPanel()
+        Me.btn_añadir_unidades = New System.Windows.Forms.Button()
+        Me.btn_restar_unidades = New System.Windows.Forms.Button()
         Me.tab_main.SuspendLayout()
         Me.tab_bancos_pagos.SuspendLayout()
         Me.tlp_main_bancos_pagos.SuspendLayout()
@@ -121,12 +134,18 @@ Partial Class frmMain
         Me.TableLayoutPanel5.SuspendLayout()
         Me.TableLayoutPanel6.SuspendLayout()
         CType(Me.dg_proveedores, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tab_inventario.SuspendLayout()
+        Me.TableLayoutPanel7.SuspendLayout()
+        CType(Me.dg_inventario, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BancoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FormaPagoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClienteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GrupoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ArticuloBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProveedorBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.InventarioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GrupoBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TableLayoutPanel8.SuspendLayout()
         Me.SuspendLayout()
         '
         'tab_main
@@ -138,6 +157,7 @@ Partial Class frmMain
         Me.tab_main.Controls.Add(Me.tab_bancos_pagos)
         Me.tab_main.Controls.Add(Me.tab_clientes_grupos)
         Me.tab_main.Controls.Add(Me.tab_articulos_proveedores)
+        Me.tab_main.Controls.Add(Me.tab_inventario)
         Me.tab_main.ImageList = Me.ImageList1
         Me.tab_main.ItemSize = New System.Drawing.Size(78, 50)
         Me.tab_main.Location = New System.Drawing.Point(0, 2)
@@ -519,14 +539,6 @@ Partial Class frmMain
         Me.dg_grupos.Size = New System.Drawing.Size(271, 328)
         Me.dg_grupos.TabIndex = 4
         '
-        'ImageList1
-        '
-        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList1.Images.SetKeyName(0, "banco.ico")
-        Me.ImageList1.Images.SetKeyName(1, "cliente.ico")
-        Me.ImageList1.Images.SetKeyName(2, "articulo.ico")
-        '
         'tab_articulos_proveedores
         '
         Me.tab_articulos_proveedores.Controls.Add(Me.TableLayoutPanel4)
@@ -568,8 +580,8 @@ Partial Class frmMain
         Me.dg_articulos.AutoGenerateColumns = False
         Me.dg_articulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dg_articulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_articulos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8})
-        Me.dg_articulos.DataSource = Me.ClienteBindingSource
+        Me.dg_articulos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoDeArticuloDataGridViewTextBoxColumn, Me.NombreDeArticuloDataGridViewTextBoxColumn, Me.DescripcionDeArticuloDataGridViewTextBoxColumn, Me.PVPCompraDeArticuloDataGridViewTextBoxColumn, Me.PVPVentaDeArticuloDataGridViewTextBoxColumn, Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn, Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn, Me.FamiliaDeArticuloDataGridViewTextBoxColumn})
+        Me.dg_articulos.DataSource = Me.ArticuloBindingSource
         Me.dg_articulos.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dg_articulos.Location = New System.Drawing.Point(283, 6)
         Me.dg_articulos.MultiSelect = False
@@ -715,6 +727,86 @@ Partial Class frmMain
         Me.datos.ReadOnly = True
         Me.datos.Text = "VER DATOS"
         Me.datos.UseColumnTextForButtonValue = True
+        '
+        'tab_inventario
+        '
+        Me.tab_inventario.Controls.Add(Me.TableLayoutPanel7)
+        Me.tab_inventario.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tab_inventario.ImageIndex = 3
+        Me.tab_inventario.Location = New System.Drawing.Point(4, 54)
+        Me.tab_inventario.Name = "tab_inventario"
+        Me.tab_inventario.Padding = New System.Windows.Forms.Padding(3)
+        Me.tab_inventario.Size = New System.Drawing.Size(791, 391)
+        Me.tab_inventario.TabIndex = 4
+        Me.tab_inventario.Text = "INVENTARIO"
+        Me.tab_inventario.UseVisualStyleBackColor = True
+        '
+        'ImageList1
+        '
+        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList1.Images.SetKeyName(0, "banco.ico")
+        Me.ImageList1.Images.SetKeyName(1, "cliente.ico")
+        Me.ImageList1.Images.SetKeyName(2, "articulo.ico")
+        Me.ImageList1.Images.SetKeyName(3, "inventario.ico")
+        '
+        'TableLayoutPanel7
+        '
+        Me.TableLayoutPanel7.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel7.ColumnCount = 2
+        Me.TableLayoutPanel7.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85.0!))
+        Me.TableLayoutPanel7.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.0!))
+        Me.TableLayoutPanel7.Controls.Add(Me.dg_inventario, 0, 0)
+        Me.TableLayoutPanel7.Controls.Add(Me.TableLayoutPanel8, 1, 0)
+        Me.TableLayoutPanel7.Location = New System.Drawing.Point(0, 0)
+        Me.TableLayoutPanel7.Name = "TableLayoutPanel7"
+        Me.TableLayoutPanel7.RowCount = 1
+        Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel7.Size = New System.Drawing.Size(791, 391)
+        Me.TableLayoutPanel7.TabIndex = 0
+        '
+        'dg_inventario
+        '
+        Me.dg_inventario.AllowUserToAddRows = False
+        Me.dg_inventario.AllowUserToDeleteRows = False
+        Me.dg_inventario.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dg_inventario.AutoGenerateColumns = False
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_inventario.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        Me.dg_inventario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dg_inventario.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NombreDeArticuloDataGridViewTextBoxColumn1, Me.UnidadesDisponiblesDataGridViewTextBoxColumn})
+        Me.dg_inventario.DataSource = Me.InventarioBindingSource
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg_inventario.DefaultCellStyle = DataGridViewCellStyle5
+        Me.dg_inventario.Location = New System.Drawing.Point(3, 3)
+        Me.dg_inventario.Name = "dg_inventario"
+        Me.dg_inventario.ReadOnly = True
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_inventario.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        Me.dg_inventario.Size = New System.Drawing.Size(666, 385)
+        Me.dg_inventario.TabIndex = 0
         '
         'NombreDeBancoDataGridViewTextBoxColumn
         '
@@ -887,69 +979,73 @@ Partial Class frmMain
         '
         Me.GrupoBindingSource.DataSource = GetType(MP_Lucas_Sanz.Grupo)
         '
-        'DataGridViewTextBoxColumn1
+        'CodigoDeArticuloDataGridViewTextBoxColumn
         '
-        Me.DataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "CodigoDelCliente"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Código"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.CodigoDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CodigoDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "CodigoDeArticulo"
+        Me.CodigoDeArticuloDataGridViewTextBoxColumn.HeaderText = "Código"
+        Me.CodigoDeArticuloDataGridViewTextBoxColumn.Name = "CodigoDeArticuloDataGridViewTextBoxColumn"
+        Me.CodigoDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'DataGridViewTextBoxColumn2
+        'NombreDeArticuloDataGridViewTextBoxColumn
         '
-        Me.DataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "NombreDelCliente"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Nombre"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.NombreDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.NombreDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "NombreDeArticulo"
+        Me.NombreDeArticuloDataGridViewTextBoxColumn.HeaderText = "Nombre"
+        Me.NombreDeArticuloDataGridViewTextBoxColumn.Name = "NombreDeArticuloDataGridViewTextBoxColumn"
+        Me.NombreDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'DataGridViewTextBoxColumn3
+        'DescripcionDeArticuloDataGridViewTextBoxColumn
         '
-        Me.DataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "NifDelCliente"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "NIF"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DescripcionDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DescripcionDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "DescripcionDeArticulo"
+        Me.DescripcionDeArticuloDataGridViewTextBoxColumn.HeaderText = "Descripción"
+        Me.DescripcionDeArticuloDataGridViewTextBoxColumn.Name = "DescripcionDeArticuloDataGridViewTextBoxColumn"
+        Me.DescripcionDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'DataGridViewTextBoxColumn4
+        'PVPCompraDeArticuloDataGridViewTextBoxColumn
         '
-        Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "DireccionDelCliente"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Dirección"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "PVPCompraDeArticulo"
+        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.HeaderText = "PVP Compra"
+        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.Name = "PVPCompraDeArticuloDataGridViewTextBoxColumn"
+        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'DataGridViewTextBoxColumn5
+        'PVPVentaDeArticuloDataGridViewTextBoxColumn
         '
-        Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "FechaDeNacimientoDelCliente"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Fecha Nacimiento"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "PVPVentaDeArticulo"
+        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.HeaderText = "PVP Venta"
+        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.Name = "PVPVentaDeArticuloDataGridViewTextBoxColumn"
+        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'DataGridViewTextBoxColumn6
+        'PorcentajeDeBeneficioDataGridViewTextBoxColumn
         '
-        Me.DataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "BancoDelCliente"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Banco"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.DataPropertyName = "PorcentajeDeBeneficio"
+        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.HeaderText = "% Beneficio"
+        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.Name = "PorcentajeDeBeneficioDataGridViewTextBoxColumn"
+        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'DataGridViewTextBoxColumn7
+        'TipoDeUnidadArticuloDataGridViewTextBoxColumn
         '
-        Me.DataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "GrupoDelCliente"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "Grupo"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.ReadOnly = True
+        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn.DataPropertyName = "TipoDeUnidadArticulo"
+        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn.HeaderText = "Unidad"
+        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn.Name = "TipoDeUnidadArticuloDataGridViewTextBoxColumn"
+        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'DataGridViewTextBoxColumn8
+        'FamiliaDeArticuloDataGridViewTextBoxColumn
         '
-        Me.DataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "EmailDelCliente"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "Email"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        Me.DataGridViewTextBoxColumn8.ReadOnly = True
+        Me.FamiliaDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.FamiliaDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "FamiliaDeArticulo"
+        Me.FamiliaDeArticuloDataGridViewTextBoxColumn.HeaderText = "Familia"
+        Me.FamiliaDeArticuloDataGridViewTextBoxColumn.Name = "FamiliaDeArticuloDataGridViewTextBoxColumn"
+        Me.FamiliaDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ArticuloBindingSource
+        '
+        Me.ArticuloBindingSource.DataSource = GetType(MP_Lucas_Sanz.Articulo)
         '
         'CodigoDeProveedorDataGridViewTextBoxColumn
         '
@@ -971,9 +1067,70 @@ Partial Class frmMain
         '
         Me.ProveedorBindingSource.DataSource = GetType(MP_Lucas_Sanz.Proveedor)
         '
+        'NombreDeArticuloDataGridViewTextBoxColumn1
+        '
+        Me.NombreDeArticuloDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.NombreDeArticuloDataGridViewTextBoxColumn1.DataPropertyName = "NombreDeArticulo"
+        Me.NombreDeArticuloDataGridViewTextBoxColumn1.HeaderText = "NOMBRE ARTÍCULO"
+        Me.NombreDeArticuloDataGridViewTextBoxColumn1.Name = "NombreDeArticuloDataGridViewTextBoxColumn1"
+        Me.NombreDeArticuloDataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'UnidadesDisponiblesDataGridViewTextBoxColumn
+        '
+        Me.UnidadesDisponiblesDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.UnidadesDisponiblesDataGridViewTextBoxColumn.DataPropertyName = "UnidadesDisponibles"
+        Me.UnidadesDisponiblesDataGridViewTextBoxColumn.HeaderText = "UNIDADES DISPONIBLES"
+        Me.UnidadesDisponiblesDataGridViewTextBoxColumn.Name = "UnidadesDisponiblesDataGridViewTextBoxColumn"
+        Me.UnidadesDisponiblesDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'InventarioBindingSource
+        '
+        Me.InventarioBindingSource.DataSource = GetType(MP_Lucas_Sanz.Inventario)
+        '
         'GrupoBindingSource1
         '
         Me.GrupoBindingSource1.DataSource = GetType(MP_Lucas_Sanz.Grupo)
+        '
+        'TableLayoutPanel8
+        '
+        Me.TableLayoutPanel8.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel8.ColumnCount = 1
+        Me.TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel8.Controls.Add(Me.btn_restar_unidades, 0, 1)
+        Me.TableLayoutPanel8.Controls.Add(Me.btn_añadir_unidades, 0, 0)
+        Me.TableLayoutPanel8.Location = New System.Drawing.Point(675, 3)
+        Me.TableLayoutPanel8.Name = "TableLayoutPanel8"
+        Me.TableLayoutPanel8.RowCount = 3
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.0!))
+        Me.TableLayoutPanel8.Size = New System.Drawing.Size(113, 385)
+        Me.TableLayoutPanel8.TabIndex = 1
+        '
+        'btn_añadir_unidades
+        '
+        Me.btn_añadir_unidades.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_añadir_unidades.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_añadir_unidades.Location = New System.Drawing.Point(3, 7)
+        Me.btn_añadir_unidades.Name = "btn_añadir_unidades"
+        Me.btn_añadir_unidades.Size = New System.Drawing.Size(107, 23)
+        Me.btn_añadir_unidades.TabIndex = 0
+        Me.btn_añadir_unidades.Text = "AÑADIR UDS"
+        Me.btn_añadir_unidades.UseVisualStyleBackColor = True
+        '
+        'btn_restar_unidades
+        '
+        Me.btn_restar_unidades.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_restar_unidades.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_restar_unidades.Location = New System.Drawing.Point(3, 45)
+        Me.btn_restar_unidades.Name = "btn_restar_unidades"
+        Me.btn_restar_unidades.Size = New System.Drawing.Size(107, 23)
+        Me.btn_restar_unidades.TabIndex = 1
+        Me.btn_restar_unidades.Text = "RESTAR UDS"
+        Me.btn_restar_unidades.UseVisualStyleBackColor = True
         '
         'frmMain
         '
@@ -1003,12 +1160,18 @@ Partial Class frmMain
         Me.TableLayoutPanel5.ResumeLayout(False)
         Me.TableLayoutPanel6.ResumeLayout(False)
         CType(Me.dg_proveedores, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tab_inventario.ResumeLayout(False)
+        Me.TableLayoutPanel7.ResumeLayout(False)
+        CType(Me.dg_inventario, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BancoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FormaPagoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ClienteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GrupoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ArticuloBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ProveedorBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.InventarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GrupoBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TableLayoutPanel8.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -1066,14 +1229,6 @@ Partial Class frmMain
     Friend WithEvents tab_articulos_proveedores As TabPage
     Friend WithEvents TableLayoutPanel4 As TableLayoutPanel
     Friend WithEvents dg_articulos As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
     Friend WithEvents TableLayoutPanel5 As TableLayoutPanel
     Public WithEvents btn_añadir_proveedor As Button
     Friend WithEvents btn_modificar_proveedor As Button
@@ -1087,4 +1242,22 @@ Partial Class frmMain
     Friend WithEvents CodigoDeProveedorDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents NombreDeProveedorDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents datos As DataGridViewButtonColumn
+    Friend WithEvents CodigoDeArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents NombreDeArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DescripcionDeArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PVPCompraDeArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PVPVentaDeArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PorcentajeDeBeneficioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TipoDeUnidadArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FamiliaDeArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ArticuloBindingSource As BindingSource
+    Friend WithEvents tab_inventario As TabPage
+    Friend WithEvents TableLayoutPanel7 As TableLayoutPanel
+    Friend WithEvents dg_inventario As DataGridView
+    Friend WithEvents NombreDeArticuloDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents UnidadesDisponiblesDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents InventarioBindingSource As BindingSource
+    Friend WithEvents TableLayoutPanel8 As TableLayoutPanel
+    Friend WithEvents btn_restar_unidades As Button
+    Friend WithEvents btn_añadir_unidades As Button
 End Class

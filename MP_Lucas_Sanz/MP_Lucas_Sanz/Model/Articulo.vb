@@ -2,9 +2,8 @@
     Private codigoArticulo As String
     Private nombreArticulo As String
     Private descripcionArticulo As String
-    Private pvpInicialArticulo As Double
     Private pvpCompraArticulo As Double
-    Private porcBeneficioArticulo As Integer
+    Private porcBeneficioArticulo As Double
     Private pvpVentaArticulo As Double
     Private tipoUnidadArticulo As String
     Private familiaArticulo As String
@@ -33,14 +32,6 @@
             descripcionArticulo = value
         End Set
     End Property
-    Public Property PVPInicialDeArticulo() As Double
-        Get
-            Return pvpInicialArticulo
-        End Get
-        Set(value As Double)
-            pvpInicialArticulo = value
-        End Set
-    End Property
     Public Property PVPCompraDeArticulo() As Double
         Get
             Return pvpCompraArticulo
@@ -49,11 +40,11 @@
             pvpCompraArticulo = value
         End Set
     End Property
-    Public Property PorcentajeDeBeneficio() As Integer
+    Public Property PorcentajeDeBeneficio() As Double
         Get
             Return porcBeneficioArticulo
         End Get
-        Set(value As Integer)
+        Set(value As Double)
             porcBeneficioArticulo = value
         End Set
     End Property
@@ -86,9 +77,41 @@
         MyBase.New()
     End Sub
     Public Sub New(codigoPasado As String, nombrePasado As String, descripcionPasada As String,
-                   pvpInicialPasado As Double, pvpCompraPasado As Double, porcBeneficioPasado As Integer,
+                   pvpCompraPasado As Double, porcBeneficioPasado As Double,
                    tipoArticuloPasado As String, familiaPasada As String)
         MyBase.New()
+        CodigoDeArticulo = codigoPasado
+        NombreDeArticulo = nombrePasado
+        DescripcionDeArticulo = descripcionPasada
+        PVPCompraDeArticulo = pvpCompraPasado
+        PorcentajeDeBeneficio = porcBeneficioPasado
+        TipoDeUnidadArticulo = tipoArticuloPasado
+        FamiliaDeArticulo = familiaPasada
 
+        PVPVentaDeArticulo = PVPCompraDeArticulo * (1 + PorcentajeDeBeneficio / 100)
     End Sub
+
+    Public Sub setNuevoPrecioVenta(porcBenNuevo As Double)
+        PVPVentaDeArticulo = PVPCompraDeArticulo * (1 + porcBenNuevo / 100)
+    End Sub
+
+    Public Function getArticulos() As List(Of Articulo)
+        Return managerArticuloAux.getArticulos()
+    End Function
+    Public Sub addArticulo()
+        managerArticuloAux.addArticulo(Me)
+    End Sub
+    Public Sub modifyArticulo()
+        managerArticuloAux.modifyArticulo(Me)
+    End Sub
+    Public Sub deleteArticulo()
+        managerArticuloAux.deleteArticulo(Me)
+    End Sub
+    Public Function checkNombre(nombrePasado As String)
+        If nombrePasado.Length > 6 Then
+            MessageBox.Show("Código demasiado largo (máx 6)")
+            Return False
+        End If
+        Return True
+    End Function
 End Class

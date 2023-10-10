@@ -1,4 +1,7 @@
 ﻿Public Class frmVerDatosProveedor
+    Private Sub frmVerDatosProveedor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        btn_modificar_proveedor.Text = "Modificar"
+    End Sub
     Private Sub click_modificar_ver_datos_proveedor(sender As Object, e As EventArgs) Handles btn_modificar_proveedor.Click
         If btn_modificar_proveedor.Text.Equals("Modificar") Then
             txt_nombre_proveedor.Enabled = True

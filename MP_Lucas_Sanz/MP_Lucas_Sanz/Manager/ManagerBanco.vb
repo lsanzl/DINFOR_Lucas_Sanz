@@ -52,9 +52,9 @@ Public Class ManagerBanco
     End Sub
 
     Public Function checkBanco(codigoBanco As String) As Boolean
-        cmd = New SqlCommand("SELECT NOMBREBANCO
+        cmd = New SqlCommand($"SELECT NOMBREBANCO
                                 FROM BANCOS
-                                WHERE CODIGOBANCO = " + codigoBanco + ";", connectionDBManager)
+                                WHERE CODIGOBANCO = {codigoBanco};", connectionDBManager)
         dr = cmd.ExecuteReader()
         If Not dr.HasRows Then
             dr.Close()
