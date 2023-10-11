@@ -28,10 +28,14 @@ Partial Class frmAñadirArticuloInventario
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.cb_articulo_inventario = New System.Windows.Forms.ComboBox()
-        Me.ArticuloBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ArticuloBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
         Me.txt_cantidad_inventario = New System.Windows.Forms.TextBox()
         Me.btn_confirmar_articulo_inventario = New System.Windows.Forms.Button()
+        Me.ArticuloBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ArticuloBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TableLayoutPanel1.SuspendLayout()
+        CType(Me.ArticuloBindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ArticuloBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ArticuloBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -84,16 +88,15 @@ Partial Class frmAñadirArticuloInventario
         'cb_articulo_inventario
         '
         Me.cb_articulo_inventario.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cb_articulo_inventario.DataSource = Me.ArticuloBindingSource
         Me.cb_articulo_inventario.FormattingEnabled = True
         Me.cb_articulo_inventario.Location = New System.Drawing.Point(70, 8)
         Me.cb_articulo_inventario.Name = "cb_articulo_inventario"
         Me.cb_articulo_inventario.Size = New System.Drawing.Size(415, 21)
         Me.cb_articulo_inventario.TabIndex = 2
         '
-        'ArticuloBindingSource
+        'ArticuloBindingSource2
         '
-        Me.ArticuloBindingSource.DataSource = GetType(MP_Lucas_Sanz.Articulo)
+        Me.ArticuloBindingSource2.DataSource = GetType(MP_Lucas_Sanz.Articulo)
         '
         'txt_cantidad_inventario
         '
@@ -114,6 +117,14 @@ Partial Class frmAñadirArticuloInventario
         Me.btn_confirmar_articulo_inventario.Text = "Confirmar"
         Me.btn_confirmar_articulo_inventario.UseVisualStyleBackColor = True
         '
+        'ArticuloBindingSource1
+        '
+        Me.ArticuloBindingSource1.DataSource = GetType(MP_Lucas_Sanz.Articulo)
+        '
+        'ArticuloBindingSource
+        '
+        Me.ArticuloBindingSource.DataSource = GetType(MP_Lucas_Sanz.Articulo)
+        '
         'frmAñadirArticuloInventario
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -130,6 +141,8 @@ Partial Class frmAñadirArticuloInventario
         Me.Text = "Añadir Artículo"
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel1.PerformLayout()
+        CType(Me.ArticuloBindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ArticuloBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ArticuloBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -142,4 +155,6 @@ Partial Class frmAñadirArticuloInventario
     Friend WithEvents txt_cantidad_inventario As TextBox
     Friend WithEvents ArticuloBindingSource As BindingSource
     Friend WithEvents btn_confirmar_articulo_inventario As Button
+    Friend WithEvents ArticuloBindingSource1 As BindingSource
+    Friend WithEvents ArticuloBindingSource2 As BindingSource
 End Class

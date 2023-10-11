@@ -36,8 +36,23 @@
     Public Sub addUnidades(cantidadSumar As Integer)
         managerInventarioAux.addUnidades(cantidadSumar, Me)
     End Sub
-
     Public Sub deleteUnidades(cantidadRestar As Integer)
         managerInventarioAux.deleteUnidades(cantidadRestar, Me)
     End Sub
+
+    Public Sub addInventario()
+        If Not checkInventario() Then
+            managerInventarioAux.addInventario(Me)
+        Else
+            MessageBox.Show("Artículo ya presente, se añaden uds nuevas")
+
+            managerInventarioAux.addUnidades(Me.UnidadesDisponibles, Me)
+        End If
+    End Sub
+    Public Sub deleteInventario()
+        managerInventarioAux.deleteInventario(Me)
+    End Sub
+    Public Function checkInventario() As Boolean
+        Return managerInventarioAux.checkInventario(Me.NombreDeArticulo)
+    End Function
 End Class

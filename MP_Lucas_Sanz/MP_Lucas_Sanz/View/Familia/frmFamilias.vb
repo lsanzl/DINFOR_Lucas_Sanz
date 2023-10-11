@@ -53,4 +53,10 @@
         familiaTemp.deleteFamilia()
         fillDGFamilias()
     End Sub
+
+    Private Sub double_click_dg_familias(sender As Object, e As EventArgs) Handles dg_familias.DoubleClick
+        familiaSeleccionada = familiaTemp.NombreDeFamilia
+        dg_familias.ClearSelection()
+        Close()
+    End Sub
 End Class

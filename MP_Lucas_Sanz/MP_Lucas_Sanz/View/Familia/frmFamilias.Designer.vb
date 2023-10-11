@@ -23,8 +23,8 @@ Partial Class frmFamilias
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmFamilias))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
@@ -32,13 +32,13 @@ Partial Class frmFamilias
         Me.btn_modificar_familia = New System.Windows.Forms.Button()
         Me.btn_añadir_familia = New System.Windows.Forms.Button()
         Me.btn_seleccionar_familia = New System.Windows.Forms.Button()
-        Me.FamiliaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.NombreDeFamiliaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dg_familias = New System.Windows.Forms.DataGridView()
+        Me.NombreDeFamiliaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FamiliaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
-        CType(Me.FamiliaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg_familias, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FamiliaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -127,20 +127,6 @@ Partial Class frmFamilias
         Me.btn_seleccionar_familia.Text = "Seleccionar"
         Me.btn_seleccionar_familia.UseVisualStyleBackColor = True
         '
-        'FamiliaBindingSource
-        '
-        Me.FamiliaBindingSource.DataSource = GetType(MP_Lucas_Sanz.Familia)
-        '
-        'NombreDeFamiliaDataGridViewTextBoxColumn
-        '
-        Me.NombreDeFamiliaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.NombreDeFamiliaDataGridViewTextBoxColumn.DataPropertyName = "NombreDeFamilia"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.NombreDeFamiliaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
-        Me.NombreDeFamiliaDataGridViewTextBoxColumn.HeaderText = "FAMILIA"
-        Me.NombreDeFamiliaDataGridViewTextBoxColumn.Name = "NombreDeFamiliaDataGridViewTextBoxColumn"
-        Me.NombreDeFamiliaDataGridViewTextBoxColumn.ReadOnly = True
-        '
         'dg_familias
         '
         Me.dg_familias.AllowUserToAddRows = False
@@ -167,6 +153,20 @@ Partial Class frmFamilias
         Me.dg_familias.Size = New System.Drawing.Size(325, 214)
         Me.dg_familias.TabIndex = 1
         '
+        'NombreDeFamiliaDataGridViewTextBoxColumn
+        '
+        Me.NombreDeFamiliaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.NombreDeFamiliaDataGridViewTextBoxColumn.DataPropertyName = "NombreDeFamilia"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.NombreDeFamiliaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
+        Me.NombreDeFamiliaDataGridViewTextBoxColumn.HeaderText = "FAMILIA"
+        Me.NombreDeFamiliaDataGridViewTextBoxColumn.Name = "NombreDeFamiliaDataGridViewTextBoxColumn"
+        Me.NombreDeFamiliaDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'FamiliaBindingSource
+        '
+        Me.FamiliaBindingSource.DataSource = GetType(MP_Lucas_Sanz.Familia)
+        '
         'frmFamilias
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -183,8 +183,8 @@ Partial Class frmFamilias
         Me.Text = "Familias"
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel2.ResumeLayout(False)
-        CType(Me.FamiliaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dg_familias, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FamiliaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

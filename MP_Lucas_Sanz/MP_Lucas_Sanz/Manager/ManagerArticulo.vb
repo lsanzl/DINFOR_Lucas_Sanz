@@ -80,6 +80,18 @@ Public Class ManagerArticulo
             MessageBox.Show("Artículo no eliminado")
         End If
     End Sub
+    Public Function getCampoArticulo(codigoArticulo As String, campoArticulo As String) As String
+        cmd = New SqlCommand($"SELECT '{campoArticulo}' FROM ARTICULOS WHERE CODIGOARTICULO = '{codigoArticulo}';", connectionDBManager)
+        dr = cmd.ExecuteReader()
+        Dim campoTemp As String
+        If dr.HasRows Then
+            dr.Read()
+            campoTemp = dr(0).ToString()
+            dr.Close()
+            Return campoTemp
+        End If
+        Return Nothing
+    End Function
     Public Function checkArticulo(codigoPasado As String) As Boolean
         cmd = New SqlCommand($"SELECT * FROM ARTICULOS WHERE CODIGOARTICULO = '{codigoPasado}';", connectionDBManager)
         dr = cmd.ExecuteReader()

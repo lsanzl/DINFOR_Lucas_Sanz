@@ -6,7 +6,7 @@
             Dim nifTemp As String = txt_nif_proveedor.Text
             Dim direccionTemp As String = txt_direccion_proveedor.Text
             Dim poblacionTemp As String = txt_poblacion_proveedor.Text
-            Dim telefonoTemp As Integer = Convert.ToInt32(txt_telefono_proveedor.Text)
+            Dim telefonoTemp As Integer = Convert.ToInt64(txt_telefono_proveedor.Text)
 
             Dim proveedorTemp As Proveedor = New Proveedor(codigoTemp, nombreTemp, nifTemp, direccionTemp, poblacionTemp, telefonoTemp)
             If btn_confirmar_proveedor.Text = "Confirmar" Then

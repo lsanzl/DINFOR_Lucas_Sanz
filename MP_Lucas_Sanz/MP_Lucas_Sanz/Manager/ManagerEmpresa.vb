@@ -111,6 +111,18 @@ Public Class ManagerEmpresa
                             UNIDADESDISPONIBLES INT
                             );", connectionDBManager)
         cmd.ExecuteNonQuery()
+        cmd = New SqlCommand("CREATE TABLE COMPRAS(
+                            CODIGOCOMPRA INT IDENTITY(1,1) PRIMARY KEY,
+                            CODIGOPROVEEDOR VARCHAR(6),
+                            CODIGOARTICULO VARCHAR(6),
+                            CODIGOPAGO VARCHAR(5),
+                            PRECIOARTICULO DECIMAL(10,2),
+                            CANTIDADARTICULO INT,
+                            FOREIGN KEY (CODIGOPROVEEDOR) REFERENCES PROVEEDORES(CODIGOPROVEEDOR),
+                            FOREIGN KEY (CODIGOARTICULO) REFERENCES ARTICULOS(CODIGOARTICULO),
+                            FOREIGN KEY (CODIGOPAGO) REFERENCES FORMASPAGO(CODIGOPAGO)
+                            );", connectionDBManager)
+        cmd.ExecuteNonQuery()
     End Sub
     Public Function checkEmpresa(nombreEmpresa As String) As Boolean
         cmd = New SqlCommand($"SELECT NAME

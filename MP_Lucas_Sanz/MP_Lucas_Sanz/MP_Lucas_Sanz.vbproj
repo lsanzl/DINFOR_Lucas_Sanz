@@ -78,10 +78,12 @@
     <Compile Include="Controller\ctrFormaPago.vb" />
     <Compile Include="Controller\ctrGrupo.vb" />
     <Compile Include="Controller\ctrInventario.vb" />
+    <Compile Include="Controller\ctrMenu.vb" />
     <Compile Include="Controller\ctrProveedor.vb" />
     <Compile Include="Manager\ManagerArticulo.vb" />
     <Compile Include="Manager\ManagerBanco.vb" />
     <Compile Include="Manager\ManagerCliente.vb" />
+    <Compile Include="Manager\ManagerCompra.vb" />
     <Compile Include="Manager\ManagerEmpresa.vb" />
     <Compile Include="Manager\ManagerFamilia.vb" />
     <Compile Include="Manager\ManagerFormaPago.vb" />
@@ -91,6 +93,7 @@
     <Compile Include="Model\Articulo.vb" />
     <Compile Include="Model\Banco.vb" />
     <Compile Include="Model\Cliente.vb" />
+    <Compile Include="Model\Compra.vb" />
     <Compile Include="Model\Familia.vb" />
     <Compile Include="Model\FormaPago.vb" />
     <Compile Include="Model\Grupo.vb" />
@@ -116,6 +119,18 @@
       <DependentUpon>frmNuevoCliente.vb</DependentUpon>
     </Compile>
     <Compile Include="View\Cliente\frmNuevoCliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Compra\frmBusqueda.Designer.vb">
+      <DependentUpon>frmBusqueda.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\Compra\frmBusqueda.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Compra\frmCompra.Designer.vb">
+      <DependentUpon>frmCompra.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\Compra\frmCompra.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Empresa\frmNuevaEmpresa.Designer.vb">
@@ -230,6 +245,12 @@
     <EmbeddedResource Include="View\Cliente\frmNuevoCliente.resx">
       <DependentUpon>frmNuevoCliente.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Compra\frmBusqueda.resx">
+      <DependentUpon>frmBusqueda.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Compra\frmCompra.resx">
+      <DependentUpon>frmCompra.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Empresa\frmNuevaEmpresa.resx">
       <DependentUpon>frmNuevaEmpresa.vb</DependentUpon>
     </EmbeddedResource>
@@ -278,6 +299,7 @@
     <None Include="My Project\DataSources\Articulo.datasource" />
     <None Include="My Project\DataSources\Banco.datasource" />
     <None Include="My Project\DataSources\Cliente.datasource" />
+    <None Include="My Project\DataSources\Compra.datasource" />
     <None Include="My Project\DataSources\Familia.datasource" />
     <None Include="My Project\DataSources\FormaPago.datasource" />
     <None Include="My Project\DataSources\Grupo.datasource" />
@@ -291,7 +313,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <None Include="Resources\venta.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\articulo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inventario.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lupa.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

@@ -21,12 +21,23 @@
         If Not checkCampos() Then
             Return
         End If
+
         Dim codigoTemp As String = txt_codigo_articulo.Text
         Dim nombreTemp As String = txt_nombre_articulo.Text
         Dim descrTemp As String = txt_descripcion_articulo.Text
-        Dim pvpCompraTemp As Double = Convert.ToDouble(txt_pvp_compra_articulo.Text)
-        Dim porcTemp As Double = Convert.ToDouble(txt_porc_beneficio_articulo.Text)
-        Dim unidadTemp As String = cb_tipo_unidad_articulo.SelectedItem.ToString()
+        Dim pvpCompraTemp As Double = Nothing
+        If Not String.IsNullOrEmpty(txt_pvp_compra_articulo.Text) Then
+            pvpCompraTemp = Convert.ToDouble(txt_pvp_compra_articulo.Text)
+        End If
+        Dim porcTemp As Double = Nothing
+        If Not String.IsNullOrEmpty(txt_porc_beneficio_articulo.Text) Then
+            porcTemp = Convert.ToDouble(txt_porc_beneficio_articulo.Text)
+        End If
+        Dim unidadTemp As String = Nothing
+        If Not cb_tipo_unidad_articulo.SelectedItem = Nothing Then
+            unidadTemp = cb_tipo_unidad_articulo.SelectedItem.ToString()
+        End If
+
 
         Dim articuloTemp As Articulo = New Articulo(codigoTemp, nombreTemp, descrTemp, pvpCompraTemp, porcTemp, unidadTemp, familiaSeleccionada)
         articuloTemp.addArticulo()
@@ -38,14 +49,22 @@
             Return False
         End If
         Dim valorDouble As Double
-        If Not Double.TryParse(txt_pvp_compra_articulo.Text, valorDouble) Or Not Double.TryParse(txt_porc_beneficio_articulo.Text, valorDouble) Then
+        If Not Double.TryParse(txt_pvp_compra_articulo.Text, valorDouble) And Not String.IsNullOrEmpty(txt_pvp_compra_articulo.Text) Then
             MessageBox.Show("Introduzca un número válido")
             Return False
         End If
-        valorDouble = Convert.ToDouble(txt_porc_beneficio_articulo.Text)
-        If valorDouble > 100.0 Or valorDouble < 0.00 Then
+        If Not Double.TryParse(txt_porc_beneficio_articulo.Text, valorDouble) And Not String.IsNullOrEmpty(txt_porc_beneficio_articulo.Text) Then
+            MessageBox.Show("Introduzca un número válido")
             Return False
         End If
+        If Not String.IsNullOrEmpty(txt_porc_beneficio_articulo.Text) Then
+            valorDouble = Convert.ToDouble(txt_porc_beneficio_articulo.Text)
+            If valorDouble > 100.0 Or valorDouble < 0.00 Then
+                Return False
+            End If
+        End If
+
+
         Return True
     End Function
 
