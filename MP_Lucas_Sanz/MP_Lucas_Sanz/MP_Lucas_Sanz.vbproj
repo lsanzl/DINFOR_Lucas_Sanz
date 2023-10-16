@@ -48,10 +48,17 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -99,6 +106,18 @@
     <Compile Include="Model\Grupo.vb" />
     <Compile Include="Model\Inventario.vb" />
     <Compile Include="Model\Proveedor.vb" />
+    <Compile Include="Report\Compra\dsCompra.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCompra.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Compra\infCompra.vb" />
+    <Compile Include="Report\Compra\rptCompra.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptCompra.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="View\ApplicationEvents.vb" />
     <Compile Include="Model\ConnectionDB.vb" />
     <Compile Include="Model\Empresa.vb" />
@@ -227,6 +246,12 @@
     <Compile Include="View\Proveedor\frmVerDatosProveedor.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\Reportes\viewerRPTCompra.Designer.vb">
+      <DependentUpon>viewerRPTCompra.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\Reportes\viewerRPTCompra.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\VariablesGlobales.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -235,6 +260,10 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Compra\rptCompra.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptCompra.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Articulo\frmNuevoArticulo.resx">
       <DependentUpon>frmNuevoArticulo.vb</DependentUpon>
@@ -290,6 +319,9 @@
     <EmbeddedResource Include="View\Proveedor\frmVerDatosProveedor.resx">
       <DependentUpon>frmVerDatosProveedor.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Reportes\viewerRPTCompra.resx">
+      <DependentUpon>viewerRPTCompra.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
@@ -313,6 +345,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Report\Compra\dsCompra.xsc">
+      <DependentUpon>dsCompra.xsd</DependentUpon>
+    </None>
+    <None Include="Report\Compra\dsCompra.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCompra.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Report\Compra\dsCompra.xss">
+      <DependentUpon>dsCompra.xsd</DependentUpon>
+    </None>
     <None Include="Resources\venta.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -323,6 +366,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\lupa.ico" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

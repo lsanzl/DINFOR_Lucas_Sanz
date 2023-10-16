@@ -12,7 +12,7 @@ Public Class ManagerGrupo
     End Sub
 
     Public Function getGrupos() As List(Of Grupo)
-        listaGrupos.Clear()
+        listaGrupos = New List(Of Grupo)
         cmd = New SqlCommand("SELECT * FROM GRUPOS;", connectionDBManager)
         dr = cmd.ExecuteReader()
         If dr.HasRows Then

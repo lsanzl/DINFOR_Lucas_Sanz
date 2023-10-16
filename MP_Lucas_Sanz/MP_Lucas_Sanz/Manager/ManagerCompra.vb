@@ -7,7 +7,7 @@ Public Class ManagerCompra
     Private connectionDBManager As SqlConnection = VariablesGlobales.connectionDB.connectionDB
 
     Public Function getCompras() As List(Of Compra)
-        listaCompras.Clear()
+        listaCompras = New List(Of Compra)
         cmd = New SqlCommand("SELECT * FROM COMPRAS;", connectionDBManager)
         dr = cmd.ExecuteReader()
         If dr.HasRows Then
@@ -34,9 +34,9 @@ Public Class ManagerCompra
     End Function
     Public Sub addCompra(compraTemp As Compra)
         cmd = New SqlCommand($"INSERT INTO COMPRAS
-                                VALUES ({compraTemp.ProveedorDeCompra}, 
-                                '{compraTemp.ArticuloDeCompra},
-                                '{compraTemp.FormaDePagoCompra},
+                                VALUES ('{compraTemp.ProveedorDeCompra}', 
+                                '{compraTemp.ArticuloDeCompra}',
+                                '{compraTemp.FormaDePagoCompra}',
                                 {compraTemp.PrecioDeArticuloCompra},
                                 {compraTemp.CantidadDeCompra});", connectionDBManager)
         If cmd.ExecuteNonQuery > 0 Then

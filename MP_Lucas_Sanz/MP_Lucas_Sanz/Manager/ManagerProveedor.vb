@@ -13,7 +13,7 @@ Public Class ManagerProveedor
     Public Function getProveedores() As List(Of Proveedor)
         cmd = New SqlCommand("SELECT * FROM PROVEEDORES", connectionDBManager)
         dr = cmd.ExecuteReader()
-        listaProveedores.Clear()
+        listaProveedores = New List(Of Proveedor)
         If dr.HasRows Then
             Dim codigoTemp As String
             Dim nombreTemp As String

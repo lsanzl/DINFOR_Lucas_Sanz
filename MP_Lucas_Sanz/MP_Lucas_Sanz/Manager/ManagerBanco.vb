@@ -3,11 +3,11 @@
 Public Class ManagerBanco
     Private cmd As SqlCommand
     Private dr As SqlDataReader
-    Private listaBancos As List(Of Banco) = New List(Of Banco)
+    Private listaBancos As List(Of Banco)
     Private connectionDBManager As SqlConnection = VariablesGlobales.connectionDB.connectionDB
 
     Public Function getBancos() As List(Of Banco)
-        listaBancos.Clear()
+        listaBancos = New List(Of Banco)
         cmd = New SqlCommand("SELECT NOMBREBANCO, CODIGOBANCO FROM BANCOS;", connectionDBManager)
         dr = cmd.ExecuteReader()
         If dr.HasRows Then

@@ -6,8 +6,10 @@
             Dim nifTemp As String = txt_nif_proveedor.Text
             Dim direccionTemp As String = txt_direccion_proveedor.Text
             Dim poblacionTemp As String = txt_poblacion_proveedor.Text
-            Dim telefonoTemp As Integer = Convert.ToInt64(txt_telefono_proveedor.Text)
-
+            Dim telefonoTemp As Integer = Nothing
+            If Not String.IsNullOrEmpty(txt_telefono_proveedor.Text) Then
+                telefonoTemp = Convert.ToInt64(txt_telefono_proveedor.Text)
+            End If
             Dim proveedorTemp As Proveedor = New Proveedor(codigoTemp, nombreTemp, nifTemp, direccionTemp, poblacionTemp, telefonoTemp)
             If btn_confirmar_proveedor.Text = "Confirmar" Then
                 proveedorTemp.addProveedor()
@@ -34,8 +36,12 @@
             MessageBox.Show("Introduzca NIF válido (máx 12 caracteres)")
             Return False
         End If
-        If Not IsNumeric(txt_telefono_proveedor.Text) Then
+        If Not IsNumeric(txt_telefono_proveedor.Text) And Not String.IsNullOrEmpty(txt_telefono_proveedor.Text) Then
             MessageBox.Show("Introduzca un número de teléfono válido")
+            Return False
+        End If
+        If txt_telefono_proveedor.Text.Length > 9 Then
+            MessageBox.Show("Número de teléfono demasiado largo")
             Return False
         End If
         Return True

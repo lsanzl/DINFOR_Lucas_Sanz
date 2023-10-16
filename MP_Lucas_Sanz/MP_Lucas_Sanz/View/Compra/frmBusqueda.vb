@@ -78,7 +78,6 @@
 
     Private Sub double_click_cell_dg_resultados_busqueda(sender As Object, e As DataGridViewCellEventArgs) Handles dg_resultados_busqueda.CellDoubleClick
         codigoSeleccionado = dg_resultados_busqueda.Rows(e.RowIndex).Cells(1).Value.ToString()
-        MessageBox.Show(codigoSeleccionado)
         Close()
     End Sub
 End Class

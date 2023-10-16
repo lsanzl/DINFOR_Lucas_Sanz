@@ -11,7 +11,7 @@ Public Class ManagerCliente
     End Sub
 
     Public Function getClientes() As List(Of Cliente)
-        listaClientes.Clear()
+        listaClientes = New List(Of Cliente)
         cmd = New SqlCommand("SELECT * FROM CLIENTES;", connectionDBManager)
         dr = cmd.ExecuteReader()
 

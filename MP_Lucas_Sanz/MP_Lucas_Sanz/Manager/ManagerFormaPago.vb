@@ -8,7 +8,7 @@ Public Class ManagerFormaPago
     Private connectionDBManager As SqlConnection = VariablesGlobales.connectionDB.connectionDB
 
     Public Function getFormaPagos() As List(Of FormaPago)
-        listaFormaPagos.Clear()
+        listaFormaPagos = New List(Of FormaPago)
         cmd = New SqlCommand("SELECT CODIGOPAGO, NOMBREFORMAPAGO, BANCO, 
                             ESTADO, NUMEROPLAZOS, PRIMERPLAZO, DIASENTREPLAZOS FROM FORMASPAGO;", connectionDBManager)
         dr = cmd.ExecuteReader()

@@ -1,11 +1,12 @@
 ﻿Public Class ctrProveedor
     Dim frmProveedor As frmMain
-    Dim listaProveedores As List(Of Proveedor) = New List(Of Proveedor)
+    Dim listaProveedores As List(Of Proveedor)
     Dim proveedorTemp As Proveedor
 
     Public Sub New(frmPasado As frmMain)
         MyBase.New()
         frmProveedor = frmPasado
+        listaProveedores = New List(Of Proveedor)
 
         AddHandler frmProveedor.btn_añadir_proveedor.Click, AddressOf click_btn_añadir_proveedor
         AddHandler frmProveedor.btn_modificar_proveedor.Click, AddressOf click_btn_modificar_proveedor
@@ -63,6 +64,9 @@
         frmNuevoProveedor.txt_telefono_proveedor.Clear()
     End Sub
     Private Sub click_cell_dg_proveedores(sender As Object, e As DataGridViewCellEventArgs)
+        If Not e.RowIndex >= 0 Then
+            Return
+        End If
         Dim currentCelll As DataGridViewCell = frmProveedor.dg_proveedores.CurrentCell
         If currentCelll.Value.Equals("VER DATOS") Then
             proveedorTemp = frmProveedor.dg_proveedores.Rows(e.RowIndex).DataBoundItem

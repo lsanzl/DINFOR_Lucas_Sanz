@@ -12,10 +12,10 @@ Public Class ManagerInventario
     End Sub
 
     Public Function getInventario() As List(Of Inventario)
+        listaInventario = New List(Of Inventario)
+
         cmd = New SqlCommand("SELECT * FROM INVENTARIO;", connectionDBManager)
         dr = cmd.ExecuteReader()
-
-        listaInventario.Clear()
         If dr.HasRows Then
             dr.Read()
             Do

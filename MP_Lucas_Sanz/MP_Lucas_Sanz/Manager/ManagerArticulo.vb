@@ -7,7 +7,7 @@ Public Class ManagerArticulo
     Private connectionDBManager As SqlConnection = VariablesGlobales.connectionDB.connectionDB
 
     Public Function getArticulos() As List(Of Articulo)
-        listaArticulos.Clear()
+        listaArticulos = New List(Of Articulo)
         cmd = New SqlCommand("SELECT * FROM ARTICULOS;", connectionDBManager)
         dr = cmd.ExecuteReader()
         If dr.HasRows Then
@@ -81,7 +81,7 @@ Public Class ManagerArticulo
         End If
     End Sub
     Public Function getCampoArticulo(codigoArticulo As String, campoArticulo As String) As String
-        cmd = New SqlCommand($"SELECT '{campoArticulo}' FROM ARTICULOS WHERE CODIGOARTICULO = '{codigoArticulo}';", connectionDBManager)
+        cmd = New SqlCommand($"SELECT {campoArticulo} FROM ARTICULOS WHERE CODIGOARTICULO = '{codigoArticulo}';", connectionDBManager)
         dr = cmd.ExecuteReader()
         Dim campoTemp As String
         If dr.HasRows Then

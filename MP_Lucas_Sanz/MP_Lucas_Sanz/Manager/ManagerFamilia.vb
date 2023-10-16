@@ -7,7 +7,7 @@ Public Class ManagerFamilia
     Private connectionDBManager As SqlConnection = VariablesGlobales.connectionDB.connectionDB
 
     Public Function getFamilias() As List(Of Familia)
-        listaFamilias.Clear()
+        listaFamilias = New List(Of Familia)
         cmd = New SqlCommand("SELECT * FROM FAMILIAS", connectionDBManager)
         dr = cmd.ExecuteReader()
         If dr.HasRows Then

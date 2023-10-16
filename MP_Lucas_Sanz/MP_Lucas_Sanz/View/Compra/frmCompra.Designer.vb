@@ -24,6 +24,7 @@ Partial Class frmCompra
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCompra))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
@@ -34,27 +35,30 @@ Partial Class frmCompra
         Me.txt_proveedor_seleccionado = New System.Windows.Forms.TextBox()
         Me.txt_articulo_seleccionado = New System.Windows.Forms.TextBox()
         Me.txt_cantidad_seleccionada = New System.Windows.Forms.TextBox()
+        Me.btn_busqueda_proveedor = New System.Windows.Forms.Button()
+        Me.btn_busqueda_articulo = New System.Windows.Forms.Button()
         Me.cb_forma_pago_seleccionada = New System.Windows.Forms.ComboBox()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.btn_modificar_compra = New System.Windows.Forms.Button()
         Me.btn_eliminar_compra = New System.Windows.Forms.Button()
         Me.btn_añadir_compra = New System.Windows.Forms.Button()
         Me.dg_compras = New System.Windows.Forms.DataGridView()
-        Me.btn_confirmar_compra = New System.Windows.Forms.Button()
-        Me.btn_busqueda_proveedor = New System.Windows.Forms.Button()
-        Me.btn_busqueda_articulo = New System.Windows.Forms.Button()
-        Me.CompraBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ProveedorDeCompraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ArticuloDeCompraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FormaDePagoCompraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PrecioDeArticuloCompraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CantidadDeCompraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PrecioTotalDeCompraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CompraBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
+        Me.btn_confirmar_compra = New System.Windows.Forms.Button()
+        Me.lbl_precio_sumatorio = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
         CType(Me.dg_compras, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CompraBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TableLayoutPanel4.SuspendLayout()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -67,7 +71,7 @@ Partial Class frmCompra
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel2, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel3, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.dg_compras, 0, 2)
-        Me.TableLayoutPanel1.Controls.Add(Me.btn_confirmar_compra, 0, 3)
+        Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel4, 0, 3)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(2, 2)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 4
@@ -186,6 +190,26 @@ Partial Class frmCompra
         Me.txt_cantidad_seleccionada.TabIndex = 6
         Me.txt_cantidad_seleccionada.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'btn_busqueda_proveedor
+        '
+        Me.btn_busqueda_proveedor.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.btn_busqueda_proveedor.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.lupa
+        Me.btn_busqueda_proveedor.Location = New System.Drawing.Point(346, 25)
+        Me.btn_busqueda_proveedor.Name = "btn_busqueda_proveedor"
+        Me.btn_busqueda_proveedor.Size = New System.Drawing.Size(25, 25)
+        Me.btn_busqueda_proveedor.TabIndex = 7
+        Me.btn_busqueda_proveedor.UseVisualStyleBackColor = True
+        '
+        'btn_busqueda_articulo
+        '
+        Me.btn_busqueda_articulo.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.btn_busqueda_articulo.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.lupa
+        Me.btn_busqueda_articulo.Location = New System.Drawing.Point(346, 100)
+        Me.btn_busqueda_articulo.Name = "btn_busqueda_articulo"
+        Me.btn_busqueda_articulo.Size = New System.Drawing.Size(25, 25)
+        Me.btn_busqueda_articulo.TabIndex = 8
+        Me.btn_busqueda_articulo.UseVisualStyleBackColor = True
+        '
         'cb_forma_pago_seleccionada
         '
         Me.cb_forma_pago_seleccionada.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -272,82 +296,102 @@ Partial Class frmCompra
         Me.dg_compras.Size = New System.Drawing.Size(714, 151)
         Me.dg_compras.TabIndex = 2
         '
-        'btn_confirmar_compra
-        '
-        Me.btn_confirmar_compra.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.btn_confirmar_compra.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_confirmar_compra.Location = New System.Drawing.Point(552, 362)
-        Me.btn_confirmar_compra.Name = "btn_confirmar_compra"
-        Me.btn_confirmar_compra.Size = New System.Drawing.Size(165, 23)
-        Me.btn_confirmar_compra.TabIndex = 3
-        Me.btn_confirmar_compra.Text = "CONFIRMAR COMPRA"
-        Me.btn_confirmar_compra.UseVisualStyleBackColor = True
-        '
-        'btn_busqueda_proveedor
-        '
-        Me.btn_busqueda_proveedor.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.btn_busqueda_proveedor.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.lupa
-        Me.btn_busqueda_proveedor.Location = New System.Drawing.Point(346, 25)
-        Me.btn_busqueda_proveedor.Name = "btn_busqueda_proveedor"
-        Me.btn_busqueda_proveedor.Size = New System.Drawing.Size(25, 25)
-        Me.btn_busqueda_proveedor.TabIndex = 7
-        Me.btn_busqueda_proveedor.UseVisualStyleBackColor = True
-        '
-        'btn_busqueda_articulo
-        '
-        Me.btn_busqueda_articulo.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.btn_busqueda_articulo.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.lupa
-        Me.btn_busqueda_articulo.Location = New System.Drawing.Point(346, 100)
-        Me.btn_busqueda_articulo.Name = "btn_busqueda_articulo"
-        Me.btn_busqueda_articulo.Size = New System.Drawing.Size(25, 25)
-        Me.btn_busqueda_articulo.TabIndex = 8
-        Me.btn_busqueda_articulo.UseVisualStyleBackColor = True
-        '
-        'CompraBindingSource
-        '
-        Me.CompraBindingSource.DataSource = GetType(MP_Lucas_Sanz.Compra)
-        '
         'ProveedorDeCompraDataGridViewTextBoxColumn
         '
+        Me.ProveedorDeCompraDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.ProveedorDeCompraDataGridViewTextBoxColumn.DataPropertyName = "ProveedorDeCompra"
-        Me.ProveedorDeCompraDataGridViewTextBoxColumn.HeaderText = "ProveedorDeCompra"
+        Me.ProveedorDeCompraDataGridViewTextBoxColumn.HeaderText = "Proveedor"
         Me.ProveedorDeCompraDataGridViewTextBoxColumn.Name = "ProveedorDeCompraDataGridViewTextBoxColumn"
         Me.ProveedorDeCompraDataGridViewTextBoxColumn.ReadOnly = True
         '
         'ArticuloDeCompraDataGridViewTextBoxColumn
         '
+        Me.ArticuloDeCompraDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.ArticuloDeCompraDataGridViewTextBoxColumn.DataPropertyName = "ArticuloDeCompra"
-        Me.ArticuloDeCompraDataGridViewTextBoxColumn.HeaderText = "ArticuloDeCompra"
+        Me.ArticuloDeCompraDataGridViewTextBoxColumn.HeaderText = "Artículo"
         Me.ArticuloDeCompraDataGridViewTextBoxColumn.Name = "ArticuloDeCompraDataGridViewTextBoxColumn"
         Me.ArticuloDeCompraDataGridViewTextBoxColumn.ReadOnly = True
         '
         'FormaDePagoCompraDataGridViewTextBoxColumn
         '
+        Me.FormaDePagoCompraDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.FormaDePagoCompraDataGridViewTextBoxColumn.DataPropertyName = "FormaDePagoCompra"
-        Me.FormaDePagoCompraDataGridViewTextBoxColumn.HeaderText = "FormaDePagoCompra"
+        Me.FormaDePagoCompraDataGridViewTextBoxColumn.HeaderText = "Pago"
         Me.FormaDePagoCompraDataGridViewTextBoxColumn.Name = "FormaDePagoCompraDataGridViewTextBoxColumn"
         Me.FormaDePagoCompraDataGridViewTextBoxColumn.ReadOnly = True
         '
         'PrecioDeArticuloCompraDataGridViewTextBoxColumn
         '
+        Me.PrecioDeArticuloCompraDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.PrecioDeArticuloCompraDataGridViewTextBoxColumn.DataPropertyName = "PrecioDeArticuloCompra"
-        Me.PrecioDeArticuloCompraDataGridViewTextBoxColumn.HeaderText = "PrecioDeArticuloCompra"
+        Me.PrecioDeArticuloCompraDataGridViewTextBoxColumn.HeaderText = "Precio Ud"
         Me.PrecioDeArticuloCompraDataGridViewTextBoxColumn.Name = "PrecioDeArticuloCompraDataGridViewTextBoxColumn"
         Me.PrecioDeArticuloCompraDataGridViewTextBoxColumn.ReadOnly = True
         '
         'CantidadDeCompraDataGridViewTextBoxColumn
         '
+        Me.CantidadDeCompraDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.CantidadDeCompraDataGridViewTextBoxColumn.DataPropertyName = "CantidadDeCompra"
-        Me.CantidadDeCompraDataGridViewTextBoxColumn.HeaderText = "CantidadDeCompra"
+        Me.CantidadDeCompraDataGridViewTextBoxColumn.HeaderText = "Cantidad"
         Me.CantidadDeCompraDataGridViewTextBoxColumn.Name = "CantidadDeCompraDataGridViewTextBoxColumn"
         Me.CantidadDeCompraDataGridViewTextBoxColumn.ReadOnly = True
         '
         'PrecioTotalDeCompraDataGridViewTextBoxColumn
         '
+        Me.PrecioTotalDeCompraDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.PrecioTotalDeCompraDataGridViewTextBoxColumn.DataPropertyName = "PrecioTotalDeCompra"
-        Me.PrecioTotalDeCompraDataGridViewTextBoxColumn.HeaderText = "PrecioTotalDeCompra"
+        DataGridViewCellStyle2.Format = "N2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.PrecioTotalDeCompraDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
+        Me.PrecioTotalDeCompraDataGridViewTextBoxColumn.HeaderText = "Precio Total"
         Me.PrecioTotalDeCompraDataGridViewTextBoxColumn.Name = "PrecioTotalDeCompraDataGridViewTextBoxColumn"
         Me.PrecioTotalDeCompraDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CompraBindingSource
+        '
+        Me.CompraBindingSource.DataSource = GetType(MP_Lucas_Sanz.Compra)
+        '
+        'TableLayoutPanel4
+        '
+        Me.TableLayoutPanel4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel4.ColumnCount = 2
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
+        Me.TableLayoutPanel4.Controls.Add(Me.btn_confirmar_compra, 1, 0)
+        Me.TableLayoutPanel4.Controls.Add(Me.lbl_precio_sumatorio, 0, 0)
+        Me.TableLayoutPanel4.Location = New System.Drawing.Point(3, 356)
+        Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
+        Me.TableLayoutPanel4.RowCount = 1
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel4.Size = New System.Drawing.Size(714, 35)
+        Me.TableLayoutPanel4.TabIndex = 3
+        '
+        'btn_confirmar_compra
+        '
+        Me.btn_confirmar_compra.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.btn_confirmar_compra.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_confirmar_compra.Location = New System.Drawing.Point(546, 6)
+        Me.btn_confirmar_compra.Name = "btn_confirmar_compra"
+        Me.btn_confirmar_compra.Size = New System.Drawing.Size(165, 23)
+        Me.btn_confirmar_compra.TabIndex = 4
+        Me.btn_confirmar_compra.Text = "CONFIRMAR COMPRA"
+        Me.btn_confirmar_compra.UseVisualStyleBackColor = True
+        '
+        'lbl_precio_sumatorio
+        '
+        Me.lbl_precio_sumatorio.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.lbl_precio_sumatorio.AutoSize = True
+        Me.lbl_precio_sumatorio.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_precio_sumatorio.ForeColor = System.Drawing.Color.Navy
+        Me.lbl_precio_sumatorio.Location = New System.Drawing.Point(443, 9)
+        Me.lbl_precio_sumatorio.Name = "lbl_precio_sumatorio"
+        Me.lbl_precio_sumatorio.Size = New System.Drawing.Size(97, 16)
+        Me.lbl_precio_sumatorio.TabIndex = 5
+        Me.lbl_precio_sumatorio.Text = "Precio Total:"
+        Me.lbl_precio_sumatorio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lbl_precio_sumatorio.Visible = False
         '
         'frmCompra
         '
@@ -368,6 +412,8 @@ Partial Class frmCompra
         Me.TableLayoutPanel3.ResumeLayout(False)
         CType(Me.dg_compras, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CompraBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TableLayoutPanel4.ResumeLayout(False)
+        Me.TableLayoutPanel4.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -389,12 +435,14 @@ Partial Class frmCompra
     Friend WithEvents btn_eliminar_compra As Button
     Friend WithEvents btn_añadir_compra As Button
     Friend WithEvents dg_compras As DataGridView
+    Friend WithEvents CompraBindingSource As BindingSource
+    Friend WithEvents TableLayoutPanel4 As TableLayoutPanel
     Friend WithEvents btn_confirmar_compra As Button
+    Friend WithEvents lbl_precio_sumatorio As Label
     Friend WithEvents ProveedorDeCompraDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ArticuloDeCompraDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents FormaDePagoCompraDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PrecioDeArticuloCompraDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents CantidadDeCompraDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PrecioTotalDeCompraDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents CompraBindingSource As BindingSource
 End Class

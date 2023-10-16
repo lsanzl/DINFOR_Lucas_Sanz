@@ -58,9 +58,11 @@
     End Sub
 
     Private Sub click_cell_dg_grupos(sender As Object, e As DataGridViewCellEventArgs)
-        frmGrupo.btn_modificar_grupo.Enabled = True
-        frmGrupo.btn_eliminar_grupo.Enabled = True
-        grupoTemp = frmGrupo.dg_grupos.Rows(e.RowIndex).DataBoundItem
+        If e.RowIndex >= 0 Then
+            frmGrupo.btn_modificar_grupo.Enabled = True
+            frmGrupo.btn_eliminar_grupo.Enabled = True
+            grupoTemp = frmGrupo.dg_grupos.Rows(e.RowIndex).DataBoundItem
+        End If
     End Sub
 
     Private Sub tab_main_SelectedIndexChanged(sender As Object, e As EventArgs)

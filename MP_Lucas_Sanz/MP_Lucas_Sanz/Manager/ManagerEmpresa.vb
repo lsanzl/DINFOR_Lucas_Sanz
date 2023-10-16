@@ -10,7 +10,7 @@ Public Class ManagerEmpresa
     Private connectionDBManager As SqlConnection = VariablesGlobales.connectionDB.connectionDB
 
     Public Function getEmpresas() As List(Of Empresa)
-        listaEmpresas.Clear()
+        listaEmpresas = New List(Of Empresa)
         cmd = New SqlCommand("SELECT name, database_id From sys.databases;", connectionDBManager)
         dr = cmd.ExecuteReader()
         If dr.HasRows Then

@@ -29,6 +29,9 @@
     End Sub
 
     Private Sub click_cell_formas_pago(sender As Object, e As DataGridViewCellEventArgs)
+        If Not e.RowIndex >= 0 Then
+            Return
+        End If
         Dim currentCelll As DataGridViewCell = frmFormasPago.dg_formas_pago.CurrentCell
         If currentCelll.OwningColumn.HeaderText.Equals("Activo") Then
             formaPagoTemp = frmFormasPago.dg_formas_pago.Rows(e.RowIndex).DataBoundItem

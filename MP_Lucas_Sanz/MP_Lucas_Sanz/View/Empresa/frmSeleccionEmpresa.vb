@@ -35,18 +35,22 @@
     End Sub
 
     Private Sub click_cell_dg_empresas(sender As Object, e As DataGridViewCellEventArgs) Handles dg_empresas.CellClick
-        empresaSeleccionada = dg_empresas.Rows(e.RowIndex).DataBoundItem
-        btn_modificar.Enabled = True
-        btn_eliminar.Enabled = True
-        btn_seleccionar.Enabled = True
+        If e.RowIndex >= 0 Then
+            empresaSeleccionada = dg_empresas.Rows(e.RowIndex).DataBoundItem
+            btn_modificar.Enabled = True
+            btn_eliminar.Enabled = True
+            btn_seleccionar.Enabled = True
+        End If
     End Sub
 
     Private Sub double_click_cell_dg_empresa(sender As Object, e As DataGridViewCellEventArgs) Handles dg_empresas.CellDoubleClick
-        empresaSeleccionada = dg_empresas.Rows(e.RowIndex).DataBoundItem
-        VariablesGlobales.setEmpresaSeleccionadaDB(empresaSeleccionada.NombreEmpresa)
-        managerEmpAux.selectEmpresa()
-        VariablesGlobales.setSeleccionadaEmpresa(True)
-        Me.Close()
+        If e.RowIndex >= 0 Then
+            empresaSeleccionada = dg_empresas.Rows(e.RowIndex).DataBoundItem
+            VariablesGlobales.setEmpresaSeleccionadaDB(empresaSeleccionada.NombreEmpresa)
+            managerEmpAux.selectEmpresa()
+            VariablesGlobales.setSeleccionadaEmpresa(True)
+            Me.Close()
+        End If
     End Sub
 
     Private Sub click_btn_modificar(sender As Object, e As EventArgs) Handles btn_modificar.Click
