@@ -8,10 +8,10 @@
     End Sub
 
     Private bancoYaSeleccionado As Integer
-    Private grupoYaSeleccionado As Integer
+    Private grupoYaSeleccionado As String
     Private contador As Integer
     Private bancoAsignadoMod As Integer
-    Private grupoAsignadoMod As Integer
+    Private grupoAsignadoMod As String
     Private bancoSeleccionado As String = Nothing
     Private grupoSeleccionado As String = Nothing
 
@@ -60,7 +60,7 @@
     Public Sub setBancoAsignadoMod(numBancoMod As Integer)
         bancoAsignadoMod = numBancoMod
     End Sub
-    Public Sub setGrupoAsignadoMod(grupoMod As Integer)
+    Public Sub setGrupoAsignadoMod(grupoMod As String)
         grupoAsignadoMod = grupoMod
     End Sub
 
@@ -104,7 +104,7 @@
     End Sub
 
     Private Function checkCampos() As Boolean
-        If String.IsNullOrEmpty(txt_codigo_cliente.Text) Then
+        If String.IsNullOrEmpty(txt_codigo_cliente.Text) Or Not IsNumeric(txt_codigo_cliente.Text) Then
             MessageBox.Show("Introduzca código válido")
             Return False
         End If

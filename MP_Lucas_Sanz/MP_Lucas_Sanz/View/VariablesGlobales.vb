@@ -12,6 +12,7 @@
     Public familiaAux As Familia = New Familia()
     Public inventarioAux As Inventario = New Inventario()
     Public compraAux As Compra = New Compra()
+    Public ventaAux As Venta = New Venta()
 
     ' ----- MANAGERS AUXILIARES DE CADA CLASE -----
     Public managerEmpAux As ManagerEmpresa = New ManagerEmpresa()
@@ -24,6 +25,7 @@
     Public managerFamiliaAux As ManagerFamilia = New ManagerFamilia()
     Public managerInventarioAux As ManagerInventario = New ManagerInventario()
     Public managerCompraAux As ManagerCompra = New ManagerCompra()
+    Public managerVentaAux As ManagerVenta = New ManagerVenta()
 
     ' ------------ VARIABLES GLOBALES -------------
     Private empresaSeleccionadaDB As String = Nothing

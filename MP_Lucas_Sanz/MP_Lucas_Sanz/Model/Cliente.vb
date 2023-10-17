@@ -5,7 +5,7 @@
     Private direccion As String
     Private fechaNacimiento As Date
     Private bancoCliente As Integer
-    Private grupoCliente As Integer
+    Private grupoCliente As String
     Private email As String
 
     Public Property CodigoDelCliente() As String
@@ -56,11 +56,11 @@
             bancoCliente = value
         End Set
     End Property
-    Public Property GrupoDelCliente() As Integer
+    Public Property GrupoDelCliente() As String
         Get
             Return grupoCliente
         End Get
-        Set(value As Integer)
+        Set(value As String)
             grupoCliente = value
         End Set
     End Property
@@ -77,7 +77,7 @@
         MyBase.New()
     End Sub
     Public Sub New(codigoPasado As String, nombrePasado As String, nifPasado As String, direccionPasada As String, fechaPasada As Date,
-                   bancoPasado As Integer, grupoPasado As Integer, emailPasado As String)
+                   bancoPasado As Integer, grupoPasado As String, emailPasado As String)
         MyBase.New()
         CodigoDelCliente = codigoPasado
         NombreDelCliente = nombrePasado

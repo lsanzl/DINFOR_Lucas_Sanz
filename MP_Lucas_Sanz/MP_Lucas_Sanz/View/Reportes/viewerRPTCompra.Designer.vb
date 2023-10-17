@@ -29,9 +29,14 @@ Partial Class viewerRPTCompra
         'crvCompra
         '
         Me.crvCompra.ActiveViewIndex = -1
+        Me.crvCompra.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.crvCompra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.crvCompra.Cursor = System.Windows.Forms.Cursors.Default
-        Me.crvCompra.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.crvCompra.DisplayStatusBar = False
+        Me.crvCompra.DisplayToolbar = False
+        Me.crvCompra.EnableToolTips = False
         Me.crvCompra.Location = New System.Drawing.Point(0, 0)
         Me.crvCompra.Name = "crvCompra"
         Me.crvCompra.Size = New System.Drawing.Size(800, 450)
@@ -45,7 +50,7 @@ Partial Class viewerRPTCompra
         Me.Controls.Add(Me.crvCompra)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "viewerRPTCompra"
-        Me.Text = "rptCompra"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.ResumeLayout(False)
 
     End Sub

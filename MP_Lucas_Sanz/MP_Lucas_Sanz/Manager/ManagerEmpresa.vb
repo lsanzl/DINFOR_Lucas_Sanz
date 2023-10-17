@@ -77,7 +77,7 @@ Public Class ManagerEmpresa
                             NIFCLIENTE VARCHAR(12),
                             DIRECCIONCLIENTE VARCHAR(150),
                             FECHANACIMIENTOCLIENTE DATE,
-                            BANCOCLIENTE INT,
+                            BANCOCLIENTE VARCHAR(5),
                             GRUPOCLIENTE INT,
                             EMAILCLIENTE VARCHAR(100)
                             );", connectionDBManager)
@@ -119,6 +119,18 @@ Public Class ManagerEmpresa
                             PRECIOARTICULO DECIMAL(10,2),
                             CANTIDADARTICULO INT,
                             FOREIGN KEY (CODIGOPROVEEDOR) REFERENCES PROVEEDORES(CODIGOPROVEEDOR),
+                            FOREIGN KEY (CODIGOARTICULO) REFERENCES ARTICULOS(CODIGOARTICULO),
+                            FOREIGN KEY (CODIGOPAGO) REFERENCES FORMASPAGO(CODIGOPAGO)
+                            );", connectionDBManager)
+        cmd.ExecuteNonQuery()
+        cmd = New SqlCommand("CREATE TABLE VENTAS(
+                            CODIGOVENTA INT IDENTITY(1,1) PRIMARY KEY,
+                            CODIGOCLIENTE VARCHAR(6),
+                            CODIGOARTICULO VARCHAR(6),
+                            CODIGOPAGO VARCHAR(5),
+                            PRECIOARTICULO DECIMAL(10,2),
+                            CANTIDADARTICULO INT,
+                            FOREIGN KEY (CODIGOCLIENTE) REFERENCES CLIENTES(CODIGOCLIENTE),
                             FOREIGN KEY (CODIGOARTICULO) REFERENCES ARTICULOS(CODIGOARTICULO),
                             FOREIGN KEY (CODIGOPAGO) REFERENCES FORMASPAGO(CODIGOPAGO)
                             );", connectionDBManager)

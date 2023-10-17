@@ -117,23 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lupa" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lupa.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="articulo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\articulo.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="venta" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\venta.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="inventario" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\inventario.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="familia" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\familia.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="configuraciones" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\configuraciones.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAHYAAAB2AAAAAAAAAAAA
+        AABQTVBjW1la3VFPT2EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAWlha3Kimo/93dXX7TkxOaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAEM9QFSCgH3qtrOw/3d1dftOTE5oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAQj9CWYWCgebCvbr/d3V0+1BQUGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABCP0JZhYKB5nt6e/EsPEzAAAAAASE1Pj4gSlupH1xxvR9Z
+        br4fSlumIDM8NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEFBRFIoO0u7H3St9x46StoejLDvHbPk/zWV
+        tf8zlrb/HbTl/x6Iq+0gRVSgAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAh46Stoerd79VIGS/5GQ
+        k/+/u7r/vrm5/46OkP9Rg5X/HavZ/B9GVp0AAAAAAAAAAAAAAAAAAAAAAAAAACA1QT8ejbHvToCS/83J
+        x//m4d//5uHf/+bh3//m4d//ysTE/1CEl/8dhKbrJC49MgAAAAAAAAAAAAAAAAAAAAAeSluoHbLk/46V
+        mf/49vb//Pv7//n49//x7+3/5uLg/+bh3/+Ki47/HbXo/yBJWaAAAAAAAAAAAAAAAAAAAAAAH1txviqS
+        tP/T09T///////////////////////j29f/a1dP/uLSz/y2Yu/8eWW24AAAAAAAAAAAAAAAAAAAAAB9b
+        cr4rkrX/0tLT////////////////////////////joyM/7eysv8smbz/HlpuuQAAAAAAAAAAAAAAAAAA
+        AAAgSVqnHbPk/4qaof//////////////////////vb2+/7Wztf+Ji43/Hbbo/x5IWJ8AAAAAAAAAAAAA
+        AAAAAAAAIjM8PB6LsO0/gJj/3d7g///////x8fH/lpaX/7q6u//S0tT/T4WZ/x+DpeohMTwvAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAfRVWiHazb/D6Bmf+Elp3/zc3O/8vLzP9/lJz/NoKc/x2q1vsgRFOZAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAABABB5FVqAeh6zsHrXm/yaVuv8llrv/HbXo/x6CpusgRFOZAAAAAgAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAITQ9NiBJWaEeWW+6HlpuuR5IWJ8kLj0yAAAAAAAA
+        AAAAAAAAH/8AAA//AAAH/wAAg/8AAMAHAADgAQAA8AEAAPAAAADwAAAA8AAAAPAAAADwAAAA8AAAAPgB
+        AAD4AQAA/gcAAA==
+</value>
   </data>
 </root>

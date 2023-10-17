@@ -20,14 +20,14 @@ Option Explicit On
  Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
  Global.System.ComponentModel.ToolboxItem(true),  _
  Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema"),  _
- Global.System.Xml.Serialization.XmlRootAttribute("dsCompra"),  _
+ Global.System.Xml.Serialization.XmlRootAttribute("dsVenta"),  _
  Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")>  _
-Partial Public Class dsCompra
+Partial Public Class dsVenta
     Inherits Global.System.Data.DataSet
     
-    Private tableCompra As CompraDataTable
+    Private tableVenta As VentaDataTable
     
-    Private tableProveedor As ProveedorDataTable
+    Private tableCliente As ClienteDataTable
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -58,11 +58,11 @@ Partial Public Class dsCompra
         If (Me.DetermineSchemaSerializationMode(info, context) = Global.System.Data.SchemaSerializationMode.IncludeSchema) Then
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXmlSchema(New Global.System.Xml.XmlTextReader(New Global.System.IO.StringReader(strSchema)))
-            If (Not (ds.Tables("Compra")) Is Nothing) Then
-                MyBase.Tables.Add(New CompraDataTable(ds.Tables("Compra")))
+            If (Not (ds.Tables("Venta")) Is Nothing) Then
+                MyBase.Tables.Add(New VentaDataTable(ds.Tables("Venta")))
             End If
-            If (Not (ds.Tables("Proveedor")) Is Nothing) Then
-                MyBase.Tables.Add(New ProveedorDataTable(ds.Tables("Proveedor")))
+            If (Not (ds.Tables("Cliente")) Is Nothing) Then
+                MyBase.Tables.Add(New ClienteDataTable(ds.Tables("Cliente")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -85,9 +85,9 @@ Partial Public Class dsCompra
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property Compra() As CompraDataTable
+    Public ReadOnly Property Venta() As VentaDataTable
         Get
-            Return Me.tableCompra
+            Return Me.tableVenta
         End Get
     End Property
     
@@ -95,9 +95,9 @@ Partial Public Class dsCompra
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property Proveedor() As ProveedorDataTable
+    Public ReadOnly Property Cliente() As ClienteDataTable
         Get
-            Return Me.tableProveedor
+            Return Me.tableCliente
         End Get
     End Property
     
@@ -143,7 +143,7 @@ Partial Public Class dsCompra
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Public Overrides Function Clone() As Global.System.Data.DataSet
-        Dim cln As dsCompra = CType(MyBase.Clone,dsCompra)
+        Dim cln As dsVenta = CType(MyBase.Clone,dsVenta)
         cln.InitVars
         cln.SchemaSerializationMode = Me.SchemaSerializationMode
         Return cln
@@ -168,11 +168,11 @@ Partial Public Class dsCompra
             Me.Reset
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXml(reader)
-            If (Not (ds.Tables("Compra")) Is Nothing) Then
-                MyBase.Tables.Add(New CompraDataTable(ds.Tables("Compra")))
+            If (Not (ds.Tables("Venta")) Is Nothing) Then
+                MyBase.Tables.Add(New VentaDataTable(ds.Tables("Venta")))
             End If
-            If (Not (ds.Tables("Proveedor")) Is Nothing) Then
-                MyBase.Tables.Add(New ProveedorDataTable(ds.Tables("Proveedor")))
+            If (Not (ds.Tables("Cliente")) Is Nothing) Then
+                MyBase.Tables.Add(New ClienteDataTable(ds.Tables("Cliente")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -206,16 +206,16 @@ Partial Public Class dsCompra
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Friend Overloads Sub InitVars(ByVal initTable As Boolean)
-        Me.tableCompra = CType(MyBase.Tables("Compra"),CompraDataTable)
+        Me.tableVenta = CType(MyBase.Tables("Venta"),VentaDataTable)
         If (initTable = true) Then
-            If (Not (Me.tableCompra) Is Nothing) Then
-                Me.tableCompra.InitVars
+            If (Not (Me.tableVenta) Is Nothing) Then
+                Me.tableVenta.InitVars
             End If
         End If
-        Me.tableProveedor = CType(MyBase.Tables("Proveedor"),ProveedorDataTable)
+        Me.tableCliente = CType(MyBase.Tables("Cliente"),ClienteDataTable)
         If (initTable = true) Then
-            If (Not (Me.tableProveedor) Is Nothing) Then
-                Me.tableProveedor.InitVars
+            If (Not (Me.tableCliente) Is Nothing) Then
+                Me.tableCliente.InitVars
             End If
         End If
     End Sub
@@ -223,26 +223,26 @@ Partial Public Class dsCompra
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Private Sub InitClass()
-        Me.DataSetName = "dsCompra"
+        Me.DataSetName = "dsVenta"
         Me.Prefix = ""
-        Me.Namespace = "http://tempuri.org/dsCompra.xsd"
+        Me.Namespace = "http://tempuri.org/dsVenta.xsd"
         Me.EnforceConstraints = true
         Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
-        Me.tableCompra = New CompraDataTable()
-        MyBase.Tables.Add(Me.tableCompra)
-        Me.tableProveedor = New ProveedorDataTable()
-        MyBase.Tables.Add(Me.tableProveedor)
+        Me.tableVenta = New VentaDataTable()
+        MyBase.Tables.Add(Me.tableVenta)
+        Me.tableCliente = New ClienteDataTable()
+        MyBase.Tables.Add(Me.tableCliente)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-    Private Function ShouldSerializeCompra() As Boolean
+    Private Function ShouldSerializeVenta() As Boolean
         Return false
     End Function
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-    Private Function ShouldSerializeProveedor() As Boolean
+    Private Function ShouldSerializeCliente() As Boolean
         Return false
     End Function
     
@@ -257,7 +257,7 @@ Partial Public Class dsCompra
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Public Shared Function GetTypedDataSetSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-        Dim ds As dsCompra = New dsCompra()
+        Dim ds As dsVenta = New dsVenta()
         Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
         Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
         Dim any As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
@@ -305,20 +305,20 @@ Partial Public Class dsCompra
     End Function
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-    Public Delegate Sub CompraRowChangeEventHandler(ByVal sender As Object, ByVal e As CompraRowChangeEvent)
+    Public Delegate Sub VentaRowChangeEventHandler(ByVal sender As Object, ByVal e As VentaRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-    Public Delegate Sub ProveedorRowChangeEventHandler(ByVal sender As Object, ByVal e As ProveedorRowChangeEvent)
+    Public Delegate Sub ClienteRowChangeEventHandler(ByVal sender As Object, ByVal e As ClienteRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class CompraDataTable
-        Inherits Global.System.Data.TypedTableBase(Of CompraRow)
+    Partial Public Class VentaDataTable
+        Inherits Global.System.Data.TypedTableBase(Of VentaRow)
         
-        Private columnProveedor As Global.System.Data.DataColumn
+        Private columnCliente As Global.System.Data.DataColumn
         
         Private columnArtículo As Global.System.Data.DataColumn
         
@@ -334,7 +334,7 @@ Partial Public Class dsCompra
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "Compra"
+            Me.TableName = "Venta"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -367,9 +367,9 @@ Partial Public Class dsCompra
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property ProveedorColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property ClienteColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnProveedor
+                Return Me.columnCliente
             End Get
         End Property
         
@@ -424,44 +424,44 @@ Partial Public Class dsCompra
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As CompraRow
+        Public Default ReadOnly Property Item(ByVal index As Integer) As VentaRow
             Get
-                Return CType(Me.Rows(index),CompraRow)
+                Return CType(Me.Rows(index),VentaRow)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event CompraRowChanging As CompraRowChangeEventHandler
+        Public Event VentaRowChanging As VentaRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event CompraRowChanged As CompraRowChangeEventHandler
+        Public Event VentaRowChanged As VentaRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event CompraRowDeleting As CompraRowChangeEventHandler
+        Public Event VentaRowDeleting As VentaRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event CompraRowDeleted As CompraRowChangeEventHandler
+        Public Event VentaRowDeleted As VentaRowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Sub AddCompraRow(ByVal row As CompraRow)
+        Public Overloads Sub AddVentaRow(ByVal row As VentaRow)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddCompraRow(ByVal Proveedor As String, ByVal Artículo As String, ByVal Forma_Pago As String, ByVal Precio_Unitario As String, ByVal Cantidad As String, ByVal Precio_Total As Double) As CompraRow
-            Dim rowCompraRow As CompraRow = CType(Me.NewRow,CompraRow)
-            Dim columnValuesArray() As Object = New Object() {Proveedor, Artículo, Forma_Pago, Precio_Unitario, Cantidad, Precio_Total}
-            rowCompraRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowCompraRow)
-            Return rowCompraRow
+        Public Overloads Function AddVentaRow(ByVal Cliente As String, ByVal Artículo As String, ByVal Forma_Pago As String, ByVal Precio_Unitario As String, ByVal Cantidad As String, ByVal Precio_Total As Double) As VentaRow
+            Dim rowVentaRow As VentaRow = CType(Me.NewRow,VentaRow)
+            Dim columnValuesArray() As Object = New Object() {Cliente, Artículo, Forma_Pago, Precio_Unitario, Cantidad, Precio_Total}
+            rowVentaRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowVentaRow)
+            Return rowVentaRow
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As CompraDataTable = CType(MyBase.Clone,CompraDataTable)
+            Dim cln As VentaDataTable = CType(MyBase.Clone,VentaDataTable)
             cln.InitVars
             Return cln
         End Function
@@ -469,13 +469,13 @@ Partial Public Class dsCompra
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New CompraDataTable()
+            Return New VentaDataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Friend Sub InitVars()
-            Me.columnProveedor = MyBase.Columns("Proveedor")
+            Me.columnCliente = MyBase.Columns("Cliente")
             Me.columnArtículo = MyBase.Columns("Artículo")
             Me.columnForma_Pago = MyBase.Columns("Forma Pago")
             Me.columnPrecio_Unitario = MyBase.Columns("Precio Unitario")
@@ -486,8 +486,8 @@ Partial Public Class dsCompra
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnProveedor = New Global.System.Data.DataColumn("Proveedor", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnProveedor)
+            Me.columnCliente = New Global.System.Data.DataColumn("Cliente", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCliente)
             Me.columnArtículo = New Global.System.Data.DataColumn("Artículo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnArtículo)
             Me.columnForma_Pago = New Global.System.Data.DataColumn("Forma Pago", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -502,28 +502,28 @@ Partial Public Class dsCompra
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function NewCompraRow() As CompraRow
-            Return CType(Me.NewRow,CompraRow)
+        Public Function NewVentaRow() As VentaRow
+            Return CType(Me.NewRow,VentaRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New CompraRow(builder)
+            Return New VentaRow(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(CompraRow)
+            Return GetType(VentaRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.CompraRowChangedEvent) Is Nothing) Then
-                RaiseEvent CompraRowChanged(Me, New CompraRowChangeEvent(CType(e.Row,CompraRow), e.Action))
+            If (Not (Me.VentaRowChangedEvent) Is Nothing) Then
+                RaiseEvent VentaRowChanged(Me, New VentaRowChangeEvent(CType(e.Row,VentaRow), e.Action))
             End If
         End Sub
         
@@ -531,8 +531,8 @@ Partial Public Class dsCompra
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.CompraRowChangingEvent) Is Nothing) Then
-                RaiseEvent CompraRowChanging(Me, New CompraRowChangeEvent(CType(e.Row,CompraRow), e.Action))
+            If (Not (Me.VentaRowChangingEvent) Is Nothing) Then
+                RaiseEvent VentaRowChanging(Me, New VentaRowChangeEvent(CType(e.Row,VentaRow), e.Action))
             End If
         End Sub
         
@@ -540,8 +540,8 @@ Partial Public Class dsCompra
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.CompraRowDeletedEvent) Is Nothing) Then
-                RaiseEvent CompraRowDeleted(Me, New CompraRowChangeEvent(CType(e.Row,CompraRow), e.Action))
+            If (Not (Me.VentaRowDeletedEvent) Is Nothing) Then
+                RaiseEvent VentaRowDeleted(Me, New VentaRowChangeEvent(CType(e.Row,VentaRow), e.Action))
             End If
         End Sub
         
@@ -549,14 +549,14 @@ Partial Public Class dsCompra
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.CompraRowDeletingEvent) Is Nothing) Then
-                RaiseEvent CompraRowDeleting(Me, New CompraRowChangeEvent(CType(e.Row,CompraRow), e.Action))
+            If (Not (Me.VentaRowDeletingEvent) Is Nothing) Then
+                RaiseEvent VentaRowDeleting(Me, New VentaRowChangeEvent(CType(e.Row,VentaRow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub RemoveCompraRow(ByVal row As CompraRow)
+        Public Sub RemoveVentaRow(ByVal row As VentaRow)
             Me.Rows.Remove(row)
         End Sub
         
@@ -565,7 +565,7 @@ Partial Public Class dsCompra
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As dsCompra = New dsCompra()
+            Dim ds As dsVenta = New dsVenta()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -583,7 +583,7 @@ Partial Public Class dsCompra
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "CompraDataTable"
+            attribute2.FixedValue = "VentaDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -632,8 +632,8 @@ Partial Public Class dsCompra
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class ProveedorDataTable
-        Inherits Global.System.Data.TypedTableBase(Of ProveedorRow)
+    Partial Public Class ClienteDataTable
+        Inherits Global.System.Data.TypedTableBase(Of ClienteRow)
         
         Private columnCódigo As Global.System.Data.DataColumn
         
@@ -641,15 +641,17 @@ Partial Public Class dsCompra
         
         Private columnDirección As Global.System.Data.DataColumn
         
-        Private columnTeléfono As Global.System.Data.DataColumn
+        Private columnNIF As Global.System.Data.DataColumn
         
-        Private columnFecha_Compra As Global.System.Data.DataColumn
+        Private columnEmail As Global.System.Data.DataColumn
+        
+        Private columnFecha_Venta As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "Proveedor"
+            Me.TableName = "Cliente"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -706,17 +708,25 @@ Partial Public Class dsCompra
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property TeléfonoColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property NIFColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnTeléfono
+                Return Me.columnNIF
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property Fecha_CompraColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property EmailColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnFecha_Compra
+                Return Me.columnEmail
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Fecha_VentaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFecha_Venta
             End Get
         End Property
         
@@ -731,44 +741,44 @@ Partial Public Class dsCompra
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As ProveedorRow
+        Public Default ReadOnly Property Item(ByVal index As Integer) As ClienteRow
             Get
-                Return CType(Me.Rows(index),ProveedorRow)
+                Return CType(Me.Rows(index),ClienteRow)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event ProveedorRowChanging As ProveedorRowChangeEventHandler
+        Public Event ClienteRowChanging As ClienteRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event ProveedorRowChanged As ProveedorRowChangeEventHandler
+        Public Event ClienteRowChanged As ClienteRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event ProveedorRowDeleting As ProveedorRowChangeEventHandler
+        Public Event ClienteRowDeleting As ClienteRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event ProveedorRowDeleted As ProveedorRowChangeEventHandler
+        Public Event ClienteRowDeleted As ClienteRowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Sub AddProveedorRow(ByVal row As ProveedorRow)
+        Public Overloads Sub AddClienteRow(ByVal row As ClienteRow)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddProveedorRow(ByVal Código As String, ByVal Nombre As String, ByVal Dirección As String, ByVal Teléfono As String, ByVal Fecha_Compra As Date) As ProveedorRow
-            Dim rowProveedorRow As ProveedorRow = CType(Me.NewRow,ProveedorRow)
-            Dim columnValuesArray() As Object = New Object() {Código, Nombre, Dirección, Teléfono, Fecha_Compra}
-            rowProveedorRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowProveedorRow)
-            Return rowProveedorRow
+        Public Overloads Function AddClienteRow(ByVal Código As String, ByVal Nombre As String, ByVal Dirección As String, ByVal NIF As String, ByVal Email As String, ByVal Fecha_Venta As Date) As ClienteRow
+            Dim rowClienteRow As ClienteRow = CType(Me.NewRow,ClienteRow)
+            Dim columnValuesArray() As Object = New Object() {Código, Nombre, Dirección, NIF, Email, Fecha_Venta}
+            rowClienteRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowClienteRow)
+            Return rowClienteRow
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As ProveedorDataTable = CType(MyBase.Clone,ProveedorDataTable)
+            Dim cln As ClienteDataTable = CType(MyBase.Clone,ClienteDataTable)
             cln.InitVars
             Return cln
         End Function
@@ -776,7 +786,7 @@ Partial Public Class dsCompra
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New ProveedorDataTable()
+            Return New ClienteDataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -785,8 +795,9 @@ Partial Public Class dsCompra
             Me.columnCódigo = MyBase.Columns("Código")
             Me.columnNombre = MyBase.Columns("Nombre")
             Me.columnDirección = MyBase.Columns("Dirección")
-            Me.columnTeléfono = MyBase.Columns("Teléfono")
-            Me.columnFecha_Compra = MyBase.Columns("Fecha Compra")
+            Me.columnNIF = MyBase.Columns("NIF")
+            Me.columnEmail = MyBase.Columns("Email")
+            Me.columnFecha_Venta = MyBase.Columns("Fecha Venta")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -798,36 +809,38 @@ Partial Public Class dsCompra
             MyBase.Columns.Add(Me.columnNombre)
             Me.columnDirección = New Global.System.Data.DataColumn("Dirección", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDirección)
-            Me.columnTeléfono = New Global.System.Data.DataColumn("Teléfono", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnTeléfono)
-            Me.columnFecha_Compra = New Global.System.Data.DataColumn("Fecha Compra", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnFecha_Compra)
+            Me.columnNIF = New Global.System.Data.DataColumn("NIF", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNIF)
+            Me.columnEmail = New Global.System.Data.DataColumn("Email", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEmail)
+            Me.columnFecha_Venta = New Global.System.Data.DataColumn("Fecha Venta", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFecha_Venta)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function NewProveedorRow() As ProveedorRow
-            Return CType(Me.NewRow,ProveedorRow)
+        Public Function NewClienteRow() As ClienteRow
+            Return CType(Me.NewRow,ClienteRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New ProveedorRow(builder)
+            Return New ClienteRow(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(ProveedorRow)
+            Return GetType(ClienteRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.ProveedorRowChangedEvent) Is Nothing) Then
-                RaiseEvent ProveedorRowChanged(Me, New ProveedorRowChangeEvent(CType(e.Row,ProveedorRow), e.Action))
+            If (Not (Me.ClienteRowChangedEvent) Is Nothing) Then
+                RaiseEvent ClienteRowChanged(Me, New ClienteRowChangeEvent(CType(e.Row,ClienteRow), e.Action))
             End If
         End Sub
         
@@ -835,8 +848,8 @@ Partial Public Class dsCompra
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.ProveedorRowChangingEvent) Is Nothing) Then
-                RaiseEvent ProveedorRowChanging(Me, New ProveedorRowChangeEvent(CType(e.Row,ProveedorRow), e.Action))
+            If (Not (Me.ClienteRowChangingEvent) Is Nothing) Then
+                RaiseEvent ClienteRowChanging(Me, New ClienteRowChangeEvent(CType(e.Row,ClienteRow), e.Action))
             End If
         End Sub
         
@@ -844,8 +857,8 @@ Partial Public Class dsCompra
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.ProveedorRowDeletedEvent) Is Nothing) Then
-                RaiseEvent ProveedorRowDeleted(Me, New ProveedorRowChangeEvent(CType(e.Row,ProveedorRow), e.Action))
+            If (Not (Me.ClienteRowDeletedEvent) Is Nothing) Then
+                RaiseEvent ClienteRowDeleted(Me, New ClienteRowChangeEvent(CType(e.Row,ClienteRow), e.Action))
             End If
         End Sub
         
@@ -853,14 +866,14 @@ Partial Public Class dsCompra
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.ProveedorRowDeletingEvent) Is Nothing) Then
-                RaiseEvent ProveedorRowDeleting(Me, New ProveedorRowChangeEvent(CType(e.Row,ProveedorRow), e.Action))
+            If (Not (Me.ClienteRowDeletingEvent) Is Nothing) Then
+                RaiseEvent ClienteRowDeleting(Me, New ClienteRowChangeEvent(CType(e.Row,ClienteRow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub RemoveProveedorRow(ByVal row As ProveedorRow)
+        Public Sub RemoveClienteRow(ByVal row As ClienteRow)
             Me.Rows.Remove(row)
         End Sub
         
@@ -869,7 +882,7 @@ Partial Public Class dsCompra
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As dsCompra = New dsCompra()
+            Dim ds As dsVenta = New dsVenta()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -887,7 +900,7 @@ Partial Public Class dsCompra
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "ProveedorDataTable"
+            attribute2.FixedValue = "ClienteDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -934,30 +947,30 @@ Partial Public Class dsCompra
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class CompraRow
+    Partial Public Class VentaRow
         Inherits Global.System.Data.DataRow
         
-        Private tableCompra As CompraDataTable
+        Private tableVenta As VentaDataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tableCompra = CType(Me.Table,CompraDataTable)
+            Me.tableVenta = CType(Me.Table,VentaDataTable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property Proveedor() As String
+        Public Property Cliente() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableCompra.ProveedorColumn),String)
+                    Return CType(Me(Me.tableVenta.ClienteColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Proveedor' de la tabla 'Compra' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Cliente' de la tabla 'Venta' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableCompra.ProveedorColumn) = value
+                Me(Me.tableVenta.ClienteColumn) = value
             End Set
         End Property
         
@@ -966,13 +979,13 @@ Partial Public Class dsCompra
         Public Property Artículo() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableCompra.ArtículoColumn),String)
+                    Return CType(Me(Me.tableVenta.ArtículoColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Artículo' de la tabla 'Compra' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Artículo' de la tabla 'Venta' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableCompra.ArtículoColumn) = value
+                Me(Me.tableVenta.ArtículoColumn) = value
             End Set
         End Property
         
@@ -981,13 +994,13 @@ Partial Public Class dsCompra
         Public Property Forma_Pago() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableCompra.Forma_PagoColumn),String)
+                    Return CType(Me(Me.tableVenta.Forma_PagoColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Forma Pago' de la tabla 'Compra' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Forma Pago' de la tabla 'Venta' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableCompra.Forma_PagoColumn) = value
+                Me(Me.tableVenta.Forma_PagoColumn) = value
             End Set
         End Property
         
@@ -996,13 +1009,13 @@ Partial Public Class dsCompra
         Public Property Precio_Unitario() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableCompra.Precio_UnitarioColumn),String)
+                    Return CType(Me(Me.tableVenta.Precio_UnitarioColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Precio Unitario' de la tabla 'Compra' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Precio Unitario' de la tabla 'Venta' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableCompra.Precio_UnitarioColumn) = value
+                Me(Me.tableVenta.Precio_UnitarioColumn) = value
             End Set
         End Property
         
@@ -1011,13 +1024,13 @@ Partial Public Class dsCompra
         Public Property Cantidad() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableCompra.CantidadColumn),String)
+                    Return CType(Me(Me.tableVenta.CantidadColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Cantidad' de la tabla 'Compra' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Cantidad' de la tabla 'Venta' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableCompra.CantidadColumn) = value
+                Me(Me.tableVenta.CantidadColumn) = value
             End Set
         End Property
         
@@ -1026,102 +1039,102 @@ Partial Public Class dsCompra
         Public Property Precio_Total() As Double
             Get
                 Try 
-                    Return CType(Me(Me.tableCompra.Precio_TotalColumn),Double)
+                    Return CType(Me(Me.tableVenta.Precio_TotalColumn),Double)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Precio Total' de la tabla 'Compra' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Precio Total' de la tabla 'Venta' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableCompra.Precio_TotalColumn) = value
+                Me(Me.tableVenta.Precio_TotalColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsProveedorNull() As Boolean
-            Return Me.IsNull(Me.tableCompra.ProveedorColumn)
+        Public Function IsClienteNull() As Boolean
+            Return Me.IsNull(Me.tableVenta.ClienteColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetProveedorNull()
-            Me(Me.tableCompra.ProveedorColumn) = Global.System.Convert.DBNull
+        Public Sub SetClienteNull()
+            Me(Me.tableVenta.ClienteColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsArtículoNull() As Boolean
-            Return Me.IsNull(Me.tableCompra.ArtículoColumn)
+            Return Me.IsNull(Me.tableVenta.ArtículoColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetArtículoNull()
-            Me(Me.tableCompra.ArtículoColumn) = Global.System.Convert.DBNull
+            Me(Me.tableVenta.ArtículoColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsForma_PagoNull() As Boolean
-            Return Me.IsNull(Me.tableCompra.Forma_PagoColumn)
+            Return Me.IsNull(Me.tableVenta.Forma_PagoColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetForma_PagoNull()
-            Me(Me.tableCompra.Forma_PagoColumn) = Global.System.Convert.DBNull
+            Me(Me.tableVenta.Forma_PagoColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsPrecio_UnitarioNull() As Boolean
-            Return Me.IsNull(Me.tableCompra.Precio_UnitarioColumn)
+            Return Me.IsNull(Me.tableVenta.Precio_UnitarioColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetPrecio_UnitarioNull()
-            Me(Me.tableCompra.Precio_UnitarioColumn) = Global.System.Convert.DBNull
+            Me(Me.tableVenta.Precio_UnitarioColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsCantidadNull() As Boolean
-            Return Me.IsNull(Me.tableCompra.CantidadColumn)
+            Return Me.IsNull(Me.tableVenta.CantidadColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetCantidadNull()
-            Me(Me.tableCompra.CantidadColumn) = Global.System.Convert.DBNull
+            Me(Me.tableVenta.CantidadColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsPrecio_TotalNull() As Boolean
-            Return Me.IsNull(Me.tableCompra.Precio_TotalColumn)
+            Return Me.IsNull(Me.tableVenta.Precio_TotalColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetPrecio_TotalNull()
-            Me(Me.tableCompra.Precio_TotalColumn) = Global.System.Convert.DBNull
+            Me(Me.tableVenta.Precio_TotalColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class ProveedorRow
+    Partial Public Class ClienteRow
         Inherits Global.System.Data.DataRow
         
-        Private tableProveedor As ProveedorDataTable
+        Private tableCliente As ClienteDataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tableProveedor = CType(Me.Table,ProveedorDataTable)
+            Me.tableCliente = CType(Me.Table,ClienteDataTable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1129,13 +1142,13 @@ Partial Public Class dsCompra
         Public Property Código() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableProveedor.CódigoColumn),String)
+                    Return CType(Me(Me.tableCliente.CódigoColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Código' de la tabla 'Proveedor' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Código' de la tabla 'Cliente' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableProveedor.CódigoColumn) = value
+                Me(Me.tableCliente.CódigoColumn) = value
             End Set
         End Property
         
@@ -1144,13 +1157,13 @@ Partial Public Class dsCompra
         Public Property Nombre() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableProveedor.NombreColumn),String)
+                    Return CType(Me(Me.tableCliente.NombreColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Nombre' de la tabla 'Proveedor' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Nombre' de la tabla 'Cliente' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableProveedor.NombreColumn) = value
+                Me(Me.tableCliente.NombreColumn) = value
             End Set
         End Property
         
@@ -1159,104 +1172,131 @@ Partial Public Class dsCompra
         Public Property Dirección() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableProveedor.DirecciónColumn),String)
+                    Return CType(Me(Me.tableCliente.DirecciónColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Dirección' de la tabla 'Proveedor' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Dirección' de la tabla 'Cliente' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableProveedor.DirecciónColumn) = value
+                Me(Me.tableCliente.DirecciónColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property Teléfono() As String
+        Public Property NIF() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableProveedor.TeléfonoColumn),String)
+                    Return CType(Me(Me.tableCliente.NIFColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Teléfono' de la tabla 'Proveedor' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NIF' de la tabla 'Cliente' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableProveedor.TeléfonoColumn) = value
+                Me(Me.tableCliente.NIFColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property Fecha_Compra() As Date
+        Public Property Email() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableProveedor.Fecha_CompraColumn),Date)
+                    Return CType(Me(Me.tableCliente.EmailColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Fecha Compra' de la tabla 'Proveedor' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Email' de la tabla 'Cliente' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableProveedor.Fecha_CompraColumn) = value
+                Me(Me.tableCliente.EmailColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Fecha_Venta() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableCliente.Fecha_VentaColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Fecha Venta' de la tabla 'Cliente' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCliente.Fecha_VentaColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsCódigoNull() As Boolean
-            Return Me.IsNull(Me.tableProveedor.CódigoColumn)
+            Return Me.IsNull(Me.tableCliente.CódigoColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetCódigoNull()
-            Me(Me.tableProveedor.CódigoColumn) = Global.System.Convert.DBNull
+            Me(Me.tableCliente.CódigoColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsNombreNull() As Boolean
-            Return Me.IsNull(Me.tableProveedor.NombreColumn)
+            Return Me.IsNull(Me.tableCliente.NombreColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetNombreNull()
-            Me(Me.tableProveedor.NombreColumn) = Global.System.Convert.DBNull
+            Me(Me.tableCliente.NombreColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsDirecciónNull() As Boolean
-            Return Me.IsNull(Me.tableProveedor.DirecciónColumn)
+            Return Me.IsNull(Me.tableCliente.DirecciónColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetDirecciónNull()
-            Me(Me.tableProveedor.DirecciónColumn) = Global.System.Convert.DBNull
+            Me(Me.tableCliente.DirecciónColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsTeléfonoNull() As Boolean
-            Return Me.IsNull(Me.tableProveedor.TeléfonoColumn)
+        Public Function IsNIFNull() As Boolean
+            Return Me.IsNull(Me.tableCliente.NIFColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetTeléfonoNull()
-            Me(Me.tableProveedor.TeléfonoColumn) = Global.System.Convert.DBNull
+        Public Sub SetNIFNull()
+            Me(Me.tableCliente.NIFColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsFecha_CompraNull() As Boolean
-            Return Me.IsNull(Me.tableProveedor.Fecha_CompraColumn)
+        Public Function IsEmailNull() As Boolean
+            Return Me.IsNull(Me.tableCliente.EmailColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetFecha_CompraNull()
-            Me(Me.tableProveedor.Fecha_CompraColumn) = Global.System.Convert.DBNull
+        Public Sub SetEmailNull()
+            Me(Me.tableCliente.EmailColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFecha_VentaNull() As Boolean
+            Return Me.IsNull(Me.tableCliente.Fecha_VentaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFecha_VentaNull()
+            Me(Me.tableCliente.Fecha_VentaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -1264,16 +1304,16 @@ Partial Public Class dsCompra
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-    Public Class CompraRowChangeEvent
+    Public Class VentaRowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As CompraRow
+        Private eventRow As VentaRow
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub New(ByVal row As CompraRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As VentaRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -1281,7 +1321,7 @@ Partial Public Class dsCompra
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property Row() As CompraRow
+        Public ReadOnly Property Row() As VentaRow
             Get
                 Return Me.eventRow
             End Get
@@ -1300,16 +1340,16 @@ Partial Public Class dsCompra
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-    Public Class ProveedorRowChangeEvent
+    Public Class ClienteRowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As ProveedorRow
+        Private eventRow As ClienteRow
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub New(ByVal row As ProveedorRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As ClienteRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -1317,7 +1357,7 @@ Partial Public Class dsCompra
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property Row() As ProveedorRow
+        Public ReadOnly Property Row() As ClienteRow
             Get
                 Return Me.eventRow
             End Get

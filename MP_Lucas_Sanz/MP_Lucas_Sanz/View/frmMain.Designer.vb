@@ -33,11 +33,11 @@ Partial Class frmMain
         Me.tab_main = New System.Windows.Forms.TabControl()
         Me.tab_menu_principal = New System.Windows.Forms.TabPage()
         Me.tlp_menu_main = New System.Windows.Forms.TableLayoutPanel()
-        Me.btn_efectuar_venta = New System.Windows.Forms.Button()
-        Me.btn_efectuar_compra = New System.Windows.Forms.Button()
         Me.tab_bancos_pagos = New System.Windows.Forms.TabPage()
         Me.tlp_main_bancos_pagos = New System.Windows.Forms.TableLayoutPanel()
         Me.dg_bancos = New System.Windows.Forms.DataGridView()
+        Me.nombreBanco = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.codigoBanco = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dg_formas_pago = New System.Windows.Forms.DataGridView()
         Me.tlp_bancos = New System.Windows.Forms.TableLayoutPanel()
         Me.btn_añadir_banco = New System.Windows.Forms.Button()
@@ -82,8 +82,11 @@ Partial Class frmMain
         Me.btn_eliminar_articulo_inventario = New System.Windows.Forms.Button()
         Me.txt_busqueda_inventario = New System.Windows.Forms.TextBox()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
-        Me.nombreBanco = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.codigoBanco = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btn_efectuar_venta = New System.Windows.Forms.Button()
+        Me.btn_menu_inventario = New System.Windows.Forms.Button()
+        Me.btn_menu_configuraciones = New System.Windows.Forms.Button()
+        Me.btn_efectuar_compra = New System.Windows.Forms.Button()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.CodigoDePagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NombreDePagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BancoAsignadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -166,6 +169,7 @@ Partial Class frmMain
         Me.tab_main.Controls.Add(Me.tab_clientes_grupos)
         Me.tab_main.Controls.Add(Me.tab_articulos_proveedores)
         Me.tab_main.Controls.Add(Me.tab_inventario)
+        Me.tab_main.Controls.Add(Me.TabPage1)
         Me.tab_main.ImageList = Me.ImageList1
         Me.tab_main.ItemSize = New System.Drawing.Size(78, 50)
         Me.tab_main.Location = New System.Drawing.Point(0, 2)
@@ -195,6 +199,8 @@ Partial Class frmMain
         Me.tlp_menu_main.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.tlp_menu_main.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.tlp_menu_main.Controls.Add(Me.btn_efectuar_venta, 0, 0)
+        Me.tlp_menu_main.Controls.Add(Me.btn_menu_inventario, 1, 0)
+        Me.tlp_menu_main.Controls.Add(Me.btn_menu_configuraciones, 1, 1)
         Me.tlp_menu_main.Controls.Add(Me.btn_efectuar_compra, 0, 1)
         Me.tlp_menu_main.Location = New System.Drawing.Point(0, 0)
         Me.tlp_menu_main.Name = "tlp_menu_main"
@@ -203,42 +209,6 @@ Partial Class frmMain
         Me.tlp_menu_main.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.tlp_menu_main.Size = New System.Drawing.Size(791, 391)
         Me.tlp_menu_main.TabIndex = 0
-        '
-        'btn_efectuar_venta
-        '
-        Me.btn_efectuar_venta.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_efectuar_venta.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.btn_efectuar_venta.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_efectuar_venta.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.venta
-        Me.btn_efectuar_venta.Location = New System.Drawing.Point(8, 8)
-        Me.btn_efectuar_venta.Margin = New System.Windows.Forms.Padding(8)
-        Me.btn_efectuar_venta.Name = "btn_efectuar_venta"
-        Me.btn_efectuar_venta.Size = New System.Drawing.Size(379, 179)
-        Me.btn_efectuar_venta.TabIndex = 0
-        Me.btn_efectuar_venta.Text = "VENTA"
-        Me.btn_efectuar_venta.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btn_efectuar_venta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.btn_efectuar_venta.UseVisualStyleBackColor = False
-        '
-        'btn_efectuar_compra
-        '
-        Me.btn_efectuar_compra.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_efectuar_compra.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btn_efectuar_compra.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_efectuar_compra.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.inventario
-        Me.btn_efectuar_compra.Location = New System.Drawing.Point(8, 203)
-        Me.btn_efectuar_compra.Margin = New System.Windows.Forms.Padding(8)
-        Me.btn_efectuar_compra.Name = "btn_efectuar_compra"
-        Me.btn_efectuar_compra.Size = New System.Drawing.Size(379, 180)
-        Me.btn_efectuar_compra.TabIndex = 1
-        Me.btn_efectuar_compra.Text = "COMPRA"
-        Me.btn_efectuar_compra.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btn_efectuar_compra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.btn_efectuar_compra.UseVisualStyleBackColor = False
         '
         'tab_bancos_pagos
         '
@@ -289,6 +259,20 @@ Partial Class frmMain
         Me.dg_bancos.ReadOnly = True
         Me.dg_bancos.Size = New System.Drawing.Size(271, 328)
         Me.dg_bancos.TabIndex = 0
+        '
+        'nombreBanco
+        '
+        Me.nombreBanco.DataPropertyName = "NombreDeBanco"
+        Me.nombreBanco.HeaderText = "Nombre Banco"
+        Me.nombreBanco.Name = "nombreBanco"
+        Me.nombreBanco.ReadOnly = True
+        '
+        'codigoBanco
+        '
+        Me.codigoBanco.DataPropertyName = "CodigoDeBanco"
+        Me.codigoBanco.HeaderText = "Codigo"
+        Me.codigoBanco.Name = "codigoBanco"
+        Me.codigoBanco.ReadOnly = True
         '
         'dg_formas_pago
         '
@@ -945,20 +929,90 @@ Partial Class frmMain
         Me.ImageList1.Images.SetKeyName(1, "cliente.ico")
         Me.ImageList1.Images.SetKeyName(2, "articulo.ico")
         Me.ImageList1.Images.SetKeyName(3, "inventario.ico")
+        Me.ImageList1.Images.SetKeyName(4, "configuraciones.ico")
         '
-        'nombreBanco
+        'btn_efectuar_venta
         '
-        Me.nombreBanco.DataPropertyName = "NombreDeBanco"
-        Me.nombreBanco.HeaderText = "Nombre Banco"
-        Me.nombreBanco.Name = "nombreBanco"
-        Me.nombreBanco.ReadOnly = True
+        Me.btn_efectuar_venta.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_efectuar_venta.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.btn_efectuar_venta.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_efectuar_venta.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.venta
+        Me.btn_efectuar_venta.Location = New System.Drawing.Point(8, 8)
+        Me.btn_efectuar_venta.Margin = New System.Windows.Forms.Padding(8)
+        Me.btn_efectuar_venta.Name = "btn_efectuar_venta"
+        Me.btn_efectuar_venta.Size = New System.Drawing.Size(379, 179)
+        Me.btn_efectuar_venta.TabIndex = 0
+        Me.btn_efectuar_venta.Text = "VENTA"
+        Me.btn_efectuar_venta.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btn_efectuar_venta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.btn_efectuar_venta.UseVisualStyleBackColor = False
         '
-        'codigoBanco
+        'btn_menu_inventario
         '
-        Me.codigoBanco.DataPropertyName = "CodigoDeBanco"
-        Me.codigoBanco.HeaderText = "Codigo"
-        Me.codigoBanco.Name = "codigoBanco"
-        Me.codigoBanco.ReadOnly = True
+        Me.btn_menu_inventario.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_menu_inventario.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btn_menu_inventario.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_menu_inventario.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.familia
+        Me.btn_menu_inventario.Location = New System.Drawing.Point(403, 8)
+        Me.btn_menu_inventario.Margin = New System.Windows.Forms.Padding(8)
+        Me.btn_menu_inventario.Name = "btn_menu_inventario"
+        Me.btn_menu_inventario.Size = New System.Drawing.Size(380, 179)
+        Me.btn_menu_inventario.TabIndex = 2
+        Me.btn_menu_inventario.Text = "INVENTARIO"
+        Me.btn_menu_inventario.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btn_menu_inventario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.btn_menu_inventario.UseVisualStyleBackColor = False
+        '
+        'btn_menu_configuraciones
+        '
+        Me.btn_menu_configuraciones.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_menu_configuraciones.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.btn_menu_configuraciones.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_menu_configuraciones.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.configuraciones
+        Me.btn_menu_configuraciones.Location = New System.Drawing.Point(403, 203)
+        Me.btn_menu_configuraciones.Margin = New System.Windows.Forms.Padding(8)
+        Me.btn_menu_configuraciones.Name = "btn_menu_configuraciones"
+        Me.btn_menu_configuraciones.Size = New System.Drawing.Size(380, 180)
+        Me.btn_menu_configuraciones.TabIndex = 3
+        Me.btn_menu_configuraciones.Text = "CONFIGURACIONES"
+        Me.btn_menu_configuraciones.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btn_menu_configuraciones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.btn_menu_configuraciones.UseVisualStyleBackColor = False
+        '
+        'btn_efectuar_compra
+        '
+        Me.btn_efectuar_compra.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_efectuar_compra.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btn_efectuar_compra.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_efectuar_compra.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.inventario
+        Me.btn_efectuar_compra.Location = New System.Drawing.Point(8, 203)
+        Me.btn_efectuar_compra.Margin = New System.Windows.Forms.Padding(8)
+        Me.btn_efectuar_compra.Name = "btn_efectuar_compra"
+        Me.btn_efectuar_compra.Size = New System.Drawing.Size(379, 180)
+        Me.btn_efectuar_compra.TabIndex = 1
+        Me.btn_efectuar_compra.Text = "COMPRA"
+        Me.btn_efectuar_compra.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btn_efectuar_compra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.btn_efectuar_compra.UseVisualStyleBackColor = False
+        '
+        'TabPage1
+        '
+        Me.TabPage1.ImageIndex = 4
+        Me.TabPage1.Location = New System.Drawing.Point(4, 54)
+        Me.TabPage1.Name = "TabPage1"
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage1.Size = New System.Drawing.Size(791, 391)
+        Me.TabPage1.TabIndex = 5
+        Me.TabPage1.Text = "CONFIGURACIONES"
+        Me.TabPage1.UseVisualStyleBackColor = True
         '
         'CodigoDePagoDataGridViewTextBoxColumn
         '
@@ -1235,7 +1289,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.tab_main)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmMain"
-        Me.Text = "MARCO POLO - VERSIÓN LUCA SANZ"
+        Me.Text = "MARCO POLO - VERSIÓN LUCAS SANZ"
         Me.tab_main.ResumeLayout(False)
         Me.tab_menu_principal.ResumeLayout(False)
         Me.tlp_menu_main.ResumeLayout(False)
@@ -1364,4 +1418,7 @@ Partial Class frmMain
     Friend WithEvents btn_efectuar_compra As Button
     Friend WithEvents nombreBanco As DataGridViewTextBoxColumn
     Friend WithEvents codigoBanco As DataGridViewTextBoxColumn
+    Friend WithEvents btn_menu_inventario As Button
+    Friend WithEvents btn_menu_configuraciones As Button
+    Friend WithEvents TabPage1 As TabPage
 End Class

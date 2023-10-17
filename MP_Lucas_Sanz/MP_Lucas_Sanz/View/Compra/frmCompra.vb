@@ -5,6 +5,7 @@ Public Class frmCompra
     Dim listaCompras As BindingList(Of Compra) = New BindingList(Of Compra)()
     Dim compraTemp As Compra = New Compra()
     Dim dt As New DataTable()
+    Dim proveedorSeleccionado As String
 
     Private Sub frmCompra_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         listaCompras = New BindingList(Of Compra)
@@ -17,6 +18,7 @@ Public Class frmCompra
         frmBusquedaNuevo.Text = "BÚSQUEDA DE PROVEEDORES"
         frmBusquedaNuevo.ShowDialog()
         txt_proveedor_seleccionado.Text = frmBusquedaNuevo.codigoSeleccionado
+        proveedorSeleccionado = frmBusquedaNuevo.codigoSeleccionado
     End Sub
     Private Sub click_btn_busqueda_articulo(sender As Object, e As EventArgs) Handles btn_busqueda_articulo.Click
         Dim frmBusquedaNuevo As frmBusqueda = New frmBusqueda(articuloAux)
@@ -39,6 +41,7 @@ Public Class frmCompra
         btn_modificar_compra.Enabled = False
         btn_eliminar_compra.Enabled = False
         btn_confirmar_compra.Enabled = False
+        btn_busqueda_proveedor.Enabled = True
 
         listaFormasPago = formaPagoAux.getFormasPago()
 
@@ -58,7 +61,6 @@ Public Class frmCompra
         cb_forma_pago_seleccionada.SelectedIndex = -1
     End Sub
     Private Sub clearFieldsDatos()
-        txt_proveedor_seleccionado.Clear()
         txt_articulo_seleccionado.Clear()
         txt_cantidad_seleccionada.Clear()
         cb_forma_pago_seleccionada.SelectedIndex = -1
@@ -92,10 +94,8 @@ Public Class frmCompra
             Return
         End If
         Dim articuloSeleccionado As String = txt_articulo_seleccionado.Text
-        Dim proveedorSeleccionado As String = txt_proveedor_seleccionado.Text
         Dim formaPagoSeleccionada As String = cb_forma_pago_seleccionada.SelectedValue
         Dim cantidadSeleccionada As Integer = Convert.ToInt32(txt_cantidad_seleccionada.Text)
-
         Dim precioCompra As Double = Convert.ToDouble(managerArticuloAux.getCampoArticulo(articuloSeleccionado, "PVPCOMPRAARTICULO"))
         Dim porcBeneficio As Double = Convert.ToDouble(managerArticuloAux.getCampoArticulo(articuloSeleccionado, "PORCBENEFICIOARTICULO"))
 
@@ -133,6 +133,10 @@ Public Class frmCompra
         dg_compras.Refresh()
         If dg_compras.RowCount > 0 Then
             btn_confirmar_compra.Enabled = True
+            btn_busqueda_proveedor.Enabled = False
+        Else
+            btn_confirmar_compra.Enabled = False
+            btn_busqueda_proveedor.Enabled = True
         End If
     End Sub
     Private Sub calcularTotal()
@@ -141,6 +145,9 @@ Public Class frmCompra
         For Each comprilla As Compra In listaCompras
             precioTotal += comprilla.PrecioTotalDeCompra
         Next
+        If precioTotal = 0 Then
+            lbl_precio_sumatorio.Visible = False
+        End If
         lbl_precio_sumatorio.Text = $"Precio total: {precioTotal}€"
     End Sub
 
@@ -157,6 +164,7 @@ Public Class frmCompra
             MessageBox.Show("Introduzca primero alguna compra")
             Return
         End If
-        Dim informe As infCompra = New infCompra(listaCompras)
+        Dim fechaCompra As Date = dp_fecha_compra.Value
+        Dim informe As infCompra = New infCompra(listaCompras, fechaCompra)
     End Sub
 End Class

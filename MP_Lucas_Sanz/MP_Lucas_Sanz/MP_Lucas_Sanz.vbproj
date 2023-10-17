@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Controller\ctrArticulo.vb" />
     <Compile Include="Controller\ctrCliente.vb" />
+    <Compile Include="Controller\ctrConfiguraciones.vb" />
     <Compile Include="Controller\ctrFormaPago.vb" />
     <Compile Include="Controller\ctrGrupo.vb" />
     <Compile Include="Controller\ctrInventario.vb" />
@@ -97,6 +98,7 @@
     <Compile Include="Manager\ManagerGrupo.vb" />
     <Compile Include="Manager\ManagerInventario.vb" />
     <Compile Include="Manager\ManagerProveedor.vb" />
+    <Compile Include="Manager\ManagerVenta.vb" />
     <Compile Include="Model\Articulo.vb" />
     <Compile Include="Model\Banco.vb" />
     <Compile Include="Model\Cliente.vb" />
@@ -106,6 +108,7 @@
     <Compile Include="Model\Grupo.vb" />
     <Compile Include="Model\Inventario.vb" />
     <Compile Include="Model\Proveedor.vb" />
+    <Compile Include="Model\Venta.vb" />
     <Compile Include="Report\Compra\dsCompra.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -116,6 +119,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptCompra.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Venta\dsVenta.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsVenta.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Venta\dsVenta.vb">
+      <DependentUpon>dsVenta.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Venta\infVenta.vb" />
+    <Compile Include="Report\Venta\rptVenta.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptVenta.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="View\ApplicationEvents.vb" />
@@ -252,7 +270,25 @@
     <Compile Include="View\Reportes\viewerRPTCompra.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\Reportes\viewerRPTVenta.Designer.vb">
+      <DependentUpon>viewerRPTVenta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\Reportes\viewerRPTVenta.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\VariablesGlobales.vb" />
+    <Compile Include="View\Venta\frmBusquedaVenta.Designer.vb">
+      <DependentUpon>frmBusquedaVenta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\Venta\frmBusquedaVenta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Venta\frmVenta.Designer.vb">
+      <DependentUpon>frmVenta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\Venta\frmVenta.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -264,6 +300,10 @@
     <EmbeddedResource Include="Report\Compra\rptCompra.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptCompra.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Venta\rptVenta.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptVenta.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Articulo\frmNuevoArticulo.resx">
       <DependentUpon>frmNuevoArticulo.vb</DependentUpon>
@@ -322,6 +362,15 @@
     <EmbeddedResource Include="View\Reportes\viewerRPTCompra.resx">
       <DependentUpon>viewerRPTCompra.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Reportes\viewerRPTVenta.resx">
+      <DependentUpon>viewerRPTVenta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Venta\frmBusquedaVenta.resx">
+      <DependentUpon>frmBusquedaVenta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Venta\frmVenta.resx">
+      <DependentUpon>frmVenta.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
@@ -337,6 +386,7 @@
     <None Include="My Project\DataSources\Grupo.datasource" />
     <None Include="My Project\DataSources\Inventario.datasource" />
     <None Include="My Project\DataSources\Proveedor.datasource" />
+    <None Include="My Project\DataSources\Venta.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
@@ -356,6 +406,17 @@
     <None Include="Report\Compra\dsCompra.xss">
       <DependentUpon>dsCompra.xsd</DependentUpon>
     </None>
+    <None Include="Report\Venta\dsVenta.xsc">
+      <DependentUpon>dsVenta.xsd</DependentUpon>
+    </None>
+    <None Include="Report\Venta\dsVenta.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsVenta.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Report\Venta\dsVenta.xss">
+      <DependentUpon>dsVenta.xsd</DependentUpon>
+    </None>
     <None Include="Resources\venta.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -367,9 +428,14 @@
   <ItemGroup>
     <None Include="Resources\lupa.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\familia.ico" />
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\configuraciones.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

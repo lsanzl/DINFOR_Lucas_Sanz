@@ -52,6 +52,8 @@
         frmNuevoCliente.btn_confirmar_cliente.Text = "Modificar"
         frmNuevoCliente.ShowDialog()
         frmNuevoCliente.clearFields()
+
+        fillDGClientes()
     End Sub
     Private Sub click_btn_eliminar_cliente(sender As Object, e As EventArgs)
         clienteTemp.deleteCliente()

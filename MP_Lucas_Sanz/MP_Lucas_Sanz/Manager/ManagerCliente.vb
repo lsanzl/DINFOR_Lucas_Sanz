@@ -34,7 +34,7 @@ Public Class ManagerCliente
                 direccionNueva = dr(3).ToString()
                 fechaNueva = Convert.ToDateTime(dr(4))
                 bancoNuevo = Convert.ToInt32(dr(5))
-                grupoNuevo = Convert.ToInt32(dr(6))
+                grupoNuevo = dr(6).ToString()
                 emailNuevo = dr(7).ToString()
 
                 clienteTemp = New Cliente(codigoNuevo, nombreNuevo, nifNuevo, direccionNueva, fechaNueva, bancoNuevo, grupoNuevo, emailNuevo)
@@ -53,7 +53,7 @@ Public Class ManagerCliente
                             '{clientePasado.DireccionDelCliente}', 
                             '{clientePasado.FechaDeNacimientoDelCliente}', 
                             {clientePasado.BancoDelCliente},
-                            {clientePasado.GrupoDelCliente}, 
+                            '{clientePasado.GrupoDelCliente}', 
                             '{clientePasado.EmailDelCliente}');", connectionDBManager)
         If cmd.ExecuteNonQuery() > 0 Then
             MessageBox.Show("Cliente creado")
@@ -66,9 +66,9 @@ Public Class ManagerCliente
                             SET NOMBRECLIENTE = '{clientePasado.NombreDelCliente}',
                             NIFCLIENTE = '{clientePasado.NifDelCliente}',
                             DIRECCIONCLIENTE = '{clientePasado.DireccionDelCliente}', 
-                            FECHANACIMIENTOCLIENTE = {clientePasado.FechaDeNacimientoDelCliente}, 
+                            FECHANACIMIENTOCLIENTE = '{clientePasado.FechaDeNacimientoDelCliente}', 
                             BANCOCLIENTE = {clientePasado.BancoDelCliente},
-                            GRUPOCLIENTE = {clientePasado.EmailDelCliente},
+                            GRUPOCLIENTE = '{clientePasado.GrupoDelCliente}',
                             EMAILCLIENTE = '{clientePasado.EmailDelCliente}'
                             WHERE CODIGOCLIENTE = '{clientePasado.CodigoDelCliente}';", connectionDBManager)
         If cmd.ExecuteNonQuery() > 0 Then
