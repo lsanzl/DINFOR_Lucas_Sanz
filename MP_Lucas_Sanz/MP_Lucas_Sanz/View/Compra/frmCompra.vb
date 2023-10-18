@@ -102,7 +102,6 @@ Public Class frmCompra
         Dim precioVenta As Double = precioCompra * (1 + porcBeneficio / 100)
 
         Dim compraTemp As Compra = New Compra(proveedorSeleccionado, articuloSeleccionado, formaPagoSeleccionada, precioVenta, cantidadSeleccionada)
-        'compraTemp.addCompra()
         listaCompras.Add(compraTemp)
         fillDGCompras()
         clearFieldsDatos()
@@ -164,6 +163,9 @@ Public Class frmCompra
             MessageBox.Show("Introduzca primero alguna compra")
             Return
         End If
+        For Each comprilla As Compra In listaCompras
+            comprilla.addCompra()
+        Next
         Dim fechaCompra As Date = dp_fecha_compra.Value
         Dim informe As infCompra = New infCompra(listaCompras, fechaCompra)
     End Sub

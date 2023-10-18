@@ -1,4 +1,7 @@
-﻿Public Class ctrInventario
+﻿Imports System.Net
+Imports System.Net.Mail
+
+Public Class ctrInventario
     Dim frmInventario As frmMain
     Dim inventarioTemp As Inventario
     Dim listaInventario As List(Of Inventario) = New List(Of Inventario)
@@ -104,5 +107,4 @@
             fillDGInventario()
         End If
     End Sub
-
 End Class

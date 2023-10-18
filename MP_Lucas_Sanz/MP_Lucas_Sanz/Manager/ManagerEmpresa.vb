@@ -112,7 +112,7 @@ Public Class ManagerEmpresa
                             );", connectionDBManager)
         cmd.ExecuteNonQuery()
         cmd = New SqlCommand("CREATE TABLE COMPRAS(
-                            CODIGOCOMPRA INT IDENTITY(1,1) PRIMARY KEY,
+                            CODIGOCOMPRA INT PRIMARY KEY,
                             CODIGOPROVEEDOR VARCHAR(6),
                             CODIGOARTICULO VARCHAR(6),
                             CODIGOPAGO VARCHAR(5),
@@ -124,7 +124,7 @@ Public Class ManagerEmpresa
                             );", connectionDBManager)
         cmd.ExecuteNonQuery()
         cmd = New SqlCommand("CREATE TABLE VENTAS(
-                            CODIGOVENTA INT IDENTITY(1,1) PRIMARY KEY,
+                            CODIGOVENTA INT PRIMARY KEY,
                             CODIGOCLIENTE VARCHAR(6),
                             CODIGOARTICULO VARCHAR(6),
                             CODIGOPAGO VARCHAR(5),

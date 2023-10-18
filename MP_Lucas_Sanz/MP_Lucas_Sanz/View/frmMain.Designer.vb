@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmMain
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmMain
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -33,12 +33,24 @@ Partial Class frmMain
         Me.tab_main = New System.Windows.Forms.TabControl()
         Me.tab_menu_principal = New System.Windows.Forms.TabPage()
         Me.tlp_menu_main = New System.Windows.Forms.TableLayoutPanel()
+        Me.btn_efectuar_venta = New System.Windows.Forms.Button()
+        Me.btn_menu_inventario = New System.Windows.Forms.Button()
+        Me.btn_menu_configuraciones = New System.Windows.Forms.Button()
+        Me.btn_efectuar_compra = New System.Windows.Forms.Button()
         Me.tab_bancos_pagos = New System.Windows.Forms.TabPage()
         Me.tlp_main_bancos_pagos = New System.Windows.Forms.TableLayoutPanel()
         Me.dg_bancos = New System.Windows.Forms.DataGridView()
         Me.nombreBanco = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.codigoBanco = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dg_formas_pago = New System.Windows.Forms.DataGridView()
+        Me.CodigoDePagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NombreDePagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BancoAsignadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ActivoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.NumeroPlazosPagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrimerPlazoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DiasPlazosDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FormaPagoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.tlp_bancos = New System.Windows.Forms.TableLayoutPanel()
         Me.btn_añadir_banco = New System.Windows.Forms.Button()
         Me.btn_modificar_banco = New System.Windows.Forms.Button()
@@ -50,51 +62,6 @@ Partial Class frmMain
         Me.tab_clientes_grupos = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.dg_clientes = New System.Windows.Forms.DataGridView()
-        Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
-        Me.btn_añadir_grupo = New System.Windows.Forms.Button()
-        Me.btn_modificar_grupo = New System.Windows.Forms.Button()
-        Me.btn_eliminar_grupo = New System.Windows.Forms.Button()
-        Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
-        Me.btn_añadir_cliente = New System.Windows.Forms.Button()
-        Me.btn_modificar_cliente = New System.Windows.Forms.Button()
-        Me.btn_eliminar_cliente = New System.Windows.Forms.Button()
-        Me.dg_grupos = New System.Windows.Forms.DataGridView()
-        Me.tab_articulos_proveedores = New System.Windows.Forms.TabPage()
-        Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
-        Me.dg_articulos = New System.Windows.Forms.DataGridView()
-        Me.TableLayoutPanel5 = New System.Windows.Forms.TableLayoutPanel()
-        Me.btn_añadir_proveedor = New System.Windows.Forms.Button()
-        Me.btn_modificar_proveedor = New System.Windows.Forms.Button()
-        Me.btn_eliminar_proveedor = New System.Windows.Forms.Button()
-        Me.TableLayoutPanel6 = New System.Windows.Forms.TableLayoutPanel()
-        Me.btn_añadir_articulo = New System.Windows.Forms.Button()
-        Me.btn_modificar_articulo = New System.Windows.Forms.Button()
-        Me.btn_eliminar_articulo = New System.Windows.Forms.Button()
-        Me.dg_proveedores = New System.Windows.Forms.DataGridView()
-        Me.datos = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.tab_inventario = New System.Windows.Forms.TabPage()
-        Me.TableLayoutPanel7 = New System.Windows.Forms.TableLayoutPanel()
-        Me.dg_inventario = New System.Windows.Forms.DataGridView()
-        Me.TableLayoutPanel8 = New System.Windows.Forms.TableLayoutPanel()
-        Me.btn_restar_unidades = New System.Windows.Forms.Button()
-        Me.btn_añadir_unidades = New System.Windows.Forms.Button()
-        Me.btn_añadir_articulo_inventario = New System.Windows.Forms.Button()
-        Me.btn_eliminar_articulo_inventario = New System.Windows.Forms.Button()
-        Me.txt_busqueda_inventario = New System.Windows.Forms.TextBox()
-        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
-        Me.btn_efectuar_venta = New System.Windows.Forms.Button()
-        Me.btn_menu_inventario = New System.Windows.Forms.Button()
-        Me.btn_menu_configuraciones = New System.Windows.Forms.Button()
-        Me.btn_efectuar_compra = New System.Windows.Forms.Button()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.CodigoDePagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NombreDePagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BancoAsignadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ActivoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.NumeroPlazosPagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PrimerPlazoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DiasPlazosDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FormaPagoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CodigoDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NombreDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NifDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -104,9 +71,21 @@ Partial Class frmMain
         Me.GrupoDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EmailDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ClienteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
+        Me.btn_añadir_grupo = New System.Windows.Forms.Button()
+        Me.btn_modificar_grupo = New System.Windows.Forms.Button()
+        Me.btn_eliminar_grupo = New System.Windows.Forms.Button()
+        Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
+        Me.btn_añadir_cliente = New System.Windows.Forms.Button()
+        Me.btn_modificar_cliente = New System.Windows.Forms.Button()
+        Me.btn_eliminar_cliente = New System.Windows.Forms.Button()
+        Me.dg_grupos = New System.Windows.Forms.DataGridView()
         Me.CodigoDeGrupoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NombreDeGrupoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GrupoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.tab_articulos_proveedores = New System.Windows.Forms.TabPage()
+        Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
+        Me.dg_articulos = New System.Windows.Forms.DataGridView()
         Me.CodigoDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NombreDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DescripcionDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -116,12 +95,33 @@ Partial Class frmMain
         Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FamiliaDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ArticuloBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TableLayoutPanel5 = New System.Windows.Forms.TableLayoutPanel()
+        Me.btn_añadir_proveedor = New System.Windows.Forms.Button()
+        Me.btn_modificar_proveedor = New System.Windows.Forms.Button()
+        Me.btn_eliminar_proveedor = New System.Windows.Forms.Button()
+        Me.TableLayoutPanel6 = New System.Windows.Forms.TableLayoutPanel()
+        Me.btn_añadir_articulo = New System.Windows.Forms.Button()
+        Me.btn_modificar_articulo = New System.Windows.Forms.Button()
+        Me.btn_eliminar_articulo = New System.Windows.Forms.Button()
+        Me.dg_proveedores = New System.Windows.Forms.DataGridView()
         Me.CodigoDeProveedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NombreDeProveedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.datos = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.ProveedorBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.tab_inventario = New System.Windows.Forms.TabPage()
+        Me.TableLayoutPanel7 = New System.Windows.Forms.TableLayoutPanel()
+        Me.dg_inventario = New System.Windows.Forms.DataGridView()
         Me.NombreDeArticuloDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.UnidadesDisponiblesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.InventarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TableLayoutPanel8 = New System.Windows.Forms.TableLayoutPanel()
+        Me.btn_restar_unidades = New System.Windows.Forms.Button()
+        Me.btn_añadir_unidades = New System.Windows.Forms.Button()
+        Me.btn_añadir_articulo_inventario = New System.Windows.Forms.Button()
+        Me.btn_eliminar_articulo_inventario = New System.Windows.Forms.Button()
+        Me.txt_busqueda_inventario = New System.Windows.Forms.TextBox()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.BancoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GrupoBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.tab_main.SuspendLayout()
@@ -131,30 +131,30 @@ Partial Class frmMain
         Me.tlp_main_bancos_pagos.SuspendLayout()
         CType(Me.dg_bancos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg_formas_pago, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FormaPagoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tlp_bancos.SuspendLayout()
         Me.tlp_pagos.SuspendLayout()
         Me.tab_clientes_grupos.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.dg_clientes, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ClienteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
         CType(Me.dg_grupos, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GrupoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tab_articulos_proveedores.SuspendLayout()
         Me.TableLayoutPanel4.SuspendLayout()
         CType(Me.dg_articulos, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ArticuloBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel5.SuspendLayout()
         Me.TableLayoutPanel6.SuspendLayout()
         CType(Me.dg_proveedores, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ProveedorBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tab_inventario.SuspendLayout()
         Me.TableLayoutPanel7.SuspendLayout()
         CType(Me.dg_inventario, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TableLayoutPanel8.SuspendLayout()
-        CType(Me.FormaPagoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ClienteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GrupoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ArticuloBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ProveedorBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.InventarioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TableLayoutPanel8.SuspendLayout()
         CType(Me.BancoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GrupoBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -209,6 +209,78 @@ Partial Class frmMain
         Me.tlp_menu_main.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.tlp_menu_main.Size = New System.Drawing.Size(791, 391)
         Me.tlp_menu_main.TabIndex = 0
+        '
+        'btn_efectuar_venta
+        '
+        Me.btn_efectuar_venta.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_efectuar_venta.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.btn_efectuar_venta.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_efectuar_venta.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.venta
+        Me.btn_efectuar_venta.Location = New System.Drawing.Point(8, 8)
+        Me.btn_efectuar_venta.Margin = New System.Windows.Forms.Padding(8)
+        Me.btn_efectuar_venta.Name = "btn_efectuar_venta"
+        Me.btn_efectuar_venta.Size = New System.Drawing.Size(379, 179)
+        Me.btn_efectuar_venta.TabIndex = 0
+        Me.btn_efectuar_venta.Text = "VENTA"
+        Me.btn_efectuar_venta.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btn_efectuar_venta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.btn_efectuar_venta.UseVisualStyleBackColor = False
+        '
+        'btn_menu_inventario
+        '
+        Me.btn_menu_inventario.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_menu_inventario.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btn_menu_inventario.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_menu_inventario.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.familia
+        Me.btn_menu_inventario.Location = New System.Drawing.Point(403, 8)
+        Me.btn_menu_inventario.Margin = New System.Windows.Forms.Padding(8)
+        Me.btn_menu_inventario.Name = "btn_menu_inventario"
+        Me.btn_menu_inventario.Size = New System.Drawing.Size(380, 179)
+        Me.btn_menu_inventario.TabIndex = 2
+        Me.btn_menu_inventario.Text = "INVENTARIO"
+        Me.btn_menu_inventario.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btn_menu_inventario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.btn_menu_inventario.UseVisualStyleBackColor = False
+        '
+        'btn_menu_configuraciones
+        '
+        Me.btn_menu_configuraciones.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_menu_configuraciones.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.btn_menu_configuraciones.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_menu_configuraciones.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.configuraciones
+        Me.btn_menu_configuraciones.Location = New System.Drawing.Point(403, 203)
+        Me.btn_menu_configuraciones.Margin = New System.Windows.Forms.Padding(8)
+        Me.btn_menu_configuraciones.Name = "btn_menu_configuraciones"
+        Me.btn_menu_configuraciones.Size = New System.Drawing.Size(380, 180)
+        Me.btn_menu_configuraciones.TabIndex = 3
+        Me.btn_menu_configuraciones.Text = "CONFIGURACIONES"
+        Me.btn_menu_configuraciones.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btn_menu_configuraciones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.btn_menu_configuraciones.UseVisualStyleBackColor = False
+        '
+        'btn_efectuar_compra
+        '
+        Me.btn_efectuar_compra.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_efectuar_compra.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btn_efectuar_compra.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_efectuar_compra.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.inventario
+        Me.btn_efectuar_compra.Location = New System.Drawing.Point(8, 203)
+        Me.btn_efectuar_compra.Margin = New System.Windows.Forms.Padding(8)
+        Me.btn_efectuar_compra.Name = "btn_efectuar_compra"
+        Me.btn_efectuar_compra.Size = New System.Drawing.Size(379, 180)
+        Me.btn_efectuar_compra.TabIndex = 1
+        Me.btn_efectuar_compra.Text = "COMPRA"
+        Me.btn_efectuar_compra.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btn_efectuar_compra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.btn_efectuar_compra.UseVisualStyleBackColor = False
         '
         'tab_bancos_pagos
         '
@@ -289,6 +361,69 @@ Partial Class frmMain
         Me.dg_formas_pago.Name = "dg_formas_pago"
         Me.dg_formas_pago.Size = New System.Drawing.Size(510, 328)
         Me.dg_formas_pago.TabIndex = 1
+        '
+        'CodigoDePagoDataGridViewTextBoxColumn
+        '
+        Me.CodigoDePagoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CodigoDePagoDataGridViewTextBoxColumn.DataPropertyName = "CodigoDePago"
+        Me.CodigoDePagoDataGridViewTextBoxColumn.HeaderText = "Código"
+        Me.CodigoDePagoDataGridViewTextBoxColumn.Name = "CodigoDePagoDataGridViewTextBoxColumn"
+        Me.CodigoDePagoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'NombreDePagoDataGridViewTextBoxColumn
+        '
+        Me.NombreDePagoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.NombreDePagoDataGridViewTextBoxColumn.DataPropertyName = "NombreDePago"
+        Me.NombreDePagoDataGridViewTextBoxColumn.HeaderText = "Nombre"
+        Me.NombreDePagoDataGridViewTextBoxColumn.Name = "NombreDePagoDataGridViewTextBoxColumn"
+        Me.NombreDePagoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'BancoAsignadoDataGridViewTextBoxColumn
+        '
+        Me.BancoAsignadoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.BancoAsignadoDataGridViewTextBoxColumn.DataPropertyName = "BancoAsignado"
+        Me.BancoAsignadoDataGridViewTextBoxColumn.HeaderText = "Banco"
+        Me.BancoAsignadoDataGridViewTextBoxColumn.Name = "BancoAsignadoDataGridViewTextBoxColumn"
+        Me.BancoAsignadoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ActivoDataGridViewTextBoxColumn
+        '
+        Me.ActivoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ActivoDataGridViewTextBoxColumn.DataPropertyName = "Activo"
+        Me.ActivoDataGridViewTextBoxColumn.FalseValue = "0"
+        Me.ActivoDataGridViewTextBoxColumn.HeaderText = "Activo"
+        Me.ActivoDataGridViewTextBoxColumn.Name = "ActivoDataGridViewTextBoxColumn"
+        Me.ActivoDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ActivoDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.ActivoDataGridViewTextBoxColumn.TrueValue = "1"
+        '
+        'NumeroPlazosPagoDataGridViewTextBoxColumn
+        '
+        Me.NumeroPlazosPagoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.NumeroPlazosPagoDataGridViewTextBoxColumn.DataPropertyName = "NumeroPlazosPago"
+        Me.NumeroPlazosPagoDataGridViewTextBoxColumn.HeaderText = "Núm Plazos"
+        Me.NumeroPlazosPagoDataGridViewTextBoxColumn.Name = "NumeroPlazosPagoDataGridViewTextBoxColumn"
+        Me.NumeroPlazosPagoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'PrimerPlazoDataGridViewTextBoxColumn
+        '
+        Me.PrimerPlazoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.PrimerPlazoDataGridViewTextBoxColumn.DataPropertyName = "PrimerPlazo"
+        Me.PrimerPlazoDataGridViewTextBoxColumn.HeaderText = "Primer Plazo"
+        Me.PrimerPlazoDataGridViewTextBoxColumn.Name = "PrimerPlazoDataGridViewTextBoxColumn"
+        Me.PrimerPlazoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'DiasPlazosDataGridViewTextBoxColumn
+        '
+        Me.DiasPlazosDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DiasPlazosDataGridViewTextBoxColumn.DataPropertyName = "DiasPlazos"
+        Me.DiasPlazosDataGridViewTextBoxColumn.HeaderText = "Intervalo"
+        Me.DiasPlazosDataGridViewTextBoxColumn.Name = "DiasPlazosDataGridViewTextBoxColumn"
+        Me.DiasPlazosDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'FormaPagoBindingSource
+        '
+        Me.FormaPagoBindingSource.DataSource = GetType(MP_Lucas_Sanz.FormaPago)
         '
         'tlp_bancos
         '
@@ -449,6 +584,74 @@ Partial Class frmMain
         Me.dg_clientes.Size = New System.Drawing.Size(510, 328)
         Me.dg_clientes.TabIndex = 1
         '
+        'CodigoDelClienteDataGridViewTextBoxColumn
+        '
+        Me.CodigoDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CodigoDelClienteDataGridViewTextBoxColumn.DataPropertyName = "CodigoDelCliente"
+        Me.CodigoDelClienteDataGridViewTextBoxColumn.HeaderText = "Código"
+        Me.CodigoDelClienteDataGridViewTextBoxColumn.Name = "CodigoDelClienteDataGridViewTextBoxColumn"
+        Me.CodigoDelClienteDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'NombreDelClienteDataGridViewTextBoxColumn
+        '
+        Me.NombreDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.NombreDelClienteDataGridViewTextBoxColumn.DataPropertyName = "NombreDelCliente"
+        Me.NombreDelClienteDataGridViewTextBoxColumn.HeaderText = "Nombre"
+        Me.NombreDelClienteDataGridViewTextBoxColumn.Name = "NombreDelClienteDataGridViewTextBoxColumn"
+        Me.NombreDelClienteDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'NifDelClienteDataGridViewTextBoxColumn
+        '
+        Me.NifDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.NifDelClienteDataGridViewTextBoxColumn.DataPropertyName = "NifDelCliente"
+        Me.NifDelClienteDataGridViewTextBoxColumn.HeaderText = "NIF"
+        Me.NifDelClienteDataGridViewTextBoxColumn.Name = "NifDelClienteDataGridViewTextBoxColumn"
+        Me.NifDelClienteDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'DireccionDelClienteDataGridViewTextBoxColumn
+        '
+        Me.DireccionDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DireccionDelClienteDataGridViewTextBoxColumn.DataPropertyName = "DireccionDelCliente"
+        Me.DireccionDelClienteDataGridViewTextBoxColumn.HeaderText = "Dirección"
+        Me.DireccionDelClienteDataGridViewTextBoxColumn.Name = "DireccionDelClienteDataGridViewTextBoxColumn"
+        Me.DireccionDelClienteDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'FechaDeNacimientoDelClienteDataGridViewTextBoxColumn
+        '
+        Me.FechaDeNacimientoDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.FechaDeNacimientoDelClienteDataGridViewTextBoxColumn.DataPropertyName = "FechaDeNacimientoDelCliente"
+        Me.FechaDeNacimientoDelClienteDataGridViewTextBoxColumn.HeaderText = "Fecha Nacimiento"
+        Me.FechaDeNacimientoDelClienteDataGridViewTextBoxColumn.Name = "FechaDeNacimientoDelClienteDataGridViewTextBoxColumn"
+        Me.FechaDeNacimientoDelClienteDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'BancoDelClienteDataGridViewTextBoxColumn
+        '
+        Me.BancoDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.BancoDelClienteDataGridViewTextBoxColumn.DataPropertyName = "BancoDelCliente"
+        Me.BancoDelClienteDataGridViewTextBoxColumn.HeaderText = "Banco"
+        Me.BancoDelClienteDataGridViewTextBoxColumn.Name = "BancoDelClienteDataGridViewTextBoxColumn"
+        Me.BancoDelClienteDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'GrupoDelClienteDataGridViewTextBoxColumn
+        '
+        Me.GrupoDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.GrupoDelClienteDataGridViewTextBoxColumn.DataPropertyName = "GrupoDelCliente"
+        Me.GrupoDelClienteDataGridViewTextBoxColumn.HeaderText = "Grupo"
+        Me.GrupoDelClienteDataGridViewTextBoxColumn.Name = "GrupoDelClienteDataGridViewTextBoxColumn"
+        Me.GrupoDelClienteDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'EmailDelClienteDataGridViewTextBoxColumn
+        '
+        Me.EmailDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.EmailDelClienteDataGridViewTextBoxColumn.DataPropertyName = "EmailDelCliente"
+        Me.EmailDelClienteDataGridViewTextBoxColumn.HeaderText = "Email"
+        Me.EmailDelClienteDataGridViewTextBoxColumn.Name = "EmailDelClienteDataGridViewTextBoxColumn"
+        Me.EmailDelClienteDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ClienteBindingSource
+        '
+        Me.ClienteBindingSource.DataSource = GetType(MP_Lucas_Sanz.Cliente)
+        '
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -584,6 +787,26 @@ Partial Class frmMain
         Me.dg_grupos.Size = New System.Drawing.Size(271, 328)
         Me.dg_grupos.TabIndex = 4
         '
+        'CodigoDeGrupoDataGridViewTextBoxColumn
+        '
+        Me.CodigoDeGrupoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CodigoDeGrupoDataGridViewTextBoxColumn.DataPropertyName = "CodigoDeGrupo"
+        Me.CodigoDeGrupoDataGridViewTextBoxColumn.HeaderText = "Código"
+        Me.CodigoDeGrupoDataGridViewTextBoxColumn.Name = "CodigoDeGrupoDataGridViewTextBoxColumn"
+        Me.CodigoDeGrupoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'NombreDeGrupoDataGridViewTextBoxColumn
+        '
+        Me.NombreDeGrupoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.NombreDeGrupoDataGridViewTextBoxColumn.DataPropertyName = "NombreDeGrupo"
+        Me.NombreDeGrupoDataGridViewTextBoxColumn.HeaderText = "Nombre del Grupo"
+        Me.NombreDeGrupoDataGridViewTextBoxColumn.Name = "NombreDeGrupoDataGridViewTextBoxColumn"
+        Me.NombreDeGrupoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'GrupoBindingSource
+        '
+        Me.GrupoBindingSource.DataSource = GetType(MP_Lucas_Sanz.Grupo)
+        '
         'tab_articulos_proveedores
         '
         Me.tab_articulos_proveedores.Controls.Add(Me.TableLayoutPanel4)
@@ -633,6 +856,74 @@ Partial Class frmMain
         Me.dg_articulos.Name = "dg_articulos"
         Me.dg_articulos.Size = New System.Drawing.Size(510, 328)
         Me.dg_articulos.TabIndex = 1
+        '
+        'CodigoDeArticuloDataGridViewTextBoxColumn
+        '
+        Me.CodigoDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CodigoDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "CodigoDeArticulo"
+        Me.CodigoDeArticuloDataGridViewTextBoxColumn.HeaderText = "Código"
+        Me.CodigoDeArticuloDataGridViewTextBoxColumn.Name = "CodigoDeArticuloDataGridViewTextBoxColumn"
+        Me.CodigoDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'NombreDeArticuloDataGridViewTextBoxColumn
+        '
+        Me.NombreDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.NombreDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "NombreDeArticulo"
+        Me.NombreDeArticuloDataGridViewTextBoxColumn.HeaderText = "Nombre"
+        Me.NombreDeArticuloDataGridViewTextBoxColumn.Name = "NombreDeArticuloDataGridViewTextBoxColumn"
+        Me.NombreDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'DescripcionDeArticuloDataGridViewTextBoxColumn
+        '
+        Me.DescripcionDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DescripcionDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "DescripcionDeArticulo"
+        Me.DescripcionDeArticuloDataGridViewTextBoxColumn.HeaderText = "Descripción"
+        Me.DescripcionDeArticuloDataGridViewTextBoxColumn.Name = "DescripcionDeArticuloDataGridViewTextBoxColumn"
+        Me.DescripcionDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'PVPCompraDeArticuloDataGridViewTextBoxColumn
+        '
+        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "PVPCompraDeArticulo"
+        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.HeaderText = "PVP Compra"
+        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.Name = "PVPCompraDeArticuloDataGridViewTextBoxColumn"
+        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'PVPVentaDeArticuloDataGridViewTextBoxColumn
+        '
+        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "PVPVentaDeArticulo"
+        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.HeaderText = "PVP Venta"
+        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.Name = "PVPVentaDeArticuloDataGridViewTextBoxColumn"
+        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'PorcentajeDeBeneficioDataGridViewTextBoxColumn
+        '
+        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.DataPropertyName = "PorcentajeDeBeneficio"
+        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.HeaderText = "% Beneficio"
+        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.Name = "PorcentajeDeBeneficioDataGridViewTextBoxColumn"
+        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'TipoDeUnidadArticuloDataGridViewTextBoxColumn
+        '
+        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn.DataPropertyName = "TipoDeUnidadArticulo"
+        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn.HeaderText = "Unidad"
+        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn.Name = "TipoDeUnidadArticuloDataGridViewTextBoxColumn"
+        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'FamiliaDeArticuloDataGridViewTextBoxColumn
+        '
+        Me.FamiliaDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.FamiliaDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "FamiliaDeArticulo"
+        Me.FamiliaDeArticuloDataGridViewTextBoxColumn.HeaderText = "Familia"
+        Me.FamiliaDeArticuloDataGridViewTextBoxColumn.Name = "FamiliaDeArticuloDataGridViewTextBoxColumn"
+        Me.FamiliaDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ArticuloBindingSource
+        '
+        Me.ArticuloBindingSource.DataSource = GetType(MP_Lucas_Sanz.Articulo)
         '
         'TableLayoutPanel5
         '
@@ -761,6 +1052,22 @@ Partial Class frmMain
         Me.dg_proveedores.Size = New System.Drawing.Size(271, 328)
         Me.dg_proveedores.TabIndex = 4
         '
+        'CodigoDeProveedorDataGridViewTextBoxColumn
+        '
+        Me.CodigoDeProveedorDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CodigoDeProveedorDataGridViewTextBoxColumn.DataPropertyName = "CodigoDeProveedor"
+        Me.CodigoDeProveedorDataGridViewTextBoxColumn.HeaderText = "Código Proveedor"
+        Me.CodigoDeProveedorDataGridViewTextBoxColumn.Name = "CodigoDeProveedorDataGridViewTextBoxColumn"
+        Me.CodigoDeProveedorDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'NombreDeProveedorDataGridViewTextBoxColumn
+        '
+        Me.NombreDeProveedorDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.NombreDeProveedorDataGridViewTextBoxColumn.DataPropertyName = "NombreDeProveedor"
+        Me.NombreDeProveedorDataGridViewTextBoxColumn.HeaderText = "Nombre Proveedor"
+        Me.NombreDeProveedorDataGridViewTextBoxColumn.Name = "NombreDeProveedorDataGridViewTextBoxColumn"
+        Me.NombreDeProveedorDataGridViewTextBoxColumn.ReadOnly = True
+        '
         'datos
         '
         Me.datos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
@@ -772,6 +1079,10 @@ Partial Class frmMain
         Me.datos.ReadOnly = True
         Me.datos.Text = "VER DATOS"
         Me.datos.UseColumnTextForButtonValue = True
+        '
+        'ProveedorBindingSource
+        '
+        Me.ProveedorBindingSource.DataSource = GetType(MP_Lucas_Sanz.Proveedor)
         '
         'tab_inventario
         '
@@ -843,6 +1154,26 @@ Partial Class frmMain
         Me.dg_inventario.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.dg_inventario.Size = New System.Drawing.Size(666, 385)
         Me.dg_inventario.TabIndex = 0
+        '
+        'NombreDeArticuloDataGridViewTextBoxColumn1
+        '
+        Me.NombreDeArticuloDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.NombreDeArticuloDataGridViewTextBoxColumn1.DataPropertyName = "NombreDeArticulo"
+        Me.NombreDeArticuloDataGridViewTextBoxColumn1.HeaderText = "NOMBRE ARTÍCULO"
+        Me.NombreDeArticuloDataGridViewTextBoxColumn1.Name = "NombreDeArticuloDataGridViewTextBoxColumn1"
+        Me.NombreDeArticuloDataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'UnidadesDisponiblesDataGridViewTextBoxColumn
+        '
+        Me.UnidadesDisponiblesDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.UnidadesDisponiblesDataGridViewTextBoxColumn.DataPropertyName = "UnidadesDisponibles"
+        Me.UnidadesDisponiblesDataGridViewTextBoxColumn.HeaderText = "UNIDADES DISPONIBLES"
+        Me.UnidadesDisponiblesDataGridViewTextBoxColumn.Name = "UnidadesDisponiblesDataGridViewTextBoxColumn"
+        Me.UnidadesDisponiblesDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'InventarioBindingSource
+        '
+        Me.InventarioBindingSource.DataSource = GetType(MP_Lucas_Sanz.Inventario)
         '
         'TableLayoutPanel8
         '
@@ -921,88 +1252,6 @@ Partial Class frmMain
         Me.txt_busqueda_inventario.Size = New System.Drawing.Size(107, 20)
         Me.txt_busqueda_inventario.TabIndex = 4
         '
-        'ImageList1
-        '
-        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList1.Images.SetKeyName(0, "banco.ico")
-        Me.ImageList1.Images.SetKeyName(1, "cliente.ico")
-        Me.ImageList1.Images.SetKeyName(2, "articulo.ico")
-        Me.ImageList1.Images.SetKeyName(3, "inventario.ico")
-        Me.ImageList1.Images.SetKeyName(4, "configuraciones.ico")
-        '
-        'btn_efectuar_venta
-        '
-        Me.btn_efectuar_venta.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_efectuar_venta.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.btn_efectuar_venta.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_efectuar_venta.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.venta
-        Me.btn_efectuar_venta.Location = New System.Drawing.Point(8, 8)
-        Me.btn_efectuar_venta.Margin = New System.Windows.Forms.Padding(8)
-        Me.btn_efectuar_venta.Name = "btn_efectuar_venta"
-        Me.btn_efectuar_venta.Size = New System.Drawing.Size(379, 179)
-        Me.btn_efectuar_venta.TabIndex = 0
-        Me.btn_efectuar_venta.Text = "VENTA"
-        Me.btn_efectuar_venta.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btn_efectuar_venta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.btn_efectuar_venta.UseVisualStyleBackColor = False
-        '
-        'btn_menu_inventario
-        '
-        Me.btn_menu_inventario.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_menu_inventario.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btn_menu_inventario.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_menu_inventario.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.familia
-        Me.btn_menu_inventario.Location = New System.Drawing.Point(403, 8)
-        Me.btn_menu_inventario.Margin = New System.Windows.Forms.Padding(8)
-        Me.btn_menu_inventario.Name = "btn_menu_inventario"
-        Me.btn_menu_inventario.Size = New System.Drawing.Size(380, 179)
-        Me.btn_menu_inventario.TabIndex = 2
-        Me.btn_menu_inventario.Text = "INVENTARIO"
-        Me.btn_menu_inventario.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btn_menu_inventario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.btn_menu_inventario.UseVisualStyleBackColor = False
-        '
-        'btn_menu_configuraciones
-        '
-        Me.btn_menu_configuraciones.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_menu_configuraciones.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.btn_menu_configuraciones.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_menu_configuraciones.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.configuraciones
-        Me.btn_menu_configuraciones.Location = New System.Drawing.Point(403, 203)
-        Me.btn_menu_configuraciones.Margin = New System.Windows.Forms.Padding(8)
-        Me.btn_menu_configuraciones.Name = "btn_menu_configuraciones"
-        Me.btn_menu_configuraciones.Size = New System.Drawing.Size(380, 180)
-        Me.btn_menu_configuraciones.TabIndex = 3
-        Me.btn_menu_configuraciones.Text = "CONFIGURACIONES"
-        Me.btn_menu_configuraciones.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btn_menu_configuraciones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.btn_menu_configuraciones.UseVisualStyleBackColor = False
-        '
-        'btn_efectuar_compra
-        '
-        Me.btn_efectuar_compra.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_efectuar_compra.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btn_efectuar_compra.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_efectuar_compra.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.inventario
-        Me.btn_efectuar_compra.Location = New System.Drawing.Point(8, 203)
-        Me.btn_efectuar_compra.Margin = New System.Windows.Forms.Padding(8)
-        Me.btn_efectuar_compra.Name = "btn_efectuar_compra"
-        Me.btn_efectuar_compra.Size = New System.Drawing.Size(379, 180)
-        Me.btn_efectuar_compra.TabIndex = 1
-        Me.btn_efectuar_compra.Text = "COMPRA"
-        Me.btn_efectuar_compra.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btn_efectuar_compra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.btn_efectuar_compra.UseVisualStyleBackColor = False
-        '
         'TabPage1
         '
         Me.TabPage1.ImageIndex = 4
@@ -1014,264 +1263,15 @@ Partial Class frmMain
         Me.TabPage1.Text = "CONFIGURACIONES"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
-        'CodigoDePagoDataGridViewTextBoxColumn
-        '
-        Me.CodigoDePagoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CodigoDePagoDataGridViewTextBoxColumn.DataPropertyName = "CodigoDePago"
-        Me.CodigoDePagoDataGridViewTextBoxColumn.HeaderText = "Código"
-        Me.CodigoDePagoDataGridViewTextBoxColumn.Name = "CodigoDePagoDataGridViewTextBoxColumn"
-        Me.CodigoDePagoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'NombreDePagoDataGridViewTextBoxColumn
-        '
-        Me.NombreDePagoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.NombreDePagoDataGridViewTextBoxColumn.DataPropertyName = "NombreDePago"
-        Me.NombreDePagoDataGridViewTextBoxColumn.HeaderText = "Nombre"
-        Me.NombreDePagoDataGridViewTextBoxColumn.Name = "NombreDePagoDataGridViewTextBoxColumn"
-        Me.NombreDePagoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'BancoAsignadoDataGridViewTextBoxColumn
-        '
-        Me.BancoAsignadoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.BancoAsignadoDataGridViewTextBoxColumn.DataPropertyName = "BancoAsignado"
-        Me.BancoAsignadoDataGridViewTextBoxColumn.HeaderText = "Banco"
-        Me.BancoAsignadoDataGridViewTextBoxColumn.Name = "BancoAsignadoDataGridViewTextBoxColumn"
-        Me.BancoAsignadoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ActivoDataGridViewTextBoxColumn
-        '
-        Me.ActivoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ActivoDataGridViewTextBoxColumn.DataPropertyName = "Activo"
-        Me.ActivoDataGridViewTextBoxColumn.FalseValue = "0"
-        Me.ActivoDataGridViewTextBoxColumn.HeaderText = "Activo"
-        Me.ActivoDataGridViewTextBoxColumn.Name = "ActivoDataGridViewTextBoxColumn"
-        Me.ActivoDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ActivoDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.ActivoDataGridViewTextBoxColumn.TrueValue = "1"
-        '
-        'NumeroPlazosPagoDataGridViewTextBoxColumn
-        '
-        Me.NumeroPlazosPagoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.NumeroPlazosPagoDataGridViewTextBoxColumn.DataPropertyName = "NumeroPlazosPago"
-        Me.NumeroPlazosPagoDataGridViewTextBoxColumn.HeaderText = "Núm Plazos"
-        Me.NumeroPlazosPagoDataGridViewTextBoxColumn.Name = "NumeroPlazosPagoDataGridViewTextBoxColumn"
-        Me.NumeroPlazosPagoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PrimerPlazoDataGridViewTextBoxColumn
-        '
-        Me.PrimerPlazoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.PrimerPlazoDataGridViewTextBoxColumn.DataPropertyName = "PrimerPlazo"
-        Me.PrimerPlazoDataGridViewTextBoxColumn.HeaderText = "Primer Plazo"
-        Me.PrimerPlazoDataGridViewTextBoxColumn.Name = "PrimerPlazoDataGridViewTextBoxColumn"
-        Me.PrimerPlazoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'DiasPlazosDataGridViewTextBoxColumn
-        '
-        Me.DiasPlazosDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DiasPlazosDataGridViewTextBoxColumn.DataPropertyName = "DiasPlazos"
-        Me.DiasPlazosDataGridViewTextBoxColumn.HeaderText = "Intervalo"
-        Me.DiasPlazosDataGridViewTextBoxColumn.Name = "DiasPlazosDataGridViewTextBoxColumn"
-        Me.DiasPlazosDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'FormaPagoBindingSource
-        '
-        Me.FormaPagoBindingSource.DataSource = GetType(MP_Lucas_Sanz.FormaPago)
-        '
-        'CodigoDelClienteDataGridViewTextBoxColumn
-        '
-        Me.CodigoDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CodigoDelClienteDataGridViewTextBoxColumn.DataPropertyName = "CodigoDelCliente"
-        Me.CodigoDelClienteDataGridViewTextBoxColumn.HeaderText = "Código"
-        Me.CodigoDelClienteDataGridViewTextBoxColumn.Name = "CodigoDelClienteDataGridViewTextBoxColumn"
-        Me.CodigoDelClienteDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'NombreDelClienteDataGridViewTextBoxColumn
-        '
-        Me.NombreDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.NombreDelClienteDataGridViewTextBoxColumn.DataPropertyName = "NombreDelCliente"
-        Me.NombreDelClienteDataGridViewTextBoxColumn.HeaderText = "Nombre"
-        Me.NombreDelClienteDataGridViewTextBoxColumn.Name = "NombreDelClienteDataGridViewTextBoxColumn"
-        Me.NombreDelClienteDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'NifDelClienteDataGridViewTextBoxColumn
-        '
-        Me.NifDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.NifDelClienteDataGridViewTextBoxColumn.DataPropertyName = "NifDelCliente"
-        Me.NifDelClienteDataGridViewTextBoxColumn.HeaderText = "NIF"
-        Me.NifDelClienteDataGridViewTextBoxColumn.Name = "NifDelClienteDataGridViewTextBoxColumn"
-        Me.NifDelClienteDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'DireccionDelClienteDataGridViewTextBoxColumn
-        '
-        Me.DireccionDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DireccionDelClienteDataGridViewTextBoxColumn.DataPropertyName = "DireccionDelCliente"
-        Me.DireccionDelClienteDataGridViewTextBoxColumn.HeaderText = "Dirección"
-        Me.DireccionDelClienteDataGridViewTextBoxColumn.Name = "DireccionDelClienteDataGridViewTextBoxColumn"
-        Me.DireccionDelClienteDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'FechaDeNacimientoDelClienteDataGridViewTextBoxColumn
-        '
-        Me.FechaDeNacimientoDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.FechaDeNacimientoDelClienteDataGridViewTextBoxColumn.DataPropertyName = "FechaDeNacimientoDelCliente"
-        Me.FechaDeNacimientoDelClienteDataGridViewTextBoxColumn.HeaderText = "Fecha Nacimiento"
-        Me.FechaDeNacimientoDelClienteDataGridViewTextBoxColumn.Name = "FechaDeNacimientoDelClienteDataGridViewTextBoxColumn"
-        Me.FechaDeNacimientoDelClienteDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'BancoDelClienteDataGridViewTextBoxColumn
-        '
-        Me.BancoDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.BancoDelClienteDataGridViewTextBoxColumn.DataPropertyName = "BancoDelCliente"
-        Me.BancoDelClienteDataGridViewTextBoxColumn.HeaderText = "Banco"
-        Me.BancoDelClienteDataGridViewTextBoxColumn.Name = "BancoDelClienteDataGridViewTextBoxColumn"
-        Me.BancoDelClienteDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'GrupoDelClienteDataGridViewTextBoxColumn
-        '
-        Me.GrupoDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.GrupoDelClienteDataGridViewTextBoxColumn.DataPropertyName = "GrupoDelCliente"
-        Me.GrupoDelClienteDataGridViewTextBoxColumn.HeaderText = "Grupo"
-        Me.GrupoDelClienteDataGridViewTextBoxColumn.Name = "GrupoDelClienteDataGridViewTextBoxColumn"
-        Me.GrupoDelClienteDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'EmailDelClienteDataGridViewTextBoxColumn
-        '
-        Me.EmailDelClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.EmailDelClienteDataGridViewTextBoxColumn.DataPropertyName = "EmailDelCliente"
-        Me.EmailDelClienteDataGridViewTextBoxColumn.HeaderText = "Email"
-        Me.EmailDelClienteDataGridViewTextBoxColumn.Name = "EmailDelClienteDataGridViewTextBoxColumn"
-        Me.EmailDelClienteDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ClienteBindingSource
-        '
-        Me.ClienteBindingSource.DataSource = GetType(MP_Lucas_Sanz.Cliente)
-        '
-        'CodigoDeGrupoDataGridViewTextBoxColumn
-        '
-        Me.CodigoDeGrupoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CodigoDeGrupoDataGridViewTextBoxColumn.DataPropertyName = "CodigoDeGrupo"
-        Me.CodigoDeGrupoDataGridViewTextBoxColumn.HeaderText = "Código"
-        Me.CodigoDeGrupoDataGridViewTextBoxColumn.Name = "CodigoDeGrupoDataGridViewTextBoxColumn"
-        Me.CodigoDeGrupoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'NombreDeGrupoDataGridViewTextBoxColumn
-        '
-        Me.NombreDeGrupoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.NombreDeGrupoDataGridViewTextBoxColumn.DataPropertyName = "NombreDeGrupo"
-        Me.NombreDeGrupoDataGridViewTextBoxColumn.HeaderText = "Nombre del Grupo"
-        Me.NombreDeGrupoDataGridViewTextBoxColumn.Name = "NombreDeGrupoDataGridViewTextBoxColumn"
-        Me.NombreDeGrupoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'GrupoBindingSource
-        '
-        Me.GrupoBindingSource.DataSource = GetType(MP_Lucas_Sanz.Grupo)
-        '
-        'CodigoDeArticuloDataGridViewTextBoxColumn
-        '
-        Me.CodigoDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CodigoDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "CodigoDeArticulo"
-        Me.CodigoDeArticuloDataGridViewTextBoxColumn.HeaderText = "Código"
-        Me.CodigoDeArticuloDataGridViewTextBoxColumn.Name = "CodigoDeArticuloDataGridViewTextBoxColumn"
-        Me.CodigoDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'NombreDeArticuloDataGridViewTextBoxColumn
-        '
-        Me.NombreDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.NombreDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "NombreDeArticulo"
-        Me.NombreDeArticuloDataGridViewTextBoxColumn.HeaderText = "Nombre"
-        Me.NombreDeArticuloDataGridViewTextBoxColumn.Name = "NombreDeArticuloDataGridViewTextBoxColumn"
-        Me.NombreDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'DescripcionDeArticuloDataGridViewTextBoxColumn
-        '
-        Me.DescripcionDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DescripcionDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "DescripcionDeArticulo"
-        Me.DescripcionDeArticuloDataGridViewTextBoxColumn.HeaderText = "Descripción"
-        Me.DescripcionDeArticuloDataGridViewTextBoxColumn.Name = "DescripcionDeArticuloDataGridViewTextBoxColumn"
-        Me.DescripcionDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PVPCompraDeArticuloDataGridViewTextBoxColumn
-        '
-        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "PVPCompraDeArticulo"
-        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.HeaderText = "PVP Compra"
-        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.Name = "PVPCompraDeArticuloDataGridViewTextBoxColumn"
-        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PVPVentaDeArticuloDataGridViewTextBoxColumn
-        '
-        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "PVPVentaDeArticulo"
-        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.HeaderText = "PVP Venta"
-        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.Name = "PVPVentaDeArticuloDataGridViewTextBoxColumn"
-        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PorcentajeDeBeneficioDataGridViewTextBoxColumn
-        '
-        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.DataPropertyName = "PorcentajeDeBeneficio"
-        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.HeaderText = "% Beneficio"
-        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.Name = "PorcentajeDeBeneficioDataGridViewTextBoxColumn"
-        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'TipoDeUnidadArticuloDataGridViewTextBoxColumn
-        '
-        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn.DataPropertyName = "TipoDeUnidadArticulo"
-        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn.HeaderText = "Unidad"
-        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn.Name = "TipoDeUnidadArticuloDataGridViewTextBoxColumn"
-        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'FamiliaDeArticuloDataGridViewTextBoxColumn
-        '
-        Me.FamiliaDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.FamiliaDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "FamiliaDeArticulo"
-        Me.FamiliaDeArticuloDataGridViewTextBoxColumn.HeaderText = "Familia"
-        Me.FamiliaDeArticuloDataGridViewTextBoxColumn.Name = "FamiliaDeArticuloDataGridViewTextBoxColumn"
-        Me.FamiliaDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ArticuloBindingSource
-        '
-        Me.ArticuloBindingSource.DataSource = GetType(MP_Lucas_Sanz.Articulo)
-        '
-        'CodigoDeProveedorDataGridViewTextBoxColumn
-        '
-        Me.CodigoDeProveedorDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CodigoDeProveedorDataGridViewTextBoxColumn.DataPropertyName = "CodigoDeProveedor"
-        Me.CodigoDeProveedorDataGridViewTextBoxColumn.HeaderText = "Código Proveedor"
-        Me.CodigoDeProveedorDataGridViewTextBoxColumn.Name = "CodigoDeProveedorDataGridViewTextBoxColumn"
-        Me.CodigoDeProveedorDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'NombreDeProveedorDataGridViewTextBoxColumn
-        '
-        Me.NombreDeProveedorDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.NombreDeProveedorDataGridViewTextBoxColumn.DataPropertyName = "NombreDeProveedor"
-        Me.NombreDeProveedorDataGridViewTextBoxColumn.HeaderText = "Nombre Proveedor"
-        Me.NombreDeProveedorDataGridViewTextBoxColumn.Name = "NombreDeProveedorDataGridViewTextBoxColumn"
-        Me.NombreDeProveedorDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ProveedorBindingSource
-        '
-        Me.ProveedorBindingSource.DataSource = GetType(MP_Lucas_Sanz.Proveedor)
-        '
-        'NombreDeArticuloDataGridViewTextBoxColumn1
-        '
-        Me.NombreDeArticuloDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.NombreDeArticuloDataGridViewTextBoxColumn1.DataPropertyName = "NombreDeArticulo"
-        Me.NombreDeArticuloDataGridViewTextBoxColumn1.HeaderText = "NOMBRE ARTÍCULO"
-        Me.NombreDeArticuloDataGridViewTextBoxColumn1.Name = "NombreDeArticuloDataGridViewTextBoxColumn1"
-        Me.NombreDeArticuloDataGridViewTextBoxColumn1.ReadOnly = True
-        '
-        'UnidadesDisponiblesDataGridViewTextBoxColumn
-        '
-        Me.UnidadesDisponiblesDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.UnidadesDisponiblesDataGridViewTextBoxColumn.DataPropertyName = "UnidadesDisponibles"
-        Me.UnidadesDisponiblesDataGridViewTextBoxColumn.HeaderText = "UNIDADES DISPONIBLES"
-        Me.UnidadesDisponiblesDataGridViewTextBoxColumn.Name = "UnidadesDisponiblesDataGridViewTextBoxColumn"
-        Me.UnidadesDisponiblesDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'InventarioBindingSource
-        '
-        Me.InventarioBindingSource.DataSource = GetType(MP_Lucas_Sanz.Inventario)
+        'ImageList1
+        '
+        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList1.Images.SetKeyName(0, "banco.ico")
+        Me.ImageList1.Images.SetKeyName(1, "cliente.ico")
+        Me.ImageList1.Images.SetKeyName(2, "articulo.ico")
+        Me.ImageList1.Images.SetKeyName(3, "inventario.ico")
+        Me.ImageList1.Images.SetKeyName(4, "configuraciones.ico")
         '
         'BancoBindingSource
         '
@@ -1297,31 +1297,31 @@ Partial Class frmMain
         Me.tlp_main_bancos_pagos.ResumeLayout(False)
         CType(Me.dg_bancos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dg_formas_pago, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FormaPagoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tlp_bancos.ResumeLayout(False)
         Me.tlp_pagos.ResumeLayout(False)
         Me.tab_clientes_grupos.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
         CType(Me.dg_clientes, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ClienteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel2.ResumeLayout(False)
         Me.TableLayoutPanel3.ResumeLayout(False)
         CType(Me.dg_grupos, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GrupoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tab_articulos_proveedores.ResumeLayout(False)
         Me.TableLayoutPanel4.ResumeLayout(False)
         CType(Me.dg_articulos, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ArticuloBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel5.ResumeLayout(False)
         Me.TableLayoutPanel6.ResumeLayout(False)
         CType(Me.dg_proveedores, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ProveedorBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tab_inventario.ResumeLayout(False)
         Me.TableLayoutPanel7.ResumeLayout(False)
         CType(Me.dg_inventario, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.InventarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel8.ResumeLayout(False)
         Me.TableLayoutPanel8.PerformLayout()
-        CType(Me.FormaPagoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ClienteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GrupoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ArticuloBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ProveedorBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.InventarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BancoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GrupoBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

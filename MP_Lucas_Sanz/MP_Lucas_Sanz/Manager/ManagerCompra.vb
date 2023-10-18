@@ -33,16 +33,26 @@ Public Class ManagerCompra
         Return listaCompras
     End Function
     Public Sub addCompra(compraTemp As Compra)
+        cmd = New SqlCommand("SELECT MAX(CODIGOCOMPRA) FROM COMPRAS;", connectionDBManager)
+        Dim maxActual As Object = cmd.ExecuteScalar()
+        Dim codigoCompraNuevo As Integer = Nothing
+        If maxActual IsNot DBNull.Value Then
+            codigoCompraNuevo = Convert.ToInt32(maxActual) + 1
+        Else
+            codigoCompraNuevo = 0
+        End If
+        Dim pvpCompraConPunto As String = Replace(compraTemp.PrecioDeArticuloCompra.ToString(), ",", ".")
         cmd = New SqlCommand($"INSERT INTO COMPRAS
-                                VALUES ('{compraTemp.ProveedorDeCompra}', 
+                                VALUES ({codigoCompraNuevo},
+                                '{compraTemp.ProveedorDeCompra}', 
                                 '{compraTemp.ArticuloDeCompra}',
                                 '{compraTemp.FormaDePagoCompra}',
-                                {compraTemp.PrecioDeArticuloCompra},
+                                {pvpCompraConPunto},
                                 {compraTemp.CantidadDeCompra});", connectionDBManager)
-        If cmd.ExecuteNonQuery > 0 Then
-            MessageBox.Show("Compra introducida")
-        Else
-            MessageBox.Show("Compra no introducida")
-        End If
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
+        End Try
     End Sub
 End Class

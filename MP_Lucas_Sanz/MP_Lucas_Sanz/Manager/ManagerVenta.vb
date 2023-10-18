@@ -33,16 +33,26 @@ Public Class ManagerVenta
         Return listaVentas
     End Function
     Public Sub addVenta(ventaTemp As Venta)
+        cmd = New SqlCommand("SELECT MAX(CODIGOVENTA) FROM VENTAS;", connectionDBManager)
+        Dim maxActual As Object = cmd.ExecuteScalar()
+        Dim codigoVentaNuevo As Integer = Nothing
+        If maxActual IsNot DBNull.Value Then
+            codigoVentaNuevo = Convert.ToInt32(maxActual) + 1
+        Else
+            codigoVentaNuevo = 0
+        End If
+        Dim pvpVentaConPunto As String = Replace(ventaTemp.PrecioDeArticuloVenta.ToString(), ",", ".")
         cmd = New SqlCommand($"INSERT INTO VENTAS
-                                VALUES ('{ventaTemp.ClienteDeVenta}', 
+                                VALUES ({codigoVentaNuevo},
+                                '{ventaTemp.ClienteDeVenta}', 
                                 '{ventaTemp.ArticuloDeVenta}',
                                 '{ventaTemp.FormaDePagoVenta}',
-                                {ventaTemp.PrecioDeArticuloVenta},
+                                {pvpVentaConPunto},
                                 {ventaTemp.CantidadDeVenta});", connectionDBManager)
-        If cmd.ExecuteNonQuery > 0 Then
-            MessageBox.Show("Venta introducida")
-        Else
-            MessageBox.Show("Venta no introducida")
-        End If
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
+        End Try
     End Sub
 End Class

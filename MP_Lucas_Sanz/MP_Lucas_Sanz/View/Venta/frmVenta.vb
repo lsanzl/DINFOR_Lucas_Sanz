@@ -101,7 +101,6 @@ Public Class frmVenta
         Dim precioVentaArticulo As Double = precioVenta * (1 + porcBeneficio / 100)
 
         Dim ventaTemp As Venta = New Venta(clienteSeleccionado, articuloSeleccionado, formaPagoSeleccionada, precioVentaArticulo, cantidadSeleccionada)
-        'ventaTemp.addVenta()
         listaVentas.Add(ventaTemp)
         fillDGVentas()
         clearFieldsDatos()
@@ -159,6 +158,9 @@ Public Class frmVenta
             MessageBox.Show("Introduzca primero alguna venta")
             Return
         End If
+        For Each ventilla As Venta In listaVentas
+            ventilla.addVenta()
+        Next
         Dim fechaVenta As Date = dp_fecha_venta.Value
         Dim informe As infVenta = New infVenta(listaVentas, fechaVenta)
     End Sub
