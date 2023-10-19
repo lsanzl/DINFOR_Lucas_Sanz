@@ -1,5 +1,5 @@
 ﻿Public Class frmFamilias
-    Public familiaSeleccionada As String = Nothing
+    Public familiaSeleccionada As Integer = Nothing
     Dim familiaTemp As Familia = New Familia()
     Dim listaFamilias As List(Of Familia) = New List(Of Familia)
 
@@ -10,7 +10,6 @@
         dg_familias.ClearSelection()
         fillDGFamilias()
     End Sub
-
     Private Sub fillDGFamilias()
         dg_familias.DataSource = Nothing
         dg_familias.Rows.Clear()
@@ -32,7 +31,7 @@
     End Sub
 
     Private Sub click_btn_seleccionar_familia(sender As Object, e As EventArgs) Handles btn_seleccionar_familia.Click
-        familiaSeleccionada = familiaTemp.NombreDeFamilia
+        familiaSeleccionada = familiaTemp.CodigoDeFamilia
         dg_familias.ClearSelection()
         Close()
     End Sub
@@ -55,7 +54,7 @@
     End Sub
 
     Private Sub double_click_dg_familias(sender As Object, e As EventArgs) Handles dg_familias.DoubleClick
-        familiaSeleccionada = familiaTemp.NombreDeFamilia
+        familiaSeleccionada = familiaTemp.CodigoDeFamilia
         dg_familias.ClearSelection()
         Close()
     End Sub

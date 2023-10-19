@@ -23,6 +23,7 @@ Partial Class frmVenta
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmVenta))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
@@ -36,22 +37,22 @@ Partial Class frmVenta
         Me.btn_busqueda_cliente = New System.Windows.Forms.Button()
         Me.btn_busqueda_articulo_venta = New System.Windows.Forms.Button()
         Me.cb_forma_pago_seleccionada_venta = New System.Windows.Forms.ComboBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.dp_fecha_venta = New System.Windows.Forms.DateTimePicker()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.btn_modificar_venta = New System.Windows.Forms.Button()
         Me.btn_eliminar_venta = New System.Windows.Forms.Button()
         Me.btn_añadir_venta = New System.Windows.Forms.Button()
         Me.dg_ventas = New System.Windows.Forms.DataGridView()
+        Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
+        Me.btn_confirmar_venta = New System.Windows.Forms.Button()
+        Me.lbl_precio_sumatorio_venta = New System.Windows.Forms.Label()
         Me.clienteVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.articuloVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.formaPagoVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.precioArticuloVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cantidadVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.precioTotalVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
-        Me.btn_confirmar_venta = New System.Windows.Forms.Button()
-        Me.lbl_precio_sumatorio_venta = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.dp_fecha_venta = New System.Windows.Forms.DateTimePicker()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
@@ -220,6 +221,28 @@ Partial Class frmVenta
         Me.cb_forma_pago_seleccionada_venta.Size = New System.Drawing.Size(245, 21)
         Me.cb_forma_pago_seleccionada_venta.TabIndex = 9
         '
+        'Label5
+        '
+        Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(364, 119)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(96, 13)
+        Me.Label5.TabIndex = 10
+        Me.Label5.Text = "Fecha:"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'dp_fecha_venta
+        '
+        Me.dp_fecha_venta.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dp_fecha_venta.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dp_fecha_venta.Location = New System.Drawing.Point(466, 115)
+        Me.dp_fecha_venta.Name = "dp_fecha_venta"
+        Me.dp_fecha_venta.Size = New System.Drawing.Size(245, 20)
+        Me.dp_fecha_venta.TabIndex = 11
+        Me.dp_fecha_venta.Value = New Date(2023, 10, 17, 0, 0, 0, 0)
+        '
         'TableLayoutPanel3
         '
         Me.TableLayoutPanel3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -297,53 +320,6 @@ Partial Class frmVenta
         Me.dg_ventas.Size = New System.Drawing.Size(714, 151)
         Me.dg_ventas.TabIndex = 2
         '
-        'clienteVenta
-        '
-        Me.clienteVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.clienteVenta.DataPropertyName = "ClienteDeVenta"
-        Me.clienteVenta.HeaderText = "Cliente"
-        Me.clienteVenta.Name = "clienteVenta"
-        Me.clienteVenta.ReadOnly = True
-        '
-        'articuloVenta
-        '
-        Me.articuloVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.articuloVenta.DataPropertyName = "ArticuloDeVenta"
-        Me.articuloVenta.HeaderText = "Artículo"
-        Me.articuloVenta.Name = "articuloVenta"
-        Me.articuloVenta.ReadOnly = True
-        '
-        'formaPagoVenta
-        '
-        Me.formaPagoVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.formaPagoVenta.DataPropertyName = "FormaDePagoVenta"
-        Me.formaPagoVenta.HeaderText = "Pago"
-        Me.formaPagoVenta.Name = "formaPagoVenta"
-        Me.formaPagoVenta.ReadOnly = True
-        '
-        'precioArticuloVenta
-        '
-        Me.precioArticuloVenta.DataPropertyName = "PrecioDeArticuloVenta"
-        Me.precioArticuloVenta.HeaderText = "Precio Ud"
-        Me.precioArticuloVenta.Name = "precioArticuloVenta"
-        Me.precioArticuloVenta.ReadOnly = True
-        '
-        'cantidadVenta
-        '
-        Me.cantidadVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.cantidadVenta.DataPropertyName = "CantidadDeVenta"
-        Me.cantidadVenta.HeaderText = "Cantidad"
-        Me.cantidadVenta.Name = "cantidadVenta"
-        Me.cantidadVenta.ReadOnly = True
-        '
-        'precioTotalVenta
-        '
-        Me.precioTotalVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.precioTotalVenta.DataPropertyName = "PrecioTotalDeVenta"
-        Me.precioTotalVenta.HeaderText = "Precio Total"
-        Me.precioTotalVenta.Name = "precioTotalVenta"
-        Me.precioTotalVenta.ReadOnly = True
-        '
         'TableLayoutPanel4
         '
         Me.TableLayoutPanel4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -386,27 +362,54 @@ Partial Class frmVenta
         Me.lbl_precio_sumatorio_venta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.lbl_precio_sumatorio_venta.Visible = False
         '
-        'Label5
+        'clienteVenta
         '
-        Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(364, 119)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(96, 13)
-        Me.Label5.TabIndex = 10
-        Me.Label5.Text = "Fecha:"
-        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.clienteVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.clienteVenta.DataPropertyName = "ClienteDeVenta"
+        Me.clienteVenta.HeaderText = "Cliente"
+        Me.clienteVenta.Name = "clienteVenta"
+        Me.clienteVenta.ReadOnly = True
         '
-        'dp_fecha_venta
+        'articuloVenta
         '
-        Me.dp_fecha_venta.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dp_fecha_venta.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dp_fecha_venta.Location = New System.Drawing.Point(466, 115)
-        Me.dp_fecha_venta.Name = "dp_fecha_venta"
-        Me.dp_fecha_venta.Size = New System.Drawing.Size(245, 20)
-        Me.dp_fecha_venta.TabIndex = 11
-        Me.dp_fecha_venta.Value = New Date(2023, 10, 17, 0, 0, 0, 0)
+        Me.articuloVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.articuloVenta.DataPropertyName = "ArticuloDeVenta"
+        Me.articuloVenta.HeaderText = "Artículo"
+        Me.articuloVenta.Name = "articuloVenta"
+        Me.articuloVenta.ReadOnly = True
+        '
+        'formaPagoVenta
+        '
+        Me.formaPagoVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.formaPagoVenta.DataPropertyName = "FormaDePagoVenta"
+        Me.formaPagoVenta.HeaderText = "Pago"
+        Me.formaPagoVenta.Name = "formaPagoVenta"
+        Me.formaPagoVenta.ReadOnly = True
+        '
+        'precioArticuloVenta
+        '
+        Me.precioArticuloVenta.DataPropertyName = "PrecioDeArticuloVenta"
+        DataGridViewCellStyle2.Format = "N2"
+        Me.precioArticuloVenta.DefaultCellStyle = DataGridViewCellStyle2
+        Me.precioArticuloVenta.HeaderText = "Precio Ud"
+        Me.precioArticuloVenta.Name = "precioArticuloVenta"
+        Me.precioArticuloVenta.ReadOnly = True
+        '
+        'cantidadVenta
+        '
+        Me.cantidadVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.cantidadVenta.DataPropertyName = "CantidadDeVenta"
+        Me.cantidadVenta.HeaderText = "Cantidad"
+        Me.cantidadVenta.Name = "cantidadVenta"
+        Me.cantidadVenta.ReadOnly = True
+        '
+        'precioTotalVenta
+        '
+        Me.precioTotalVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.precioTotalVenta.DataPropertyName = "PrecioTotalDeVenta"
+        Me.precioTotalVenta.HeaderText = "Precio Total"
+        Me.precioTotalVenta.Name = "precioTotalVenta"
+        Me.precioTotalVenta.ReadOnly = True
         '
         'frmVenta
         '
@@ -453,12 +456,12 @@ Partial Class frmVenta
     Friend WithEvents TableLayoutPanel4 As TableLayoutPanel
     Friend WithEvents btn_confirmar_venta As Button
     Friend WithEvents lbl_precio_sumatorio_venta As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents dp_fecha_venta As DateTimePicker
     Friend WithEvents clienteVenta As DataGridViewTextBoxColumn
     Friend WithEvents articuloVenta As DataGridViewTextBoxColumn
     Friend WithEvents formaPagoVenta As DataGridViewTextBoxColumn
     Friend WithEvents precioArticuloVenta As DataGridViewTextBoxColumn
     Friend WithEvents cantidadVenta As DataGridViewTextBoxColumn
     Friend WithEvents precioTotalVenta As DataGridViewTextBoxColumn
-    Friend WithEvents Label5 As Label
-    Friend WithEvents dp_fecha_venta As DateTimePicker
 End Class

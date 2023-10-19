@@ -14,48 +14,57 @@ Public Class ManagerFamilia
             Dim familiaTemp As Familia
             dr.Read()
             Do
-                familiaTemp = New Familia(dr(0).ToString(), dr(1).ToString())
+                familiaTemp = New Familia(dr(0).ToString().Trim(), dr(1).ToString().Trim())
                 listaFamilias.Add(familiaTemp)
             Loop While dr.Read()
         End If
         dr.Close()
         Return listaFamilias
     End Function
-
     Public Sub addFamilia(familiaTemp As Familia)
         If checkCodigoFamilia(familiaTemp.CodigoDeFamilia) Then
             MessageBox.Show("Ya existe dicha familia")
             Return
         End If
-        cmd = New SqlCommand($"INSERT INTO FAMILIAS VALUES ('{familiaTemp.CodigoDeFamilia}', 
-                            '{familiaTemp.NombreDeFamilia}');", connectionDBManager)
-        If cmd.ExecuteNonQuery() > 0 Then
-            MessageBox.Show("Familia creada")
-        Else
-            MessageBox.Show("Familia no creada")
-        End If
+        cmd = New SqlCommand("INSERT INTO FAMILIAS VALUES (@Codigo, 
+                            @Nombre);", connectionDBManager)
+        With cmd.Parameters
+            .Add("@Codigo", SqlDbType.Char, 6).Value = familiaTemp.CodigoDeFamilia
+            .Add("@Nombre", SqlDbType.Char, 100).Value = familiaTemp.NombreDeFamilia
+        End With
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("No se pudo insertar la familia: " + vbCrLf + ex.ToString())
+        End Try
     End Sub
     Public Sub modifyFamilia(familiaTemp As Familia)
-        cmd = New SqlCommand($"UPDATE FAMILIAS SET NOMBREFAMILIA = '{familiaTemp.NombreDeFamilia}'
-                            WHERE CODIGOFAMILIA = '{familiaTemp.CodigoDeFamilia}';", connectionDBManager)
-        If cmd.ExecuteNonQuery() > 0 Then
-            MessageBox.Show("Familia modificada")
-        Else
-            MessageBox.Show("Familia no modificada")
-        End If
+        cmd = New SqlCommand("UPDATE FAMILIAS SET NOMBREFAMILIA = @Nombre
+                            WHERE CODIGOFAMILIA = @Codigo;", connectionDBManager)
+        With cmd.Parameters
+            .Add("@Codigo", SqlDbType.Char, 6).Value = familiaTemp.CodigoDeFamilia
+            .Add("@Nombre", SqlDbType.Char, 100).Value = familiaTemp.NombreDeFamilia
+        End With
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("No se pudo modificar la familia: " + vbCrLf + ex.ToString())
+        End Try
     End Sub
     Public Sub deleteFamilia(familiaTemp As Familia)
-        cmd = New SqlCommand($"DELETE FROM FAMILIAS 
-                            WHERE CODIGOFAMILIA = '{familiaTemp.CodigoDeFamilia}';", connectionDBManager)
-        If cmd.ExecuteNonQuery() > 0 Then
-            MessageBox.Show("Familia eliminada")
-        Else
-            MessageBox.Show("Familia no eliminada")
-        End If
+        cmd = New SqlCommand("DELETE FROM FAMILIAS 
+                            WHERE CODIGOFAMILIA = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Char, 6).Value = familiaTemp.CodigoDeFamilia
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("No se pudo eliminar la familia: " + vbCrLf + ex.ToString())
+        End Try
     End Sub
     Public Function checkCodigoFamilia(codigoPasado As String) As Boolean
-        cmd = New SqlCommand($"SELECT * FROM FAMILIAS 
-                            WHERE CODIGOFAMILIA = '{codigoPasado}';", connectionDBManager)
+        cmd = New SqlCommand("SELECT * FROM FAMILIAS 
+                            WHERE CODIGOFAMILIA = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Char, 6).Value = codigoPasado
         dr = cmd.ExecuteReader()
         If dr.HasRows Then
             dr.Close()

@@ -19,7 +19,7 @@ Public Class ManagerInventario
         If dr.HasRows Then
             dr.Read()
             Do
-                inventarioTemp = New Inventario(dr(0).ToString(), Convert.ToInt32(dr(1)))
+                inventarioTemp = New Inventario(dr(0).ToString().Trim(), Convert.ToInt32(dr(1)))
                 listaInventario.Add(inventarioTemp)
             Loop While dr.Read()
             dr.Close()
@@ -27,16 +27,19 @@ Public Class ManagerInventario
         dr.Close()
         Return listaInventario
     End Function
-
     Public Sub addUnidades(cantidadSumar As Integer, inventarioPasado As Inventario)
-        cmd = New SqlCommand($"UPDATE INVENTARIO SET 
-                            UNIDADESDISPONIBLES = UNIDADESDISPONIBLES + {cantidadSumar}
-                            WHERE NOMBREARTICULO = '{inventarioPasado.NombreDeArticulo}';", connectionDBManager)
-        If cmd.ExecuteNonQuery() > 0 Then
-            MessageBox.Show("Unidades actualizadas")
-        Else
-            MessageBox.Show("Unidades no actualizadas")
-        End If
+        cmd = New SqlCommand("UPDATE INVENTARIO SET 
+                            UNIDADESDISPONIBLES = UNIDADESDISPONIBLES + @CantidadSumar
+                            WHERE NOMBREARTICULO = @Nombre;", connectionDBManager)
+        With cmd.Parameters
+            .Add("@CantidadSumar", SqlDbType.Int).Value = cantidadSumar
+            .Add("@Nombre", SqlDbType.Char, 50).Value = inventarioPasado.NombreDeArticulo
+        End With
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Error al añadir unidades: " + vbCrLf + ex.ToString())
+        End Try
     End Sub
     Public Sub deleteUnidades(cantidadRestar As Integer, inventarioPasado As Inventario)
         If inventarioPasado.UnidadesDisponibles - cantidadRestar < 0 Then
@@ -46,36 +49,46 @@ Public Class ManagerInventario
             End If
         End If
 
-        cmd = New SqlCommand($"UPDATE INVENTARIO SET 
-                            UNIDADESDISPONIBLES = UNIDADESDISPONIBLES - {cantidadRestar}
-                            WHERE NOMBREARTICULO = '{inventarioPasado.NombreDeArticulo}';", connectionDBManager)
-        If cmd.ExecuteNonQuery() > 0 Then
-            MessageBox.Show("Unidades actualizadas")
-        Else
-            MessageBox.Show("Unidades no actualizadas")
-        End If
+        cmd = New SqlCommand("UPDATE INVENTARIO SET 
+                            UNIDADESDISPONIBLES = UNIDADESDISPONIBLES - @CantidadRestar
+                            WHERE NOMBREARTICULO = @Nombre;", connectionDBManager)
+        With cmd.Parameters
+            .Add("@CantidadRestar", SqlDbType.Int).Value = cantidadRestar
+            .Add("@Nombre", SqlDbType.Char, 50).Value = inventarioPasado.NombreDeArticulo
+        End With
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Error al restar unidades: " + vbCrLf + ex.ToString())
+        End Try
     End Sub
     Public Sub addInventario(inventarioPasado As Inventario)
-        cmd = New SqlCommand($"INSERT INTO INVENTARIO 
-                            VALUES ('{inventarioPasado.NombreDeArticulo}', {inventarioPasado.UnidadesDisponibles});", connectionDBManager)
-        If cmd.ExecuteNonQuery() > 0 Then
-            MessageBox.Show("Unidades introducidas")
-        Else
-            MessageBox.Show("Unidades no introducidas")
-        End If
+        cmd = New SqlCommand("INSERT INTO INVENTARIO 
+                            VALUES (@Nombre, @UnidadesDisponibles);", connectionDBManager)
+        With cmd.Parameters
+            .Add("@UnidadesDisponibles", SqlDbType.Int).Value = inventarioPasado.UnidadesDisponibles
+            .Add("@Nombre", SqlDbType.Char, 50).Value = inventarioPasado.NombreDeArticulo
+        End With
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Error al introducir unidades: " + vbCrLf + ex.ToString())
+        End Try
     End Sub
     Public Sub deleteInventario(inventarioPasado As Inventario)
-        cmd = New SqlCommand($"DELETE FROM INVENTARIO WHERE
-                            NOMBREARTICULO = '{inventarioPasado.NombreDeArticulo}';", connectionDBManager)
-        If cmd.ExecuteNonQuery() > 0 Then
-            MessageBox.Show("Unidades eliminadas")
-        Else
-            MessageBox.Show("Unidades no eliminadas")
-        End If
+        cmd = New SqlCommand("DELETE FROM INVENTARIO 
+                            WHERE NOMBREARTICULO = @Nombre;", connectionDBManager)
+        cmd.Parameters.Add("@Nombre", SqlDbType.Char, 50).Value = inventarioPasado.NombreDeArticulo
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Error al eliminar unidades: " + vbCrLf + ex.ToString())
+        End Try
     End Sub
     Public Function checkInventario(nombrePasado As String) As Boolean
-        cmd = New SqlCommand($"SELECT * FROM INVENTARIO WHERE
-                            NOMBREARTICULO = '{nombrePasado}';", connectionDBManager)
+        cmd = New SqlCommand("SELECT * FROM INVENTARIO WHERE
+                            NOMBREARTICULO = @Nombre;", connectionDBManager)
+        cmd.Parameters.Add("@Nombre", SqlDbType.Char, 50).Value = nombrePasado
         dr = cmd.ExecuteReader()
         If dr.HasRows Then
             dr.Close()

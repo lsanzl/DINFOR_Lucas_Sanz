@@ -13,11 +13,11 @@
             Return
         End If
 
-        If Not bancoAux.checkBancoDB(txt_codigo_banco.Text) And btn_confirmar_nuevo_banco.Text = "Confirmar" Then
+        If Not bancoAux.checkBancoDB(Convert.ToInt32(txt_codigo_banco.Text)) And btn_confirmar_nuevo_banco.Text = "Confirmar" Then
             MessageBox.Show("No puede repetirse el código del banco")
             Return
         End If
-        Dim bancoTemp As Banco = New Banco(txt_nombre_banco.Text, Integer.Parse(txt_codigo_banco.Text))
+        Dim bancoTemp As Banco = New Banco(Convert.ToInt32(txt_codigo_banco.Text), txt_nombre_banco.Text)
         If btn_confirmar_nuevo_banco.Text = "Modificar" Then
             bancoTemp.modifyBanco()
         Else

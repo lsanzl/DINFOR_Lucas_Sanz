@@ -1,19 +1,35 @@
 ﻿Public Class Cliente
-    Private codigoCliente As String
+    Private codigoCliente As Integer
+    Private grupoCliente As Integer
+    Private bancoCliente As Integer
     Private nombreCliente As String
     Private nif As String
     Private direccion As String
     Private fechaNacimiento As Date
-    Private bancoCliente As Integer
-    Private grupoCliente As String
     Private email As String
 
-    Public Property CodigoDelCliente() As String
+    Public Property CodigoDelCliente() As Integer
         Get
             Return codigoCliente
         End Get
-        Set(value As String)
+        Set(value As Integer)
             codigoCliente = value
+        End Set
+    End Property
+    Public Property BancoDelCliente() As Integer
+        Get
+            Return bancoCliente
+        End Get
+        Set(value As Integer)
+            bancoCliente = value
+        End Set
+    End Property
+    Public Property GrupoDelCliente() As Integer
+        Get
+            Return grupoCliente
+        End Get
+        Set(value As Integer)
+            grupoCliente = value
         End Set
     End Property
     Public Property NombreDelCliente() As String
@@ -48,22 +64,6 @@
             fechaNacimiento = value
         End Set
     End Property
-    Public Property BancoDelCliente() As Integer
-        Get
-            Return bancoCliente
-        End Get
-        Set(value As Integer)
-            bancoCliente = value
-        End Set
-    End Property
-    Public Property GrupoDelCliente() As String
-        Get
-            Return grupoCliente
-        End Get
-        Set(value As String)
-            grupoCliente = value
-        End Set
-    End Property
     Public Property EmailDelCliente() As String
         Get
             Return email
@@ -76,16 +76,16 @@
     Public Sub New()
         MyBase.New()
     End Sub
-    Public Sub New(codigoPasado As String, nombrePasado As String, nifPasado As String, direccionPasada As String, fechaPasada As Date,
-                   bancoPasado As Integer, grupoPasado As String, emailPasado As String)
+    Public Sub New(codigoPasado As Integer, nombrePasado As String, nifPasado As String, direccionPasada As String, fechaPasada As Date,
+                   bancoPasado As Integer, grupoPasado As Integer, emailPasado As String)
         MyBase.New()
         CodigoDelCliente = codigoPasado
+        BancoDelCliente = bancoPasado
+        GrupoDelCliente = grupoPasado
         NombreDelCliente = nombrePasado
         NifDelCliente = nifPasado
         DireccionDelCliente = direccionPasada
         FechaDeNacimientoDelCliente = fechaPasada
-        BancoDelCliente = bancoPasado
-        GrupoDelCliente = grupoPasado
         EmailDelCliente = emailPasado
     End Sub
 
@@ -101,11 +101,4 @@
     Public Sub deleteCliente()
         managerClienteAux.deleteCliente(Me)
     End Sub
-    Public Function checkCodigoCliente(codigoPasado As String)
-        If codigoPasado.Length > 6 Then
-            MessageBox.Show("Máxima longitud de 6")
-            Return False
-        End If
-        Return True
-    End Function
 End Class

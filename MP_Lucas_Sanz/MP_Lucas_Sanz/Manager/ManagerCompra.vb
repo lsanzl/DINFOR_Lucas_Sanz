@@ -11,21 +11,25 @@ Public Class ManagerCompra
         cmd = New SqlCommand("SELECT * FROM COMPRAS;", connectionDBManager)
         dr = cmd.ExecuteReader()
         If dr.HasRows Then
+            Dim codigo As Integer
             Dim proveedor As String
             Dim articulo As String
             Dim formaPago As String
             Dim precio As Double
             Dim cantidad As Integer
+            Dim fecha As Date
 
             dr.Read()
             Do
-                proveedor = dr(1).ToString()
-                articulo = dr(2).ToString()
-                formaPago = dr(3).ToString()
+                codigo = Convert.ToInt32(dr(0))
+                proveedor = dr(1).ToString().Trim()
+                articulo = dr(2).ToString().Trim()
+                formaPago = dr(3).ToString().Trim()
                 precio = Convert.ToDouble(dr(4))
                 cantidad = Convert.ToInt32(dr(5))
+                fecha = Convert.ToDateTime(dr(6))
 
-                compraAux = New Compra(proveedor, articulo, formaPago, precio, cantidad)
+                compraAux = New Compra(codigo, proveedor, articulo, formaPago, precio, cantidad, fecha)
                 listaCompras.Add(compraAux)
             Loop While dr.Read()
         End If
@@ -33,7 +37,32 @@ Public Class ManagerCompra
         Return listaCompras
     End Function
     Public Sub addCompra(compraTemp As Compra)
-        cmd = New SqlCommand("SELECT MAX(CODIGOCOMPRA) FROM COMPRAS;", connectionDBManager)
+        cmd = New SqlCommand($"INSERT INTO COMPRAS
+                                VALUES 
+                                (@Codigo,
+                                @Proveedor, 
+                                @Articulo,
+                                @FormaPago,
+                                @PVPCompra,
+                                @Cantidad,
+                                @Fecha);", connectionDBManager)
+        With cmd.Parameters
+            .Add("@Codigo", SqlDbType.Int).Value = getIDCompra()
+            .Add("@Proveedor", SqlDbType.Char, 6).Value = compraTemp.ProveedorDeCompra
+            .Add("@Articulo", SqlDbType.Char, 6).Value = compraTemp.ArticuloDeCompra
+            .Add("@FormaPago", SqlDbType.Char, 5).Value = compraTemp.FormaDePagoCompra
+            .Add("@PVPCompra", SqlDbType.Decimal, 10, 2).Value = compraTemp.PrecioDeArticuloCompra
+            .Add("@Cantidad", SqlDbType.Int).Value = compraTemp.CantidadDeCompra
+            .Add("@Fecha", SqlDbType.Date).Value = compraTemp.FechaDeCompra
+        End With
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Error al introducir una compra: " + vbCrLf + ex.ToString())
+        End Try
+    End Sub
+    Public Function getIDCompra() As Integer
+        cmd = New SqlCommand("SELECT MAX(ID_COMPRA) FROM COMPRAS;", connectionDBManager)
         Dim maxActual As Object = cmd.ExecuteScalar()
         Dim codigoCompraNuevo As Integer = Nothing
         If maxActual IsNot DBNull.Value Then
@@ -41,18 +70,6 @@ Public Class ManagerCompra
         Else
             codigoCompraNuevo = 0
         End If
-        Dim pvpCompraConPunto As String = Replace(compraTemp.PrecioDeArticuloCompra.ToString(), ",", ".")
-        cmd = New SqlCommand($"INSERT INTO COMPRAS
-                                VALUES ({codigoCompraNuevo},
-                                '{compraTemp.ProveedorDeCompra}', 
-                                '{compraTemp.ArticuloDeCompra}',
-                                '{compraTemp.FormaDePagoCompra}',
-                                {pvpCompraConPunto},
-                                {compraTemp.CantidadDeCompra});", connectionDBManager)
-        Try
-            cmd.ExecuteNonQuery()
-        Catch ex As Exception
-            MessageBox.Show(ex.ToString())
-        End Try
-    End Sub
+        Return codigoCompraNuevo
+    End Function
 End Class

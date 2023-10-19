@@ -8,12 +8,12 @@ Public Class ManagerBanco
 
     Public Function getBancos() As List(Of Banco)
         listaBancos = New List(Of Banco)
-        cmd = New SqlCommand("SELECT NOMBREBANCO, CODIGOBANCO FROM BANCOS;", connectionDBManager)
+        cmd = New SqlCommand("SELECT * FROM BANCOS;", connectionDBManager)
         dr = cmd.ExecuteReader()
         If dr.HasRows Then
             dr.Read()
             Do
-                bancoAux = New Banco(dr(0).ToString(), dr(1).ToString())
+                bancoAux = New Banco(Convert.ToInt32(dr(0)), dr(1).ToString().Trim())
                 listaBancos.Add(bancoAux)
             Loop While dr.Read()
         End If
@@ -22,40 +22,51 @@ Public Class ManagerBanco
     End Function
 
     Public Sub addBanco(bancoTemp As Banco)
-        cmd = New SqlCommand($"INSERT INTO BANCOS (CODIGOBANCO, NOMBREBANCO)
-                                VALUES ({bancoTemp.CodigoDeBanco}, '{bancoTemp.NombreDeBanco}');", connectionDBManager)
-        If cmd.ExecuteNonQuery > 0 Then
-            MessageBox.Show("Banco introducido")
-        Else
-            MessageBox.Show("Banco no introducido")
-        End If
+        cmd = New SqlCommand("INSERT INTO BANCOS VALUES 
+                                (@Codigo,
+                                @Nombre);", connectionDBManager)
+        With cmd.Parameters
+            .Add("@Codigo", SqlDbType.Int).Value = bancoTemp.CodigoDeBanco
+            .Add("@Nombre", SqlDbType.Char, 100).Value = bancoTemp.NombreDeBanco
+        End With
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Error al introducir un banco: " + vbCrLf + ex.ToString())
+        End Try
     End Sub
     Public Sub modifyBanco(bancoTemp As Banco)
         cmd = New SqlCommand($"UPDATE BANCOS
-                                SET NOMBREBANCO = '{bancoTemp.NombreDeBanco}'
-                                WHERE CODIGOBANCO = '{bancoTemp.CodigoDeBanco}';", connectionDBManager)
-        If cmd.ExecuteNonQuery > 0 Then
-            MessageBox.Show("Banco modificado")
-        Else
-            MessageBox.Show("Banco no modificado")
-        End If
+                                SET NOMBRE_BANCO = @Nombre
+                                WHERE ID_BANCO = @Codigo;", connectionDBManager)
+        With cmd.Parameters
+            .Add("@Codigo", SqlDbType.Int).Value = bancoTemp.CodigoDeBanco
+            .Add("@Nombre", SqlDbType.Char, 100).Value = bancoTemp.NombreDeBanco
+        End With
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Error al modificar un banco: " + vbCrLf + ex.ToString())
+        End Try
     End Sub
 
     Public Sub deleteBanco(bancoTemp As Banco)
         cmd = New SqlCommand($"DELETE FROM BANCOS
-                                WHERE CODIGOBANCO = {bancoTemp.CodigoDeBanco};", connectionDBManager)
-        If cmd.ExecuteNonQuery > 0 Then
-            MessageBox.Show("Banco eliminado")
-        Else
-            MessageBox.Show("Banco no eliminado")
-        End If
+                                WHERE ID_BANCO = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = bancoTemp.CodigoDeBanco
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Error al eliminar un banco: " + vbCrLf + ex.ToString())
+        End Try
     End Sub
 
-    Public Function checkBanco(codigoBanco As String) As Boolean
-        cmd = New SqlCommand($"SELECT NOMBREBANCO
+    Public Function checkBanco(codigoBanco As Integer) As Boolean
+        cmd = New SqlCommand($"SELECT NOMBRE_BANCO
                                 FROM BANCOS
-                                WHERE CODIGOBANCO = {codigoBanco};", connectionDBManager)
-        dr = cmd.ExecuteReader()
+                                WHERE ID_BANCO = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = codigoBanco
+        dr = cmd.ExecuteReader
         If Not dr.HasRows Then
             dr.Close()
             Return True

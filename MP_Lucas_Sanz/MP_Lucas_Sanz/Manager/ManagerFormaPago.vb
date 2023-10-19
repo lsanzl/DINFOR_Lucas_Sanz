@@ -9,19 +9,18 @@ Public Class ManagerFormaPago
 
     Public Function getFormaPagos() As List(Of FormaPago)
         listaFormaPagos = New List(Of FormaPago)
-        cmd = New SqlCommand("SELECT CODIGOPAGO, NOMBREFORMAPAGO, BANCO, 
-                            ESTADO, NUMEROPLAZOS, PRIMERPLAZO, DIASENTREPLAZOS FROM FORMASPAGO;", connectionDBManager)
+        cmd = New SqlCommand("SELECT * FROM FORMASPAGO;", connectionDBManager)
         dr = cmd.ExecuteReader()
         If dr.HasRows Then
             dr.Read()
             Do
-                Dim codigoPago As String = dr(0).ToString()
-                Dim nombrePago As String = dr(1).ToString()
-                Dim bancoAsignadoPago As Integer = Integer.Parse(dr(2).ToString())
+                Dim codigoPago As String = dr(0).ToString().Trim()
+                Dim nombrePago As String = dr(1).ToString().Trim()
+                Dim bancoAsignadoPago As Integer = Convert.ToInt32(dr(2))
                 Dim estadoPago As Integer = Convert.ToInt32(dr(3))
-                Dim numPlazosPago As Integer = Integer.Parse(dr(4).ToString())
-                Dim diasPrimerPlazo As Integer = Integer.Parse(dr(5).ToString())
-                Dim diasEntrePlazos As Integer = Integer.Parse(dr(6).ToString())
+                Dim numPlazosPago As Integer = Convert.ToInt32(dr(4))
+                Dim diasPrimerPlazo As Integer = Convert.ToInt32(dr(5))
+                Dim diasEntrePlazos As Integer = Convert.ToInt32(dr(6))
 
                 formaPagoAux = New FormaPago(codigoPago, nombrePago, bancoAsignadoPago, estadoPago, numPlazosPago, diasPrimerPlazo, diasEntrePlazos)
                 listaFormaPagos.Add(formaPagoAux)
@@ -30,59 +29,82 @@ Public Class ManagerFormaPago
         dr.Close()
         Return listaFormaPagos
     End Function
-
     Public Sub addFormaPago(formaPagoSQL As FormaPago)
-        cmd = New SqlCommand($"INSERT INTO FORMASPAGO
-                            VALUES ('{formaPagoSQL.CodigoDePago}', '{formaPagoSQL.NombreDePago}',
-                                    {formaPagoSQL.BancoAsignado}, {formaPagoSQL.Activo}, {formaPagoSQL.PrimerPlazo},
-                                    {formaPagoSQL.NumeroPlazosPago}, {formaPagoSQL.DiasPlazos});", connectionDBManager)
-        If cmd.ExecuteNonQuery() > 0 Then
-            MessageBox.Show("Forma de Pago introducida")
-        Else
-            MessageBox.Show("Forma de Pago no introducida")
-        End If
+        cmd = New SqlCommand("INSERT INTO FORMASPAGO
+                            VALUES (@Codigo,
+                                    @Nombre,
+                                    @Banco,
+                                    @Activo,
+                                    @PrimerPlazo,
+                                    @NumerosPlazo,
+                                    @DiasPlazos);", connectionDBManager)
+        With cmd.Parameters
+            .Add("@Codigo", SqlDbType.Char, 5).Value = formaPagoSQL.CodigoDePago
+            .Add("@Nombre", SqlDbType.Char, 100).Value = formaPagoSQL.NombreDePago
+            .Add("@Banco", SqlDbType.Int).Value = formaPagoSQL.BancoAsignado
+            .Add("@Activo", SqlDbType.Int).Value = formaPagoSQL.Activo
+            .Add("@PrimerPlazo", SqlDbType.Int).Value = formaPagoSQL.PrimerPlazo
+            .Add("@NumerosPlazo", SqlDbType.Int).Value = formaPagoSQL.NumeroPlazosPago
+            .Add("@DiasPlazos", SqlDbType.Int).Value = formaPagoSQL.DiasPlazos
+        End With
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Error al introducir una forma de pago: " + vbCrLf + ex.ToString())
+        End Try
     End Sub
-
     Public Sub modifyFormaPago(formaPagoSQL As FormaPago)
-        cmd = New SqlCommand($"UPDATE FORMASPAGO
-                    SET NOMBREFORMAPAGO='{formaPagoSQL.NombreDePago}',
-                    BANCO={formaPagoSQL.BancoAsignado},
-                    ESTADO={formaPagoSQL.Activo},
-                    NUMEROPLAZOS={formaPagoSQL.NumeroPlazosPago},
-                    PRIMERPLAZO={formaPagoSQL.PrimerPlazo},
-                    DIASENTREPLAZOS={formaPagoSQL.DiasPlazos}
-                    WHERE CODIGOPAGO = '{formaPagoSQL.CodigoDePago}';", connectionDBManager)
-        If cmd.ExecuteNonQuery() > 0 Then
-            MessageBox.Show("Forma de Pago modificada")
-        Else
-            MessageBox.Show("Forma de Pago no modificada")
-        End If
+        cmd = New SqlCommand("UPDATE FORMASPAGO
+                    SET NOMBREFORMAPAGO= @Nombre,
+                    BANCO= @Banco,
+                    ESTADO= @Activo,
+                    NUMEROPLAZOS= @NumerosPlazo,
+                    PRIMERPLAZO= @PrimerPlazo,
+                    DIASENTREPLAZOS= @DiasPlazos
+                    WHERE CODIGOPAGO = @Codigo;", connectionDBManager)
+        With cmd.Parameters
+            .Add("@Codigo", SqlDbType.Char, 5).Value = formaPagoSQL.CodigoDePago
+            .Add("@Nombre", SqlDbType.Char, 100).Value = formaPagoSQL.NombreDePago
+            .Add("@Banco", SqlDbType.Int).Value = formaPagoSQL.BancoAsignado
+            .Add("@Activo", SqlDbType.Int).Value = formaPagoSQL.Activo
+            .Add("@PrimerPlazo", SqlDbType.Int).Value = formaPagoSQL.PrimerPlazo
+            .Add("@NumerosPlazo", SqlDbType.Int).Value = formaPagoSQL.NumeroPlazosPago
+            .Add("@DiasPlazos", SqlDbType.Int).Value = formaPagoSQL.DiasPlazos
+        End With
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Error al modificar una forma de pago: " + vbCrLf + ex.ToString())
+        End Try
     End Sub
-
     Public Sub deleteFormaPago(formaPagoSQL As FormaPago)
-        cmd = New SqlCommand($"DELETE FROM FORMASPAGO
-                                WHERE CODIGOPAGO = '{formaPagoSQL.CodigoDePago}';", connectionDBManager)
-        If cmd.ExecuteNonQuery() > 0 Then
-            MessageBox.Show("Forma de Pago eliminada")
-        Else
-            MessageBox.Show("Forma de Pago no eliminada")
-        End If
+        cmd = New SqlCommand("DELETE FROM FORMASPAGO
+                                WHERE CODIGOPAGO = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Char, 5).Value = formaPagoSQL.CodigoDePago
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Error al eliminar una forma de pago: " + vbCrLf + ex.ToString())
+        End Try
     End Sub
-
     Public Sub changeEstado(formaPagoSql As FormaPago)
-        cmd = New SqlCommand($"UPDATE FORMASPAGO
-                                SET ESTADO = {formaPagoSql.Activo}
-                                WHERE CODIGOPAGO = '{formaPagoSql.CodigoDePago}';", connectionDBManager)
-        If cmd.ExecuteNonQuery() > 0 Then
-            MessageBox.Show("Estado modificado")
-        Else
-            MessageBox.Show("Estado no modificado")
-        End If
+        cmd = New SqlCommand("UPDATE FORMASPAGO
+                                SET ESTADO = @Activo
+                                WHERE CODIGOPAGO = @Codigo;", connectionDBManager)
+        With cmd.Parameters
+            .Add("@Codigo", SqlDbType.Char, 5).Value = formaPagoSql.CodigoDePago
+            .Add("@Activo", SqlDbType.Int).Value = formaPagoSql.Activo
+        End With
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Error al cambiar el estado de una forma de pago: " + vbCrLf + ex.ToString())
+        End Try
     End Sub
-
     Public Function checkFormaPago(codigoForma As String)
-        cmd = New SqlCommand($"SELECT * FROM FORMASPAGO
-                            WHERE CODIGOPAGO = '{codigoForma}';", connectionDBManager)
+        cmd = New SqlCommand("SELECT * FROM FORMASPAGO
+                            WHERE CODIGOPAGO = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Char, 5).Value = codigoForma
         dr = cmd.ExecuteReader()
         If Not dr.HasRows() Then
             dr.Close()
@@ -91,5 +113,4 @@ Public Class ManagerFormaPago
         dr.Close()
         Return False
     End Function
-
 End Class

@@ -25,11 +25,16 @@ Partial Class frmMain
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.tab_main = New System.Windows.Forms.TabControl()
         Me.tab_menu_principal = New System.Windows.Forms.TabPage()
         Me.tlp_menu_main = New System.Windows.Forms.TableLayoutPanel()
@@ -43,14 +48,6 @@ Partial Class frmMain
         Me.nombreBanco = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.codigoBanco = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dg_formas_pago = New System.Windows.Forms.DataGridView()
-        Me.CodigoDePagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NombreDePagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BancoAsignadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ActivoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.NumeroPlazosPagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PrimerPlazoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DiasPlazosDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FormaPagoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.tlp_bancos = New System.Windows.Forms.TableLayoutPanel()
         Me.btn_añadir_banco = New System.Windows.Forms.Button()
         Me.btn_modificar_banco = New System.Windows.Forms.Button()
@@ -62,15 +59,6 @@ Partial Class frmMain
         Me.tab_clientes_grupos = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.dg_clientes = New System.Windows.Forms.DataGridView()
-        Me.CodigoDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NombreDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NifDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DireccionDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaDeNacimientoDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BancoDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.GrupoDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EmailDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ClienteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.btn_añadir_grupo = New System.Windows.Forms.Button()
         Me.btn_modificar_grupo = New System.Windows.Forms.Button()
@@ -80,21 +68,9 @@ Partial Class frmMain
         Me.btn_modificar_cliente = New System.Windows.Forms.Button()
         Me.btn_eliminar_cliente = New System.Windows.Forms.Button()
         Me.dg_grupos = New System.Windows.Forms.DataGridView()
-        Me.CodigoDeGrupoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NombreDeGrupoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.GrupoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.tab_articulos_proveedores = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
         Me.dg_articulos = New System.Windows.Forms.DataGridView()
-        Me.CodigoDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NombreDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DescripcionDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FamiliaDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ArticuloBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TableLayoutPanel5 = New System.Windows.Forms.TableLayoutPanel()
         Me.btn_añadir_proveedor = New System.Windows.Forms.Button()
         Me.btn_modificar_proveedor = New System.Windows.Forms.Button()
@@ -104,16 +80,10 @@ Partial Class frmMain
         Me.btn_modificar_articulo = New System.Windows.Forms.Button()
         Me.btn_eliminar_articulo = New System.Windows.Forms.Button()
         Me.dg_proveedores = New System.Windows.Forms.DataGridView()
-        Me.CodigoDeProveedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NombreDeProveedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.datos = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.ProveedorBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.tab_inventario = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel7 = New System.Windows.Forms.TableLayoutPanel()
         Me.dg_inventario = New System.Windows.Forms.DataGridView()
-        Me.NombreDeArticuloDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UnidadesDisponiblesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.InventarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TableLayoutPanel8 = New System.Windows.Forms.TableLayoutPanel()
         Me.btn_restar_unidades = New System.Windows.Forms.Button()
         Me.btn_añadir_unidades = New System.Windows.Forms.Button()
@@ -122,6 +92,41 @@ Partial Class frmMain
         Me.txt_busqueda_inventario = New System.Windows.Forms.TextBox()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.CodigoDePagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NombreDePagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BancoAsignadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ActivoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.NumeroPlazosPagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrimerPlazoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DiasPlazosDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FormaPagoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CodigoDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NombreDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NifDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DireccionDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaDeNacimientoDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BancoDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GrupoDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmailDelClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClienteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CodigoDeGrupoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NombreDeGrupoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GrupoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CodigoDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NombreDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescripcionDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FamiliaDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ArticuloBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CodigoDeProveedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NombreDeProveedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProveedorBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.NombreDeArticuloDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UnidadesDisponiblesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.InventarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.BancoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GrupoBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.tab_main.SuspendLayout()
@@ -131,30 +136,30 @@ Partial Class frmMain
         Me.tlp_main_bancos_pagos.SuspendLayout()
         CType(Me.dg_bancos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dg_formas_pago, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.FormaPagoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tlp_bancos.SuspendLayout()
         Me.tlp_pagos.SuspendLayout()
         Me.tab_clientes_grupos.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.dg_clientes, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ClienteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
         CType(Me.dg_grupos, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GrupoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tab_articulos_proveedores.SuspendLayout()
         Me.TableLayoutPanel4.SuspendLayout()
         CType(Me.dg_articulos, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ArticuloBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel5.SuspendLayout()
         Me.TableLayoutPanel6.SuspendLayout()
         CType(Me.dg_proveedores, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ProveedorBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tab_inventario.SuspendLayout()
         Me.TableLayoutPanel7.SuspendLayout()
         CType(Me.dg_inventario, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.InventarioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel8.SuspendLayout()
+        CType(Me.FormaPagoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ClienteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GrupoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ArticuloBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ProveedorBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.InventarioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BancoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GrupoBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -175,7 +180,7 @@ Partial Class frmMain
         Me.tab_main.Location = New System.Drawing.Point(0, 2)
         Me.tab_main.Name = "tab_main"
         Me.tab_main.SelectedIndex = 0
-        Me.tab_main.Size = New System.Drawing.Size(799, 449)
+        Me.tab_main.Size = New System.Drawing.Size(799, 446)
         Me.tab_main.TabIndex = 1
         '
         'tab_menu_principal
@@ -290,7 +295,7 @@ Partial Class frmMain
         Me.tab_bancos_pagos.Location = New System.Drawing.Point(4, 54)
         Me.tab_bancos_pagos.Name = "tab_bancos_pagos"
         Me.tab_bancos_pagos.Padding = New System.Windows.Forms.Padding(3)
-        Me.tab_bancos_pagos.Size = New System.Drawing.Size(791, 391)
+        Me.tab_bancos_pagos.Size = New System.Drawing.Size(791, 388)
         Me.tab_bancos_pagos.TabIndex = 0
         Me.tab_bancos_pagos.Text = "BANCOS/PAGOS"
         Me.tab_bancos_pagos.UseVisualStyleBackColor = True
@@ -313,7 +318,7 @@ Partial Class frmMain
         Me.tlp_main_bancos_pagos.RowCount = 2
         Me.tlp_main_bancos_pagos.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.0!))
         Me.tlp_main_bancos_pagos.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.0!))
-        Me.tlp_main_bancos_pagos.Size = New System.Drawing.Size(799, 399)
+        Me.tlp_main_bancos_pagos.Size = New System.Drawing.Size(792, 396)
         Me.tlp_main_bancos_pagos.TabIndex = 0
         '
         'dg_bancos
@@ -329,7 +334,7 @@ Partial Class frmMain
         Me.dg_bancos.Location = New System.Drawing.Point(6, 6)
         Me.dg_bancos.Name = "dg_bancos"
         Me.dg_bancos.ReadOnly = True
-        Me.dg_bancos.Size = New System.Drawing.Size(271, 328)
+        Me.dg_bancos.Size = New System.Drawing.Size(269, 325)
         Me.dg_bancos.TabIndex = 0
         '
         'nombreBanco
@@ -356,11 +361,680 @@ Partial Class frmMain
         Me.dg_formas_pago.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoDePagoDataGridViewTextBoxColumn, Me.NombreDePagoDataGridViewTextBoxColumn, Me.BancoAsignadoDataGridViewTextBoxColumn, Me.ActivoDataGridViewTextBoxColumn, Me.NumeroPlazosPagoDataGridViewTextBoxColumn, Me.PrimerPlazoDataGridViewTextBoxColumn, Me.DiasPlazosDataGridViewTextBoxColumn})
         Me.dg_formas_pago.DataSource = Me.FormaPagoBindingSource
         Me.dg_formas_pago.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dg_formas_pago.Location = New System.Drawing.Point(283, 6)
+        Me.dg_formas_pago.Location = New System.Drawing.Point(281, 6)
         Me.dg_formas_pago.MultiSelect = False
         Me.dg_formas_pago.Name = "dg_formas_pago"
-        Me.dg_formas_pago.Size = New System.Drawing.Size(510, 328)
+        Me.dg_formas_pago.Size = New System.Drawing.Size(505, 325)
         Me.dg_formas_pago.TabIndex = 1
+        '
+        'tlp_bancos
+        '
+        Me.tlp_bancos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tlp_bancos.ColumnCount = 3
+        Me.tlp_bancos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.tlp_bancos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.tlp_bancos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.tlp_bancos.Controls.Add(Me.btn_añadir_banco, 0, 0)
+        Me.tlp_bancos.Controls.Add(Me.btn_modificar_banco, 1, 0)
+        Me.tlp_bancos.Controls.Add(Me.btn_eliminar_banco, 2, 0)
+        Me.tlp_bancos.Location = New System.Drawing.Point(6, 337)
+        Me.tlp_bancos.Name = "tlp_bancos"
+        Me.tlp_bancos.RowCount = 1
+        Me.tlp_bancos.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.tlp_bancos.Size = New System.Drawing.Size(269, 53)
+        Me.tlp_bancos.TabIndex = 2
+        '
+        'btn_añadir_banco
+        '
+        Me.btn_añadir_banco.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_añadir_banco.Location = New System.Drawing.Point(3, 9)
+        Me.btn_añadir_banco.Name = "btn_añadir_banco"
+        Me.btn_añadir_banco.Size = New System.Drawing.Size(83, 35)
+        Me.btn_añadir_banco.TabIndex = 0
+        Me.btn_añadir_banco.Text = "Añadir Banco"
+        Me.btn_añadir_banco.UseVisualStyleBackColor = True
+        '
+        'btn_modificar_banco
+        '
+        Me.btn_modificar_banco.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_modificar_banco.Enabled = False
+        Me.btn_modificar_banco.Location = New System.Drawing.Point(92, 9)
+        Me.btn_modificar_banco.Name = "btn_modificar_banco"
+        Me.btn_modificar_banco.Size = New System.Drawing.Size(83, 35)
+        Me.btn_modificar_banco.TabIndex = 1
+        Me.btn_modificar_banco.Text = "Modificar Banco"
+        Me.btn_modificar_banco.UseVisualStyleBackColor = True
+        '
+        'btn_eliminar_banco
+        '
+        Me.btn_eliminar_banco.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_eliminar_banco.Enabled = False
+        Me.btn_eliminar_banco.Location = New System.Drawing.Point(181, 9)
+        Me.btn_eliminar_banco.Name = "btn_eliminar_banco"
+        Me.btn_eliminar_banco.Size = New System.Drawing.Size(85, 35)
+        Me.btn_eliminar_banco.TabIndex = 2
+        Me.btn_eliminar_banco.Text = "Eliminar Banco"
+        Me.btn_eliminar_banco.UseVisualStyleBackColor = True
+        '
+        'tlp_pagos
+        '
+        Me.tlp_pagos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tlp_pagos.ColumnCount = 3
+        Me.tlp_pagos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.tlp_pagos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.tlp_pagos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.tlp_pagos.Controls.Add(Me.btn_añadir_forma_pago, 0, 0)
+        Me.tlp_pagos.Controls.Add(Me.btn_modificar_forma_pago, 1, 0)
+        Me.tlp_pagos.Controls.Add(Me.btn_eliminar_forma_pago, 2, 0)
+        Me.tlp_pagos.Location = New System.Drawing.Point(281, 337)
+        Me.tlp_pagos.Name = "tlp_pagos"
+        Me.tlp_pagos.RowCount = 1
+        Me.tlp_pagos.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.tlp_pagos.Size = New System.Drawing.Size(505, 53)
+        Me.tlp_pagos.TabIndex = 3
+        '
+        'btn_añadir_forma_pago
+        '
+        Me.btn_añadir_forma_pago.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_añadir_forma_pago.Location = New System.Drawing.Point(3, 9)
+        Me.btn_añadir_forma_pago.Name = "btn_añadir_forma_pago"
+        Me.btn_añadir_forma_pago.Size = New System.Drawing.Size(162, 35)
+        Me.btn_añadir_forma_pago.TabIndex = 0
+        Me.btn_añadir_forma_pago.Text = "Añadir Forma Pago"
+        Me.btn_añadir_forma_pago.UseVisualStyleBackColor = True
+        '
+        'btn_modificar_forma_pago
+        '
+        Me.btn_modificar_forma_pago.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_modificar_forma_pago.Enabled = False
+        Me.btn_modificar_forma_pago.Location = New System.Drawing.Point(171, 9)
+        Me.btn_modificar_forma_pago.Name = "btn_modificar_forma_pago"
+        Me.btn_modificar_forma_pago.Size = New System.Drawing.Size(162, 35)
+        Me.btn_modificar_forma_pago.TabIndex = 1
+        Me.btn_modificar_forma_pago.Text = "Modificar Forma Pago"
+        Me.btn_modificar_forma_pago.UseVisualStyleBackColor = True
+        '
+        'btn_eliminar_forma_pago
+        '
+        Me.btn_eliminar_forma_pago.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_eliminar_forma_pago.Enabled = False
+        Me.btn_eliminar_forma_pago.Location = New System.Drawing.Point(339, 9)
+        Me.btn_eliminar_forma_pago.Name = "btn_eliminar_forma_pago"
+        Me.btn_eliminar_forma_pago.Size = New System.Drawing.Size(163, 35)
+        Me.btn_eliminar_forma_pago.TabIndex = 2
+        Me.btn_eliminar_forma_pago.Text = "Eliminar Forma Pago"
+        Me.btn_eliminar_forma_pago.UseVisualStyleBackColor = True
+        '
+        'tab_clientes_grupos
+        '
+        Me.tab_clientes_grupos.Controls.Add(Me.TableLayoutPanel1)
+        Me.tab_clientes_grupos.ImageIndex = 1
+        Me.tab_clientes_grupos.Location = New System.Drawing.Point(4, 54)
+        Me.tab_clientes_grupos.Name = "tab_clientes_grupos"
+        Me.tab_clientes_grupos.Padding = New System.Windows.Forms.Padding(3)
+        Me.tab_clientes_grupos.Size = New System.Drawing.Size(791, 388)
+        Me.tab_clientes_grupos.TabIndex = 2
+        Me.tab_clientes_grupos.Text = "CLIENTES/GRUPOS"
+        Me.tab_clientes_grupos.UseVisualStyleBackColor = True
+        '
+        'TableLayoutPanel1
+        '
+        Me.TableLayoutPanel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel1.ColumnCount = 2
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.0!))
+        Me.TableLayoutPanel1.Controls.Add(Me.dg_clientes, 1, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel2, 0, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel3, 1, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.dg_grupos, 0, 0)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
+        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
+        Me.TableLayoutPanel1.Padding = New System.Windows.Forms.Padding(3)
+        Me.TableLayoutPanel1.RowCount = 2
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(792, 396)
+        Me.TableLayoutPanel1.TabIndex = 1
+        '
+        'dg_clientes
+        '
+        Me.dg_clientes.AllowUserToAddRows = False
+        Me.dg_clientes.AllowUserToDeleteRows = False
+        Me.dg_clientes.AutoGenerateColumns = False
+        Me.dg_clientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_clientes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.dg_clientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dg_clientes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoDelClienteDataGridViewTextBoxColumn, Me.NombreDelClienteDataGridViewTextBoxColumn, Me.NifDelClienteDataGridViewTextBoxColumn, Me.DireccionDelClienteDataGridViewTextBoxColumn, Me.FechaDeNacimientoDelClienteDataGridViewTextBoxColumn, Me.BancoDelClienteDataGridViewTextBoxColumn, Me.GrupoDelClienteDataGridViewTextBoxColumn, Me.EmailDelClienteDataGridViewTextBoxColumn})
+        Me.dg_clientes.DataSource = Me.ClienteBindingSource
+        Me.dg_clientes.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dg_clientes.Location = New System.Drawing.Point(281, 6)
+        Me.dg_clientes.MultiSelect = False
+        Me.dg_clientes.Name = "dg_clientes"
+        Me.dg_clientes.Size = New System.Drawing.Size(505, 325)
+        Me.dg_clientes.TabIndex = 1
+        '
+        'TableLayoutPanel2
+        '
+        Me.TableLayoutPanel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel2.ColumnCount = 3
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel2.Controls.Add(Me.btn_añadir_grupo, 0, 0)
+        Me.TableLayoutPanel2.Controls.Add(Me.btn_modificar_grupo, 1, 0)
+        Me.TableLayoutPanel2.Controls.Add(Me.btn_eliminar_grupo, 2, 0)
+        Me.TableLayoutPanel2.Location = New System.Drawing.Point(6, 337)
+        Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
+        Me.TableLayoutPanel2.RowCount = 1
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(269, 53)
+        Me.TableLayoutPanel2.TabIndex = 2
+        '
+        'btn_añadir_grupo
+        '
+        Me.btn_añadir_grupo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_añadir_grupo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_añadir_grupo.Location = New System.Drawing.Point(3, 9)
+        Me.btn_añadir_grupo.Name = "btn_añadir_grupo"
+        Me.btn_añadir_grupo.Size = New System.Drawing.Size(83, 35)
+        Me.btn_añadir_grupo.TabIndex = 0
+        Me.btn_añadir_grupo.Text = "Añadir Grupo"
+        Me.btn_añadir_grupo.UseVisualStyleBackColor = True
+        '
+        'btn_modificar_grupo
+        '
+        Me.btn_modificar_grupo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_modificar_grupo.Enabled = False
+        Me.btn_modificar_grupo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_modificar_grupo.Location = New System.Drawing.Point(92, 9)
+        Me.btn_modificar_grupo.Name = "btn_modificar_grupo"
+        Me.btn_modificar_grupo.Size = New System.Drawing.Size(83, 35)
+        Me.btn_modificar_grupo.TabIndex = 1
+        Me.btn_modificar_grupo.Text = "Modificar Grupo"
+        Me.btn_modificar_grupo.UseVisualStyleBackColor = True
+        '
+        'btn_eliminar_grupo
+        '
+        Me.btn_eliminar_grupo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_eliminar_grupo.Enabled = False
+        Me.btn_eliminar_grupo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_eliminar_grupo.Location = New System.Drawing.Point(181, 9)
+        Me.btn_eliminar_grupo.Name = "btn_eliminar_grupo"
+        Me.btn_eliminar_grupo.Size = New System.Drawing.Size(85, 35)
+        Me.btn_eliminar_grupo.TabIndex = 2
+        Me.btn_eliminar_grupo.Text = "Eliminar Grupo"
+        Me.btn_eliminar_grupo.UseVisualStyleBackColor = True
+        '
+        'TableLayoutPanel3
+        '
+        Me.TableLayoutPanel3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel3.ColumnCount = 3
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel3.Controls.Add(Me.btn_añadir_cliente, 0, 0)
+        Me.TableLayoutPanel3.Controls.Add(Me.btn_modificar_cliente, 1, 0)
+        Me.TableLayoutPanel3.Controls.Add(Me.btn_eliminar_cliente, 2, 0)
+        Me.TableLayoutPanel3.Location = New System.Drawing.Point(281, 337)
+        Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
+        Me.TableLayoutPanel3.RowCount = 1
+        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(505, 53)
+        Me.TableLayoutPanel3.TabIndex = 3
+        '
+        'btn_añadir_cliente
+        '
+        Me.btn_añadir_cliente.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_añadir_cliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_añadir_cliente.Location = New System.Drawing.Point(3, 9)
+        Me.btn_añadir_cliente.Name = "btn_añadir_cliente"
+        Me.btn_añadir_cliente.Size = New System.Drawing.Size(162, 35)
+        Me.btn_añadir_cliente.TabIndex = 0
+        Me.btn_añadir_cliente.Text = "Añadir Cliente"
+        Me.btn_añadir_cliente.UseVisualStyleBackColor = True
+        '
+        'btn_modificar_cliente
+        '
+        Me.btn_modificar_cliente.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_modificar_cliente.Enabled = False
+        Me.btn_modificar_cliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_modificar_cliente.Location = New System.Drawing.Point(171, 9)
+        Me.btn_modificar_cliente.Name = "btn_modificar_cliente"
+        Me.btn_modificar_cliente.Size = New System.Drawing.Size(162, 35)
+        Me.btn_modificar_cliente.TabIndex = 1
+        Me.btn_modificar_cliente.Text = "Modificar Cliente"
+        Me.btn_modificar_cliente.UseVisualStyleBackColor = True
+        '
+        'btn_eliminar_cliente
+        '
+        Me.btn_eliminar_cliente.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_eliminar_cliente.Enabled = False
+        Me.btn_eliminar_cliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_eliminar_cliente.Location = New System.Drawing.Point(339, 9)
+        Me.btn_eliminar_cliente.Name = "btn_eliminar_cliente"
+        Me.btn_eliminar_cliente.Size = New System.Drawing.Size(163, 35)
+        Me.btn_eliminar_cliente.TabIndex = 2
+        Me.btn_eliminar_cliente.Text = "Eliminar Cliente"
+        Me.btn_eliminar_cliente.UseVisualStyleBackColor = True
+        '
+        'dg_grupos
+        '
+        Me.dg_grupos.AllowUserToAddRows = False
+        Me.dg_grupos.AllowUserToDeleteRows = False
+        Me.dg_grupos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dg_grupos.AutoGenerateColumns = False
+        Me.dg_grupos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_grupos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.dg_grupos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dg_grupos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoDeGrupoDataGridViewTextBoxColumn, Me.NombreDeGrupoDataGridViewTextBoxColumn})
+        Me.dg_grupos.DataSource = Me.GrupoBindingSource
+        Me.dg_grupos.Location = New System.Drawing.Point(6, 6)
+        Me.dg_grupos.MultiSelect = False
+        Me.dg_grupos.Name = "dg_grupos"
+        Me.dg_grupos.ReadOnly = True
+        Me.dg_grupos.Size = New System.Drawing.Size(269, 325)
+        Me.dg_grupos.TabIndex = 4
+        '
+        'tab_articulos_proveedores
+        '
+        Me.tab_articulos_proveedores.Controls.Add(Me.TableLayoutPanel4)
+        Me.tab_articulos_proveedores.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tab_articulos_proveedores.ImageIndex = 2
+        Me.tab_articulos_proveedores.Location = New System.Drawing.Point(4, 54)
+        Me.tab_articulos_proveedores.Name = "tab_articulos_proveedores"
+        Me.tab_articulos_proveedores.Padding = New System.Windows.Forms.Padding(3)
+        Me.tab_articulos_proveedores.Size = New System.Drawing.Size(791, 388)
+        Me.tab_articulos_proveedores.TabIndex = 3
+        Me.tab_articulos_proveedores.Text = "ARTÍCULOS/PROVEEDORES"
+        Me.tab_articulos_proveedores.UseVisualStyleBackColor = True
+        '
+        'TableLayoutPanel4
+        '
+        Me.TableLayoutPanel4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel4.ColumnCount = 2
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.0!))
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.0!))
+        Me.TableLayoutPanel4.Controls.Add(Me.dg_articulos, 1, 0)
+        Me.TableLayoutPanel4.Controls.Add(Me.TableLayoutPanel5, 0, 1)
+        Me.TableLayoutPanel4.Controls.Add(Me.TableLayoutPanel6, 1, 1)
+        Me.TableLayoutPanel4.Controls.Add(Me.dg_proveedores, 0, 0)
+        Me.TableLayoutPanel4.Location = New System.Drawing.Point(0, 0)
+        Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
+        Me.TableLayoutPanel4.Padding = New System.Windows.Forms.Padding(3)
+        Me.TableLayoutPanel4.RowCount = 2
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.0!))
+        Me.TableLayoutPanel4.Size = New System.Drawing.Size(792, 396)
+        Me.TableLayoutPanel4.TabIndex = 2
+        '
+        'dg_articulos
+        '
+        Me.dg_articulos.AllowUserToAddRows = False
+        Me.dg_articulos.AllowUserToDeleteRows = False
+        Me.dg_articulos.AutoGenerateColumns = False
+        Me.dg_articulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dg_articulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dg_articulos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoDeArticuloDataGridViewTextBoxColumn, Me.NombreDeArticuloDataGridViewTextBoxColumn, Me.DescripcionDeArticuloDataGridViewTextBoxColumn, Me.PVPCompraDeArticuloDataGridViewTextBoxColumn, Me.PVPVentaDeArticuloDataGridViewTextBoxColumn, Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn, Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn, Me.FamiliaDeArticuloDataGridViewTextBoxColumn})
+        Me.dg_articulos.DataSource = Me.ArticuloBindingSource
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg_articulos.DefaultCellStyle = DataGridViewCellStyle6
+        Me.dg_articulos.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dg_articulos.Location = New System.Drawing.Point(281, 6)
+        Me.dg_articulos.MultiSelect = False
+        Me.dg_articulos.Name = "dg_articulos"
+        Me.dg_articulos.Size = New System.Drawing.Size(505, 325)
+        Me.dg_articulos.TabIndex = 1
+        '
+        'TableLayoutPanel5
+        '
+        Me.TableLayoutPanel5.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel5.ColumnCount = 3
+        Me.TableLayoutPanel5.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel5.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel5.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel5.Controls.Add(Me.btn_añadir_proveedor, 0, 0)
+        Me.TableLayoutPanel5.Controls.Add(Me.btn_modificar_proveedor, 1, 0)
+        Me.TableLayoutPanel5.Controls.Add(Me.btn_eliminar_proveedor, 2, 0)
+        Me.TableLayoutPanel5.Location = New System.Drawing.Point(6, 337)
+        Me.TableLayoutPanel5.Name = "TableLayoutPanel5"
+        Me.TableLayoutPanel5.RowCount = 1
+        Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel5.Size = New System.Drawing.Size(269, 53)
+        Me.TableLayoutPanel5.TabIndex = 2
+        '
+        'btn_añadir_proveedor
+        '
+        Me.btn_añadir_proveedor.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_añadir_proveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_añadir_proveedor.Location = New System.Drawing.Point(3, 9)
+        Me.btn_añadir_proveedor.Name = "btn_añadir_proveedor"
+        Me.btn_añadir_proveedor.Size = New System.Drawing.Size(83, 35)
+        Me.btn_añadir_proveedor.TabIndex = 0
+        Me.btn_añadir_proveedor.Text = "Añadir Proveedor"
+        Me.btn_añadir_proveedor.UseVisualStyleBackColor = True
+        '
+        'btn_modificar_proveedor
+        '
+        Me.btn_modificar_proveedor.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_modificar_proveedor.Enabled = False
+        Me.btn_modificar_proveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_modificar_proveedor.Location = New System.Drawing.Point(92, 9)
+        Me.btn_modificar_proveedor.Name = "btn_modificar_proveedor"
+        Me.btn_modificar_proveedor.Size = New System.Drawing.Size(83, 35)
+        Me.btn_modificar_proveedor.TabIndex = 1
+        Me.btn_modificar_proveedor.Text = "Modificar Proveedor"
+        Me.btn_modificar_proveedor.UseVisualStyleBackColor = True
+        '
+        'btn_eliminar_proveedor
+        '
+        Me.btn_eliminar_proveedor.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_eliminar_proveedor.Enabled = False
+        Me.btn_eliminar_proveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_eliminar_proveedor.Location = New System.Drawing.Point(181, 9)
+        Me.btn_eliminar_proveedor.Name = "btn_eliminar_proveedor"
+        Me.btn_eliminar_proveedor.Size = New System.Drawing.Size(85, 35)
+        Me.btn_eliminar_proveedor.TabIndex = 2
+        Me.btn_eliminar_proveedor.Text = "Eliminar Proveedor"
+        Me.btn_eliminar_proveedor.UseVisualStyleBackColor = True
+        '
+        'TableLayoutPanel6
+        '
+        Me.TableLayoutPanel6.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel6.ColumnCount = 3
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel6.Controls.Add(Me.btn_añadir_articulo, 0, 0)
+        Me.TableLayoutPanel6.Controls.Add(Me.btn_modificar_articulo, 1, 0)
+        Me.TableLayoutPanel6.Controls.Add(Me.btn_eliminar_articulo, 2, 0)
+        Me.TableLayoutPanel6.Location = New System.Drawing.Point(281, 337)
+        Me.TableLayoutPanel6.Name = "TableLayoutPanel6"
+        Me.TableLayoutPanel6.RowCount = 1
+        Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel6.Size = New System.Drawing.Size(505, 53)
+        Me.TableLayoutPanel6.TabIndex = 3
+        '
+        'btn_añadir_articulo
+        '
+        Me.btn_añadir_articulo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_añadir_articulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_añadir_articulo.Location = New System.Drawing.Point(3, 9)
+        Me.btn_añadir_articulo.Name = "btn_añadir_articulo"
+        Me.btn_añadir_articulo.Size = New System.Drawing.Size(162, 35)
+        Me.btn_añadir_articulo.TabIndex = 0
+        Me.btn_añadir_articulo.Text = "Añadir Artículo"
+        Me.btn_añadir_articulo.UseVisualStyleBackColor = True
+        '
+        'btn_modificar_articulo
+        '
+        Me.btn_modificar_articulo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_modificar_articulo.Enabled = False
+        Me.btn_modificar_articulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_modificar_articulo.Location = New System.Drawing.Point(171, 9)
+        Me.btn_modificar_articulo.Name = "btn_modificar_articulo"
+        Me.btn_modificar_articulo.Size = New System.Drawing.Size(162, 35)
+        Me.btn_modificar_articulo.TabIndex = 1
+        Me.btn_modificar_articulo.Text = "Modificar Artículo"
+        Me.btn_modificar_articulo.UseVisualStyleBackColor = True
+        '
+        'btn_eliminar_articulo
+        '
+        Me.btn_eliminar_articulo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_eliminar_articulo.Enabled = False
+        Me.btn_eliminar_articulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_eliminar_articulo.Location = New System.Drawing.Point(339, 9)
+        Me.btn_eliminar_articulo.Name = "btn_eliminar_articulo"
+        Me.btn_eliminar_articulo.Size = New System.Drawing.Size(163, 35)
+        Me.btn_eliminar_articulo.TabIndex = 2
+        Me.btn_eliminar_articulo.Text = "Eliminar Artículo"
+        Me.btn_eliminar_articulo.UseVisualStyleBackColor = True
+        '
+        'dg_proveedores
+        '
+        Me.dg_proveedores.AllowUserToAddRows = False
+        Me.dg_proveedores.AllowUserToDeleteRows = False
+        Me.dg_proveedores.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dg_proveedores.AutoGenerateColumns = False
+        Me.dg_proveedores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dg_proveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dg_proveedores.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoDeProveedorDataGridViewTextBoxColumn, Me.NombreDeProveedorDataGridViewTextBoxColumn, Me.datos})
+        Me.dg_proveedores.DataSource = Me.ProveedorBindingSource
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg_proveedores.DefaultCellStyle = DataGridViewCellStyle8
+        Me.dg_proveedores.Location = New System.Drawing.Point(6, 6)
+        Me.dg_proveedores.MultiSelect = False
+        Me.dg_proveedores.Name = "dg_proveedores"
+        Me.dg_proveedores.ReadOnly = True
+        Me.dg_proveedores.Size = New System.Drawing.Size(269, 325)
+        Me.dg_proveedores.TabIndex = 4
+        '
+        'datos
+        '
+        Me.datos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.datos.DefaultCellStyle = DataGridViewCellStyle7
+        Me.datos.HeaderText = " "
+        Me.datos.Name = "datos"
+        Me.datos.ReadOnly = True
+        Me.datos.Text = "VER DATOS"
+        Me.datos.UseColumnTextForButtonValue = True
+        '
+        'tab_inventario
+        '
+        Me.tab_inventario.Controls.Add(Me.TableLayoutPanel7)
+        Me.tab_inventario.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tab_inventario.ImageIndex = 3
+        Me.tab_inventario.Location = New System.Drawing.Point(4, 54)
+        Me.tab_inventario.Name = "tab_inventario"
+        Me.tab_inventario.Padding = New System.Windows.Forms.Padding(3)
+        Me.tab_inventario.Size = New System.Drawing.Size(791, 388)
+        Me.tab_inventario.TabIndex = 4
+        Me.tab_inventario.Text = "INVENTARIO"
+        Me.tab_inventario.UseVisualStyleBackColor = True
+        '
+        'TableLayoutPanel7
+        '
+        Me.TableLayoutPanel7.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel7.ColumnCount = 2
+        Me.TableLayoutPanel7.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85.0!))
+        Me.TableLayoutPanel7.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.0!))
+        Me.TableLayoutPanel7.Controls.Add(Me.dg_inventario, 0, 0)
+        Me.TableLayoutPanel7.Controls.Add(Me.TableLayoutPanel8, 1, 0)
+        Me.TableLayoutPanel7.Location = New System.Drawing.Point(0, 0)
+        Me.TableLayoutPanel7.Name = "TableLayoutPanel7"
+        Me.TableLayoutPanel7.Padding = New System.Windows.Forms.Padding(3)
+        Me.TableLayoutPanel7.RowCount = 1
+        Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel7.Size = New System.Drawing.Size(792, 388)
+        Me.TableLayoutPanel7.TabIndex = 0
+        '
+        'dg_inventario
+        '
+        Me.dg_inventario.AllowUserToAddRows = False
+        Me.dg_inventario.AllowUserToDeleteRows = False
+        Me.dg_inventario.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dg_inventario.AutoGenerateColumns = False
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_inventario.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
+        Me.dg_inventario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dg_inventario.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NombreDeArticuloDataGridViewTextBoxColumn1, Me.UnidadesDisponiblesDataGridViewTextBoxColumn})
+        Me.dg_inventario.DataSource = Me.InventarioBindingSource
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg_inventario.DefaultCellStyle = DataGridViewCellStyle10
+        Me.dg_inventario.Location = New System.Drawing.Point(6, 6)
+        Me.dg_inventario.Name = "dg_inventario"
+        Me.dg_inventario.ReadOnly = True
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_inventario.RowHeadersDefaultCellStyle = DataGridViewCellStyle11
+        Me.dg_inventario.Size = New System.Drawing.Size(662, 376)
+        Me.dg_inventario.TabIndex = 0
+        '
+        'TableLayoutPanel8
+        '
+        Me.TableLayoutPanel8.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel8.ColumnCount = 1
+        Me.TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel8.Controls.Add(Me.btn_restar_unidades, 0, 1)
+        Me.TableLayoutPanel8.Controls.Add(Me.btn_añadir_unidades, 0, 0)
+        Me.TableLayoutPanel8.Controls.Add(Me.btn_añadir_articulo_inventario, 0, 2)
+        Me.TableLayoutPanel8.Controls.Add(Me.btn_eliminar_articulo_inventario, 0, 3)
+        Me.TableLayoutPanel8.Controls.Add(Me.txt_busqueda_inventario, 0, 4)
+        Me.TableLayoutPanel8.Location = New System.Drawing.Point(674, 6)
+        Me.TableLayoutPanel8.Name = "TableLayoutPanel8"
+        Me.TableLayoutPanel8.RowCount = 6
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel8.Size = New System.Drawing.Size(112, 376)
+        Me.TableLayoutPanel8.TabIndex = 1
+        '
+        'btn_restar_unidades
+        '
+        Me.btn_restar_unidades.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_restar_unidades.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_restar_unidades.Location = New System.Drawing.Point(3, 44)
+        Me.btn_restar_unidades.Name = "btn_restar_unidades"
+        Me.btn_restar_unidades.Size = New System.Drawing.Size(106, 23)
+        Me.btn_restar_unidades.TabIndex = 1
+        Me.btn_restar_unidades.Text = "RESTAR UDS"
+        Me.btn_restar_unidades.UseVisualStyleBackColor = True
+        '
+        'btn_añadir_unidades
+        '
+        Me.btn_añadir_unidades.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_añadir_unidades.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_añadir_unidades.Location = New System.Drawing.Point(3, 7)
+        Me.btn_añadir_unidades.Name = "btn_añadir_unidades"
+        Me.btn_añadir_unidades.Size = New System.Drawing.Size(106, 23)
+        Me.btn_añadir_unidades.TabIndex = 0
+        Me.btn_añadir_unidades.Text = "AÑADIR UDS"
+        Me.btn_añadir_unidades.UseVisualStyleBackColor = True
+        '
+        'btn_añadir_articulo_inventario
+        '
+        Me.btn_añadir_articulo_inventario.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_añadir_articulo_inventario.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_añadir_articulo_inventario.Location = New System.Drawing.Point(3, 81)
+        Me.btn_añadir_articulo_inventario.Name = "btn_añadir_articulo_inventario"
+        Me.btn_añadir_articulo_inventario.Size = New System.Drawing.Size(106, 23)
+        Me.btn_añadir_articulo_inventario.TabIndex = 2
+        Me.btn_añadir_articulo_inventario.Text = "AÑADIR ART"
+        Me.btn_añadir_articulo_inventario.UseVisualStyleBackColor = True
+        '
+        'btn_eliminar_articulo_inventario
+        '
+        Me.btn_eliminar_articulo_inventario.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_eliminar_articulo_inventario.Enabled = False
+        Me.btn_eliminar_articulo_inventario.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_eliminar_articulo_inventario.Location = New System.Drawing.Point(3, 118)
+        Me.btn_eliminar_articulo_inventario.Name = "btn_eliminar_articulo_inventario"
+        Me.btn_eliminar_articulo_inventario.Size = New System.Drawing.Size(106, 23)
+        Me.btn_eliminar_articulo_inventario.TabIndex = 3
+        Me.btn_eliminar_articulo_inventario.Text = "BORRAR ART"
+        Me.btn_eliminar_articulo_inventario.UseVisualStyleBackColor = True
+        '
+        'txt_busqueda_inventario
+        '
+        Me.txt_busqueda_inventario.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_busqueda_inventario.Location = New System.Drawing.Point(3, 156)
+        Me.txt_busqueda_inventario.Name = "txt_busqueda_inventario"
+        Me.txt_busqueda_inventario.Size = New System.Drawing.Size(106, 20)
+        Me.txt_busqueda_inventario.TabIndex = 4
+        '
+        'TabPage1
+        '
+        Me.TabPage1.ImageIndex = 4
+        Me.TabPage1.Location = New System.Drawing.Point(4, 54)
+        Me.TabPage1.Name = "TabPage1"
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage1.Size = New System.Drawing.Size(791, 391)
+        Me.TabPage1.TabIndex = 5
+        Me.TabPage1.Text = "CONFIGURACIONES"
+        Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'ImageList1
+        '
+        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList1.Images.SetKeyName(0, "banco.ico")
+        Me.ImageList1.Images.SetKeyName(1, "cliente.ico")
+        Me.ImageList1.Images.SetKeyName(2, "articulo.ico")
+        Me.ImageList1.Images.SetKeyName(3, "inventario.ico")
+        Me.ImageList1.Images.SetKeyName(4, "configuraciones.ico")
         '
         'CodigoDePagoDataGridViewTextBoxColumn
         '
@@ -424,165 +1098,6 @@ Partial Class frmMain
         'FormaPagoBindingSource
         '
         Me.FormaPagoBindingSource.DataSource = GetType(MP_Lucas_Sanz.FormaPago)
-        '
-        'tlp_bancos
-        '
-        Me.tlp_bancos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tlp_bancos.ColumnCount = 3
-        Me.tlp_bancos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.tlp_bancos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.tlp_bancos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.tlp_bancos.Controls.Add(Me.btn_añadir_banco, 0, 0)
-        Me.tlp_bancos.Controls.Add(Me.btn_modificar_banco, 1, 0)
-        Me.tlp_bancos.Controls.Add(Me.btn_eliminar_banco, 2, 0)
-        Me.tlp_bancos.Location = New System.Drawing.Point(6, 340)
-        Me.tlp_bancos.Name = "tlp_bancos"
-        Me.tlp_bancos.RowCount = 1
-        Me.tlp_bancos.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tlp_bancos.Size = New System.Drawing.Size(271, 53)
-        Me.tlp_bancos.TabIndex = 2
-        '
-        'btn_añadir_banco
-        '
-        Me.btn_añadir_banco.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_añadir_banco.Location = New System.Drawing.Point(3, 9)
-        Me.btn_añadir_banco.Name = "btn_añadir_banco"
-        Me.btn_añadir_banco.Size = New System.Drawing.Size(84, 35)
-        Me.btn_añadir_banco.TabIndex = 0
-        Me.btn_añadir_banco.Text = "Añadir Banco"
-        Me.btn_añadir_banco.UseVisualStyleBackColor = True
-        '
-        'btn_modificar_banco
-        '
-        Me.btn_modificar_banco.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_modificar_banco.Enabled = False
-        Me.btn_modificar_banco.Location = New System.Drawing.Point(93, 9)
-        Me.btn_modificar_banco.Name = "btn_modificar_banco"
-        Me.btn_modificar_banco.Size = New System.Drawing.Size(84, 35)
-        Me.btn_modificar_banco.TabIndex = 1
-        Me.btn_modificar_banco.Text = "Modificar Banco"
-        Me.btn_modificar_banco.UseVisualStyleBackColor = True
-        '
-        'btn_eliminar_banco
-        '
-        Me.btn_eliminar_banco.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_eliminar_banco.Enabled = False
-        Me.btn_eliminar_banco.Location = New System.Drawing.Point(183, 9)
-        Me.btn_eliminar_banco.Name = "btn_eliminar_banco"
-        Me.btn_eliminar_banco.Size = New System.Drawing.Size(85, 35)
-        Me.btn_eliminar_banco.TabIndex = 2
-        Me.btn_eliminar_banco.Text = "Eliminar Banco"
-        Me.btn_eliminar_banco.UseVisualStyleBackColor = True
-        '
-        'tlp_pagos
-        '
-        Me.tlp_pagos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tlp_pagos.ColumnCount = 3
-        Me.tlp_pagos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.tlp_pagos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.tlp_pagos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.tlp_pagos.Controls.Add(Me.btn_añadir_forma_pago, 0, 0)
-        Me.tlp_pagos.Controls.Add(Me.btn_modificar_forma_pago, 1, 0)
-        Me.tlp_pagos.Controls.Add(Me.btn_eliminar_forma_pago, 2, 0)
-        Me.tlp_pagos.Location = New System.Drawing.Point(283, 340)
-        Me.tlp_pagos.Name = "tlp_pagos"
-        Me.tlp_pagos.RowCount = 1
-        Me.tlp_pagos.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tlp_pagos.Size = New System.Drawing.Size(510, 53)
-        Me.tlp_pagos.TabIndex = 3
-        '
-        'btn_añadir_forma_pago
-        '
-        Me.btn_añadir_forma_pago.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_añadir_forma_pago.Location = New System.Drawing.Point(3, 9)
-        Me.btn_añadir_forma_pago.Name = "btn_añadir_forma_pago"
-        Me.btn_añadir_forma_pago.Size = New System.Drawing.Size(164, 35)
-        Me.btn_añadir_forma_pago.TabIndex = 0
-        Me.btn_añadir_forma_pago.Text = "Añadir Forma Pago"
-        Me.btn_añadir_forma_pago.UseVisualStyleBackColor = True
-        '
-        'btn_modificar_forma_pago
-        '
-        Me.btn_modificar_forma_pago.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_modificar_forma_pago.Enabled = False
-        Me.btn_modificar_forma_pago.Location = New System.Drawing.Point(173, 9)
-        Me.btn_modificar_forma_pago.Name = "btn_modificar_forma_pago"
-        Me.btn_modificar_forma_pago.Size = New System.Drawing.Size(164, 35)
-        Me.btn_modificar_forma_pago.TabIndex = 1
-        Me.btn_modificar_forma_pago.Text = "Modificar Forma Pago"
-        Me.btn_modificar_forma_pago.UseVisualStyleBackColor = True
-        '
-        'btn_eliminar_forma_pago
-        '
-        Me.btn_eliminar_forma_pago.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_eliminar_forma_pago.Enabled = False
-        Me.btn_eliminar_forma_pago.Location = New System.Drawing.Point(343, 9)
-        Me.btn_eliminar_forma_pago.Name = "btn_eliminar_forma_pago"
-        Me.btn_eliminar_forma_pago.Size = New System.Drawing.Size(164, 35)
-        Me.btn_eliminar_forma_pago.TabIndex = 2
-        Me.btn_eliminar_forma_pago.Text = "Eliminar Forma Pago"
-        Me.btn_eliminar_forma_pago.UseVisualStyleBackColor = True
-        '
-        'tab_clientes_grupos
-        '
-        Me.tab_clientes_grupos.Controls.Add(Me.TableLayoutPanel1)
-        Me.tab_clientes_grupos.ImageIndex = 1
-        Me.tab_clientes_grupos.Location = New System.Drawing.Point(4, 54)
-        Me.tab_clientes_grupos.Name = "tab_clientes_grupos"
-        Me.tab_clientes_grupos.Padding = New System.Windows.Forms.Padding(3)
-        Me.tab_clientes_grupos.Size = New System.Drawing.Size(791, 391)
-        Me.tab_clientes_grupos.TabIndex = 2
-        Me.tab_clientes_grupos.Text = "CLIENTES/GRUPOS"
-        Me.tab_clientes_grupos.UseVisualStyleBackColor = True
-        '
-        'TableLayoutPanel1
-        '
-        Me.TableLayoutPanel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel1.ColumnCount = 2
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.dg_clientes, 1, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel2, 0, 1)
-        Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel3, 1, 1)
-        Me.TableLayoutPanel1.Controls.Add(Me.dg_grupos, 0, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
-        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TableLayoutPanel1.RowCount = 2
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(799, 399)
-        Me.TableLayoutPanel1.TabIndex = 1
-        '
-        'dg_clientes
-        '
-        Me.dg_clientes.AllowUserToAddRows = False
-        Me.dg_clientes.AllowUserToDeleteRows = False
-        Me.dg_clientes.AutoGenerateColumns = False
-        Me.dg_clientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg_clientes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.dg_clientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_clientes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoDelClienteDataGridViewTextBoxColumn, Me.NombreDelClienteDataGridViewTextBoxColumn, Me.NifDelClienteDataGridViewTextBoxColumn, Me.DireccionDelClienteDataGridViewTextBoxColumn, Me.FechaDeNacimientoDelClienteDataGridViewTextBoxColumn, Me.BancoDelClienteDataGridViewTextBoxColumn, Me.GrupoDelClienteDataGridViewTextBoxColumn, Me.EmailDelClienteDataGridViewTextBoxColumn})
-        Me.dg_clientes.DataSource = Me.ClienteBindingSource
-        Me.dg_clientes.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dg_clientes.Location = New System.Drawing.Point(283, 6)
-        Me.dg_clientes.MultiSelect = False
-        Me.dg_clientes.Name = "dg_clientes"
-        Me.dg_clientes.Size = New System.Drawing.Size(510, 328)
-        Me.dg_clientes.TabIndex = 1
         '
         'CodigoDelClienteDataGridViewTextBoxColumn
         '
@@ -652,141 +1167,6 @@ Partial Class frmMain
         '
         Me.ClienteBindingSource.DataSource = GetType(MP_Lucas_Sanz.Cliente)
         '
-        'TableLayoutPanel2
-        '
-        Me.TableLayoutPanel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel2.ColumnCount = 3
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel2.Controls.Add(Me.btn_añadir_grupo, 0, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.btn_modificar_grupo, 1, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.btn_eliminar_grupo, 2, 0)
-        Me.TableLayoutPanel2.Location = New System.Drawing.Point(6, 340)
-        Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
-        Me.TableLayoutPanel2.RowCount = 1
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(271, 53)
-        Me.TableLayoutPanel2.TabIndex = 2
-        '
-        'btn_añadir_grupo
-        '
-        Me.btn_añadir_grupo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_añadir_grupo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_añadir_grupo.Location = New System.Drawing.Point(3, 9)
-        Me.btn_añadir_grupo.Name = "btn_añadir_grupo"
-        Me.btn_añadir_grupo.Size = New System.Drawing.Size(84, 35)
-        Me.btn_añadir_grupo.TabIndex = 0
-        Me.btn_añadir_grupo.Text = "Añadir Grupo"
-        Me.btn_añadir_grupo.UseVisualStyleBackColor = True
-        '
-        'btn_modificar_grupo
-        '
-        Me.btn_modificar_grupo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_modificar_grupo.Enabled = False
-        Me.btn_modificar_grupo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_modificar_grupo.Location = New System.Drawing.Point(93, 9)
-        Me.btn_modificar_grupo.Name = "btn_modificar_grupo"
-        Me.btn_modificar_grupo.Size = New System.Drawing.Size(84, 35)
-        Me.btn_modificar_grupo.TabIndex = 1
-        Me.btn_modificar_grupo.Text = "Modificar Grupo"
-        Me.btn_modificar_grupo.UseVisualStyleBackColor = True
-        '
-        'btn_eliminar_grupo
-        '
-        Me.btn_eliminar_grupo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_eliminar_grupo.Enabled = False
-        Me.btn_eliminar_grupo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_eliminar_grupo.Location = New System.Drawing.Point(183, 9)
-        Me.btn_eliminar_grupo.Name = "btn_eliminar_grupo"
-        Me.btn_eliminar_grupo.Size = New System.Drawing.Size(85, 35)
-        Me.btn_eliminar_grupo.TabIndex = 2
-        Me.btn_eliminar_grupo.Text = "Eliminar Grupo"
-        Me.btn_eliminar_grupo.UseVisualStyleBackColor = True
-        '
-        'TableLayoutPanel3
-        '
-        Me.TableLayoutPanel3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel3.ColumnCount = 3
-        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel3.Controls.Add(Me.btn_añadir_cliente, 0, 0)
-        Me.TableLayoutPanel3.Controls.Add(Me.btn_modificar_cliente, 1, 0)
-        Me.TableLayoutPanel3.Controls.Add(Me.btn_eliminar_cliente, 2, 0)
-        Me.TableLayoutPanel3.Location = New System.Drawing.Point(283, 340)
-        Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
-        Me.TableLayoutPanel3.RowCount = 1
-        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel3.Size = New System.Drawing.Size(510, 53)
-        Me.TableLayoutPanel3.TabIndex = 3
-        '
-        'btn_añadir_cliente
-        '
-        Me.btn_añadir_cliente.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_añadir_cliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_añadir_cliente.Location = New System.Drawing.Point(3, 9)
-        Me.btn_añadir_cliente.Name = "btn_añadir_cliente"
-        Me.btn_añadir_cliente.Size = New System.Drawing.Size(164, 35)
-        Me.btn_añadir_cliente.TabIndex = 0
-        Me.btn_añadir_cliente.Text = "Añadir Cliente"
-        Me.btn_añadir_cliente.UseVisualStyleBackColor = True
-        '
-        'btn_modificar_cliente
-        '
-        Me.btn_modificar_cliente.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_modificar_cliente.Enabled = False
-        Me.btn_modificar_cliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_modificar_cliente.Location = New System.Drawing.Point(173, 9)
-        Me.btn_modificar_cliente.Name = "btn_modificar_cliente"
-        Me.btn_modificar_cliente.Size = New System.Drawing.Size(164, 35)
-        Me.btn_modificar_cliente.TabIndex = 1
-        Me.btn_modificar_cliente.Text = "Modificar Cliente"
-        Me.btn_modificar_cliente.UseVisualStyleBackColor = True
-        '
-        'btn_eliminar_cliente
-        '
-        Me.btn_eliminar_cliente.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_eliminar_cliente.Enabled = False
-        Me.btn_eliminar_cliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_eliminar_cliente.Location = New System.Drawing.Point(343, 9)
-        Me.btn_eliminar_cliente.Name = "btn_eliminar_cliente"
-        Me.btn_eliminar_cliente.Size = New System.Drawing.Size(164, 35)
-        Me.btn_eliminar_cliente.TabIndex = 2
-        Me.btn_eliminar_cliente.Text = "Eliminar Cliente"
-        Me.btn_eliminar_cliente.UseVisualStyleBackColor = True
-        '
-        'dg_grupos
-        '
-        Me.dg_grupos.AllowUserToAddRows = False
-        Me.dg_grupos.AllowUserToDeleteRows = False
-        Me.dg_grupos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dg_grupos.AutoGenerateColumns = False
-        Me.dg_grupos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg_grupos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
-        Me.dg_grupos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_grupos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoDeGrupoDataGridViewTextBoxColumn, Me.NombreDeGrupoDataGridViewTextBoxColumn})
-        Me.dg_grupos.DataSource = Me.GrupoBindingSource
-        Me.dg_grupos.Location = New System.Drawing.Point(6, 6)
-        Me.dg_grupos.MultiSelect = False
-        Me.dg_grupos.Name = "dg_grupos"
-        Me.dg_grupos.ReadOnly = True
-        Me.dg_grupos.Size = New System.Drawing.Size(271, 328)
-        Me.dg_grupos.TabIndex = 4
-        '
         'CodigoDeGrupoDataGridViewTextBoxColumn
         '
         Me.CodigoDeGrupoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
@@ -806,56 +1186,6 @@ Partial Class frmMain
         'GrupoBindingSource
         '
         Me.GrupoBindingSource.DataSource = GetType(MP_Lucas_Sanz.Grupo)
-        '
-        'tab_articulos_proveedores
-        '
-        Me.tab_articulos_proveedores.Controls.Add(Me.TableLayoutPanel4)
-        Me.tab_articulos_proveedores.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tab_articulos_proveedores.ImageIndex = 2
-        Me.tab_articulos_proveedores.Location = New System.Drawing.Point(4, 54)
-        Me.tab_articulos_proveedores.Name = "tab_articulos_proveedores"
-        Me.tab_articulos_proveedores.Padding = New System.Windows.Forms.Padding(3)
-        Me.tab_articulos_proveedores.Size = New System.Drawing.Size(791, 391)
-        Me.tab_articulos_proveedores.TabIndex = 3
-        Me.tab_articulos_proveedores.Text = "ARTÍCULOS/PROVEEDORES"
-        Me.tab_articulos_proveedores.UseVisualStyleBackColor = True
-        '
-        'TableLayoutPanel4
-        '
-        Me.TableLayoutPanel4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel4.ColumnCount = 2
-        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.0!))
-        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.0!))
-        Me.TableLayoutPanel4.Controls.Add(Me.dg_articulos, 1, 0)
-        Me.TableLayoutPanel4.Controls.Add(Me.TableLayoutPanel5, 0, 1)
-        Me.TableLayoutPanel4.Controls.Add(Me.TableLayoutPanel6, 1, 1)
-        Me.TableLayoutPanel4.Controls.Add(Me.dg_proveedores, 0, 0)
-        Me.TableLayoutPanel4.Location = New System.Drawing.Point(0, 0)
-        Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
-        Me.TableLayoutPanel4.Padding = New System.Windows.Forms.Padding(3)
-        Me.TableLayoutPanel4.RowCount = 2
-        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.0!))
-        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.0!))
-        Me.TableLayoutPanel4.Size = New System.Drawing.Size(799, 399)
-        Me.TableLayoutPanel4.TabIndex = 2
-        '
-        'dg_articulos
-        '
-        Me.dg_articulos.AllowUserToAddRows = False
-        Me.dg_articulos.AllowUserToDeleteRows = False
-        Me.dg_articulos.AutoGenerateColumns = False
-        Me.dg_articulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dg_articulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_articulos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoDeArticuloDataGridViewTextBoxColumn, Me.NombreDeArticuloDataGridViewTextBoxColumn, Me.DescripcionDeArticuloDataGridViewTextBoxColumn, Me.PVPCompraDeArticuloDataGridViewTextBoxColumn, Me.PVPVentaDeArticuloDataGridViewTextBoxColumn, Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn, Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn, Me.FamiliaDeArticuloDataGridViewTextBoxColumn})
-        Me.dg_articulos.DataSource = Me.ArticuloBindingSource
-        Me.dg_articulos.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dg_articulos.Location = New System.Drawing.Point(283, 6)
-        Me.dg_articulos.MultiSelect = False
-        Me.dg_articulos.Name = "dg_articulos"
-        Me.dg_articulos.Size = New System.Drawing.Size(510, 328)
-        Me.dg_articulos.TabIndex = 1
         '
         'CodigoDeArticuloDataGridViewTextBoxColumn
         '
@@ -885,6 +1215,9 @@ Partial Class frmMain
         '
         Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "PVPCompraDeArticulo"
+        DataGridViewCellStyle3.Format = "N2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
         Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.HeaderText = "PVP Compra"
         Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.Name = "PVPCompraDeArticuloDataGridViewTextBoxColumn"
         Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
@@ -893,6 +1226,9 @@ Partial Class frmMain
         '
         Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "PVPVentaDeArticulo"
+        DataGridViewCellStyle4.Format = "N2"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle4
         Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.HeaderText = "PVP Venta"
         Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.Name = "PVPVentaDeArticuloDataGridViewTextBoxColumn"
         Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
@@ -901,6 +1237,9 @@ Partial Class frmMain
         '
         Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.DataPropertyName = "PorcentajeDeBeneficio"
+        DataGridViewCellStyle5.Format = "N2"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle5
         Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.HeaderText = "% Beneficio"
         Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.Name = "PorcentajeDeBeneficioDataGridViewTextBoxColumn"
         Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.ReadOnly = True
@@ -925,133 +1264,6 @@ Partial Class frmMain
         '
         Me.ArticuloBindingSource.DataSource = GetType(MP_Lucas_Sanz.Articulo)
         '
-        'TableLayoutPanel5
-        '
-        Me.TableLayoutPanel5.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel5.ColumnCount = 3
-        Me.TableLayoutPanel5.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel5.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel5.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel5.Controls.Add(Me.btn_añadir_proveedor, 0, 0)
-        Me.TableLayoutPanel5.Controls.Add(Me.btn_modificar_proveedor, 1, 0)
-        Me.TableLayoutPanel5.Controls.Add(Me.btn_eliminar_proveedor, 2, 0)
-        Me.TableLayoutPanel5.Location = New System.Drawing.Point(6, 340)
-        Me.TableLayoutPanel5.Name = "TableLayoutPanel5"
-        Me.TableLayoutPanel5.RowCount = 1
-        Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel5.Size = New System.Drawing.Size(271, 53)
-        Me.TableLayoutPanel5.TabIndex = 2
-        '
-        'btn_añadir_proveedor
-        '
-        Me.btn_añadir_proveedor.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_añadir_proveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_añadir_proveedor.Location = New System.Drawing.Point(3, 9)
-        Me.btn_añadir_proveedor.Name = "btn_añadir_proveedor"
-        Me.btn_añadir_proveedor.Size = New System.Drawing.Size(84, 35)
-        Me.btn_añadir_proveedor.TabIndex = 0
-        Me.btn_añadir_proveedor.Text = "Añadir Proveedor"
-        Me.btn_añadir_proveedor.UseVisualStyleBackColor = True
-        '
-        'btn_modificar_proveedor
-        '
-        Me.btn_modificar_proveedor.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_modificar_proveedor.Enabled = False
-        Me.btn_modificar_proveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_modificar_proveedor.Location = New System.Drawing.Point(93, 9)
-        Me.btn_modificar_proveedor.Name = "btn_modificar_proveedor"
-        Me.btn_modificar_proveedor.Size = New System.Drawing.Size(84, 35)
-        Me.btn_modificar_proveedor.TabIndex = 1
-        Me.btn_modificar_proveedor.Text = "Modificar Proveedor"
-        Me.btn_modificar_proveedor.UseVisualStyleBackColor = True
-        '
-        'btn_eliminar_proveedor
-        '
-        Me.btn_eliminar_proveedor.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_eliminar_proveedor.Enabled = False
-        Me.btn_eliminar_proveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_eliminar_proveedor.Location = New System.Drawing.Point(183, 9)
-        Me.btn_eliminar_proveedor.Name = "btn_eliminar_proveedor"
-        Me.btn_eliminar_proveedor.Size = New System.Drawing.Size(85, 35)
-        Me.btn_eliminar_proveedor.TabIndex = 2
-        Me.btn_eliminar_proveedor.Text = "Eliminar Proveedor"
-        Me.btn_eliminar_proveedor.UseVisualStyleBackColor = True
-        '
-        'TableLayoutPanel6
-        '
-        Me.TableLayoutPanel6.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel6.ColumnCount = 3
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel6.Controls.Add(Me.btn_añadir_articulo, 0, 0)
-        Me.TableLayoutPanel6.Controls.Add(Me.btn_modificar_articulo, 1, 0)
-        Me.TableLayoutPanel6.Controls.Add(Me.btn_eliminar_articulo, 2, 0)
-        Me.TableLayoutPanel6.Location = New System.Drawing.Point(283, 340)
-        Me.TableLayoutPanel6.Name = "TableLayoutPanel6"
-        Me.TableLayoutPanel6.RowCount = 1
-        Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel6.Size = New System.Drawing.Size(510, 53)
-        Me.TableLayoutPanel6.TabIndex = 3
-        '
-        'btn_añadir_articulo
-        '
-        Me.btn_añadir_articulo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_añadir_articulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_añadir_articulo.Location = New System.Drawing.Point(3, 9)
-        Me.btn_añadir_articulo.Name = "btn_añadir_articulo"
-        Me.btn_añadir_articulo.Size = New System.Drawing.Size(164, 35)
-        Me.btn_añadir_articulo.TabIndex = 0
-        Me.btn_añadir_articulo.Text = "Añadir Artículo"
-        Me.btn_añadir_articulo.UseVisualStyleBackColor = True
-        '
-        'btn_modificar_articulo
-        '
-        Me.btn_modificar_articulo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_modificar_articulo.Enabled = False
-        Me.btn_modificar_articulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_modificar_articulo.Location = New System.Drawing.Point(173, 9)
-        Me.btn_modificar_articulo.Name = "btn_modificar_articulo"
-        Me.btn_modificar_articulo.Size = New System.Drawing.Size(164, 35)
-        Me.btn_modificar_articulo.TabIndex = 1
-        Me.btn_modificar_articulo.Text = "Modificar Artículo"
-        Me.btn_modificar_articulo.UseVisualStyleBackColor = True
-        '
-        'btn_eliminar_articulo
-        '
-        Me.btn_eliminar_articulo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_eliminar_articulo.Enabled = False
-        Me.btn_eliminar_articulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_eliminar_articulo.Location = New System.Drawing.Point(343, 9)
-        Me.btn_eliminar_articulo.Name = "btn_eliminar_articulo"
-        Me.btn_eliminar_articulo.Size = New System.Drawing.Size(164, 35)
-        Me.btn_eliminar_articulo.TabIndex = 2
-        Me.btn_eliminar_articulo.Text = "Eliminar Artículo"
-        Me.btn_eliminar_articulo.UseVisualStyleBackColor = True
-        '
-        'dg_proveedores
-        '
-        Me.dg_proveedores.AllowUserToAddRows = False
-        Me.dg_proveedores.AllowUserToDeleteRows = False
-        Me.dg_proveedores.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dg_proveedores.AutoGenerateColumns = False
-        Me.dg_proveedores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dg_proveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_proveedores.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoDeProveedorDataGridViewTextBoxColumn, Me.NombreDeProveedorDataGridViewTextBoxColumn, Me.datos})
-        Me.dg_proveedores.DataSource = Me.ProveedorBindingSource
-        Me.dg_proveedores.Location = New System.Drawing.Point(6, 6)
-        Me.dg_proveedores.MultiSelect = False
-        Me.dg_proveedores.Name = "dg_proveedores"
-        Me.dg_proveedores.ReadOnly = True
-        Me.dg_proveedores.Size = New System.Drawing.Size(271, 328)
-        Me.dg_proveedores.TabIndex = 4
-        '
         'CodigoDeProveedorDataGridViewTextBoxColumn
         '
         Me.CodigoDeProveedorDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
@@ -1068,92 +1280,9 @@ Partial Class frmMain
         Me.NombreDeProveedorDataGridViewTextBoxColumn.Name = "NombreDeProveedorDataGridViewTextBoxColumn"
         Me.NombreDeProveedorDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'datos
-        '
-        Me.datos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.datos.DefaultCellStyle = DataGridViewCellStyle3
-        Me.datos.HeaderText = " "
-        Me.datos.Name = "datos"
-        Me.datos.ReadOnly = True
-        Me.datos.Text = "VER DATOS"
-        Me.datos.UseColumnTextForButtonValue = True
-        '
         'ProveedorBindingSource
         '
         Me.ProveedorBindingSource.DataSource = GetType(MP_Lucas_Sanz.Proveedor)
-        '
-        'tab_inventario
-        '
-        Me.tab_inventario.Controls.Add(Me.TableLayoutPanel7)
-        Me.tab_inventario.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tab_inventario.ImageIndex = 3
-        Me.tab_inventario.Location = New System.Drawing.Point(4, 54)
-        Me.tab_inventario.Name = "tab_inventario"
-        Me.tab_inventario.Padding = New System.Windows.Forms.Padding(3)
-        Me.tab_inventario.Size = New System.Drawing.Size(791, 391)
-        Me.tab_inventario.TabIndex = 4
-        Me.tab_inventario.Text = "INVENTARIO"
-        Me.tab_inventario.UseVisualStyleBackColor = True
-        '
-        'TableLayoutPanel7
-        '
-        Me.TableLayoutPanel7.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel7.ColumnCount = 2
-        Me.TableLayoutPanel7.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85.0!))
-        Me.TableLayoutPanel7.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.0!))
-        Me.TableLayoutPanel7.Controls.Add(Me.dg_inventario, 0, 0)
-        Me.TableLayoutPanel7.Controls.Add(Me.TableLayoutPanel8, 1, 0)
-        Me.TableLayoutPanel7.Location = New System.Drawing.Point(0, 0)
-        Me.TableLayoutPanel7.Name = "TableLayoutPanel7"
-        Me.TableLayoutPanel7.RowCount = 1
-        Me.TableLayoutPanel7.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel7.Size = New System.Drawing.Size(791, 391)
-        Me.TableLayoutPanel7.TabIndex = 0
-        '
-        'dg_inventario
-        '
-        Me.dg_inventario.AllowUserToAddRows = False
-        Me.dg_inventario.AllowUserToDeleteRows = False
-        Me.dg_inventario.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dg_inventario.AutoGenerateColumns = False
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg_inventario.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
-        Me.dg_inventario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_inventario.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NombreDeArticuloDataGridViewTextBoxColumn1, Me.UnidadesDisponiblesDataGridViewTextBoxColumn})
-        Me.dg_inventario.DataSource = Me.InventarioBindingSource
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg_inventario.DefaultCellStyle = DataGridViewCellStyle5
-        Me.dg_inventario.Location = New System.Drawing.Point(3, 3)
-        Me.dg_inventario.Name = "dg_inventario"
-        Me.dg_inventario.ReadOnly = True
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg_inventario.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
-        Me.dg_inventario.Size = New System.Drawing.Size(666, 385)
-        Me.dg_inventario.TabIndex = 0
         '
         'NombreDeArticuloDataGridViewTextBoxColumn1
         '
@@ -1174,104 +1303,6 @@ Partial Class frmMain
         'InventarioBindingSource
         '
         Me.InventarioBindingSource.DataSource = GetType(MP_Lucas_Sanz.Inventario)
-        '
-        'TableLayoutPanel8
-        '
-        Me.TableLayoutPanel8.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel8.ColumnCount = 1
-        Me.TableLayoutPanel8.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel8.Controls.Add(Me.btn_restar_unidades, 0, 1)
-        Me.TableLayoutPanel8.Controls.Add(Me.btn_añadir_unidades, 0, 0)
-        Me.TableLayoutPanel8.Controls.Add(Me.btn_añadir_articulo_inventario, 0, 2)
-        Me.TableLayoutPanel8.Controls.Add(Me.btn_eliminar_articulo_inventario, 0, 3)
-        Me.TableLayoutPanel8.Controls.Add(Me.txt_busqueda_inventario, 0, 4)
-        Me.TableLayoutPanel8.Location = New System.Drawing.Point(675, 3)
-        Me.TableLayoutPanel8.Name = "TableLayoutPanel8"
-        Me.TableLayoutPanel8.RowCount = 6
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel8.Size = New System.Drawing.Size(113, 385)
-        Me.TableLayoutPanel8.TabIndex = 1
-        '
-        'btn_restar_unidades
-        '
-        Me.btn_restar_unidades.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_restar_unidades.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_restar_unidades.Location = New System.Drawing.Point(3, 45)
-        Me.btn_restar_unidades.Name = "btn_restar_unidades"
-        Me.btn_restar_unidades.Size = New System.Drawing.Size(107, 23)
-        Me.btn_restar_unidades.TabIndex = 1
-        Me.btn_restar_unidades.Text = "RESTAR UDS"
-        Me.btn_restar_unidades.UseVisualStyleBackColor = True
-        '
-        'btn_añadir_unidades
-        '
-        Me.btn_añadir_unidades.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_añadir_unidades.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_añadir_unidades.Location = New System.Drawing.Point(3, 7)
-        Me.btn_añadir_unidades.Name = "btn_añadir_unidades"
-        Me.btn_añadir_unidades.Size = New System.Drawing.Size(107, 23)
-        Me.btn_añadir_unidades.TabIndex = 0
-        Me.btn_añadir_unidades.Text = "AÑADIR UDS"
-        Me.btn_añadir_unidades.UseVisualStyleBackColor = True
-        '
-        'btn_añadir_articulo_inventario
-        '
-        Me.btn_añadir_articulo_inventario.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_añadir_articulo_inventario.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_añadir_articulo_inventario.Location = New System.Drawing.Point(3, 83)
-        Me.btn_añadir_articulo_inventario.Name = "btn_añadir_articulo_inventario"
-        Me.btn_añadir_articulo_inventario.Size = New System.Drawing.Size(107, 23)
-        Me.btn_añadir_articulo_inventario.TabIndex = 2
-        Me.btn_añadir_articulo_inventario.Text = "AÑADIR ART"
-        Me.btn_añadir_articulo_inventario.UseVisualStyleBackColor = True
-        '
-        'btn_eliminar_articulo_inventario
-        '
-        Me.btn_eliminar_articulo_inventario.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_eliminar_articulo_inventario.Enabled = False
-        Me.btn_eliminar_articulo_inventario.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_eliminar_articulo_inventario.Location = New System.Drawing.Point(3, 121)
-        Me.btn_eliminar_articulo_inventario.Name = "btn_eliminar_articulo_inventario"
-        Me.btn_eliminar_articulo_inventario.Size = New System.Drawing.Size(107, 23)
-        Me.btn_eliminar_articulo_inventario.TabIndex = 3
-        Me.btn_eliminar_articulo_inventario.Text = "BORRAR ART"
-        Me.btn_eliminar_articulo_inventario.UseVisualStyleBackColor = True
-        '
-        'txt_busqueda_inventario
-        '
-        Me.txt_busqueda_inventario.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txt_busqueda_inventario.Location = New System.Drawing.Point(3, 161)
-        Me.txt_busqueda_inventario.Name = "txt_busqueda_inventario"
-        Me.txt_busqueda_inventario.Size = New System.Drawing.Size(107, 20)
-        Me.txt_busqueda_inventario.TabIndex = 4
-        '
-        'TabPage1
-        '
-        Me.TabPage1.ImageIndex = 4
-        Me.TabPage1.Location = New System.Drawing.Point(4, 54)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(791, 391)
-        Me.TabPage1.TabIndex = 5
-        Me.TabPage1.Text = "CONFIGURACIONES"
-        Me.TabPage1.UseVisualStyleBackColor = True
-        '
-        'ImageList1
-        '
-        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList1.Images.SetKeyName(0, "banco.ico")
-        Me.ImageList1.Images.SetKeyName(1, "cliente.ico")
-        Me.ImageList1.Images.SetKeyName(2, "articulo.ico")
-        Me.ImageList1.Images.SetKeyName(3, "inventario.ico")
-        Me.ImageList1.Images.SetKeyName(4, "configuraciones.ico")
         '
         'BancoBindingSource
         '
@@ -1297,31 +1328,31 @@ Partial Class frmMain
         Me.tlp_main_bancos_pagos.ResumeLayout(False)
         CType(Me.dg_bancos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dg_formas_pago, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.FormaPagoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tlp_bancos.ResumeLayout(False)
         Me.tlp_pagos.ResumeLayout(False)
         Me.tab_clientes_grupos.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
         CType(Me.dg_clientes, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ClienteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel2.ResumeLayout(False)
         Me.TableLayoutPanel3.ResumeLayout(False)
         CType(Me.dg_grupos, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GrupoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tab_articulos_proveedores.ResumeLayout(False)
         Me.TableLayoutPanel4.ResumeLayout(False)
         CType(Me.dg_articulos, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ArticuloBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel5.ResumeLayout(False)
         Me.TableLayoutPanel6.ResumeLayout(False)
         CType(Me.dg_proveedores, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ProveedorBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tab_inventario.ResumeLayout(False)
         Me.TableLayoutPanel7.ResumeLayout(False)
         CType(Me.dg_inventario, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.InventarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel8.ResumeLayout(False)
         Me.TableLayoutPanel8.PerformLayout()
+        CType(Me.FormaPagoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ClienteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GrupoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ArticuloBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ProveedorBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.InventarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BancoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GrupoBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -1392,14 +1423,6 @@ Partial Class frmMain
     Friend WithEvents CodigoDeProveedorDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents NombreDeProveedorDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents datos As DataGridViewButtonColumn
-    Friend WithEvents CodigoDeArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents NombreDeArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DescripcionDeArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PVPCompraDeArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PVPVentaDeArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PorcentajeDeBeneficioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents TipoDeUnidadArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents FamiliaDeArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ArticuloBindingSource As BindingSource
     Friend WithEvents tab_inventario As TabPage
     Friend WithEvents TableLayoutPanel7 As TableLayoutPanel
@@ -1421,4 +1444,12 @@ Partial Class frmMain
     Friend WithEvents btn_menu_inventario As Button
     Friend WithEvents btn_menu_configuraciones As Button
     Friend WithEvents TabPage1 As TabPage
+    Friend WithEvents CodigoDeArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents NombreDeArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DescripcionDeArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PVPCompraDeArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PVPVentaDeArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PorcentajeDeBeneficioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TipoDeUnidadArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FamiliaDeArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
 End Class

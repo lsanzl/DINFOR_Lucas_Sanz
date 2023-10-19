@@ -27,119 +27,136 @@ Public Class ManagerEmpresa
     End Function
 
     Public Sub modificarEmpresa(empTemp As Empresa)
-        cmd = New SqlCommand($"ALTER DATABASE {empTemp.getNombreAntiguo()} MODIFY NAME = {empTemp.NombreEmpresa};", connectionDBManager)
-        If cmd.ExecuteNonQuery() = -1 Then
-            MessageBox.Show("Empresa actualizada")
+        cmd = New SqlCommand("ALTER DATABASE @NombreAntiguo MODIFY NAME = @NombreNuevo;", connectionDBManager)
+        With cmd.Parameters
+            .Add("@NombreAntiguo", SqlDbType.Char, 50).Value = empTemp.getNombreAntiguo()
+            .Add("@NombreNuevo", SqlDbType.Char, 50).Value = empTemp.NombreEmpresa
+        End With
+        Try
+            cmd.ExecuteNonQuery()
             frmSeleccionEmpresa.fillDataGrid()
-        Else
-            MessageBox.Show("Ninguna empresa actualizada")
-        End If
+        Catch ex As Exception
+            MessageBox.Show("No se pudo actualizar la empresa: " + vbCrLf + ex.ToString())
+        End Try
     End Sub
     Public Sub deleteEmpresa(empAux As Empresa)
-        cmd = New SqlCommand($"DROP DATABASE {empAux.NombreEmpresa};", connectionDBManager)
-        If cmd.ExecuteNonQuery() = -1 Then
-            MessageBox.Show("Empresa eliminada")
-        Else
-            MessageBox.Show("Ninguna empresa eliminada")
-        End If
+        cmd = New SqlCommand("DROP DATABASE @Nombre;", connectionDBManager)
+        cmd.Parameters.Add("@Nombre", SqlDbType.Char, 50).Value = empAux.NombreEmpresa
+        Try
+            cmd.ExecuteNonQuery()
+            frmSeleccionEmpresa.fillDataGrid()
+        Catch ex As Exception
+            MessageBox.Show("No se pudo eliminar la empresa: " + vbCrLf + ex.ToString())
+        End Try
     End Sub
     Public Sub addEmpresa(empAux As Empresa)
-        cmd = New SqlCommand($"CREATE DATABASE {empAux.NombreEmpresa};", connectionDBManager)
-        If cmd.ExecuteNonQuery() = -1 Then
-            MessageBox.Show("Empresa creada")
-        Else
-            MessageBox.Show("Ninguna empresa creada")
-        End If
+        cmd = New SqlCommand("CREATE DATABASE @Nombre;", connectionDBManager)
+        cmd.Parameters.Add("@Nombre", SqlDbType.Char, 50).Value = empAux.NombreEmpresa
+        Try
+            cmd.ExecuteNonQuery()
+            frmSeleccionEmpresa.fillDataGrid()
+        Catch ex As Exception
+            MessageBox.Show("No se pudo crear la empresa: " + vbCrLf + ex.ToString())
+        End Try
         selectEmpresa(empAux.NombreEmpresa)
         cmd = New SqlCommand("CREATE TABLE BANCOS(
-                            CODIGOBANCO INT PRIMARY KEY,
-                            NOMBREBANCO VARCHAR(100)
+                            ID_BANCO INT PRIMARY KEY,
+                            NOMBRE_BANCO VARCHAR(100)
                             );", connectionDBManager)
         cmd.ExecuteNonQuery()
         cmd = New SqlCommand("CREATE TABLE FORMASPAGO(
-                                CODIGOPAGO VARCHAR(5) PRIMARY KEY,
-                                NOMBREFORMAPAGO VARCHAR(100),
-                                BANCO INTEGER,
-                                ESTADO BIT,
-                                NUMEROPLAZOS INTEGER,
-                                PRIMERPLAZO INTEGER,
-                                DIASENTREPLAZOS INTEGER,
-                                );", connectionDBManager)
+                            ID_FORMA_PAGO INT PRIMARY KEY,
+                            ID_BANCO INT,
+                            NOMBRE_FORMA_PAGO VARCHAR(100),
+                            ESTADO BIT,
+                            NUMERO_PLAZOS INT,
+                            DIAS_PRIMER_PLAZO INT,
+                            DIAS_ENTRE_PLAZOS INT,
+                            FOREIGN KEY (ID_BANCO) REFERENCES BANCOS(ID_BANCO)
+                            );", connectionDBManager)
         cmd.ExecuteNonQuery()
         cmd = New SqlCommand("CREATE TABLE GRUPOS(
-                            CODIGOGRUPO VARCHAR(5) PRIMARY KEY,
-                            NOMBREGRUPO VARCHAR(100)
+                            ID_GRUPO INT PRIMARY KEY,
+                            NOMBRE_GRUPO VARCHAR(100)
                             );", connectionDBManager)
         cmd.ExecuteNonQuery()
         cmd = New SqlCommand("CREATE TABLE CLIENTES(
-                            CODIGOCLIENTE VARCHAR(6) PRIMARY KEY,
-                            NOMBRECLIENTE VARCHAR(100),
-                            NIFCLIENTE VARCHAR(12),
-                            DIRECCIONCLIENTE VARCHAR(150),
-                            FECHANACIMIENTOCLIENTE DATE,
-                            BANCOCLIENTE VARCHAR(5),
-                            GRUPOCLIENTE INT,
-                            EMAILCLIENTE VARCHAR(100)
+                            ID_CLIENTE INT PRIMARY KEY,
+                            ID_GRUPO INT,
+                            ID_BANCO INT,
+                            NOMBRE_CLIENTE VARCHAR(100),
+                            NIF_CLIENTE VARCHAR(12),
+                            DIRECCION_CLIENTE VARCHAR(150),
+                            FECHA_NACIMIENTO_CLIENTE DATE,
+                            EMAIL_CLIENTE VARCHAR(100),
+                            FOREIGN KEY(ID_GRUPO) REFERENCES GRUPOS(ID_GRUPO),
+                            FOREIGN KEY(ID_BANCO) REFERENCES BANCOS(ID_BANCO)
                             );", connectionDBManager)
         cmd.ExecuteNonQuery()
         cmd = New SqlCommand("CREATE TABLE PROVEEDORES(
-                            CODIGOPROVEEDOR VARCHAR(6) PRIMARY KEY,
-                            NOMBREPROVEEDOR VARCHAR(100),
-                            NIFPROVEEDOR VARCHAR(12),
-                            DIRECCIONPROVEEDOR VARCHAR(100),
-                            POBLACIONPROVEEDOR VARCHAR(100),
-                            TELEFONOPROVEEDOR INT
-                            );", connectionDBManager)
-        cmd.ExecuteNonQuery()
-        cmd = New SqlCommand("CREATE TABLE ARTICULOS(
-                            CODIGOARTICULO VARCHAR(6) PRIMARY KEY,
-                            NOMBREARTICULO VARCHAR(100),
-                            DESCRIPCIONARTICULO VARCHAR(100),
-                            PVPCOMPRAARTICULO DECIMAL(10,2),
-                            PORCBENEFICIOARTICULO DECIMAL(5,2),
-                            TIPOUNIDADARTICULO VARCHAR(50),
-                            FAMILIAARTICULO VARCHAR(100)
+                            ID_PROVEEDOR INT PRIMARY KEY,
+                            NOMBRE_PROVEEDOR VARCHAR(100),
+                            NIF_PROVEEDOR VARCHAR(12),
+                            DIRECCION_PROVEEDOR VARCHAR(150),
+                            POBLACION_PROVEEDOR VARCHAR(100),
+                            TELEFONO_PROVEEDOR INT
                             );", connectionDBManager)
         cmd.ExecuteNonQuery()
         cmd = New SqlCommand("CREATE TABLE FAMILIAS(
-                            CODIGOFAMILIA VARCHAR(6) PRIMARY KEY,
-                            NOMBREFAMILIA VARCHAR(100)
+                            ID_FAMILIA INT PRIMARY KEY,
+                            NOMBRE_FAMILIA VARCHAR(100)
                             );", connectionDBManager)
         cmd.ExecuteNonQuery()
-        cmd = New SqlCommand("CREATE TABLE INVENTARIO(
-                            NOMBREARTICULO VARCHAR(50) PRIMARY KEY,
-                            UNIDADESDISPONIBLES INT
+        cmd = New SqlCommand("CREATE TABLE ARTICULOS(
+                            ID_ARTICULO INT PRIMARY KEY,
+                            ID_FAMILIA INT,
+                            NOMBRE_ARTICULO VARCHAR(100),
+                            DESCRIPCION_ARTICULO VARCHAR(150),
+                            PRECIO_COMPRA_ARTICULO DECIMAL(10,2),
+                            PORC_BENEFICIO_ARTICULO DECIMAL(5,2),
+                            TIPO_UNIDAD VARCHAR(50),
+                            FOREIGN KEY(ID_FAMILIA) REFERENCES FAMILIAS(ID_FAMILIA)
+                            );", connectionDBManager)
+        cmd.ExecuteNonQuery()
+        cmd = New SqlCommand("CREATE TABLE INVENTARIOS(
+                            ID_INVENTARIO INT PRIMARY KEY,
+                            ID_ARTICULO INT,
+                            UNIDADES_INVENTARIO INT,
+                            FOREIGN KEY(ID_ARTICULO) REFERENCES ARTICULOS(ID_ARTICULO)
                             );", connectionDBManager)
         cmd.ExecuteNonQuery()
         cmd = New SqlCommand("CREATE TABLE COMPRAS(
-                            CODIGOCOMPRA INT PRIMARY KEY,
-                            CODIGOPROVEEDOR VARCHAR(6),
-                            CODIGOARTICULO VARCHAR(6),
-                            CODIGOPAGO VARCHAR(5),
-                            PRECIOARTICULO DECIMAL(10,2),
-                            CANTIDADARTICULO INT,
-                            FOREIGN KEY (CODIGOPROVEEDOR) REFERENCES PROVEEDORES(CODIGOPROVEEDOR),
-                            FOREIGN KEY (CODIGOARTICULO) REFERENCES ARTICULOS(CODIGOARTICULO),
-                            FOREIGN KEY (CODIGOPAGO) REFERENCES FORMASPAGO(CODIGOPAGO)
+                            ID_COMPRA INT PRIMARY KEY,
+                            ID_PROVEEDOR INT,
+                            ID_ARTICULO INT,
+                            ID_FORMA_PAGO INT,
+                            PRECIO_ARTICULO_COMPRA DECIMAL(10,2),
+                            CANTIDAD_COMPRA INT,
+                            FECHA_COMPRA DATE,
+                            FOREIGN KEY(ID_PROVEEDOR) REFERENCES PROVEEDORES(ID_PROVEEDOR),
+                            FOREIGN KEY(ID_ARTICULO) REFERENCES ARTICULOS(ID_ARTICULO),
+                            FOREIGN KEY(ID_FORMA_PAGO) REFERENCES FORMASPAGO(ID_FORMA_PAGO)
                             );", connectionDBManager)
         cmd.ExecuteNonQuery()
         cmd = New SqlCommand("CREATE TABLE VENTAS(
-                            CODIGOVENTA INT PRIMARY KEY,
-                            CODIGOCLIENTE VARCHAR(6),
-                            CODIGOARTICULO VARCHAR(6),
-                            CODIGOPAGO VARCHAR(5),
-                            PRECIOARTICULO DECIMAL(10,2),
-                            CANTIDADARTICULO INT,
-                            FOREIGN KEY (CODIGOCLIENTE) REFERENCES CLIENTES(CODIGOCLIENTE),
-                            FOREIGN KEY (CODIGOARTICULO) REFERENCES ARTICULOS(CODIGOARTICULO),
-                            FOREIGN KEY (CODIGOPAGO) REFERENCES FORMASPAGO(CODIGOPAGO)
+                            ID_VENTA INT PRIMARY KEY,
+                            ID_CLIENTE INT,
+                            ID_ARTICULO INT,
+                            ID_FORMA_PAGO INT,
+                            PRECIO_VENTA_ARTICULO DECIMAL(10,2),
+                            CANTIDAD_VENTA INT,
+                            FECHA_VENTA DATE,
+                            FOREIGN KEY(ID_CLIENTE) REFERENCES CLIENTES(ID_CLIENTE),
+                            FOREIGN KEY(ID_ARTICULO) REFERENCES ARTICULOS(ID_ARTICULO),
+                            FOREIGN KEY(ID_FORMA_PAGO) REFERENCES FORMASPAGO(ID_FORMA_PAGO)
                             );", connectionDBManager)
         cmd.ExecuteNonQuery()
     End Sub
     Public Function checkEmpresa(nombreEmpresa As String) As Boolean
-        cmd = New SqlCommand($"SELECT NAME
+        cmd = New SqlCommand("SELECT NAME
                                 FROM sys.databases
-                                WHERE NAME = '{nombreEmpresa}';", connectionDBManager)
+                                WHERE NAME = @Nombre;", connectionDBManager)
+        cmd.Parameters.Add("@Nombre", SqlDbType.Char, 50).Value = nombreEmpresa
         dr = cmd.ExecuteReader()
         If Not dr.HasRows Then
             dr.Close()
@@ -151,10 +168,19 @@ Public Class ManagerEmpresa
 
     Public Sub selectEmpresa()
         cmd = New SqlCommand($"USE {getEmpresaSeleccionada()};", connectionDBManager)
-        cmd.ExecuteNonQuery()
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
+        End Try
     End Sub
     Public Sub selectEmpresa(nombreEmp As String)
-        cmd = New SqlCommand($"USE {nombreEmp};", connectionDBManager)
-        cmd.ExecuteNonQuery()
+        cmd = New SqlCommand("USE @Nombre;", connectionDBManager)
+        cmd.Parameters.Add("@Nombre", SqlDbType.Char, 50).Value = nombreEmp
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
+        End Try
     End Sub
 End Class

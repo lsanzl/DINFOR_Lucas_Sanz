@@ -31,7 +31,8 @@
     Private Sub click_btn_añadir_cliente(sender As Object, e As EventArgs)
         frmNuevoCliente.Text = "Creación nuevo cliente"
         frmNuevoCliente.btn_confirmar_cliente.Text = "Confirmar"
-        frmNuevoCliente.txt_codigo_cliente.Enabled = True
+        frmNuevoCliente.txt_codigo_cliente.Text = managerClienteAux.getIDCliente()
+        frmNuevoCliente.txt_codigo_cliente.Enabled = False
         frmNuevoCliente.ShowDialog()
 
         fillDGClientes()

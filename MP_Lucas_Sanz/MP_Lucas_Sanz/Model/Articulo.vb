@@ -1,19 +1,27 @@
 ﻿Public Class Articulo
-    Private codigoArticulo As String
+    Private codigoArticulo As Integer
+    Private familiaArticulo As Integer
     Private nombreArticulo As String
     Private descripcionArticulo As String
     Private pvpCompraArticulo As Double
     Private porcBeneficioArticulo As Double
     Private pvpVentaArticulo As Double
     Private tipoUnidadArticulo As String
-    Private familiaArticulo As String
 
-    Public Property CodigoDeArticulo() As String
+    Public Property CodigoDeArticulo() As Integer
         Get
             Return codigoArticulo
         End Get
-        Set(value As String)
+        Set(value As Integer)
             codigoArticulo = value
+        End Set
+    End Property
+    Public Property FamiliaDeArticulo() As Integer
+        Get
+            Return familiaArticulo
+        End Get
+        Set(value As Integer)
+            familiaArticulo = value
         End Set
     End Property
     Public Property NombreDeArticulo() As String
@@ -64,21 +72,26 @@
             tipoUnidadArticulo = value
         End Set
     End Property
-    Public Property FamiliaDeArticulo() As String
-        Get
-            Return familiaArticulo
-        End Get
-        Set(value As String)
-            familiaArticulo = value
-        End Set
-    End Property
 
     Public Sub New()
         MyBase.New()
     End Sub
-    Public Sub New(codigoPasado As String, nombrePasado As String, descripcionPasada As String,
+    Public Sub New(nombrePasado As String, descripcionPasada As String,
                    pvpCompraPasado As Double, porcBeneficioPasado As Double,
-                   tipoArticuloPasado As String, familiaPasada As String)
+                   tipoArticuloPasado As String, familiaPasada As Integer)
+        MyBase.New()
+        NombreDeArticulo = nombrePasado
+        DescripcionDeArticulo = descripcionPasada
+        PVPCompraDeArticulo = pvpCompraPasado
+        PorcentajeDeBeneficio = porcBeneficioPasado
+        TipoDeUnidadArticulo = tipoArticuloPasado
+        FamiliaDeArticulo = familiaPasada
+
+        PVPVentaDeArticulo = PVPCompraDeArticulo * (1 + PorcentajeDeBeneficio / 100)
+    End Sub
+    Public Sub New(codigoPasado As Integer, nombrePasado As String, descripcionPasada As String,
+                   pvpCompraPasado As Double, porcBeneficioPasado As Double,
+                   tipoArticuloPasado As String, familiaPasada As Integer)
         MyBase.New()
         CodigoDeArticulo = codigoPasado
         NombreDeArticulo = nombrePasado
@@ -107,11 +120,4 @@
     Public Sub deleteArticulo()
         managerArticuloAux.deleteArticulo(Me)
     End Sub
-    Public Function checkNombre(nombrePasado As String)
-        If nombrePasado.Length > 6 Then
-            MessageBox.Show("Código demasiado largo (máx 6)")
-            Return False
-        End If
-        Return True
-    End Function
 End Class

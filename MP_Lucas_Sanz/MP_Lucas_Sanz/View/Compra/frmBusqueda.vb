@@ -1,12 +1,15 @@
 ﻿Public Class frmBusqueda
     Dim criterioBusqueda As String = "nombre"
-    Public Property codigoSeleccionado As String
+    Dim clase As Object
+    Public Property codigoSeleccionado As Integer
 
     Private Sub frmBusqueda_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         rdb_nombre.Checked = True
     End Sub
-    Public Sub New(clase As Object)
+    Public Sub New(claseP As Object)
+        MyBase.New()
         InitializeComponent()
+        clase = claseP
 
         dg_resultados_busqueda.Columns.Add("nombre", "Nombre")
         dg_resultados_busqueda.Columns.Add("codigo", "Código")
@@ -49,7 +52,7 @@
         End If
 
         For Each fila As DataGridViewRow In dg.Rows
-            If lookForText(fila.Cells(criterioBusqueda).Value.ToString().Trim, textoBusqueda.Trim) Then
+            If lookForText(fila.Cells(criterioBusqueda).Value.ToString().Trim(), textoBusqueda.Trim()) Then
                 dg.CurrentCell = Nothing
                 fila.Visible = True
             Else
@@ -77,7 +80,11 @@
     End Sub
 
     Private Sub double_click_cell_dg_resultados_busqueda(sender As Object, e As DataGridViewCellEventArgs) Handles dg_resultados_busqueda.CellDoubleClick
-        codigoSeleccionado = dg_resultados_busqueda.Rows(e.RowIndex).Cells(1).Value.ToString()
+        If TypeOf clase Is Articulo Then
+            codigoSeleccionado = dg_resultados_busqueda.Rows(e.RowIndex).Cells(0).Value.ToString()
+        Else
+            codigoSeleccionado = dg_resultados_busqueda.Rows(e.RowIndex).Cells(1).Value.ToString()
+        End If
         Close()
     End Sub
 End Class

@@ -5,7 +5,7 @@ Public Class frmCompra
     Dim listaCompras As BindingList(Of Compra) = New BindingList(Of Compra)()
     Dim compraTemp As Compra = New Compra()
     Dim dt As New DataTable()
-    Dim proveedorSeleccionado As String
+    Dim proveedorSeleccionado As Integer
 
     Private Sub frmCompra_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         listaCompras = New BindingList(Of Compra)
@@ -18,7 +18,7 @@ Public Class frmCompra
         frmBusquedaNuevo.Text = "BÚSQUEDA DE PROVEEDORES"
         frmBusquedaNuevo.ShowDialog()
         txt_proveedor_seleccionado.Text = frmBusquedaNuevo.codigoSeleccionado
-        proveedorSeleccionado = frmBusquedaNuevo.codigoSeleccionado
+        proveedorSeleccionado = Convert.ToInt32(frmBusquedaNuevo.codigoSeleccionado)
     End Sub
     Private Sub click_btn_busqueda_articulo(sender As Object, e As EventArgs) Handles btn_busqueda_articulo.Click
         Dim frmBusquedaNuevo As frmBusqueda = New frmBusqueda(articuloAux)
@@ -93,8 +93,8 @@ Public Class frmCompra
         If Not checkCampos() Then
             Return
         End If
-        Dim articuloSeleccionado As String = txt_articulo_seleccionado.Text
-        Dim formaPagoSeleccionada As String = cb_forma_pago_seleccionada.SelectedValue
+        Dim articuloSeleccionado As Integer = managerArticuloAux.getIDArticulo(txt_articulo_seleccionado.Text)
+        Dim formaPagoSeleccionada As Integer = cb_forma_pago_seleccionada.SelectedValue
         Dim cantidadSeleccionada As Integer = Convert.ToInt32(txt_cantidad_seleccionada.Text)
         Dim precioCompra As Double = Convert.ToDouble(managerArticuloAux.getCampoArticulo(articuloSeleccionado, "PVPCOMPRAARTICULO"))
         Dim porcBeneficio As Double = Convert.ToDouble(managerArticuloAux.getCampoArticulo(articuloSeleccionado, "PORCBENEFICIOARTICULO"))

@@ -38,6 +38,7 @@
 
     Private Sub click_btn_añadir_articulo(sender As Object, e As EventArgs)
         frmNuevoArticulo.Text = "Creación nuevo artículo"
+        frmNuevoArticulo.btn_confirmar_articulo.Text = "Confirmar"
         frmNuevoArticulo.ShowDialog()
         fillDGArticulos()
     End Sub
@@ -51,6 +52,7 @@
         frmNuevoArticulo.txt_porc_beneficio_articulo.Text = articuloTemp.PorcentajeDeBeneficio
         frmNuevoArticulo.txt_pvp_venta_articulo.Text = articuloTemp.PVPVentaDeArticulo
         frmNuevoArticulo.txt_familia_articulo.Text = articuloTemp.FamiliaDeArticulo
+        frmNuevoArticulo.cb_tipo_unidad_articulo.Text = articuloTemp.TipoDeUnidadArticulo
 
         frmNuevoArticulo.btn_confirmar_articulo.Text = "Modificar"
         frmNuevoArticulo.ShowDialog()

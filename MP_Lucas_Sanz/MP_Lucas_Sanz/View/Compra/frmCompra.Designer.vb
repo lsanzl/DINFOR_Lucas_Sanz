@@ -25,6 +25,7 @@ Partial Class frmCompra
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCompra))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
@@ -38,29 +39,29 @@ Partial Class frmCompra
         Me.btn_busqueda_proveedor = New System.Windows.Forms.Button()
         Me.btn_busqueda_articulo = New System.Windows.Forms.Button()
         Me.cb_forma_pago_seleccionada = New System.Windows.Forms.ComboBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.dp_fecha_compra = New System.Windows.Forms.DateTimePicker()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.btn_modificar_compra = New System.Windows.Forms.Button()
         Me.btn_eliminar_compra = New System.Windows.Forms.Button()
         Me.btn_añadir_compra = New System.Windows.Forms.Button()
         Me.dg_compras = New System.Windows.Forms.DataGridView()
+        Me.CompraBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
         Me.btn_confirmar_compra = New System.Windows.Forms.Button()
         Me.lbl_precio_sumatorio = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.dp_fecha_compra = New System.Windows.Forms.DateTimePicker()
         Me.ProveedorDeCompraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ArticuloDeCompraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FormaDePagoCompraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PrecioDeArticuloCompraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CantidadDeCompraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PrecioTotalDeCompraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CompraBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
         CType(Me.dg_compras, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TableLayoutPanel4.SuspendLayout()
         CType(Me.CompraBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TableLayoutPanel4.SuspendLayout()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -224,6 +225,29 @@ Partial Class frmCompra
         Me.cb_forma_pago_seleccionada.Size = New System.Drawing.Size(232, 21)
         Me.cb_forma_pago_seleccionada.TabIndex = 9
         '
+        'Label5
+        '
+        Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(377, 119)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(96, 13)
+        Me.Label5.TabIndex = 10
+        Me.Label5.Text = "Fecha:"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'dp_fecha_compra
+        '
+        Me.dp_fecha_compra.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dp_fecha_compra.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dp_fecha_compra.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dp_fecha_compra.Location = New System.Drawing.Point(479, 115)
+        Me.dp_fecha_compra.Name = "dp_fecha_compra"
+        Me.dp_fecha_compra.Size = New System.Drawing.Size(232, 20)
+        Me.dp_fecha_compra.TabIndex = 11
+        Me.dp_fecha_compra.Value = New Date(2023, 10, 17, 0, 0, 0, 0)
+        '
         'TableLayoutPanel3
         '
         Me.TableLayoutPanel3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -301,6 +325,10 @@ Partial Class frmCompra
         Me.dg_compras.Size = New System.Drawing.Size(714, 151)
         Me.dg_compras.TabIndex = 2
         '
+        'CompraBindingSource
+        '
+        Me.CompraBindingSource.DataSource = GetType(MP_Lucas_Sanz.Compra)
+        '
         'TableLayoutPanel4
         '
         Me.TableLayoutPanel4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -343,29 +371,6 @@ Partial Class frmCompra
         Me.lbl_precio_sumatorio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.lbl_precio_sumatorio.Visible = False
         '
-        'Label5
-        '
-        Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(377, 119)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(96, 13)
-        Me.Label5.TabIndex = 10
-        Me.Label5.Text = "Fecha:"
-        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'dp_fecha_compra
-        '
-        Me.dp_fecha_compra.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dp_fecha_compra.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dp_fecha_compra.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dp_fecha_compra.Location = New System.Drawing.Point(479, 115)
-        Me.dp_fecha_compra.Name = "dp_fecha_compra"
-        Me.dp_fecha_compra.Size = New System.Drawing.Size(232, 20)
-        Me.dp_fecha_compra.TabIndex = 11
-        Me.dp_fecha_compra.Value = New Date(2023, 10, 17, 0, 0, 0, 0)
-        '
         'ProveedorDeCompraDataGridViewTextBoxColumn
         '
         Me.ProveedorDeCompraDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
@@ -394,6 +399,8 @@ Partial Class frmCompra
         '
         Me.PrecioDeArticuloCompraDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.PrecioDeArticuloCompraDataGridViewTextBoxColumn.DataPropertyName = "PrecioDeArticuloCompra"
+        DataGridViewCellStyle2.Format = "N2"
+        Me.PrecioDeArticuloCompraDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
         Me.PrecioDeArticuloCompraDataGridViewTextBoxColumn.HeaderText = "Precio Ud"
         Me.PrecioDeArticuloCompraDataGridViewTextBoxColumn.Name = "PrecioDeArticuloCompraDataGridViewTextBoxColumn"
         Me.PrecioDeArticuloCompraDataGridViewTextBoxColumn.ReadOnly = True
@@ -410,16 +417,12 @@ Partial Class frmCompra
         '
         Me.PrecioTotalDeCompraDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.PrecioTotalDeCompraDataGridViewTextBoxColumn.DataPropertyName = "PrecioTotalDeCompra"
-        DataGridViewCellStyle2.Format = "N2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.PrecioTotalDeCompraDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle3.Format = "N2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.PrecioTotalDeCompraDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
         Me.PrecioTotalDeCompraDataGridViewTextBoxColumn.HeaderText = "Precio Total"
         Me.PrecioTotalDeCompraDataGridViewTextBoxColumn.Name = "PrecioTotalDeCompraDataGridViewTextBoxColumn"
         Me.PrecioTotalDeCompraDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CompraBindingSource
-        '
-        Me.CompraBindingSource.DataSource = GetType(MP_Lucas_Sanz.Compra)
         '
         'frmCompra
         '
@@ -440,9 +443,9 @@ Partial Class frmCompra
         Me.TableLayoutPanel2.PerformLayout()
         Me.TableLayoutPanel3.ResumeLayout(False)
         CType(Me.dg_compras, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CompraBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel4.ResumeLayout(False)
         Me.TableLayoutPanel4.PerformLayout()
-        CType(Me.CompraBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -468,12 +471,12 @@ Partial Class frmCompra
     Friend WithEvents TableLayoutPanel4 As TableLayoutPanel
     Friend WithEvents btn_confirmar_compra As Button
     Friend WithEvents lbl_precio_sumatorio As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents dp_fecha_compra As DateTimePicker
     Friend WithEvents ProveedorDeCompraDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ArticuloDeCompraDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents FormaDePagoCompraDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PrecioDeArticuloCompraDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents CantidadDeCompraDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PrecioTotalDeCompraDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents Label5 As Label
-    Friend WithEvents dp_fecha_compra As DateTimePicker
 End Class

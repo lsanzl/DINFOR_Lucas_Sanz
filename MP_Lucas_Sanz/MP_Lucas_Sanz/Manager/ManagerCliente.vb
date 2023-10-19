@@ -15,27 +15,27 @@ Public Class ManagerCliente
         cmd = New SqlCommand("SELECT * FROM CLIENTES;", connectionDBManager)
         dr = cmd.ExecuteReader()
 
-        Dim codigoNuevo As String
+        Dim codigoNuevo As Integer
+        Dim grupoNuevo As Integer
+        Dim bancoNuevo As Integer
         Dim nombreNuevo As String
         Dim nifNuevo As String
         Dim direccionNueva As String
         Dim fechaNueva As Date
-        Dim bancoNuevo As String
-        Dim grupoNuevo As String
         Dim emailNuevo As String
         Dim clienteTemp As Cliente
 
         If dr.HasRows Then
             dr.Read()
             Do
-                codigoNuevo = dr(0).ToString()
-                nombreNuevo = dr(1).ToString()
-                nifNuevo = dr(2).ToString()
-                direccionNueva = dr(3).ToString()
-                fechaNueva = Convert.ToDateTime(dr(4))
-                bancoNuevo = Convert.ToInt32(dr(5))
-                grupoNuevo = dr(6).ToString()
-                emailNuevo = dr(7).ToString()
+                codigoNuevo = dr(0).ToString().Trim()
+                grupoNuevo = Convert.ToInt32(dr(1))
+                bancoNuevo = Convert.ToInt32(dr(2))
+                nombreNuevo = dr(3).ToString().Trim()
+                nifNuevo = dr(4).ToString().Trim()
+                direccionNueva = dr(5).ToString().Trim()
+                fechaNueva = Convert.ToDateTime(dr(6))
+                emailNuevo = dr(7).ToString().Trim()
 
                 clienteTemp = New Cliente(codigoNuevo, nombreNuevo, nifNuevo, direccionNueva, fechaNueva, bancoNuevo, grupoNuevo, emailNuevo)
                 listaClientes.Add(clienteTemp)
@@ -47,53 +47,74 @@ Public Class ManagerCliente
 
     Public Sub addCliente(clientePasado As Cliente)
         cmd = New SqlCommand($"INSERT INTO CLIENTES
-                            VALUES ('{clientePasado.CodigoDelCliente}', 
-                            '{clientePasado.NombreDelCliente}', 
-                            '{clientePasado.NifDelCliente}', 
-                            '{clientePasado.DireccionDelCliente}', 
-                            '{clientePasado.FechaDeNacimientoDelCliente}', 
-                            {clientePasado.BancoDelCliente},
-                            '{clientePasado.GrupoDelCliente}', 
-                            '{clientePasado.EmailDelCliente}');", connectionDBManager)
-        If cmd.ExecuteNonQuery() > 0 Then
-            MessageBox.Show("Cliente creado")
-        Else
-            MessageBox.Show("Cliente no creado")
-        End If
+                            VALUES (@Codigo, 
+                            @Grupo,
+                            @Banco,
+                            @Nombre, 
+                            @Nif, 
+                            @Direccion, 
+                            @FechaNacimiento, 
+                            @Email);", connectionDBManager)
+        With cmd.Parameters
+            .Add("@Codigo", SqlDbType.Int).Value = getIDCliente()
+            .Add("@Grupo", SqlDbType.Int).Value = clientePasado.GrupoDelCliente
+            .Add("@Banco", SqlDbType.Int).Value = clientePasado.BancoDelCliente
+            .Add("@Nombre", SqlDbType.Char, 100).Value = clientePasado.NombreDelCliente
+            .Add("@Nif", SqlDbType.Char, 12).Value = clientePasado.NifDelCliente
+            .Add("@Direccion", SqlDbType.Char, 150).Value = clientePasado.DireccionDelCliente
+            .Add("@FechaNacimiento", SqlDbType.Date).Value = clientePasado.FechaDeNacimientoDelCliente
+            .Add("@Email", SqlDbType.Char, 100).Value = clientePasado.EmailDelCliente
+        End With
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Error al introducir un cliente: " + vbCrLf + ex.ToString())
+        End Try
     End Sub
     Public Sub modifyCliente(clientePasado As Cliente)
         cmd = New SqlCommand($"UPDATE CLIENTES
-                            SET NOMBRECLIENTE = '{clientePasado.NombreDelCliente}',
-                            NIFCLIENTE = '{clientePasado.NifDelCliente}',
-                            DIRECCIONCLIENTE = '{clientePasado.DireccionDelCliente}', 
-                            FECHANACIMIENTOCLIENTE = '{clientePasado.FechaDeNacimientoDelCliente}', 
-                            BANCOCLIENTE = {clientePasado.BancoDelCliente},
-                            GRUPOCLIENTE = '{clientePasado.GrupoDelCliente}',
-                            EMAILCLIENTE = '{clientePasado.EmailDelCliente}'
-                            WHERE CODIGOCLIENTE = '{clientePasado.CodigoDelCliente}';", connectionDBManager)
-        If cmd.ExecuteNonQuery() > 0 Then
-            MessageBox.Show("Cliente modificado")
-        Else
-            MessageBox.Show("Cliente no modificado")
-        End If
+                            SET ID_GRUPO = @Grupo,
+                            ID_BANCO = @Banco,
+                            NOMBRE_CLIENTE = @Nombre,
+                            NIF_CLIENTE = @Nif,
+                            DIRECCION_CLIENTE = @Direccion, 
+                            FECHA_NACIMIENTO_CLIENTE = @FechaNacimiento,                             
+                            EMAIL_CLIENTE = @Email
+                            WHERE ID_CLIENTE = @Codigo;", connectionDBManager)
+        With cmd.Parameters
+            .Add("@Codigo", SqlDbType.Int).Value = clientePasado.CodigoDelCliente
+            .Add("@Grupo", SqlDbType.Int).Value = clientePasado.GrupoDelCliente
+            .Add("@Banco", SqlDbType.Int).Value = clientePasado.BancoDelCliente
+            .Add("@Nombre", SqlDbType.Char, 100).Value = clientePasado.NombreDelCliente
+            .Add("@Nif", SqlDbType.Char, 12).Value = clientePasado.NifDelCliente
+            .Add("@Direccion", SqlDbType.Char, 150).Value = clientePasado.DireccionDelCliente
+            .Add("@FechaNacimiento", SqlDbType.Date).Value = clientePasado.FechaDeNacimientoDelCliente
+            .Add("@Email", SqlDbType.Char, 100).Value = clientePasado.EmailDelCliente
+        End With
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Error al modificar un cliente: " + vbCrLf + ex.ToString())
+        End Try
     End Sub
     Public Sub deleteCliente(clientePasado As Cliente)
-        cmd = New SqlCommand($"DELETE FROM CLIENTES WHERE CODIGOCLIENTE = '{clientePasado.CodigoDelCliente}';", connectionDBManager)
-        If cmd.ExecuteNonQuery() > 0 Then
-            MessageBox.Show("Cliente eliminado")
-        Else
-            MessageBox.Show("Cliente no eliminado")
-        End If
+        cmd = New SqlCommand($"DELETE FROM CLIENTES WHERE ID_CLIENTE = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = clientePasado.CodigoDelCliente
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Error al eliminar un cliente: " + vbCrLf + ex.ToString())
+        End Try
     End Sub
-    Public Function checkCliente(codigoCliente As String) As Boolean
-        cmd = New SqlCommand($"SELECT * FROM CLIENTES WHERE CODIGOCLIENTE = '{codigoCliente}';", connectionDBManager)
-        dr = cmd.ExecuteReader()
-        If dr.HasRows Then
-            dr.Close()
-            Return True
+    Public Function getIDCliente() As Integer
+        cmd = New SqlCommand("SELECT MAX(ID_CLIENTE) FROM CLIENTES;", connectionDBManager)
+        Dim maxActual As Object = cmd.ExecuteScalar()
+        Dim codigoClienteNuevo As Integer = Nothing
+        If maxActual IsNot DBNull.Value Then
+            codigoClienteNuevo = Convert.ToInt32(maxActual) + 1
         Else
-            dr.Close()
-            Return False
+            codigoClienteNuevo = 0
         End If
+        Return codigoClienteNuevo
     End Function
 End Class
