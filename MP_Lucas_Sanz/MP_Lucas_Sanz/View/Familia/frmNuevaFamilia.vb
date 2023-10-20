@@ -4,8 +4,8 @@
         Dim nombreFamilia As String = txt_nombre_familia.Text
         Dim familiaTemp As Familia = New Familia(codigoFamilia, nombreFamilia)
 
-        If Not familiaTemp.checkCodigo(codigoFamilia) Then
-            MessageBox.Show("Código incorrecto, máx 6 caracteres")
+        If Not IsNumeric(codigoFamilia) Then
+            MessageBox.Show("El código debe ser numérico")
             Return
         End If
         If btn_confirmar_familia.Text = "Modificar" Then

@@ -1,12 +1,12 @@
 ﻿Public Class Grupo
-    Private codigoGrupo As String
+    Private codigoGrupo As Integer
     Private nombreGrupo As String
 
-    Public Property CodigoDeGrupo() As String
+    Public Property CodigoDeGrupo() As Integer
         Get
             Return codigoGrupo
         End Get
-        Set(value As String)
+        Set(value As Integer)
             codigoGrupo = value
         End Set
     End Property
@@ -22,19 +22,11 @@
     Public Sub New()
         MyBase.New()
     End Sub
-    Public Sub New(codigoPasado As String, nombrePasado As String)
+    Public Sub New(codigoPasado As Integer, nombrePasado As String)
         MyBase.New()
         CodigoDeGrupo = codigoPasado
         NombreDeGrupo = nombrePasado
     End Sub
-
-    Public Function checkNombreGrupo(nombrePasado As String) As Boolean
-        If nombrePasado.Length > 5 Then
-            MessageBox.Show("Nombre demasiado largo (Máx 5)")
-            Return False
-        End If
-        Return True
-    End Function
     Public Sub addGrupo()
         managerGrupoAux.addGrupo(Me)
     End Sub

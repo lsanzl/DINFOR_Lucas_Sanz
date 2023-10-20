@@ -20,10 +20,13 @@
         frmCliente.btn_modificar_cliente.Enabled = False
         frmCliente.btn_eliminar_cliente.Enabled = False
 
-        frmCliente.dg_clientes.DataSource = Nothing
+        'frmCliente.dg_clientes.DataSource = Nothing
         frmCliente.dg_clientes.Rows.Clear()
-        listaClientes = clienteAux.getClientes()
-        frmCliente.dg_clientes.DataSource = listaClientes
+        listaClientes = managerClienteAux.getClientes()
+        'frmCliente.dg_clientes.DataSource = listaClientes
+        For Each clientillo As Cliente In listaClientes
+            frmCliente.dg_clientes.Rows.Add(clientillo)
+        Next
 
         frmCliente.dg_clientes.ClearSelection()
     End Sub

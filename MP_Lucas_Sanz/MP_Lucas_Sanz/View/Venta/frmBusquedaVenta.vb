@@ -1,18 +1,26 @@
 ﻿Public Class frmBusquedaVenta
     Dim criterioBusqueda As String = "nombre"
     Public Property codigoSeleccionado As String
+    Dim listaArticulos As List(Of Articulo)
+    Dim listaClientes As List(Of Cliente)
+    Public articuloSeleccionado As Articulo
+    Public clienteSeleccionado As Cliente
+    Dim clase As Object
 
     Private Sub frmBusquedaVenta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         rdb_nombre.Checked = True
+        listaArticulos = managerArticuloAux.getArticulos()
+        listaClientes = managerClienteAux.getClientes()
     End Sub
-    Public Sub New(clase As Object)
+    Public Sub New(claseP As Object)
         InitializeComponent()
 
+        clase = claseP
         dg_resultados_busqueda_ventas.Columns.Add("nombre", "Nombre")
         dg_resultados_busqueda_ventas.Columns.Add("codigo", "Código")
 
         If TypeOf clase Is Cliente Then
-            Dim listaClientes As List(Of Cliente) = clienteAux.getClientes()
+            Dim listaClientes As List(Of Cliente) = managerClienteAux.getClientes()
             Dim contador As Integer = 0
             For Each cliente As Cliente In listaClientes
                 dg_resultados_busqueda_ventas.Rows.Add()
@@ -78,6 +86,11 @@
 
     Private Sub double_click_cell_dg_resultados_busqueda(sender As Object, e As DataGridViewCellEventArgs) Handles dg_resultados_busqueda_ventas.CellDoubleClick
         codigoSeleccionado = dg_resultados_busqueda_ventas.Rows(e.RowIndex).Cells(1).Value.ToString()
+        If TypeOf clase Is Articulo Then
+            articuloSeleccionado = listaArticulos.Find(Function(art) art.CodigoDeArticulo = codigoSeleccionado)
+        Else
+            clienteSeleccionado = listaClientes.Find(Function(c) c.CodigoDelCliente = codigoSeleccionado)
+        End If
         Close()
     End Sub
 End Class

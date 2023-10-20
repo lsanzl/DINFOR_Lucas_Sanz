@@ -30,7 +30,7 @@ Public Class infVenta
             ds.Tables("Venta").Rows.Add(dr)
         Next
 
-        Dim clienteSeleccionado As Cliente = getClienteSeleccioando(listaVenta(0).ClienteDeVenta)
+        Dim clienteSeleccionado As Cliente = getClienteSeleccionado(listaVenta(0).ClienteDeVenta)
         dr = ds.Tables("Cliente").NewRow()
 
         dr("Código") = clienteSeleccionado.CodigoDelCliente
@@ -53,8 +53,8 @@ Public Class infVenta
         visorRPT.WindowState = FormWindowState.Maximized
         visorRPT.ShowDialog()
     End Sub
-    Private Function getClienteSeleccioando(codigoCliente As String) As Cliente
-        Dim listaClientes As List(Of Cliente) = clienteAux.getClientes()
+    Private Function getClienteSeleccionado(codigoCliente As String) As Cliente
+        Dim listaClientes As List(Of Cliente) = managerClienteAux.getClientes()
         Dim clienteFind As Cliente = listaClientes.Find(Function(c) c.CodigoDelCliente = codigoCliente)
         Return clienteFind
     End Function

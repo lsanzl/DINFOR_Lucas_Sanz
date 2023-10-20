@@ -14,6 +14,8 @@ Public Class infCompra
     End Sub
     Private Sub showReport()
         Dim codigoProveedor As String = listaCompra(0).ProveedorDeCompra
+        Dim listaArticulos As List(Of Articulo) = managerArticuloAux.getArticulos()
+        Dim articuloSeleccionado As Articulo
         Dim ds As DataSet = New dsCompra
 
         Dim dr As DataRow
@@ -21,8 +23,10 @@ Public Class infCompra
         For Each c As Compra In listaCompra
             dr = ds.Tables("Compra").NewRow()
 
+            articuloSeleccionado = listaArticulos.Find(Function(art) art.CodigoDeArticulo = c.ArticuloDeCompra)
+
             dr("Proveedor") = c.ProveedorDeCompra
-            dr("Artículo") = c.ArticuloDeCompra
+            dr("Artículo") = articuloSeleccionado.NombreDeArticulo
             dr("Forma Pago") = c.FormaDePagoCompra
             dr("Precio Unitario") = c.PrecioDeArticuloCompra
             dr("Cantidad") = c.CantidadDeCompra

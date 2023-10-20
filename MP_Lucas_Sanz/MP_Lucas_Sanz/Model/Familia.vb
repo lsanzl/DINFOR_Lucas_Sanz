@@ -1,5 +1,5 @@
 ﻿Public Class Familia
-    Private codigoFamilia As String
+    Private codigoFamilia As Integer
     Private nombreFamilia As String
 
     Public Property CodigoDeFamilia() As String
@@ -22,7 +22,7 @@
     Public Sub New()
         MyBase.New()
     End Sub
-    Public Sub New(codigoPasado As String, nombrePasado As String)
+    Public Sub New(codigoPasado As Integer, nombrePasado As String)
         MyBase.New()
         CodigoDeFamilia = codigoPasado
         NombreDeFamilia = nombrePasado
@@ -40,11 +40,4 @@
     Public Sub deleteFamilia()
         managerFamiliaAux.deleteFamilia(Me)
     End Sub
-    Public Function checkCodigo(codigoPasado As String) As Boolean
-        If codigoPasado.Length > 6 Then
-            Return False
-        Else
-            Return True
-        End If
-    End Function
 End Class

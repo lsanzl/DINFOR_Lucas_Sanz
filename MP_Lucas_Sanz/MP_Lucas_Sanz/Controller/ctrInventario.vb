@@ -100,8 +100,6 @@ Public Class ctrInventario
             inventarioTemp = frmInventario.dg_inventario.Rows(e.RowIndex).DataBoundItem
         End If
     End Sub
-
-
     Private Sub tab_main_SelectedIndexChanged(sender As Object, e As EventArgs)
         If frmInventario.tab_main.SelectedTab.Text.Equals("INVENTARIO") Then
             fillDGInventario()

@@ -14,7 +14,7 @@ Public Class ManagerFamilia
             Dim familiaTemp As Familia
             dr.Read()
             Do
-                familiaTemp = New Familia(dr(0).ToString().Trim(), dr(1).ToString().Trim())
+                familiaTemp = New Familia(Convert.ToInt32(dr(0)), dr(1).ToString().Trim())
                 listaFamilias.Add(familiaTemp)
             Loop While dr.Read()
         End If
@@ -29,7 +29,7 @@ Public Class ManagerFamilia
         cmd = New SqlCommand("INSERT INTO FAMILIAS VALUES (@Codigo, 
                             @Nombre);", connectionDBManager)
         With cmd.Parameters
-            .Add("@Codigo", SqlDbType.Char, 6).Value = familiaTemp.CodigoDeFamilia
+            .Add("@Codigo", SqlDbType.Int).Value = familiaTemp.CodigoDeFamilia
             .Add("@Nombre", SqlDbType.Char, 100).Value = familiaTemp.NombreDeFamilia
         End With
         Try
@@ -39,10 +39,10 @@ Public Class ManagerFamilia
         End Try
     End Sub
     Public Sub modifyFamilia(familiaTemp As Familia)
-        cmd = New SqlCommand("UPDATE FAMILIAS SET NOMBREFAMILIA = @Nombre
-                            WHERE CODIGOFAMILIA = @Codigo;", connectionDBManager)
+        cmd = New SqlCommand("UPDATE FAMILIAS SET NOMBRE_FAMILIA = @Nombre
+                            WHERE ID_FAMILIA = @Codigo;", connectionDBManager)
         With cmd.Parameters
-            .Add("@Codigo", SqlDbType.Char, 6).Value = familiaTemp.CodigoDeFamilia
+            .Add("@Codigo", SqlDbType.Int).Value = familiaTemp.CodigoDeFamilia
             .Add("@Nombre", SqlDbType.Char, 100).Value = familiaTemp.NombreDeFamilia
         End With
         Try
@@ -53,8 +53,8 @@ Public Class ManagerFamilia
     End Sub
     Public Sub deleteFamilia(familiaTemp As Familia)
         cmd = New SqlCommand("DELETE FROM FAMILIAS 
-                            WHERE CODIGOFAMILIA = @Codigo;", connectionDBManager)
-        cmd.Parameters.Add("@Codigo", SqlDbType.Char, 6).Value = familiaTemp.CodigoDeFamilia
+                            WHERE ID_FAMILIA = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = familiaTemp.CodigoDeFamilia
         Try
             cmd.ExecuteNonQuery()
         Catch ex As Exception
@@ -63,8 +63,8 @@ Public Class ManagerFamilia
     End Sub
     Public Function checkCodigoFamilia(codigoPasado As String) As Boolean
         cmd = New SqlCommand("SELECT * FROM FAMILIAS 
-                            WHERE CODIGOFAMILIA = @Codigo;", connectionDBManager)
-        cmd.Parameters.Add("@Codigo", SqlDbType.Char, 6).Value = codigoPasado
+                            WHERE ID_FAMILIA = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = codigoPasado
         dr = cmd.ExecuteReader()
         If dr.HasRows Then
             dr.Close()

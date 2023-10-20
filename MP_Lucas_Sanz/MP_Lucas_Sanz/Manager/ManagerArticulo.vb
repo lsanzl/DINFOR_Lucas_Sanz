@@ -100,17 +100,17 @@ Public Class ManagerArticulo
         End If
         Return Nothing
     End Function
-    Public Function getIDArticulo(nombreArticulo As String) As Integer
-        cmd = New SqlCommand($"SELECT ID_ARTICULO FROM ARTICULOS WHERE NOMBRE_ARTICULO = @Nombre;", connectionDBManager)
-        cmd.Parameters.Add("@Nombre", SqlDbType.Char, 100).Value = nombreArticulo
-        Dim campoObtenido As Object = cmd.ExecuteScalar()
-        Dim campoTemp As String
-        If campoObtenido IsNot DBNull.Value Then
-            campoTemp = Convert.ToInt32(campoObtenido)
-            Return campoTemp
-        End If
-        Return Nothing
-    End Function
+    'Public Function getIDArticulo(nombreArticulo As String) As Integer
+    '    cmd = New SqlCommand($"SELECT ID_ARTICULO FROM ARTICULOS WHERE NOMBRE_ARTICULO = @Nombre;", connectionDBManager)
+    '    cmd.Parameters.Add("@Nombre", SqlDbType.Char, 100).Value = nombreArticulo
+    '    Dim campoObtenido As Object = cmd.ExecuteScalar()
+    '    Dim campoTemp As String
+    '    If campoObtenido IsNot DBNull.Value Then
+    '        campoTemp = Convert.ToInt32(campoObtenido)
+    '        Return campoTemp
+    '    End If
+    '    Return Nothing
+    'End Function
     Public Function getIDArticulo() As Integer
         cmd = New SqlCommand("SELECT MAX(ID_ARTICULO) FROM ARTICULOS;", connectionDBManager)
         Dim maxActual As Object = cmd.ExecuteScalar()

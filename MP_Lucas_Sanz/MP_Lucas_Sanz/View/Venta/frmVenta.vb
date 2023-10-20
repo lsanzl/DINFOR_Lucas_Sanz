@@ -5,7 +5,8 @@ Public Class frmVenta
     Dim listaVentas As BindingList(Of Venta) = New BindingList(Of Venta)()
     Dim ventaTemp As Venta = New Venta()
     Dim dt As New DataTable()
-    Dim clienteSeleccionado As String
+    Dim clienteSeleccionado As Cliente
+    Dim articuloSeleccionado As Articulo
 
     Private Sub frmVenta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         listaVentas = New BindingList(Of Venta)
@@ -17,14 +18,15 @@ Public Class frmVenta
         Dim frmBusquedaNuevo As frmBusquedaVenta = New frmBusquedaVenta(clienteAux)
         frmBusquedaNuevo.Text = "BÚSQUEDA DE CLIENTES"
         frmBusquedaNuevo.ShowDialog()
-        txt_cliente_seleccionado.Text = frmBusquedaNuevo.codigoSeleccionado
-        clienteSeleccionado = frmBusquedaNuevo.codigoSeleccionado
+        clienteSeleccionado = frmBusquedaNuevo.clienteSeleccionado
+        txt_cliente_seleccionado.Text = clienteSeleccionado.NombreDelCliente
     End Sub
     Private Sub click_btn_busqueda_articulo(sender As Object, e As EventArgs) Handles btn_busqueda_articulo_venta.Click
         Dim frmBusquedaNuevo As frmBusqueda = New frmBusqueda(articuloAux)
         frmBusquedaNuevo.Text = "BÚSQUEDA DE ARTÍCULOS"
         frmBusquedaNuevo.ShowDialog()
-        txt_articulo_seleccionado_venta.Text = frmBusquedaNuevo.codigoSeleccionado
+        articuloSeleccionado = frmBusquedaNuevo.articuloSeleccionado
+        txt_articulo_seleccionado_venta.Text = articuloSeleccionado.NombreDeArticulo
     End Sub
     Private Sub clearFields()
         txt_cliente_seleccionado.Clear()
@@ -92,15 +94,15 @@ Public Class frmVenta
         If Not checkCampos() Then
             Return
         End If
-        Dim articuloSeleccionado As String = txt_articulo_seleccionado_venta.Text
         Dim formaPagoSeleccionada As String = cb_forma_pago_seleccionada_venta.SelectedValue
         Dim cantidadSeleccionada As Integer = Convert.ToInt32(txt_cantidad_seleccionada_venta.Text)
-        Dim precioVenta As Double = Convert.ToDouble(managerArticuloAux.getCampoArticulo(articuloSeleccionado, "PVPCOMPRAARTICULO"))
-        Dim porcBeneficio As Double = Convert.ToDouble(managerArticuloAux.getCampoArticulo(articuloSeleccionado, "PORCBENEFICIOARTICULO"))
+        Dim precioVenta As Double = Convert.ToDouble(managerArticuloAux.getCampoArticulo(articuloSeleccionado.CodigoDeArticulo, "PVPCOMPRAARTICULO"))
+        Dim porcBeneficio As Double = Convert.ToDouble(managerArticuloAux.getCampoArticulo(articuloSeleccionado.CodigoDeArticulo, "PORCBENEFICIOARTICULO"))
+        Dim fechaVenta As Date = dp_fecha_venta.Value
 
         Dim precioVentaArticulo As Double = precioVenta * (1 + porcBeneficio / 100)
 
-        Dim ventaTemp As Venta = New Venta(clienteSeleccionado, articuloSeleccionado, formaPagoSeleccionada, precioVentaArticulo, cantidadSeleccionada)
+        Dim ventaTemp As Venta = New Venta(clienteSeleccionado.CodigoDelCliente, articuloSeleccionado.CodigoDeArticulo, formaPagoSeleccionada, precioVentaArticulo, cantidadSeleccionada, fechaVenta)
         listaVentas.Add(ventaTemp)
         fillDGVentas()
         clearFieldsDatos()

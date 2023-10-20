@@ -18,7 +18,7 @@ Public Class ManagerGrupo
         If dr.HasRows Then
             dr.Read()
             Do
-                grupoAux = New Grupo(dr(0).ToString.Trim(), dr(1).ToString().Trim())
+                grupoAux = New Grupo(Convert.ToInt32(dr(0)), dr(1).ToString().Trim())
                 listaGrupos.Add(grupoAux)
             Loop While dr.Read()
         End If
@@ -29,7 +29,7 @@ Public Class ManagerGrupo
         cmd = New SqlCommand("INSERT INTO GRUPOS
                             VALUES (@Codigo, @Nombre);", connectionDBManager)
         With cmd.Parameters
-            .Add("@Codigo", SqlDbType.Char, 5).Value = grupoPasado.CodigoDeGrupo
+            .Add("@Codigo", SqlDbType.Int).Value = grupoPasado.CodigoDeGrupo
             .Add("@Nombre", SqlDbType.Char, 100).Value = grupoPasado.NombreDeGrupo
         End With
         Try
@@ -40,10 +40,10 @@ Public Class ManagerGrupo
     End Sub
     Public Sub modifyGrupo(grupoPasado As Grupo)
         cmd = New SqlCommand("UPDATE GRUPOS
-                            SET NOMBREGRUPO = @Nombre
-                            WHERE CODIGOGRUPO = @Codigo;", connectionDBManager)
+                            SET NOMBRE_GRUPO = @Nombre
+                            WHERE ID_GRUPO = @Codigo;", connectionDBManager)
         With cmd.Parameters
-            .Add("@Codigo", SqlDbType.Char, 5).Value = grupoPasado.CodigoDeGrupo
+            .Add("@Codigo", SqlDbType.Int).Value = grupoPasado.CodigoDeGrupo
             .Add("@Nombre", SqlDbType.Char, 100).Value = grupoPasado.NombreDeGrupo
         End With
         Try
@@ -54,8 +54,8 @@ Public Class ManagerGrupo
     End Sub
     Public Sub deleteGrupo(grupoPasado As Grupo)
         cmd = New SqlCommand("DELETE FROM GRUPOS
-                            WHERE CODIGOGRUPO = @Codigo;", connectionDBManager)
-        cmd.Parameters.Add("@Codigo", SqlDbType.Char, 5).Value = grupoPasado.CodigoDeGrupo
+                            WHERE ID_GRUPO = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = grupoPasado.CodigoDeGrupo
         Try
             cmd.ExecuteNonQuery()
         Catch ex As Exception
@@ -63,10 +63,10 @@ Public Class ManagerGrupo
         End Try
     End Sub
 
-    Public Function checkGrupo(codigoPasado As String) As Boolean
+    Public Function checkGrupo(codigoPasado As Integer) As Boolean
         cmd = New SqlCommand("SELECT * FROM GRUPOS
-                            WHERE CODIGOGRUPO = @Codigo;", connectionDBManager)
-        cmd.Parameters.Add("@Codigo", SqlDbType.Char, 5).Value = codigoPasado
+                            WHERE ID_GRUPO = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = codigoPasado
         dr = cmd.ExecuteReader()
         If dr.HasRows Then
             dr.Close()

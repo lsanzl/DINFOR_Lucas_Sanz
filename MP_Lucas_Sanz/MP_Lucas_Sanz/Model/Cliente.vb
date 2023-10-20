@@ -89,9 +89,6 @@
         EmailDelCliente = emailPasado
     End Sub
 
-    Public Function getClientes() As List(Of Cliente)
-        Return managerClienteAux.getClientes()
-    End Function
     Public Sub addCliente()
         managerClienteAux.addCliente(Me)
     End Sub

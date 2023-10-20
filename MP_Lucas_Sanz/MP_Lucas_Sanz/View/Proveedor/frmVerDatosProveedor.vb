@@ -12,7 +12,7 @@
 
             btn_modificar_proveedor.Text = "Confirmar"
         Else
-            Dim codigoTemp As String = txt_codigo_proveedor.Text
+            Dim codigoTemp As Integer = txt_codigo_proveedor.Text
             Dim nombreTemp As String = txt_nombre_proveedor.Text
             Dim nifTemp As String = txt_nif_proveedor.Text
             Dim direccionTemp As String = txt_direccion_proveedor.Text

@@ -11,21 +11,25 @@ Public Class ManagerVenta
         cmd = New SqlCommand("SELECT * FROM VENTAS;", connectionDBManager)
         dr = cmd.ExecuteReader()
         If dr.HasRows Then
-            Dim cliente As String
+            Dim codigo As Integer
+            Dim cliente As Integer
             Dim articulo As String
             Dim formaPago As String
             Dim precio As Double
             Dim cantidad As Integer
+            Dim fecha As Date
 
             dr.Read()
             Do
-                cliente = dr(1).ToString().Trim()
+                codigo = Convert.ToInt32(dr(0))
+                cliente = Convert.ToInt32(dr(1))
                 articulo = dr(2).ToString().Trim()
-                formaPago = dr(3).ToString().Trim()
+                formaPago = Convert.ToInt32(dr(3))
                 precio = Convert.ToDouble(dr(4))
                 cantidad = Convert.ToInt32(dr(5))
+                fecha = Convert.ToDateTime(dr(6))
 
-                ventaAux = New Venta(cliente, articulo, formaPago, precio, cantidad)
+                ventaAux = New Venta(codigo, cliente, articulo, formaPago, precio, cantidad, fecha)
                 listaVentas.Add(ventaAux)
             Loop While dr.Read()
         End If
@@ -33,7 +37,7 @@ Public Class ManagerVenta
         Return listaVentas
     End Function
     Public Sub addVenta(ventaTemp As Venta)
-        cmd = New SqlCommand("SELECT MAX(CODIGOVENTA) FROM VENTAS;", connectionDBManager)
+        cmd = New SqlCommand("SELECT MAX(ID_VENTA) FROM VENTAS;", connectionDBManager)
         Dim maxActual As Object = cmd.ExecuteScalar()
         Dim codigoVentaNuevo As Integer = Nothing
         If maxActual IsNot DBNull.Value Then
@@ -41,20 +45,25 @@ Public Class ManagerVenta
         Else
             codigoVentaNuevo = 0
         End If
+        Dim listaArticulos As List(Of Articulo) = managerArticuloAux.getArticulos()
+        Dim articuloFind As Articulo = listaArticulos.Find(Function(art) art.NombreDeArticulo = ventaTemp.ArticuloDeVenta)
         cmd = New SqlCommand($"INSERT INTO VENTAS
-                                VALUES (@Codigo,
+                                VALUES 
+                                (@Codigo,
                                 @Cliente, 
                                 @Articulo,
                                 @FormaPago,
                                 @PVPVenta,
-                                @Cantidad);", connectionDBManager)
+                                @Cantidad,
+                                @Fecha);", connectionDBManager)
         With cmd.Parameters
             .Add("@Codigo", SqlDbType.Int).Value = codigoVentaNuevo
-            .Add("@Cliente", SqlDbType.Char, 6).Value = ventaTemp.ClienteDeVenta
-            .Add("@Articulo", SqlDbType.Char, 6).Value = ventaTemp.ArticuloDeVenta
-            .Add("@FormaPago", SqlDbType.Char, 5).Value = ventaTemp.FormaDePagoVenta
+            .Add("@Cliente", SqlDbType.Int).Value = ventaTemp.ClienteDeVenta
+            .Add("@Articulo", SqlDbType.Int).Value = articuloFind.CodigoDeArticulo
+            .Add("@FormaPago", SqlDbType.Int).Value = ventaTemp.FormaDePagoVenta
             .Add("@PVPVenta", SqlDbType.Decimal, 10, 2).Value = ventaTemp.PrecioDeArticuloVenta
             .Add("@Cantidad", SqlDbType.Int).Value = ventaTemp.CantidadDeVenta
+            .Add("@Fecha", SqlDbType.Date).Value = ventaTemp.FechaDeVenta
         End With
         Try
             cmd.ExecuteNonQuery()

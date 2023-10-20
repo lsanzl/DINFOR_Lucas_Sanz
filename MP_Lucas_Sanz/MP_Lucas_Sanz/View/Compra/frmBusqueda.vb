@@ -2,9 +2,15 @@
     Dim criterioBusqueda As String = "nombre"
     Dim clase As Object
     Public Property codigoSeleccionado As Integer
+    Public Property articuloSeleccionado As Articulo
+    Public Property proveedorSeleccionado As Proveedor
+    Dim listaProveedores As List(Of Proveedor)
+    Dim listaArticulos As List(Of Articulo)
 
     Private Sub frmBusqueda_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         rdb_nombre.Checked = True
+        Dim listaProveedores As List(Of Proveedor) = managerProveedorAux.getProveedores()
+        Dim listaArticulos As List(Of Articulo) = managerArticuloAux.getArticulos()
     End Sub
     Public Sub New(claseP As Object)
         MyBase.New()
@@ -15,7 +21,7 @@
         dg_resultados_busqueda.Columns.Add("codigo", "Código")
 
         If TypeOf clase Is Proveedor Then
-            Dim listaProveedores As List(Of Proveedor) = proveedorAux.getProveedores()
+            'Dim listaProveedores As List(Of Proveedor) = proveedorAux.getProveedores()
             Dim contador As Integer = 0
             For Each proveedor As Proveedor In listaProveedores
                 dg_resultados_busqueda.Rows.Add()
@@ -27,7 +33,7 @@
             Next
         End If
         If TypeOf clase Is Articulo Then
-            Dim listaArticulos As List(Of Articulo) = articuloAux.getArticulos()
+            'Dim listaArticulos As List(Of Articulo) = articuloAux.getArticulos()
             Dim contador As Integer = 0
             For Each articulo As Articulo In listaArticulos
                 dg_resultados_busqueda.Rows.Add()
@@ -81,9 +87,11 @@
 
     Private Sub double_click_cell_dg_resultados_busqueda(sender As Object, e As DataGridViewCellEventArgs) Handles dg_resultados_busqueda.CellDoubleClick
         If TypeOf clase Is Articulo Then
-            codigoSeleccionado = dg_resultados_busqueda.Rows(e.RowIndex).Cells(0).Value.ToString()
+            codigoSeleccionado = dg_resultados_busqueda.Rows(e.RowIndex).Cells(1).Value.ToString()
+            articuloSeleccionado = listaArticulos.Find(Function(a) a.CodigoDeArticulo = codigoSeleccionado)
         Else
             codigoSeleccionado = dg_resultados_busqueda.Rows(e.RowIndex).Cells(1).Value.ToString()
+            proveedorSeleccionado = listaProveedores.Find(Function(p) p.CodigoDeProveedor = codigoSeleccionado)
         End If
         Close()
     End Sub

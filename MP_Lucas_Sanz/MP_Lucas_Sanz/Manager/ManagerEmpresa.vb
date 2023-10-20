@@ -50,8 +50,7 @@ Public Class ManagerEmpresa
         End Try
     End Sub
     Public Sub addEmpresa(empAux As Empresa)
-        cmd = New SqlCommand("CREATE DATABASE @Nombre;", connectionDBManager)
-        cmd.Parameters.Add("@Nombre", SqlDbType.Char, 50).Value = empAux.NombreEmpresa
+        cmd = New SqlCommand($"CREATE DATABASE {empAux.NombreEmpresa};", connectionDBManager)
         Try
             cmd.ExecuteNonQuery()
             frmSeleccionEmpresa.fillDataGrid()
@@ -175,8 +174,7 @@ Public Class ManagerEmpresa
         End Try
     End Sub
     Public Sub selectEmpresa(nombreEmp As String)
-        cmd = New SqlCommand("USE @Nombre;", connectionDBManager)
-        cmd.Parameters.Add("@Nombre", SqlDbType.Char, 50).Value = nombreEmp
+        cmd = New SqlCommand($"USE {nombreEmp};", connectionDBManager)
         Try
             cmd.ExecuteNonQuery()
         Catch ex As Exception

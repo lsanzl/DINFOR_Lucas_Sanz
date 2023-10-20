@@ -14,9 +14,9 @@ Public Class ManagerFormaPago
         If dr.HasRows Then
             dr.Read()
             Do
-                Dim codigoPago As String = dr(0).ToString().Trim()
-                Dim nombrePago As String = dr(1).ToString().Trim()
-                Dim bancoAsignadoPago As Integer = Convert.ToInt32(dr(2))
+                Dim codigoPago As String = Convert.ToInt32(dr(0))
+                Dim bancoAsignadoPago As Integer = Convert.ToInt32(dr(1))
+                Dim nombrePago As String = dr(2).ToString().Trim()
                 Dim estadoPago As Integer = Convert.ToInt32(dr(3))
                 Dim numPlazosPago As Integer = Convert.ToInt32(dr(4))
                 Dim diasPrimerPlazo As Integer = Convert.ToInt32(dr(5))
@@ -32,19 +32,19 @@ Public Class ManagerFormaPago
     Public Sub addFormaPago(formaPagoSQL As FormaPago)
         cmd = New SqlCommand("INSERT INTO FORMASPAGO
                             VALUES (@Codigo,
-                                    @Nombre,
                                     @Banco,
+                                    @Nombre,
                                     @Activo,
-                                    @PrimerPlazo,
                                     @NumerosPlazo,
+                                    @PrimerPlazo,
                                     @DiasPlazos);", connectionDBManager)
         With cmd.Parameters
-            .Add("@Codigo", SqlDbType.Char, 5).Value = formaPagoSQL.CodigoDePago
-            .Add("@Nombre", SqlDbType.Char, 100).Value = formaPagoSQL.NombreDePago
+            .Add("@Codigo", SqlDbType.Int).Value = formaPagoSQL.CodigoDePago
             .Add("@Banco", SqlDbType.Int).Value = formaPagoSQL.BancoAsignado
+            .Add("@Nombre", SqlDbType.Char, 100).Value = formaPagoSQL.NombreDePago
             .Add("@Activo", SqlDbType.Int).Value = formaPagoSQL.Activo
-            .Add("@PrimerPlazo", SqlDbType.Int).Value = formaPagoSQL.PrimerPlazo
             .Add("@NumerosPlazo", SqlDbType.Int).Value = formaPagoSQL.NumeroPlazosPago
+            .Add("@PrimerPlazo", SqlDbType.Int).Value = formaPagoSQL.PrimerPlazo
             .Add("@DiasPlazos", SqlDbType.Int).Value = formaPagoSQL.DiasPlazos
         End With
         Try
@@ -55,20 +55,20 @@ Public Class ManagerFormaPago
     End Sub
     Public Sub modifyFormaPago(formaPagoSQL As FormaPago)
         cmd = New SqlCommand("UPDATE FORMASPAGO
-                    SET NOMBREFORMAPAGO= @Nombre,
-                    BANCO= @Banco,
+                    SET NOMBRE_FORMA_PAGO= @Nombre,
+                    ID_BANCO= @Banco,
                     ESTADO= @Activo,
-                    NUMEROPLAZOS= @NumerosPlazo,
-                    PRIMERPLAZO= @PrimerPlazo,
-                    DIASENTREPLAZOS= @DiasPlazos
-                    WHERE CODIGOPAGO = @Codigo;", connectionDBManager)
+                    NUMERO_PLAZOS= @NumerosPlazo,
+                    DIAS_PRIMER_PLAZO= @PrimerPlazo,
+                    DIAS_ENTRE_PLAZOS= @DiasPlazos
+                    WHERE ID_FORMA_PAGO = @Codigo;", connectionDBManager)
         With cmd.Parameters
-            .Add("@Codigo", SqlDbType.Char, 5).Value = formaPagoSQL.CodigoDePago
-            .Add("@Nombre", SqlDbType.Char, 100).Value = formaPagoSQL.NombreDePago
+            .Add("@Codigo", SqlDbType.Int).Value = formaPagoSQL.CodigoDePago
             .Add("@Banco", SqlDbType.Int).Value = formaPagoSQL.BancoAsignado
+            .Add("@Nombre", SqlDbType.Char, 100).Value = formaPagoSQL.NombreDePago
             .Add("@Activo", SqlDbType.Int).Value = formaPagoSQL.Activo
-            .Add("@PrimerPlazo", SqlDbType.Int).Value = formaPagoSQL.PrimerPlazo
             .Add("@NumerosPlazo", SqlDbType.Int).Value = formaPagoSQL.NumeroPlazosPago
+            .Add("@PrimerPlazo", SqlDbType.Int).Value = formaPagoSQL.PrimerPlazo
             .Add("@DiasPlazos", SqlDbType.Int).Value = formaPagoSQL.DiasPlazos
         End With
         Try
@@ -79,7 +79,7 @@ Public Class ManagerFormaPago
     End Sub
     Public Sub deleteFormaPago(formaPagoSQL As FormaPago)
         cmd = New SqlCommand("DELETE FROM FORMASPAGO
-                                WHERE CODIGOPAGO = @Codigo;", connectionDBManager)
+                                WHERE ID_FORMA_PAGO = @Codigo;", connectionDBManager)
         cmd.Parameters.Add("@Codigo", SqlDbType.Char, 5).Value = formaPagoSQL.CodigoDePago
         Try
             cmd.ExecuteNonQuery()
@@ -90,9 +90,9 @@ Public Class ManagerFormaPago
     Public Sub changeEstado(formaPagoSql As FormaPago)
         cmd = New SqlCommand("UPDATE FORMASPAGO
                                 SET ESTADO = @Activo
-                                WHERE CODIGOPAGO = @Codigo;", connectionDBManager)
+                                WHERE ID_FORMA_PAGO = @Codigo;", connectionDBManager)
         With cmd.Parameters
-            .Add("@Codigo", SqlDbType.Char, 5).Value = formaPagoSql.CodigoDePago
+            .Add("@Codigo", SqlDbType.Int).Value = formaPagoSql.CodigoDePago
             .Add("@Activo", SqlDbType.Int).Value = formaPagoSql.Activo
         End With
         Try
@@ -101,10 +101,10 @@ Public Class ManagerFormaPago
             MessageBox.Show("Error al cambiar el estado de una forma de pago: " + vbCrLf + ex.ToString())
         End Try
     End Sub
-    Public Function checkFormaPago(codigoForma As String)
+    Public Function checkFormaPago(codigoForma As Integer)
         cmd = New SqlCommand("SELECT * FROM FORMASPAGO
-                            WHERE CODIGOPAGO = @Codigo;", connectionDBManager)
-        cmd.Parameters.Add("@Codigo", SqlDbType.Char, 5).Value = codigoForma
+                            WHERE ID_FORMA_PAGO = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = codigoForma
         dr = cmd.ExecuteReader()
         If Not dr.HasRows() Then
             dr.Close()

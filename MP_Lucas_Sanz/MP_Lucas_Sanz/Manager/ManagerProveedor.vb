@@ -15,7 +15,7 @@ Public Class ManagerProveedor
         dr = cmd.ExecuteReader()
         listaProveedores = New List(Of Proveedor)
         If dr.HasRows Then
-            Dim codigoTemp As String
+            Dim codigoTemp As Integer
             Dim nombreTemp As String
             Dim nifTemp As String
             Dim direccionTemp As String
@@ -25,7 +25,7 @@ Public Class ManagerProveedor
 
             dr.Read()
             Do
-                codigoTemp = dr(0).ToString().Trim()
+                codigoTemp = Convert.ToInt32(dr(0))
                 nombreTemp = dr(1).ToString().Trim()
                 nifTemp = dr(2).ToString().Trim()
                 direccionTemp = dr(3).ToString().Trim()
@@ -44,17 +44,18 @@ Public Class ManagerProveedor
 
     Public Sub addProveedor(proveedorP As Proveedor)
         cmd = New SqlCommand("INSERT INTO PROVEEDORES
-                            VALUES (@Codigo,
+                            VALUES 
+                            (@Codigo,
                             @Nombre,
                             @Nif,
                             @Direccion,
                             @Poblacion,
                             @Telefono);", connectionDBManager)
         With cmd.Parameters
-            .Add("@Codigo", SqlDbType.Char, 6).Value = proveedorP.CodigoDeProveedor
+            .Add("@Codigo", SqlDbType.Int).Value = proveedorP.CodigoDeProveedor
             .Add("@Nombre", SqlDbType.Char, 100).Value = proveedorP.NombreDeProveedor
             .Add("@Nif", SqlDbType.Char, 12).Value = proveedorP.NifDeProveedor
-            .Add("@Direccion", SqlDbType.Char, 100).Value = proveedorP.DireccionDeProveedor
+            .Add("@Direccion", SqlDbType.Char, 150).Value = proveedorP.DireccionDeProveedor
             .Add("@Poblacion", SqlDbType.Char, 100).Value = proveedorP.PoblacionDeProveedor
             .Add("@Telefono", SqlDbType.Int).Value = proveedorP.TelefonoDeProveedor
         End With
@@ -66,17 +67,17 @@ Public Class ManagerProveedor
     End Sub
     Public Sub modifyProveedor(proveedorMod As Proveedor)
         cmd = New SqlCommand("UPDATE PROVEEDORES
-                            SET NOMBREPROVEEDOR = @Nombre,
-                            NIFPROVEEDOR = @Nif,
-                            DIRECCIONPROVEEDOR = @Direccion,
-                            POBLACIONPROVEEDOR = @Poblacion,
-                            TELEFONOPROVEEDOR = @Telefono
-                            WHERE CODIGOPROVEEDOR = @Codigo;", connectionDBManager)
+                            SET NOMBRE_PROVEEDOR = @Nombre,
+                            NIF_PROVEEDOR = @Nif,
+                            DIRECCION_PROVEEDOR = @Direccion,
+                            POBLACION_PROVEEDOR = @Poblacion,
+                            TELEFONO_PROVEEDOR = @Telefono
+                            WHERE ID_PROVEEDOR = @Codigo;", connectionDBManager)
         With cmd.Parameters
-            .Add("@Codigo", SqlDbType.Char, 6).Value = proveedorMod.CodigoDeProveedor
+            .Add("@Codigo", SqlDbType.Int).Value = proveedorMod.CodigoDeProveedor
             .Add("@Nombre", SqlDbType.Char, 100).Value = proveedorMod.NombreDeProveedor
             .Add("@Nif", SqlDbType.Char, 12).Value = proveedorMod.NifDeProveedor
-            .Add("@Direccion", SqlDbType.Char, 100).Value = proveedorMod.DireccionDeProveedor
+            .Add("@Direccion", SqlDbType.Char, 150).Value = proveedorMod.DireccionDeProveedor
             .Add("@Poblacion", SqlDbType.Char, 100).Value = proveedorMod.PoblacionDeProveedor
             .Add("@Telefono", SqlDbType.Int).Value = proveedorMod.TelefonoDeProveedor
         End With
@@ -88,18 +89,18 @@ Public Class ManagerProveedor
     End Sub
     Public Sub deleteProveedor(proveedorDel As Proveedor)
         cmd = New SqlCommand("DELETE FROM PROVEEDORES 
-                            WHERE CODIGOPROVEEDOR = @Codigo;", connectionDBManager)
-        cmd.Parameters.Add("@Codigo", SqlDbType.Char, 6).Value = proveedorDel.CodigoDeProveedor
+                            WHERE ID_PROVEEDOR = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = proveedorDel.CodigoDeProveedor
         Try
             cmd.ExecuteNonQuery()
         Catch ex As Exception
             MessageBox.Show("Error al eliminar un proveedor nuevo: " + vbCrLf + ex.ToString())
         End Try
     End Sub
-    Public Function checkCodigo(codigoPasado As String) As Boolean
+    Public Function checkCodigo(codigoPasado As Integer) As Boolean
         cmd = New SqlCommand("SELECT * FROM PROVEEDORES
-                            WHERE CODIGOPROVEEDOR = @Codigo;", connectionDBManager)
-        cmd.Parameters.Add("@Codigo", SqlDbType.Char, 6).Value = codigoPasado
+                            WHERE ID_PROVEEDOR = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = codigoPasado
         dr = cmd.ExecuteReader
         If dr.HasRows Then
             dr.Close()

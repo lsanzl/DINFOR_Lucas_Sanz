@@ -6,18 +6,17 @@
         End If
     End Sub
 
-    Private bancoSeleccionado As String = Nothing
+    Private bancoSeleccionado As Integer = Nothing
     Private bancoAsignadoMod As Integer
     Private bancoYaSeleccionado As Integer = -1
     Private contador As Integer = 0
 
     Private Sub fillCBBancos()
-        contador = 0
+        contador = 1
         bancoYaSeleccionado = -1
         cb_banco_asignado.Items.Clear()
 
         Dim listaBancosTemp As List(Of Banco) = bancoAux.getBancos()
-        Dim nombreBanco As String
         cb_banco_asignado.Items.Add("")
 
         For Each Banco In listaBancosTemp
@@ -26,39 +25,27 @@
                     bancoYaSeleccionado = contador
                 End If
             End If
-            nombreBanco = $"{Banco.NombreDeBanco} - {Banco.CodigoDeBanco}"
-            cb_banco_asignado.Items.Add(nombreBanco)
+            cb_banco_asignado.Items.Add(Banco.CodigoDeBanco)
             contador += 1
         Next
         cb_banco_asignado.SelectedIndex = bancoYaSeleccionado
     End Sub
-
-    Public Sub change_cb_banco_asignado(sender As Object, e As EventArgs) Handles cb_banco_asignado.SelectedIndexChanged
-        If Not cb_banco_asignado.SelectedIndex = -1 Then
-            bancoSeleccionado = cb_banco_asignado.SelectedItem.ToString()
-        End If
-    End Sub
-
     Private Sub click_btn_confirmar_forma_pago(sender As Object, e As EventArgs) Handles btn_confirmar_forma_pago.Click
         If Not checkCampos() Then
             Return
         End If
 
-        If Not managerFormaPagoAux.checkFormaPago(txt_codigo_forma_pago.Text) And btn_confirmar_forma_pago.Text.Equals("Confirmar") Then
+        If Not managerFormaPagoAux.checkFormaPago(Convert.ToInt32(txt_codigo_forma_pago.Text)) And btn_confirmar_forma_pago.Text.Equals("Confirmar") Then
             MessageBox.Show("Código ya existente")
             Return
         End If
 
-        Dim stringBanco() As String
         Dim bancoAsignado As Integer = 0
-        If Not bancoSeleccionado = Nothing And cb_banco_asignado.SelectedIndex > 0 Then
-            stringBanco = bancoSeleccionado.Split(" - ")
-            bancoAsignado = Convert.ToInt32(stringBanco(2))
-        Else
-            stringBanco = Nothing
+        If cb_banco_asignado.SelectedIndex > 0 Then
+            bancoAsignado = Convert.ToInt32(cb_banco_asignado.SelectedItem)
         End If
 
-        Dim codigoFormaPago As String = txt_codigo_forma_pago.Text
+        Dim codigoFormaPago As Integer = Convert.ToInt32(txt_codigo_forma_pago.Text)
         Dim nombreFormaPago As String = txt_nombre_forma_pago.Text
         Dim estadoFormaPago As Integer
         If checkb_estado_forma_pago.Checked Then
@@ -80,10 +67,9 @@
         End If
         Close()
     End Sub
-
     Private Function checkCampos() As Boolean
-        If txt_codigo_forma_pago.Text.Length > 5 Then
-            MessageBox.Show("El código solo puede tener 5 caracteres")
+        If Not IsNumeric(txt_codigo_forma_pago.Text) Then
+            MessageBox.Show("El código debe ser numérico")
             Return False
         End If
         If Not IsNumeric(txt_numero_plazos.Text) And Not String.IsNullOrEmpty(txt_numero_plazos.Text) Then
@@ -100,15 +86,13 @@
         End If
         Return True
     End Function
-
     Private Function checkNumeroVacio(tb As TextBox) As Integer
         If String.IsNullOrEmpty(tb.Text) Then
             Return Nothing
         Else
-            Return Integer.Parse(tb.Text)
+            Return Convert.ToInt32(tb.Text)
         End If
     End Function
-
     Public Sub clearFields()
         txt_codigo_forma_pago.Clear()
         txt_nombre_forma_pago.Clear()
@@ -120,7 +104,6 @@
         txt_codigo_forma_pago.Enabled = True
         bancoAsignadoMod = Nothing
     End Sub
-
     Public Sub setBancoAsignadoMod(numBanco As Integer)
         bancoAsignadoMod = numBanco
     End Sub

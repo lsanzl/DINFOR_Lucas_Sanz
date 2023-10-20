@@ -1,7 +1,16 @@
 ﻿Public Class Inventario
+    Private codigoInventario As Integer
     Private nombreArticulo As String
     Private unidades As Integer
 
+    Public Property CodigoDeInventario() As Integer
+        Get
+            Return codigoInventario
+        End Get
+        Set(value As Integer)
+            codigoInventario = value
+        End Set
+    End Property
     Public Property NombreDeArticulo() As String
         Get
             Return nombreArticulo
@@ -25,8 +34,14 @@
 
     Public Sub New(nombreArticuloPasado As String, unidadesPasadas As Integer)
         MyBase.New()
-        nombreArticulo = nombreArticuloPasado
-        unidades = unidadesPasadas
+        NombreDeArticulo = nombreArticuloPasado
+        UnidadesDisponibles = unidadesPasadas
+    End Sub
+    Public Sub New(codigoInventarioPasado As Integer, nombreArticuloPasado As String, unidadesPasadas As Integer)
+        MyBase.New()
+        CodigoDeInventario = codigoInventarioPasado
+        NombreDeArticulo = nombreArticuloPasado
+        UnidadesDisponibles = unidadesPasadas
     End Sub
 
     Public Function getInventario() As List(Of Inventario)
@@ -39,7 +54,6 @@
     Public Sub deleteUnidades(cantidadRestar As Integer)
         managerInventarioAux.deleteUnidades(cantidadRestar, Me)
     End Sub
-
     Public Sub addInventario()
         If Not checkInventario() Then
             managerInventarioAux.addInventario(Me)

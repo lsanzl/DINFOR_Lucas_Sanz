@@ -28,7 +28,7 @@ Public Class ManagerCliente
         If dr.HasRows Then
             dr.Read()
             Do
-                codigoNuevo = dr(0).ToString().Trim()
+                codigoNuevo = Convert.ToInt32(dr(0))
                 grupoNuevo = Convert.ToInt32(dr(1))
                 bancoNuevo = Convert.ToInt32(dr(2))
                 nombreNuevo = dr(3).ToString().Trim()
@@ -46,8 +46,11 @@ Public Class ManagerCliente
     End Function
 
     Public Sub addCliente(clientePasado As Cliente)
-        cmd = New SqlCommand($"INSERT INTO CLIENTES
-                            VALUES (@Codigo, 
+        Try
+            Dim codigoNuevo As Integer = getIDCliente()
+            cmd = New SqlCommand("INSERT INTO CLIENTES (ID_CLIENTE, ID_GRUPO, ID_BANCO, NOMBRE_CLIENTE, NIF_CLIENTE, DIRECCION_CLIENTE, FECHA_NACIMIENTO_CLIENTE, EMAIL_CLIENTE)
+                            VALUES 
+                            (@Codigo, 
                             @Grupo,
                             @Banco,
                             @Nombre, 
@@ -55,18 +58,19 @@ Public Class ManagerCliente
                             @Direccion, 
                             @FechaNacimiento, 
                             @Email);", connectionDBManager)
-        With cmd.Parameters
-            .Add("@Codigo", SqlDbType.Int).Value = getIDCliente()
-            .Add("@Grupo", SqlDbType.Int).Value = clientePasado.GrupoDelCliente
-            .Add("@Banco", SqlDbType.Int).Value = clientePasado.BancoDelCliente
-            .Add("@Nombre", SqlDbType.Char, 100).Value = clientePasado.NombreDelCliente
-            .Add("@Nif", SqlDbType.Char, 12).Value = clientePasado.NifDelCliente
-            .Add("@Direccion", SqlDbType.Char, 150).Value = clientePasado.DireccionDelCliente
-            .Add("@FechaNacimiento", SqlDbType.Date).Value = clientePasado.FechaDeNacimientoDelCliente
-            .Add("@Email", SqlDbType.Char, 100).Value = clientePasado.EmailDelCliente
-        End With
-        Try
-            cmd.ExecuteNonQuery()
+            With cmd.Parameters
+                .Add("@Codigo", SqlDbType.Int).Value = codigoNuevo
+                .Add("@Grupo", SqlDbType.Int).Value = clientePasado.GrupoDelCliente
+                .Add("@Banco", SqlDbType.Int).Value = clientePasado.BancoDelCliente
+                .Add("@Nombre", SqlDbType.Char, 100).Value = clientePasado.NombreDelCliente
+                .Add("@Nif", SqlDbType.Char, 12).Value = clientePasado.NifDelCliente
+                .Add("@Direccion", SqlDbType.Char, 150).Value = clientePasado.DireccionDelCliente
+                .Add("@FechaNacimiento", SqlDbType.Date).Value = CDate(clientePasado.FechaDeNacimientoDelCliente.ToShortDateString)
+                .Add("@Email", SqlDbType.Char, 100).Value = clientePasado.EmailDelCliente
+            End With
+            Dim resultado As Integer
+            resultado = cmd.ExecuteNonQuery()
+            MessageBox.Show($"TRAZA: Cliente introducido {resultado}")
         Catch ex As Exception
             MessageBox.Show("Error al introducir un cliente: " + vbCrLf + ex.ToString())
         End Try

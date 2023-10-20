@@ -70,7 +70,7 @@
         Dim currentCelll As DataGridViewCell = frmProveedor.dg_proveedores.CurrentCell
         If currentCelll.Value.Equals("VER DATOS") Then
             proveedorTemp = frmProveedor.dg_proveedores.Rows(e.RowIndex).DataBoundItem
-            frmVerDatosProveedor.Text = $"Datos de {proveedorTemp.CodigoDeProveedor}"
+            frmVerDatosProveedor.Text = $"Datos de {proveedorTemp.NombreDeProveedor}"
             frmVerDatosProveedor.txt_codigo_proveedor.Text = proveedorTemp.CodigoDeProveedor
             frmVerDatosProveedor.txt_nombre_proveedor.Text = proveedorTemp.NombreDeProveedor
             frmVerDatosProveedor.txt_nif_proveedor.Text = proveedorTemp.NifDeProveedor

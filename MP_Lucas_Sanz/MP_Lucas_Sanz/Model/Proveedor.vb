@@ -1,16 +1,16 @@
 ﻿Public Class Proveedor
-    Private codigoProveedor As String
+    Private codigoProveedor As Integer
     Private nombreProveedor As String
     Private nifProveedor As String
     Private direccionProveedor As String
     Private poblacionProveedor As String
     Private telefonoProveedor As Integer
 
-    Public Property CodigoDeProveedor() As String
+    Public Property CodigoDeProveedor() As Integer
         Get
             Return codigoProveedor
         End Get
-        Set(value As String)
+        Set(value As Integer)
             codigoProveedor = value
         End Set
     End Property
@@ -58,7 +58,7 @@
     Public Sub New()
         MyBase.New()
     End Sub
-    Public Sub New(codigoPasado As String, nombrePasado As String, nifPasado As String,
+    Public Sub New(codigoPasado As Integer, nombrePasado As String, nifPasado As String,
                    direccionPasada As String, poblacionPasada As String, telefonoPasado As Integer)
         MyBase.New()
         CodigoDeProveedor = codigoPasado
@@ -81,11 +81,4 @@
     Public Sub deleteProveedor()
         managerProveedorAux.deleteProveedor(Me)
     End Sub
-    Public Function checkCodigoProveedor(codigoCheck As String)
-        If codigoCheck.Length > 6 Then
-            Return False
-        Else
-            Return True
-        End If
-    End Function
 End Class

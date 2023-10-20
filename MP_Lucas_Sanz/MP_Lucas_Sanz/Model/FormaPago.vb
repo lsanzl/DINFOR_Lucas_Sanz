@@ -1,5 +1,5 @@
 ﻿Public Class FormaPago
-    Private codigoPago As String
+    Private codigoPago As Integer
     Private nombrePago As String
     Private bancoAsignadoPago As Integer
     Private estadoPago As Integer
@@ -7,11 +7,11 @@
     Private diasPrimerPlazo As Integer
     Private diasEntrePlazos As Integer
 
-    Public Property CodigoDePago() As String
+    Public Property CodigoDePago() As Integer
         Get
             Return codigoPago
         End Get
-        Set(value As String)
+        Set(value As Integer)
             codigoPago = value
         End Set
     End Property
@@ -68,7 +68,7 @@
         MyBase.New()
     End Sub
 
-    Public Sub New(codigoPagoP As String, nombrePagoP As String, bancoAsignadoP As Integer,
+    Public Sub New(codigoPagoP As Integer, nombrePagoP As String, bancoAsignadoP As Integer,
                    estadoPagoP As Integer, numPlazosPagoP As Integer, diasPrimerPlazoP As Integer,
                    diasEntrePlazosP As Integer)
         MyBase.New()

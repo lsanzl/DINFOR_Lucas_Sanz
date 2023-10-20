@@ -8,14 +8,15 @@
             MessageBox.Show("Introduzca un nombre para el banco")
             Return
         End If
-        If Not grupoAux.checkNombreGrupo(txt_codigo_grupo.Text) And btn_confirmar_nuevo_grupo.Text = "Confirmar" Then
+        If Not IsNumeric(txt_codigo_grupo.Text) Then
+            MessageBox.Show("El código deber ser numérico")
             Return
         End If
         If btn_confirmar_nuevo_grupo.Text = "Confirmar" And managerGrupoAux.checkGrupo(txt_codigo_grupo.Text) Then
             MessageBox.Show("Nombre ya existente")
             Return
         End If
-        Dim grupoTemp As Grupo = New Grupo(txt_codigo_grupo.Text, txt_nombre_grupo.Text)
+        Dim grupoTemp As Grupo = New Grupo(Convert.ToInt32(txt_codigo_grupo.Text), txt_nombre_grupo.Text)
         If btn_confirmar_nuevo_grupo.Text = "Modificar" Then
             grupoTemp.modifyGrupo()
         Else

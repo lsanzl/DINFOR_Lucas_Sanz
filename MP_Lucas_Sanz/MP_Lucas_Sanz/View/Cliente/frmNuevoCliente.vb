@@ -67,17 +67,13 @@
         Dim nifClienteTemp As String = txt_nif_cliente.Text
         Dim direccionClienteTemp As String = txt_direccion_cliente.Text
         Dim fechaNacClienteTemp As Date = dp_fecha_nacimiento_cliente.Value
-        Dim bancoClienteTemp As Integer
-        If Not cb_banco_cliente.SelectedValue.Equals("") Then
-            bancoClienteTemp = Convert.ToInt32(cb_banco_cliente.SelectedValue)
-        Else
-            bancoClienteTemp = Nothing
+        Dim bancoClienteTemp As Integer = Nothing
+        If cb_banco_cliente.SelectedIndex > 0 Then
+            bancoClienteTemp = Convert.ToInt32(cb_banco_cliente.SelectedItem)
         End If
-        Dim grupoClienteTemp As Integer
-        If Not cb_grupo_cliente.SelectedValue.Equals("") Then
-            grupoClienteTemp = Convert.ToInt32(cb_grupo_cliente.SelectedValue)
-        Else
-            grupoClienteTemp = Nothing
+        Dim grupoClienteTemp As Integer = Nothing
+        If cb_grupo_cliente.SelectedIndex > 0 Then
+            grupoClienteTemp = Convert.ToInt32(cb_banco_cliente.SelectedItem)
         End If
         Dim emailClienteTemp As String = txt_email_cliente.Text
 

@@ -1,7 +1,7 @@
 ﻿Public Class frmNuevoProveedor
     Private Sub click_btn_confirmar_proveedor(sender As Object, e As EventArgs) Handles btn_confirmar_proveedor.Click
         If checkCampos() Then
-            Dim codigoTemp As String = txt_codigo_proveedor.Text
+            Dim codigoTemp As Integer = Convert.ToInt32(txt_codigo_proveedor.Text)
             Dim nombreTemp As String = txt_nombre_proveedor.Text
             Dim nifTemp As String = txt_nif_proveedor.Text
             Dim direccionTemp As String = txt_direccion_proveedor.Text
@@ -20,12 +20,8 @@
         End If
     End Sub
     Private Function checkCampos() As Boolean
-        If String.IsNullOrEmpty(txt_codigo_proveedor.Text) Then
+        If String.IsNullOrEmpty(txt_codigo_proveedor.Text) Or Not IsNumeric(txt_codigo_proveedor.Text) Then
             MessageBox.Show("Introduzca código válido")
-            Return False
-        End If
-        If txt_codigo_proveedor.Text.Length > 6 Then
-            MessageBox.Show("Introduzca código válido (máx 6 caracteres)")
             Return False
         End If
         If managerProveedorAux.checkCodigo(txt_codigo_proveedor.Text) And btn_confirmar_proveedor.Text = "Confirmar" Then
