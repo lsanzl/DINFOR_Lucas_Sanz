@@ -1,13 +1,11 @@
 ﻿Public Class frmAñadirArticuloInventario
-    Dim articuloTemp As String
     Dim listaArticulos As List(Of Articulo) = New List(Of Articulo)
 
     Private Sub frmAñadirArticuloInventario_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        articuloTemp = Nothing
         fillCBArticulosInventario()
     End Sub
     Private Sub click_btn_confirmar_articulo_inventario(sender As Object, e As EventArgs) Handles btn_confirmar_articulo_inventario.Click
-        If String.IsNullOrEmpty(articuloTemp) Or articuloTemp.Equals("") Then
+        If String.IsNullOrEmpty(cb_articulo_inventario.SelectedItem) Or cb_articulo_inventario.SelectedItem.Equals("") Then
             MessageBox.Show("Seleccione artículo primero")
             Return
         End If
@@ -15,6 +13,8 @@
             MessageBox.Show("Introduzca una cantidad válida")
             Return
         End If
+        Dim nombreArticulo() As String = Split(cb_articulo_inventario.Text, "-")
+        Dim articuloTemp As Integer = Convert.ToInt32(nombreArticulo(0).Trim())
         Dim inventarioTemp As Inventario = New Inventario(articuloTemp, txt_cantidad_inventario.Text)
         inventarioTemp.addInventario()
         Close()
@@ -30,8 +30,5 @@
         Next
         cb_articulo_inventario.SelectedIndex = Nothing
         txt_cantidad_inventario.Clear()
-    End Sub
-    Private Sub cb_articulos_inventario_selectedvaluechanged(sender As Object, e As EventArgs) Handles cb_articulo_inventario.SelectedValueChanged
-        articuloTemp = cb_articulo_inventario.SelectedItem
     End Sub
 End Class

@@ -6,6 +6,10 @@
 
     Private Sub frmNuevoArticulo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         fillCBUnidades()
+        If btn_confirmar_articulo.Text.Equals("Confirmar") Then
+            txt_codigo_articulo.Text = managerArticuloAux.getIDArticulo()
+            txt_codigo_articulo.Enabled = False
+        End If
     End Sub
 
     Private Sub fillCBUnidades()
@@ -33,11 +37,15 @@
         If Not String.IsNullOrEmpty(txt_porc_beneficio_articulo.Text) Then
             porcTemp = Convert.ToDouble(txt_porc_beneficio_articulo.Text)
         End If
-        Dim unidadTemp As String = Nothing
+        Dim unidadTemp As String = ""
         If Not cb_tipo_unidad_articulo.SelectedItem = Nothing Then
             unidadTemp = cb_tipo_unidad_articulo.SelectedItem.ToString()
         End If
-        Dim familiaTemp As Integer = Convert.ToInt32(txt_familia_articulo.Text)
+        Dim familiaTemp As Integer = Nothing
+        If Not String.IsNullOrEmpty(txt_familia_articulo.Text) Then
+            familiaTemp = Convert.ToInt32(txt_familia_articulo.Text)
+        End If
+
         Dim codigoTemp As Integer
         If btn_confirmar_articulo.Text.Equals("Confirmar") Then
             codigoTemp = managerArticuloAux.getIDArticulo()
@@ -56,6 +64,10 @@
         Close()
     End Sub
     Private Function checkCampos() As Boolean
+        If String.IsNullOrEmpty(txt_codigo_articulo.Text) Or Not IsNumeric(txt_codigo_articulo.Text) Then
+            MessageBox.Show("Introduzca código válido, debe ser numérico")
+            Return False
+        End If
         Dim valorDouble As Double
         If Not Double.TryParse(txt_pvp_compra_articulo.Text, valorDouble) And Not String.IsNullOrEmpty(txt_pvp_compra_articulo.Text) Then
             MessageBox.Show("Introduzca un número válido")

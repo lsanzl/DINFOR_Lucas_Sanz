@@ -52,6 +52,11 @@ Public Class ManagerFamilia
         End Try
     End Sub
     Public Sub deleteFamilia(familiaTemp As Familia)
+        Dim dr As DialogResult = MessageBox.Show("Se borrarán datos asociados al registro: artículos, compras, ventas e inventario, ¿desea continuar?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If (dr = DialogResult.No) Then
+            Return
+        End If
+        managerArticuloAux.deleteArticuloFamilia(familiaTemp.CodigoDeFamilia)
         cmd = New SqlCommand("DELETE FROM FAMILIAS 
                             WHERE ID_FAMILIA = @Codigo;", connectionDBManager)
         cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = familiaTemp.CodigoDeFamilia

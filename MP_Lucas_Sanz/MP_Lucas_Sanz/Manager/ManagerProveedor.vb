@@ -88,6 +88,11 @@ Public Class ManagerProveedor
         End Try
     End Sub
     Public Sub deleteProveedor(proveedorDel As Proveedor)
+        Dim dr As DialogResult = MessageBox.Show("Se borrarán datos asociados al registro: compras, ¿desea continuar?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If (dr = DialogResult.No) Then
+            Return
+        End If
+        managerCompraAux.deleteCompraProveedor(proveedorDel.CodigoDeProveedor)
         cmd = New SqlCommand("DELETE FROM PROVEEDORES 
                             WHERE ID_PROVEEDOR = @Codigo;", connectionDBManager)
         cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = proveedorDel.CodigoDeProveedor

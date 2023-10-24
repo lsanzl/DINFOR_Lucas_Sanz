@@ -26,9 +26,7 @@ Partial Class frmNuevaFormaPago
         Me.checkb_estado_forma_pago = New System.Windows.Forms.CheckBox()
         Me.txt_codigo_forma_pago = New System.Windows.Forms.TextBox()
         Me.txt_nombre_forma_pago = New System.Windows.Forms.TextBox()
-        Me.txt_dias_primer_plazo = New System.Windows.Forms.TextBox()
         Me.txt_numero_plazos = New System.Windows.Forms.TextBox()
-        Me.txt_dias_entre_plazos = New System.Windows.Forms.TextBox()
         Me.lbl_codigo_forma_pago = New System.Windows.Forms.Label()
         Me.lbl_nombre_forma_pago = New System.Windows.Forms.Label()
         Me.lbl_num_plazos = New System.Windows.Forms.Label()
@@ -38,6 +36,8 @@ Partial Class frmNuevaFormaPago
         Me.cb_banco_asignado = New System.Windows.Forms.ComboBox()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.btn_confirmar_forma_pago = New System.Windows.Forms.Button()
+        Me.txt_dias_primer_plazo = New System.Windows.Forms.TextBox()
+        Me.txt_dias_entre_plazos = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -45,9 +45,9 @@ Partial Class frmNuevaFormaPago
         '
         Me.checkb_estado_forma_pago.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.checkb_estado_forma_pago.AutoSize = True
-        Me.checkb_estado_forma_pago.Location = New System.Drawing.Point(568, 36)
+        Me.checkb_estado_forma_pago.Location = New System.Drawing.Point(561, 38)
         Me.checkb_estado_forma_pago.Name = "checkb_estado_forma_pago"
-        Me.checkb_estado_forma_pago.Size = New System.Drawing.Size(243, 17)
+        Me.checkb_estado_forma_pago.Size = New System.Drawing.Size(250, 17)
         Me.checkb_estado_forma_pago.TabIndex = 0
         Me.checkb_estado_forma_pago.Text = "Activado"
         Me.checkb_estado_forma_pago.UseVisualStyleBackColor = True
@@ -64,41 +64,25 @@ Partial Class frmNuevaFormaPago
         'txt_nombre_forma_pago
         '
         Me.txt_nombre_forma_pago.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txt_nombre_forma_pago.Location = New System.Drawing.Point(63, 35)
+        Me.txt_nombre_forma_pago.Location = New System.Drawing.Point(63, 36)
         Me.txt_nombre_forma_pago.Name = "txt_nombre_forma_pago"
         Me.txt_nombre_forma_pago.Size = New System.Drawing.Size(233, 20)
         Me.txt_nombre_forma_pago.TabIndex = 2
         '
-        'txt_dias_primer_plazo
-        '
-        Me.txt_dias_primer_plazo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txt_dias_primer_plazo.Location = New System.Drawing.Point(388, 66)
-        Me.txt_dias_primer_plazo.Name = "txt_dias_primer_plazo"
-        Me.txt_dias_primer_plazo.Size = New System.Drawing.Size(107, 20)
-        Me.txt_dias_primer_plazo.TabIndex = 3
-        '
         'txt_numero_plazos
         '
         Me.txt_numero_plazos.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txt_numero_plazos.Location = New System.Drawing.Point(63, 66)
+        Me.txt_numero_plazos.Location = New System.Drawing.Point(63, 67)
         Me.txt_numero_plazos.Name = "txt_numero_plazos"
         Me.txt_numero_plazos.Size = New System.Drawing.Size(233, 20)
         Me.txt_numero_plazos.TabIndex = 4
-        '
-        'txt_dias_entre_plazos
-        '
-        Me.txt_dias_entre_plazos.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txt_dias_entre_plazos.Location = New System.Drawing.Point(568, 66)
-        Me.txt_dias_entre_plazos.Name = "txt_dias_entre_plazos"
-        Me.txt_dias_entre_plazos.Size = New System.Drawing.Size(243, 20)
-        Me.txt_dias_entre_plazos.TabIndex = 5
         '
         'lbl_codigo_forma_pago
         '
         Me.lbl_codigo_forma_pago.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbl_codigo_forma_pago.AutoSize = True
         Me.lbl_codigo_forma_pago.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_codigo_forma_pago.Location = New System.Drawing.Point(3, 8)
+        Me.lbl_codigo_forma_pago.Location = New System.Drawing.Point(3, 9)
         Me.lbl_codigo_forma_pago.Name = "lbl_codigo_forma_pago"
         Me.lbl_codigo_forma_pago.Size = New System.Drawing.Size(54, 13)
         Me.lbl_codigo_forma_pago.TabIndex = 6
@@ -110,7 +94,7 @@ Partial Class frmNuevaFormaPago
         Me.lbl_nombre_forma_pago.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbl_nombre_forma_pago.AutoSize = True
         Me.lbl_nombre_forma_pago.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_nombre_forma_pago.Location = New System.Drawing.Point(3, 38)
+        Me.lbl_nombre_forma_pago.Location = New System.Drawing.Point(3, 40)
         Me.lbl_nombre_forma_pago.Name = "lbl_nombre_forma_pago"
         Me.lbl_nombre_forma_pago.Size = New System.Drawing.Size(54, 13)
         Me.lbl_nombre_forma_pago.TabIndex = 7
@@ -122,7 +106,7 @@ Partial Class frmNuevaFormaPago
         Me.lbl_num_plazos.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbl_num_plazos.AutoSize = True
         Me.lbl_num_plazos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_num_plazos.Location = New System.Drawing.Point(3, 70)
+        Me.lbl_num_plazos.Location = New System.Drawing.Point(3, 71)
         Me.lbl_num_plazos.Name = "lbl_num_plazos"
         Me.lbl_num_plazos.Size = New System.Drawing.Size(54, 13)
         Me.lbl_num_plazos.TabIndex = 8
@@ -134,7 +118,7 @@ Partial Class frmNuevaFormaPago
         Me.lbl_primer_plazo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbl_primer_plazo.AutoSize = True
         Me.lbl_primer_plazo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_primer_plazo.Location = New System.Drawing.Point(302, 70)
+        Me.lbl_primer_plazo.Location = New System.Drawing.Point(302, 71)
         Me.lbl_primer_plazo.Name = "lbl_primer_plazo"
         Me.lbl_primer_plazo.Size = New System.Drawing.Size(80, 13)
         Me.lbl_primer_plazo.TabIndex = 9
@@ -146,7 +130,7 @@ Partial Class frmNuevaFormaPago
         Me.lbl_dias_entre_plazos.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbl_dias_entre_plazos.AutoSize = True
         Me.lbl_dias_entre_plazos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_dias_entre_plazos.Location = New System.Drawing.Point(501, 70)
+        Me.lbl_dias_entre_plazos.Location = New System.Drawing.Point(494, 71)
         Me.lbl_dias_entre_plazos.Name = "lbl_dias_entre_plazos"
         Me.lbl_dias_entre_plazos.Size = New System.Drawing.Size(61, 13)
         Me.lbl_dias_entre_plazos.TabIndex = 10
@@ -158,7 +142,7 @@ Partial Class frmNuevaFormaPago
         Me.lbl_banco_asignado.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbl_banco_asignado.AutoSize = True
         Me.lbl_banco_asignado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_banco_asignado.Location = New System.Drawing.Point(501, 8)
+        Me.lbl_banco_asignado.Location = New System.Drawing.Point(494, 9)
         Me.lbl_banco_asignado.Name = "lbl_banco_asignado"
         Me.lbl_banco_asignado.Size = New System.Drawing.Size(61, 13)
         Me.lbl_banco_asignado.TabIndex = 11
@@ -169,9 +153,9 @@ Partial Class frmNuevaFormaPago
         '
         Me.cb_banco_asignado.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cb_banco_asignado.FormattingEnabled = True
-        Me.cb_banco_asignado.Location = New System.Drawing.Point(568, 4)
+        Me.cb_banco_asignado.Location = New System.Drawing.Point(561, 5)
         Me.cb_banco_asignado.Name = "cb_banco_asignado"
-        Me.cb_banco_asignado.Size = New System.Drawing.Size(243, 21)
+        Me.cb_banco_asignado.Size = New System.Drawing.Size(250, 21)
         Me.cb_banco_asignado.TabIndex = 12
         '
         'TableLayoutPanel1
@@ -183,10 +167,8 @@ Partial Class frmNuevaFormaPago
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel1.Controls.Add(Me.txt_dias_entre_plazos, 5, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.checkb_estado_forma_pago, 5, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.lbl_dias_entre_plazos, 4, 2)
-        Me.TableLayoutPanel1.Controls.Add(Me.txt_dias_primer_plazo, 3, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.txt_numero_plazos, 1, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.cb_banco_asignado, 5, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.txt_codigo_forma_pago, 1, 0)
@@ -196,6 +178,8 @@ Partial Class frmNuevaFormaPago
         Me.TableLayoutPanel1.Controls.Add(Me.lbl_nombre_forma_pago, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.lbl_codigo_forma_pago, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.lbl_num_plazos, 0, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.txt_dias_primer_plazo, 3, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.txt_dias_entre_plazos, 5, 2)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(14, 12)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 3
@@ -215,6 +199,22 @@ Partial Class frmNuevaFormaPago
         Me.btn_confirmar_forma_pago.TabIndex = 14
         Me.btn_confirmar_forma_pago.Text = "Confirmar"
         Me.btn_confirmar_forma_pago.UseVisualStyleBackColor = True
+        '
+        'txt_dias_primer_plazo
+        '
+        Me.txt_dias_primer_plazo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_dias_primer_plazo.Location = New System.Drawing.Point(388, 67)
+        Me.txt_dias_primer_plazo.Name = "txt_dias_primer_plazo"
+        Me.txt_dias_primer_plazo.Size = New System.Drawing.Size(100, 20)
+        Me.txt_dias_primer_plazo.TabIndex = 13
+        '
+        'txt_dias_entre_plazos
+        '
+        Me.txt_dias_entre_plazos.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_dias_entre_plazos.Location = New System.Drawing.Point(561, 67)
+        Me.txt_dias_entre_plazos.Name = "txt_dias_entre_plazos"
+        Me.txt_dias_entre_plazos.Size = New System.Drawing.Size(250, 20)
+        Me.txt_dias_entre_plazos.TabIndex = 14
         '
         'frmNuevaFormaPago
         '
@@ -241,9 +241,7 @@ Partial Class frmNuevaFormaPago
     Friend WithEvents checkb_estado_forma_pago As CheckBox
     Friend WithEvents txt_codigo_forma_pago As TextBox
     Friend WithEvents txt_nombre_forma_pago As TextBox
-    Friend WithEvents txt_dias_primer_plazo As TextBox
     Friend WithEvents txt_numero_plazos As TextBox
-    Friend WithEvents txt_dias_entre_plazos As TextBox
     Friend WithEvents lbl_codigo_forma_pago As Label
     Friend WithEvents lbl_nombre_forma_pago As Label
     Friend WithEvents lbl_num_plazos As Label
@@ -253,4 +251,6 @@ Partial Class frmNuevaFormaPago
     Friend WithEvents cb_banco_asignado As ComboBox
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents btn_confirmar_forma_pago As Button
+    Friend WithEvents txt_dias_primer_plazo As TextBox
+    Friend WithEvents txt_dias_entre_plazos As TextBox
 End Class

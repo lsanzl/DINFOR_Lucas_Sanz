@@ -7,6 +7,7 @@
     Private cantidadCompra As Integer
     Private precioTotalCompra As Double
     Private fechaCompra As Date
+    Private eliminadoCompra As Boolean
 
     Public Property CodigoDeCompra() As Integer
         Get
@@ -72,6 +73,14 @@
             fechaCompra = value
         End Set
     End Property
+    Public Property CompraEliminada() As Boolean
+        Get
+            Return eliminadoCompra
+        End Get
+        Set(value As Boolean)
+            eliminadoCompra = value
+        End Set
+    End Property
 
     Public Sub New()
         MyBase.New()
@@ -85,6 +94,7 @@
         CantidadDeCompra = cantidadP
         FechaDeCompra = fechaP
         PrecioTotalDeCompra = PrecioDeArticuloCompra * CantidadDeCompra
+        CompraEliminada = False
     End Sub
     Public Sub New(codigoCompraP As Integer, proveedorP As String, articuloP As String, formaP As String, precioP As Double, cantidadP As Integer, fechaP As Date)
         MyBase.New()
@@ -96,6 +106,19 @@
         CantidadDeCompra = cantidadP
         FechaDeCompra = fechaP
         PrecioTotalDeCompra = PrecioDeArticuloCompra * CantidadDeCompra
+        CompraEliminada = False
+    End Sub
+    Public Sub New(codigoCompraP As Integer, proveedorP As String, articuloP As String, formaP As String, precioP As Double, cantidadP As Integer, fechaP As Date, eliminadaCompraP As Boolean)
+        MyBase.New()
+        CodigoDeCompra = codigoCompraP
+        ProveedorDeCompra = proveedorP
+        ArticuloDeCompra = articuloP
+        FormaDePagoCompra = formaP
+        PrecioDeArticuloCompra = precioP
+        CantidadDeCompra = cantidadP
+        FechaDeCompra = fechaP
+        PrecioTotalDeCompra = PrecioDeArticuloCompra * CantidadDeCompra
+        CompraEliminada = eliminadaCompraP
     End Sub
     Public Function getCompras() As List(Of Compra)
         Return managerCompraAux.getCompras()

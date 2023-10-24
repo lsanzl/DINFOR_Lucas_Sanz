@@ -7,6 +7,7 @@
     Private cantidadVenta As Integer
     Private precioTotalVenta As Double
     Private fechaVenta As Date
+    Private eliminadoVenta As Boolean
 
     Public Property CodigoDeVenta() As Integer
         Get
@@ -72,6 +73,14 @@
             fechaVenta = value
         End Set
     End Property
+    Public Property VentaEliminada() As Boolean
+        Get
+            Return eliminadoVenta
+        End Get
+        Set(value As Boolean)
+            eliminadoVenta = value
+        End Set
+    End Property
 
     Public Sub New()
         MyBase.New()
@@ -85,6 +94,7 @@
         CantidadDeVenta = cantidadP
         FechaDeVenta = fechaP
         PrecioTotalDeVenta = PrecioDeArticuloVenta * CantidadDeVenta
+        VentaEliminada = False
     End Sub
     Public Sub New(codigoVentaP As Integer, clienteP As String, articuloP As String, formaP As String, precioP As Double, cantidadP As Integer, fechaP As Date)
         MyBase.New()
@@ -96,6 +106,19 @@
         CantidadDeVenta = cantidadP
         FechaDeVenta = fechaP
         PrecioTotalDeVenta = PrecioDeArticuloVenta * CantidadDeVenta
+        VentaEliminada = False
+    End Sub
+    Public Sub New(codigoVentaP As Integer, clienteP As String, articuloP As String, formaP As String, precioP As Double, cantidadP As Integer, fechaP As Date, eliminadoVentaP As Boolean)
+        MyBase.New()
+        CodigoDeVenta = codigoVentaP
+        ClienteDeVenta = clienteP
+        ArticuloDeVenta = articuloP
+        FormaDePagoVenta = formaP
+        PrecioDeArticuloVenta = precioP
+        CantidadDeVenta = cantidadP
+        FechaDeVenta = fechaP
+        PrecioTotalDeVenta = PrecioDeArticuloVenta * CantidadDeVenta
+        VentaEliminada = eliminadoVentaP
     End Sub
     Public Function getVentas() As List(Of Venta)
         Return managerVentaAux.getVentas()

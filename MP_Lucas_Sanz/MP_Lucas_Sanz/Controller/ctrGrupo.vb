@@ -54,6 +54,8 @@
 
     Private Sub click_btn_eliminar_grupo(sender As Object, e As EventArgs)
         grupoTemp.deleteGrupo()
+        Dim ctrGrupoCliente As ctrCliente = New ctrCliente(frmGrupo)
+        ctrGrupoCliente.fillDGClientes()
         fillDGGrupos()
     End Sub
 

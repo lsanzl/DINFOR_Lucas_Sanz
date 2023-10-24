@@ -181,6 +181,7 @@ Partial Class frmNuevoArticulo
         'txt_codigo_articulo
         '
         Me.txt_codigo_articulo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_codigo_articulo.Enabled = False
         Me.txt_codigo_articulo.Location = New System.Drawing.Point(132, 14)
         Me.txt_codigo_articulo.Name = "txt_codigo_articulo"
         Me.txt_codigo_articulo.Size = New System.Drawing.Size(123, 20)

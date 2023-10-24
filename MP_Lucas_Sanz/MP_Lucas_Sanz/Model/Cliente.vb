@@ -1,7 +1,7 @@
 ﻿Public Class Cliente
     Private codigoCliente As Integer
-    Private grupoCliente As Integer
-    Private bancoCliente As Integer
+    Private grupoCliente As Integer?
+    Private bancoCliente As Integer?
     Private nombreCliente As String
     Private nif As String
     Private direccion As String
@@ -16,19 +16,19 @@
             codigoCliente = value
         End Set
     End Property
-    Public Property BancoDelCliente() As Integer
+    Public Property BancoDelCliente() As Integer?
         Get
             Return bancoCliente
         End Get
-        Set(value As Integer)
+        Set(value As Integer?)
             bancoCliente = value
         End Set
     End Property
-    Public Property GrupoDelCliente() As Integer
+    Public Property GrupoDelCliente() As Integer?
         Get
             Return grupoCliente
         End Get
-        Set(value As Integer)
+        Set(value As Integer?)
             grupoCliente = value
         End Set
     End Property

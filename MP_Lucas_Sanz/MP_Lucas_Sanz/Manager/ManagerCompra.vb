@@ -18,6 +18,8 @@ Public Class ManagerCompra
             Dim precio As Double
             Dim cantidad As Integer
             Dim fecha As Date
+            Dim eliminadoInt As Integer
+            Dim eliminado As Boolean
 
             dr.Read()
             Do
@@ -28,8 +30,15 @@ Public Class ManagerCompra
                 precio = Convert.ToDouble(dr(4))
                 cantidad = Convert.ToInt32(dr(5))
                 fecha = Convert.ToDateTime(dr(6))
+                eliminado = Convert.ToInt32(dr(7))
 
-                compraAux = New Compra(codigo, proveedor, articulo, formaPago, precio, cantidad, fecha)
+                If eliminadoInt = 0 Then
+                    eliminado = False
+                Else
+                    eliminado = True
+                End If
+
+                compraAux = New Compra(codigo, proveedor, articulo, formaPago, precio, cantidad, fecha, eliminado)
                 listaCompras.Add(compraAux)
             Loop While dr.Read()
         End If
@@ -37,6 +46,13 @@ Public Class ManagerCompra
         Return listaCompras
     End Function
     Public Sub addCompra(compraTemp As Compra)
+        Dim codigoCompra As Integer = getIDCompra()
+        Dim eliminadoInt As Integer
+        If compraTemp.CompraEliminada Then
+            eliminadoInt = 1
+        Else
+            eliminadoInt = 0
+        End If
         cmd = New SqlCommand($"INSERT INTO COMPRAS
                                 VALUES 
                                 (@Codigo,
@@ -45,20 +61,49 @@ Public Class ManagerCompra
                                 @FormaPago,
                                 @PVPCompra,
                                 @Cantidad,
-                                @Fecha);", connectionDBManager)
+                                @Fecha,
+                                @Eliminado);", connectionDBManager)
         With cmd.Parameters
-            .Add("@Codigo", SqlDbType.Int).Value = getIDCompra()
+            .Add("@Codigo", SqlDbType.Int).Value = codigoCompra
             .Add("@Proveedor", SqlDbType.Char, 6).Value = compraTemp.ProveedorDeCompra
             .Add("@Articulo", SqlDbType.Char, 6).Value = compraTemp.ArticuloDeCompra
             .Add("@FormaPago", SqlDbType.Char, 5).Value = compraTemp.FormaDePagoCompra
             .Add("@PVPCompra", SqlDbType.Decimal, 10, 2).Value = compraTemp.PrecioDeArticuloCompra
             .Add("@Cantidad", SqlDbType.Int).Value = compraTemp.CantidadDeCompra
             .Add("@Fecha", SqlDbType.Date).Value = compraTemp.FechaDeCompra
+            .Add("@Eliminado", SqlDbType.Bit).Value = eliminadoInt
         End With
         Try
             cmd.ExecuteNonQuery()
         Catch ex As Exception
             MessageBox.Show("Error al introducir una compra: " + vbCrLf + ex.ToString())
+        End Try
+    End Sub
+    Public Sub deleteCompraArticulo(codigoArticulo As Integer)
+        cmd = New SqlCommand("DELETE FROM COMPRAS WHERE ID_ARTICULO = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = codigoArticulo
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
+        End Try
+    End Sub
+    Public Sub deleteCompraProveedor(codigoProveedor As Integer)
+        cmd = New SqlCommand("DELETE FROM COMPRAS WHERE ID_PROVEEDOR = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = codigoProveedor
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
+        End Try
+    End Sub
+    Public Sub deleteCompraFormaPago(codigoFormaPago As Integer)
+        cmd = New SqlCommand("DELETE FROM COMPRAS WHERE ID_FORMA_PAGO = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = codigoFormaPago
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
         End Try
     End Sub
     Public Function getIDCompra() As Integer

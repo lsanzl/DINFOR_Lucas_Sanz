@@ -26,16 +26,21 @@ Public Class ctrInventario
 
         frmUnidadesInventario.btn_confirmar_unidades.Text = "Confirmar"
         frmUnidadesInventario.txt_unidades_inventario.Clear()
-
-        frmInventario.dg_inventario.DataSource = Nothing
         frmInventario.dg_inventario.Rows.Clear()
+
+        listaInventario = New List(Of Inventario)
         listaInventario = inventarioAux.getInventario()
-        frmInventario.dg_inventario.DataSource = listaInventario
+        For Each item As Inventario In listaInventario
+            Dim index As Integer = frmInventario.dg_inventario.Rows.Add()
+            frmInventario.dg_inventario.Rows(index).Cells("idAlmacen").Value = item.CodigoDeInventario
+            frmInventario.dg_inventario.Rows(index).Cells("nombreArticulo").Value = item.ArticuloDeInventario.NombreDeArticulo
+            frmInventario.dg_inventario.Rows(index).Cells("stockActual").Value = item.UnidadesDisponibles
+        Next
         frmInventario.dg_inventario.ClearSelection()
     End Sub
 
     Private Sub click_btn_añadir_unidades(sender As Object, e As EventArgs)
-        frmUnidadesInventario.Text = $"Añadir unidades de {inventarioTemp.NombreDeArticulo}"
+        frmUnidadesInventario.Text = $"Añadir unidades de {inventarioTemp.ArticuloDeInventario.NombreDeArticulo}"
         frmUnidadesInventario.btn_confirmar_unidades.Text = "Añadir"
         frmUnidadesInventario.ShowDialog()
         If frmUnidadesInventario.confirmado Then
@@ -44,7 +49,7 @@ Public Class ctrInventario
         fillDGInventario()
     End Sub
     Private Sub click_btn_restar_unidades(sender As Object, e As EventArgs)
-        frmUnidadesInventario.Text = $"Restar unidades de {inventarioTemp.NombreDeArticulo}"
+        frmUnidadesInventario.Text = $"Restar unidades de {inventarioTemp.ArticuloDeInventario.NombreDeArticulo}"
         frmUnidadesInventario.btn_confirmar_unidades.Text = "Restar"
         frmUnidadesInventario.ShowDialog()
         If frmUnidadesInventario.confirmado Then
@@ -97,7 +102,9 @@ Public Class ctrInventario
             frmInventario.btn_añadir_unidades.Enabled = True
             frmInventario.btn_restar_unidades.Enabled = True
             frmInventario.btn_eliminar_articulo_inventario.Enabled = True
-            inventarioTemp = frmInventario.dg_inventario.Rows(e.RowIndex).DataBoundItem
+            Dim codigoInventario As Integer = frmInventario.dg_inventario.Rows(e.RowIndex).Cells("idAlmacen").Value
+            'inventarioTemp = frmInventario.dg_inventario.Rows(e.RowIndex).DataBoundItem
+            inventarioTemp = managerInventarioAux.getInventario(codigoInventario)
         End If
     End Sub
     Private Sub tab_main_SelectedIndexChanged(sender As Object, e As EventArgs)

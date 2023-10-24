@@ -73,7 +73,7 @@
         End If
         Dim grupoClienteTemp As Integer = Nothing
         If cb_grupo_cliente.SelectedIndex > 0 Then
-            grupoClienteTemp = Convert.ToInt32(cb_banco_cliente.SelectedItem)
+            grupoClienteTemp = Convert.ToInt32(cb_grupo_cliente.SelectedItem)
         End If
         Dim emailClienteTemp As String = txt_email_cliente.Text
 

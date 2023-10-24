@@ -13,6 +13,7 @@
     Public inventarioAux As Inventario = New Inventario()
     Public compraAux As Compra = New Compra()
     Public ventaAux As Venta = New Venta()
+    Public movimientoAux As Movimiento = New Movimiento()
 
     ' ----- MANAGERS AUXILIARES DE CADA CLASE -----
     Public managerEmpAux As ManagerEmpresa = New ManagerEmpresa()
@@ -26,6 +27,15 @@
     Public managerInventarioAux As ManagerInventario = New ManagerInventario()
     Public managerCompraAux As ManagerCompra = New ManagerCompra()
     Public managerVentaAux As ManagerVenta = New ManagerVenta()
+    Public managerConfiguracionAux As ManagerConfiguracion = New ManagerConfiguracion()
+    Public managerMovimientoAux As ManagerMovimiento = New ManagerMovimiento()
+
+    ' ----- LISTAS AUXILIARES DE CADA CLASE -----
+    Public listaArticulosAux As List(Of Articulo) = New List(Of Articulo)
+    Public Sub updateListaArticulos()
+        listaArticulosAux = New List(Of Articulo)
+        listaArticulosAux = managerArticuloAux.getArticulos()
+    End Sub
 
     ' ------------ VARIABLES GLOBALES -------------
     Private empresaSeleccionadaDB As String = Nothing

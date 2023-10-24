@@ -98,8 +98,8 @@ Public Class frmCompra
         Dim codigoArticuloSeleccionado As Integer = articuloSeleccionado.CodigoDeArticulo
         Dim formaPagoSeleccionada As Integer = cb_forma_pago_seleccionada.SelectedValue
         Dim cantidadSeleccionada As Integer = Convert.ToInt32(txt_cantidad_seleccionada.Text)
-        Dim precioCompra As Double = Convert.ToDouble(managerArticuloAux.getCampoArticulo(codigoArticuloSeleccionado, "PVPCOMPRAARTICULO"))
-        Dim porcBeneficio As Double = Convert.ToDouble(managerArticuloAux.getCampoArticulo(codigoArticuloSeleccionado, "PORCBENEFICIOARTICULO"))
+        Dim precioCompra As Double = Convert.ToDouble(managerArticuloAux.getCampoArticulo(codigoArticuloSeleccionado, "PRECIO_COMPRA_ARTICULO"))
+        Dim porcBeneficio As Double = Convert.ToDouble(managerArticuloAux.getCampoArticulo(codigoArticuloSeleccionado, "PORC_BENEFICIO_ARTICULO"))
         Dim fechaCompra As Date = dp_fecha_compra.Value
 
         Dim precioVenta As Double = precioCompra * (1 + porcBeneficio / 100)
@@ -171,5 +171,6 @@ Public Class frmCompra
         Next
         Dim fechaCompra As Date = dp_fecha_compra.Value
         Dim informe As infCompra = New infCompra(listaCompras, fechaCompra)
+        clearFields()
     End Sub
 End Class

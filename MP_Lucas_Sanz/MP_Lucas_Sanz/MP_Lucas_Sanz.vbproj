@@ -113,11 +113,13 @@
     <Compile Include="Manager\ManagerBanco.vb" />
     <Compile Include="Manager\ManagerCliente.vb" />
     <Compile Include="Manager\ManagerCompra.vb" />
+    <Compile Include="Manager\ManagerConfiguracion.vb" />
     <Compile Include="Manager\ManagerEmpresa.vb" />
     <Compile Include="Manager\ManagerFamilia.vb" />
     <Compile Include="Manager\ManagerFormaPago.vb" />
     <Compile Include="Manager\ManagerGrupo.vb" />
     <Compile Include="Manager\ManagerInventario.vb" />
+    <Compile Include="Manager\ManagerMovimiento.vb" />
     <Compile Include="Manager\ManagerProveedor.vb" />
     <Compile Include="Manager\ManagerVenta.vb" />
     <Compile Include="Model\Articulo.vb" />
@@ -128,6 +130,7 @@
     <Compile Include="Model\FormaPago.vb" />
     <Compile Include="Model\Grupo.vb" />
     <Compile Include="Model\Inventario.vb" />
+    <Compile Include="Model\Movimiento.vb" />
     <Compile Include="Model\Proveedor.vb" />
     <Compile Include="Model\Venta.vb" />
     <Compile Include="Report\Compra\dsCompra.Designer.vb">

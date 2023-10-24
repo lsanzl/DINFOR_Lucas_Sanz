@@ -46,7 +46,6 @@ Public Class infVenta
         informe.SetDataSource(ds)
         informe.Refresh()
 
-        'Dim visorRPT As viewerRPTVenta = New viewerRPTVenta()
         Dim visorRPT As viewerRPTVenta = New viewerRPTVenta(informe)
         visorRPT.crvVenta.ReportSource = informe
         visorRPT.Text = "Informe de Venta"

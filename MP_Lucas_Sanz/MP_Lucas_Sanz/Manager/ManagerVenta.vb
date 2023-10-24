@@ -18,6 +18,8 @@ Public Class ManagerVenta
             Dim precio As Double
             Dim cantidad As Integer
             Dim fecha As Date
+            Dim eliminadoInt As Integer
+            Dim eliminado As Boolean
 
             dr.Read()
             Do
@@ -28,8 +30,15 @@ Public Class ManagerVenta
                 precio = Convert.ToDouble(dr(4))
                 cantidad = Convert.ToInt32(dr(5))
                 fecha = Convert.ToDateTime(dr(6))
+                eliminadoInt = Convert.ToInt32(dr(7))
 
-                ventaAux = New Venta(codigo, cliente, articulo, formaPago, precio, cantidad, fecha)
+                If eliminadoInt = 0 Then
+                    eliminado = False
+                Else
+                    eliminado = True
+                End If
+
+                ventaAux = New Venta(codigo, cliente, articulo, formaPago, precio, cantidad, fecha, eliminado)
                 listaVentas.Add(ventaAux)
             Loop While dr.Read()
         End If
@@ -37,6 +46,69 @@ Public Class ManagerVenta
         Return listaVentas
     End Function
     Public Sub addVenta(ventaTemp As Venta)
+        Dim listaArticulos As List(Of Articulo) = managerArticuloAux.getArticulos()
+        Dim articuloFind As Articulo = listaArticulos.Find(Function(a) a.CodigoDeArticulo = ventaTemp.ArticuloDeVenta)
+        Dim codigoVenta As Integer = getIDCompra()
+        Dim eliminadoInt As Integer
+        If ventaTemp.VentaEliminada Then
+            eliminadoInt = 1
+        Else
+            eliminadoInt = 0
+        End If
+
+        cmd = New SqlCommand("INSERT INTO VENTAS VALUES 
+                                (@Codigo,
+                                @Cliente, 
+                                @Articulo,
+                                @FormaPago,
+                                @PVPVenta,
+                                @Cantidad,
+                                @Fecha,
+                                @Eliminado);", connectionDBManager)
+        With cmd.Parameters
+            .Add("@Codigo", SqlDbType.Int).Value = codigoVenta
+            .Add("@Cliente", SqlDbType.Int).Value = ventaTemp.ClienteDeVenta
+            .Add("@Articulo", SqlDbType.Int).Value = articuloFind.CodigoDeArticulo
+            .Add("@FormaPago", SqlDbType.Int).Value = ventaTemp.FormaDePagoVenta
+            .Add("@PVPVenta", SqlDbType.Decimal, 10, 2).Value = ventaTemp.PrecioDeArticuloVenta
+            .Add("@Cantidad", SqlDbType.Int).Value = ventaTemp.CantidadDeVenta
+            .Add("@Fecha", SqlDbType.Date).Value = ventaTemp.FechaDeVenta
+            .Add("@Eliminado", SqlDbType.Bit).Value = eliminadoInt
+        End With
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Error al introducir una venta: " + vbCrLf + ex.ToString())
+        End Try
+    End Sub
+    Public Sub deleteVentaArticulo(codigoArticulo As Integer)
+        cmd = New SqlCommand("DELETE FROM VENTAS WHERE ID_ARTICULO = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = codigoArticulo
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
+        End Try
+    End Sub
+    Public Sub deleteVentaCliente(codigoCliente As Integer)
+        cmd = New SqlCommand("DELETE FROM VENTAS WHERE ID_CLIENTE = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = codigoCliente
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
+        End Try
+    End Sub
+    Public Sub deleteVentaFormaPago(codigoFormaPago As Integer)
+        cmd = New SqlCommand("DELETE FROM VENTAS WHERE ID_FORMA_PAGO = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = codigoFormaPago
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
+        End Try
+    End Sub
+    Public Function getIDCompra() As Integer
         cmd = New SqlCommand("SELECT MAX(ID_VENTA) FROM VENTAS;", connectionDBManager)
         Dim maxActual As Object = cmd.ExecuteScalar()
         Dim codigoVentaNuevo As Integer = Nothing
@@ -45,30 +117,6 @@ Public Class ManagerVenta
         Else
             codigoVentaNuevo = 0
         End If
-        Dim listaArticulos As List(Of Articulo) = managerArticuloAux.getArticulos()
-        Dim articuloFind As Articulo = listaArticulos.Find(Function(art) art.NombreDeArticulo = ventaTemp.ArticuloDeVenta)
-        cmd = New SqlCommand($"INSERT INTO VENTAS
-                                VALUES 
-                                (@Codigo,
-                                @Cliente, 
-                                @Articulo,
-                                @FormaPago,
-                                @PVPVenta,
-                                @Cantidad,
-                                @Fecha);", connectionDBManager)
-        With cmd.Parameters
-            .Add("@Codigo", SqlDbType.Int).Value = codigoVentaNuevo
-            .Add("@Cliente", SqlDbType.Int).Value = ventaTemp.ClienteDeVenta
-            .Add("@Articulo", SqlDbType.Int).Value = articuloFind.CodigoDeArticulo
-            .Add("@FormaPago", SqlDbType.Int).Value = ventaTemp.FormaDePagoVenta
-            .Add("@PVPVenta", SqlDbType.Decimal, 10, 2).Value = ventaTemp.PrecioDeArticuloVenta
-            .Add("@Cantidad", SqlDbType.Int).Value = ventaTemp.CantidadDeVenta
-            .Add("@Fecha", SqlDbType.Date).Value = ventaTemp.FechaDeVenta
-        End With
-        Try
-            cmd.ExecuteNonQuery()
-        Catch ex As Exception
-            MessageBox.Show("Error al introducir una venta: " + vbCrLf + ex.ToString())
-        End Try
-    End Sub
+        Return codigoVentaNuevo
+    End Function
 End Class

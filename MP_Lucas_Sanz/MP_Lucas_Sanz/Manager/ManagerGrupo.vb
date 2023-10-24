@@ -53,6 +53,11 @@ Public Class ManagerGrupo
         End Try
     End Sub
     Public Sub deleteGrupo(grupoPasado As Grupo)
+        Dim dr As DialogResult = MessageBox.Show("Se borrarán datos asociados al registro: clientes y ventas, ¿desea continuar?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If (dr = DialogResult.No) Then
+            Return
+        End If
+        managerClienteAux.deleteClienteGrupo(grupoPasado.CodigoDeGrupo)
         cmd = New SqlCommand("DELETE FROM GRUPOS
                             WHERE ID_GRUPO = @Codigo;", connectionDBManager)
         cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = grupoPasado.CodigoDeGrupo

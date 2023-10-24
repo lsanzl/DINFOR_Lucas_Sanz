@@ -56,7 +56,7 @@ Public Class ManagerCliente
                             @Nombre, 
                             @Nif, 
                             @Direccion, 
-                            @FechaNacimiento, 
+                            @FechaNacimiento,
                             @Email);", connectionDBManager)
             With cmd.Parameters
                 .Add("@Codigo", SqlDbType.Int).Value = codigoNuevo
@@ -68,9 +68,7 @@ Public Class ManagerCliente
                 .Add("@FechaNacimiento", SqlDbType.Date).Value = CDate(clientePasado.FechaDeNacimientoDelCliente.ToShortDateString)
                 .Add("@Email", SqlDbType.Char, 100).Value = clientePasado.EmailDelCliente
             End With
-            Dim resultado As Integer
-            resultado = cmd.ExecuteNonQuery()
-            MessageBox.Show($"TRAZA: Cliente introducido {resultado}")
+            cmd.ExecuteNonQuery()
         Catch ex As Exception
             MessageBox.Show("Error al introducir un cliente: " + vbCrLf + ex.ToString())
         End Try
@@ -102,8 +100,37 @@ Public Class ManagerCliente
         End Try
     End Sub
     Public Sub deleteCliente(clientePasado As Cliente)
-        cmd = New SqlCommand($"DELETE FROM CLIENTES WHERE ID_CLIENTE = @Codigo;", connectionDBManager)
+        Dim dr As DialogResult = MessageBox.Show("Se borrarán datos asociados al registro: compras y ventas, ¿desea continuar?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)
+        If (dr = DialogResult.No) Then
+            Return
+        End If
+        managerVentaAux.deleteVentaCliente(clientePasado.CodigoDelCliente)
+
+        cmd = New SqlCommand("DELETE FROM CLIENTES WHERE ID_CLIENTE = @Codigo;", connectionDBManager)
         cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = clientePasado.CodigoDelCliente
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Error al eliminar un cliente: " + vbCrLf + ex.ToString())
+        End Try
+    End Sub
+    Public Sub deleteClienteGrupo(codigoGrupo As Integer)
+        Dim listaCodigosCliente As List(Of Integer) = New List(Of Integer)
+        cmd = New SqlCommand("SELECT ID_CLIENTE FROM CLIENTES WHERE ID_GRUPO = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = codigoGrupo
+        dr = cmd.ExecuteReader
+        If dr.HasRows Then
+            dr.Read()
+            Do
+                listaCodigosCliente.Add(Convert.ToInt32(dr(0)))
+            Loop While dr.Read()
+        End If
+        dr.Close()
+        For Each numerillo As Integer In listaCodigosCliente
+            managerVentaAux.deleteVentaCliente(numerillo)
+        Next
+        cmd = New SqlCommand("DELETE FROM CLIENTES WHERE ID_GRUPO = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = codigoGrupo
         Try
             cmd.ExecuteNonQuery()
         Catch ex As Exception

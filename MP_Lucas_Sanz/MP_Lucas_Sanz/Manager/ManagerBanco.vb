@@ -51,7 +51,12 @@ Public Class ManagerBanco
     End Sub
 
     Public Sub deleteBanco(bancoTemp As Banco)
-        cmd = New SqlCommand($"DELETE FROM BANCOS
+        Dim dr As DialogResult = MessageBox.Show("Se borrarán datos asociados al registro: clientes, formas de pago, compras y ventas, ¿desea continuar?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If (dr = DialogResult.No) Then
+            Return
+        End If
+        managerFormaPagoAux.deleteFormaPagoBanco(bancoTemp.CodigoDeBanco)
+        cmd = New SqlCommand("DELETE FROM BANCOS
                                 WHERE ID_BANCO = @Codigo;", connectionDBManager)
         cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = bancoTemp.CodigoDeBanco
         Try

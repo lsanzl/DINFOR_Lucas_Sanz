@@ -21,7 +21,7 @@
         dg_resultados_busqueda.Columns.Add("codigo", "Código")
 
         If TypeOf clase Is Proveedor Then
-            'Dim listaProveedores As List(Of Proveedor) = proveedorAux.getProveedores()
+            listaProveedores = proveedorAux.getProveedores()
             Dim contador As Integer = 0
             For Each proveedor As Proveedor In listaProveedores
                 dg_resultados_busqueda.Rows.Add()
@@ -33,7 +33,7 @@
             Next
         End If
         If TypeOf clase Is Articulo Then
-            'Dim listaArticulos As List(Of Articulo) = articuloAux.getArticulos()
+            listaArticulos = articuloAux.getArticulos()
             Dim contador As Integer = 0
             For Each articulo As Articulo In listaArticulos
                 dg_resultados_busqueda.Rows.Add()

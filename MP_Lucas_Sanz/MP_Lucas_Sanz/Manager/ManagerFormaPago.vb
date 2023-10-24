@@ -78,9 +78,40 @@ Public Class ManagerFormaPago
         End Try
     End Sub
     Public Sub deleteFormaPago(formaPagoSQL As FormaPago)
+        Dim dr As DialogResult = MessageBox.Show("Se borrarán datos asociados al registro: compras y ventas, ¿desea continuar?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)
+        If (dr = DialogResult.No) Then
+            Return
+        End If
+        managerCompraAux.deleteCompraFormaPago(formaPagoSQL.CodigoDePago)
+        managerVentaAux.deleteVentaFormaPago(formaPagoSQL.CodigoDePago)
+
         cmd = New SqlCommand("DELETE FROM FORMASPAGO
                                 WHERE ID_FORMA_PAGO = @Codigo;", connectionDBManager)
-        cmd.Parameters.Add("@Codigo", SqlDbType.Char, 5).Value = formaPagoSQL.CodigoDePago
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = formaPagoSQL.CodigoDePago
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Error al eliminar una forma de pago: " + vbCrLf + ex.ToString())
+        End Try
+    End Sub
+    Public Sub deleteFormaPagoBanco(codigoBanco As Integer)
+        Dim listaCodigosFormasPago As List(Of Integer) = New List(Of Integer)
+        cmd = New SqlCommand("SELECT ID_FORMA_PAGO FROM FORMASPAGO WHERE ID_BANCO = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = codigoBanco
+        dr = cmd.ExecuteReader
+        If dr.HasRows Then
+            dr.Read()
+            Do
+                listaCodigosFormasPago.Add(Convert.ToInt32(dr(0)))
+            Loop While dr.Read()
+        End If
+        dr.Close()
+        For Each numerillo As Integer In listaCodigosFormasPago
+            managerVentaAux.deleteVentaFormaPago(numerillo)
+            managerCompraAux.deleteCompraFormaPago(numerillo)
+        Next
+        cmd = New SqlCommand("DELETE FROM FORMASPAGO WHERE ID_BANCO = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = codigoBanco
         Try
             cmd.ExecuteNonQuery()
         Catch ex As Exception

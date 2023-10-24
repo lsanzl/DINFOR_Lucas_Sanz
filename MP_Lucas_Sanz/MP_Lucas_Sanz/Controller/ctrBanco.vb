@@ -52,6 +52,8 @@
 
     Private Sub click_btn_eliminar_banco(sender As Object, e As EventArgs)
         bancoTemp.deleteBanco()
+        Dim ctrBancoPago As ctrFormaPago = New ctrFormaPago(frmBanco)
+        ctrBancoPago.fillDGFormasPago()
         fillDGBancos()
     End Sub
 

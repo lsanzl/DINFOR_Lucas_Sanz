@@ -1,6 +1,6 @@
 ﻿Public Class Articulo
     Private codigoArticulo As Integer
-    Private familiaArticulo As Integer
+    Private familiaArticulo As Integer?
     Private nombreArticulo As String
     Private descripcionArticulo As String
     Private pvpCompraArticulo As Double
@@ -16,11 +16,11 @@
             codigoArticulo = value
         End Set
     End Property
-    Public Property FamiliaDeArticulo() As Integer
+    Public Property FamiliaDeArticulo() As Integer?
         Get
             Return familiaArticulo
         End Get
-        Set(value As Integer)
+        Set(value As Integer?)
             familiaArticulo = value
         End Set
     End Property

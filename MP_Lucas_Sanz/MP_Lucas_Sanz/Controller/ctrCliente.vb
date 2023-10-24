@@ -14,19 +14,16 @@
         AddHandler frmCliente.tab_main.SelectedIndexChanged, AddressOf tab_main_SelectedIndexChanged
     End Sub
 
-    Private Sub fillDGClientes()
+    Public Sub fillDGClientes()
         listaClientes.Clear()
 
         frmCliente.btn_modificar_cliente.Enabled = False
         frmCliente.btn_eliminar_cliente.Enabled = False
 
-        'frmCliente.dg_clientes.DataSource = Nothing
+        frmCliente.dg_clientes.DataSource = Nothing
         frmCliente.dg_clientes.Rows.Clear()
         listaClientes = managerClienteAux.getClientes()
-        'frmCliente.dg_clientes.DataSource = listaClientes
-        For Each clientillo As Cliente In listaClientes
-            frmCliente.dg_clientes.Rows.Add(clientillo)
-        Next
+        frmCliente.dg_clientes.DataSource = listaClientes
 
         frmCliente.dg_clientes.ClearSelection()
     End Sub

@@ -39,10 +39,17 @@ Public Class ManagerArticulo
         Return listaArticulos
     End Function
     Public Sub addArticulo(articuloPasado As Articulo)
-        cmd = New SqlCommand("INSERT INTO ARTICULOS VALUES (@Codigo, @Familia, @Nombre, 
-                            @Descripcion, @PVPCompra, @PorcentajeBeneficio, @TipoUnidad);", connectionDBManager)
+        Dim codigoNuevo As Integer = getIDArticulo()
+        cmd = New SqlCommand("INSERT INTO ARTICULOS VALUES 
+                            (@Codigo, 
+                            @Familia, 
+                            @Nombre, 
+                            @Descripcion, 
+                            @PVPCompra, 
+                            @PorcentajeBeneficio, 
+                            @TipoUnidad);", connectionDBManager)
         With cmd.Parameters
-            .Add("@Codigo", SqlDbType.Int).Value = getIDArticulo()
+            .Add("@Codigo", SqlDbType.Int).Value = codigoNuevo
             .Add("@Familia", SqlDbType.Int).Value = articuloPasado.FamiliaDeArticulo
             .Add("@Nombre", SqlDbType.Char, 100).Value = articuloPasado.NombreDeArticulo
             .Add("@Descripcion", SqlDbType.Char, 150).Value = articuloPasado.DescripcionDeArticulo
@@ -52,12 +59,13 @@ Public Class ManagerArticulo
         End With
         Try
             cmd.ExecuteNonQuery()
+            'VariablesGlobales.updateListaArticulos()
         Catch ex As Exception
             MessageBox.Show("Error al introducir nuevo Artículo: " + vbCrLf + ex.ToString())
         End Try
     End Sub
     Public Sub modifyArticulo(articuloPasado As Articulo)
-        cmd = New SqlCommand($"UPDATE ARTICULOS
+        cmd = New SqlCommand("UPDATE ARTICULOS
                             SET ID_FAMILIA = @Familia,
                             NOMBRE_ARTICULO = @Nombre,
                             DESCRIPCION_ARTICULO = @Descripcion,
@@ -76,15 +84,51 @@ Public Class ManagerArticulo
         End With
         Try
             cmd.ExecuteNonQuery()
+            'VariablesGlobales.updateListaArticulos()
         Catch ex As Exception
             MessageBox.Show("Error al modificar nuevo Artículo: " + vbCrLf + ex.ToString())
         End Try
     End Sub
     Public Sub deleteArticulo(articuloPasado As Articulo)
-        cmd = New SqlCommand($"DELETE FROM ARTICULOS WHERE ID_ARTICULO = @Codigo;", connectionDBManager)
+        Dim dr As DialogResult = MessageBox.Show("Se borrarán datos asociados al registro: compras y ventas, ¿desea continuar?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)
+        If (dr = DialogResult.No) Then
+            Return
+        End If
+        managerCompraAux.deleteCompraArticulo(articuloPasado.CodigoDeArticulo)
+        managerVentaAux.deleteVentaArticulo(articuloPasado.CodigoDeArticulo)
+        managerInventarioAux.deleteInventarioArticulo(articuloPasado.CodigoDeArticulo)
+
+        cmd = New SqlCommand("DELETE FROM ARTICULOS WHERE ID_ARTICULO = @Codigo;", connectionDBManager)
         cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = articuloPasado.CodigoDeArticulo
         Try
             cmd.ExecuteNonQuery()
+            'VariablesGlobales.updateListaArticulos()
+        Catch ex As Exception
+            MessageBox.Show("Error al eliminar el artículo: " + vbCrLf + ex.ToString())
+        End Try
+    End Sub
+    Public Sub deleteArticuloFamilia(idFamilia As Integer)
+        Dim listaArticulosFamilia As List(Of Integer) = New List(Of Integer)
+        cmd = New SqlCommand("SELECT ID_ARTICULO FROM ARTICULOS WHERE ID_FAMILIA = @CodigoFamilia", connectionDBManager)
+        cmd.Parameters.Add("@CodigoFamilia", SqlDbType.Int).Value = idFamilia
+        dr = cmd.ExecuteReader()
+        If dr.HasRows Then
+            dr.Read()
+            Do
+                listaArticulosFamilia.Add(Convert.ToInt32(dr(0)))
+            Loop While dr.Read()
+            dr.Close()
+        End If
+        For Each numeroArticulo As Integer In listaArticulosFamilia
+            managerInventarioAux.deleteInventarioArticulo(numeroArticulo)
+            managerCompraAux.deleteCompraArticulo(numeroArticulo)
+            managerVentaAux.deleteVentaArticulo(numeroArticulo)
+        Next
+        cmd = New SqlCommand("DELETE FROM ARTICULOS WHERE ID_FAMILIA = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = idFamilia
+        Try
+            cmd.ExecuteNonQuery()
+            'VariablesGlobales.updateListaArticulos()
         Catch ex As Exception
             MessageBox.Show("Error al eliminar el artículo: " + vbCrLf + ex.ToString())
         End Try
@@ -100,17 +144,10 @@ Public Class ManagerArticulo
         End If
         Return Nothing
     End Function
-    'Public Function getIDArticulo(nombreArticulo As String) As Integer
-    '    cmd = New SqlCommand($"SELECT ID_ARTICULO FROM ARTICULOS WHERE NOMBRE_ARTICULO = @Nombre;", connectionDBManager)
-    '    cmd.Parameters.Add("@Nombre", SqlDbType.Char, 100).Value = nombreArticulo
-    '    Dim campoObtenido As Object = cmd.ExecuteScalar()
-    '    Dim campoTemp As String
-    '    If campoObtenido IsNot DBNull.Value Then
-    '        campoTemp = Convert.ToInt32(campoObtenido)
-    '        Return campoTemp
-    '    End If
-    '    Return Nothing
-    'End Function
+    Public Function getArticuloConcreto(codigo As Integer) As Articulo
+        Dim articuloFind As Articulo = VariablesGlobales.listaArticulosAux.Find(Function(a) a.CodigoDeArticulo = codigo)
+        Return articuloFind
+    End Function
     Public Function getIDArticulo() As Integer
         cmd = New SqlCommand("SELECT MAX(ID_ARTICULO) FROM ARTICULOS;", connectionDBManager)
         Dim maxActual As Object = cmd.ExecuteScalar()
