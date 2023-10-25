@@ -39,6 +39,10 @@ Public Class ManagerArticulo
         Return listaArticulos
     End Function
     Public Sub addArticulo(articuloPasado As Articulo)
+        If Not checkNombreUnique(articuloPasado.NombreDeArticulo) Then
+            MessageBox.Show("Ya existe un artículo con ese nombre, no puede repetirse")
+            Return
+        End If
         Dim codigoNuevo As Integer = getIDArticulo()
         cmd = New SqlCommand("INSERT INTO ARTICULOS VALUES 
                             (@Codigo, 
@@ -59,7 +63,7 @@ Public Class ManagerArticulo
         End With
         Try
             cmd.ExecuteNonQuery()
-            'VariablesGlobales.updateListaArticulos()
+            VariablesGlobales.updateListaArticulos()
         Catch ex As Exception
             MessageBox.Show("Error al introducir nuevo Artículo: " + vbCrLf + ex.ToString())
         End Try
@@ -84,7 +88,7 @@ Public Class ManagerArticulo
         End With
         Try
             cmd.ExecuteNonQuery()
-            'VariablesGlobales.updateListaArticulos()
+            VariablesGlobales.updateListaArticulos()
         Catch ex As Exception
             MessageBox.Show("Error al modificar nuevo Artículo: " + vbCrLf + ex.ToString())
         End Try
@@ -102,7 +106,7 @@ Public Class ManagerArticulo
         cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = articuloPasado.CodigoDeArticulo
         Try
             cmd.ExecuteNonQuery()
-            'VariablesGlobales.updateListaArticulos()
+            VariablesGlobales.updateListaArticulos()
         Catch ex As Exception
             MessageBox.Show("Error al eliminar el artículo: " + vbCrLf + ex.ToString())
         End Try
@@ -128,7 +132,7 @@ Public Class ManagerArticulo
         cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = idFamilia
         Try
             cmd.ExecuteNonQuery()
-            'VariablesGlobales.updateListaArticulos()
+            VariablesGlobales.updateListaArticulos()
         Catch ex As Exception
             MessageBox.Show("Error al eliminar el artículo: " + vbCrLf + ex.ToString())
         End Try
@@ -143,6 +147,16 @@ Public Class ManagerArticulo
             Return campoTemp
         End If
         Return Nothing
+    End Function
+    Public Function checkNombreUnique(nombre As String) As Boolean
+        cmd = New SqlCommand("SELECT NOMBRE_ARTICULO FROM ARTICULOS WHERE NOMBRE_ARTICULO = @Nombre", connectionDBManager)
+        cmd.Parameters.Add("@Nombre", SqlDbType.Char, 100).Value = nombre
+        Dim nombreObj As Object = cmd.ExecuteScalar
+        If nombreObj Is DBNull.Value Then
+            Return True
+        Else
+            Return False
+        End If
     End Function
     Public Function getArticuloConcreto(codigo As Integer) As Articulo
         Dim articuloFind As Articulo = VariablesGlobales.listaArticulosAux.Find(Function(a) a.CodigoDeArticulo = codigo)

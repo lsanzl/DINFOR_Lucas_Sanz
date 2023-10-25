@@ -30,10 +30,14 @@ Partial Class frmMain
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.tab_main = New System.Windows.Forms.TabControl()
         Me.tab_menu_principal = New System.Windows.Forms.TabPage()
         Me.tlp_menu_main = New System.Windows.Forms.TableLayoutPanel()
@@ -91,12 +95,16 @@ Partial Class frmMain
         Me.tab_inventario = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel7 = New System.Windows.Forms.TableLayoutPanel()
         Me.dg_inventario = New System.Windows.Forms.DataGridView()
+        Me.idAlmacen = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.nombreArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.stockActual = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dg_movimientos = New System.Windows.Forms.DataGridView()
         Me.TableLayoutPanel8 = New System.Windows.Forms.TableLayoutPanel()
         Me.btn_restar_unidades = New System.Windows.Forms.Button()
         Me.btn_añadir_unidades = New System.Windows.Forms.Button()
         Me.btn_añadir_articulo_inventario = New System.Windows.Forms.Button()
-        Me.btn_eliminar_articulo_inventario = New System.Windows.Forms.Button()
         Me.txt_busqueda_inventario = New System.Windows.Forms.TextBox()
+        Me.btn_eliminar_articulo_inventario = New System.Windows.Forms.Button()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel9 = New System.Windows.Forms.TableLayoutPanel()
         Me.btn_actualizacion_campo_extra = New System.Windows.Forms.Button()
@@ -130,9 +138,13 @@ Partial Class frmMain
         Me.ClienteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.BancoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GrupoBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.idAlmacen = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.nombreArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.stockActual = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.idMovimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.usuarioMovimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.articuloMovimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.tipoMovimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.facturaMovimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fechaMovimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.stockMovimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tab_main.SuspendLayout()
         Me.tab_menu_principal.SuspendLayout()
         Me.tlp_menu_main.SuspendLayout()
@@ -157,6 +169,7 @@ Partial Class frmMain
         Me.tab_inventario.SuspendLayout()
         Me.TableLayoutPanel7.SuspendLayout()
         CType(Me.dg_inventario, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dg_movimientos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel8.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TableLayoutPanel9.SuspendLayout()
@@ -939,11 +952,13 @@ Partial Class frmMain
         Me.TableLayoutPanel7.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel7.ColumnCount = 2
-        Me.TableLayoutPanel7.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85.0!))
-        Me.TableLayoutPanel7.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.0!))
+        Me.TableLayoutPanel7.ColumnCount = 3
+        Me.TableLayoutPanel7.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel7.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.0!))
+        Me.TableLayoutPanel7.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.0!))
         Me.TableLayoutPanel7.Controls.Add(Me.dg_inventario, 0, 0)
-        Me.TableLayoutPanel7.Controls.Add(Me.TableLayoutPanel8, 1, 0)
+        Me.TableLayoutPanel7.Controls.Add(Me.dg_movimientos, 1, 0)
+        Me.TableLayoutPanel7.Controls.Add(Me.TableLayoutPanel8, 2, 0)
         Me.TableLayoutPanel7.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel7.Name = "TableLayoutPanel7"
         Me.TableLayoutPanel7.Padding = New System.Windows.Forms.Padding(3)
@@ -988,8 +1003,69 @@ Partial Class frmMain
         DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dg_inventario.RowHeadersDefaultCellStyle = DataGridViewCellStyle10
-        Me.dg_inventario.Size = New System.Drawing.Size(662, 376)
+        Me.dg_inventario.Size = New System.Drawing.Size(190, 376)
         Me.dg_inventario.TabIndex = 0
+        '
+        'idAlmacen
+        '
+        Me.idAlmacen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.idAlmacen.DataPropertyName = "codigoInventario"
+        Me.idAlmacen.HeaderText = "ID"
+        Me.idAlmacen.Name = "idAlmacen"
+        Me.idAlmacen.ReadOnly = True
+        Me.idAlmacen.Visible = False
+        '
+        'nombreArticulo
+        '
+        Me.nombreArticulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.nombreArticulo.DataPropertyName = "ArticuloDeInventario.NombreDeArticulo"
+        Me.nombreArticulo.HeaderText = "Artículo"
+        Me.nombreArticulo.Name = "nombreArticulo"
+        Me.nombreArticulo.ReadOnly = True
+        '
+        'stockActual
+        '
+        Me.stockActual.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.stockActual.DataPropertyName = "UnidadesDisponibles"
+        Me.stockActual.HeaderText = "Stock Actual"
+        Me.stockActual.Name = "stockActual"
+        Me.stockActual.ReadOnly = True
+        '
+        'dg_movimientos
+        '
+        Me.dg_movimientos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_movimientos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
+        Me.dg_movimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dg_movimientos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idMovimiento, Me.usuarioMovimiento, Me.articuloMovimiento, Me.tipoMovimiento, Me.facturaMovimiento, Me.fechaMovimiento, Me.stockMovimiento})
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg_movimientos.DefaultCellStyle = DataGridViewCellStyle13
+        Me.dg_movimientos.Location = New System.Drawing.Point(202, 6)
+        Me.dg_movimientos.Name = "dg_movimientos"
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_movimientos.RowHeadersDefaultCellStyle = DataGridViewCellStyle14
+        Me.dg_movimientos.Size = New System.Drawing.Size(489, 376)
+        Me.dg_movimientos.TabIndex = 2
         '
         'TableLayoutPanel8
         '
@@ -1001,27 +1077,27 @@ Partial Class frmMain
         Me.TableLayoutPanel8.Controls.Add(Me.btn_restar_unidades, 0, 1)
         Me.TableLayoutPanel8.Controls.Add(Me.btn_añadir_unidades, 0, 0)
         Me.TableLayoutPanel8.Controls.Add(Me.btn_añadir_articulo_inventario, 0, 2)
-        Me.TableLayoutPanel8.Controls.Add(Me.btn_eliminar_articulo_inventario, 0, 3)
         Me.TableLayoutPanel8.Controls.Add(Me.txt_busqueda_inventario, 0, 4)
-        Me.TableLayoutPanel8.Location = New System.Drawing.Point(674, 6)
+        Me.TableLayoutPanel8.Controls.Add(Me.btn_eliminar_articulo_inventario, 0, 3)
+        Me.TableLayoutPanel8.Location = New System.Drawing.Point(697, 6)
         Me.TableLayoutPanel8.Name = "TableLayoutPanel8"
         Me.TableLayoutPanel8.RowCount = 6
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel8.Size = New System.Drawing.Size(112, 376)
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.0!))
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.0!))
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.0!))
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.0!))
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.0!))
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.0!))
+        Me.TableLayoutPanel8.Size = New System.Drawing.Size(89, 376)
         Me.TableLayoutPanel8.TabIndex = 1
         '
         'btn_restar_unidades
         '
         Me.btn_restar_unidades.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_restar_unidades.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_restar_unidades.Location = New System.Drawing.Point(3, 44)
+        Me.btn_restar_unidades.Location = New System.Drawing.Point(3, 48)
         Me.btn_restar_unidades.Name = "btn_restar_unidades"
-        Me.btn_restar_unidades.Size = New System.Drawing.Size(106, 23)
+        Me.btn_restar_unidades.Size = New System.Drawing.Size(83, 39)
         Me.btn_restar_unidades.TabIndex = 1
         Me.btn_restar_unidades.Text = "RESTAR UDS"
         Me.btn_restar_unidades.UseVisualStyleBackColor = True
@@ -1030,9 +1106,9 @@ Partial Class frmMain
         '
         Me.btn_añadir_unidades.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_añadir_unidades.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_añadir_unidades.Location = New System.Drawing.Point(3, 7)
+        Me.btn_añadir_unidades.Location = New System.Drawing.Point(3, 3)
         Me.btn_añadir_unidades.Name = "btn_añadir_unidades"
-        Me.btn_añadir_unidades.Size = New System.Drawing.Size(106, 23)
+        Me.btn_añadir_unidades.Size = New System.Drawing.Size(83, 39)
         Me.btn_añadir_unidades.TabIndex = 0
         Me.btn_añadir_unidades.Text = "AÑADIR UDS"
         Me.btn_añadir_unidades.UseVisualStyleBackColor = True
@@ -1041,32 +1117,32 @@ Partial Class frmMain
         '
         Me.btn_añadir_articulo_inventario.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_añadir_articulo_inventario.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_añadir_articulo_inventario.Location = New System.Drawing.Point(3, 81)
+        Me.btn_añadir_articulo_inventario.Location = New System.Drawing.Point(3, 93)
         Me.btn_añadir_articulo_inventario.Name = "btn_añadir_articulo_inventario"
-        Me.btn_añadir_articulo_inventario.Size = New System.Drawing.Size(106, 23)
+        Me.btn_añadir_articulo_inventario.Size = New System.Drawing.Size(83, 39)
         Me.btn_añadir_articulo_inventario.TabIndex = 2
         Me.btn_añadir_articulo_inventario.Text = "AÑADIR ART"
         Me.btn_añadir_articulo_inventario.UseVisualStyleBackColor = True
+        '
+        'txt_busqueda_inventario
+        '
+        Me.txt_busqueda_inventario.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_busqueda_inventario.Location = New System.Drawing.Point(3, 192)
+        Me.txt_busqueda_inventario.Name = "txt_busqueda_inventario"
+        Me.txt_busqueda_inventario.Size = New System.Drawing.Size(83, 20)
+        Me.txt_busqueda_inventario.TabIndex = 4
         '
         'btn_eliminar_articulo_inventario
         '
         Me.btn_eliminar_articulo_inventario.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_eliminar_articulo_inventario.Enabled = False
         Me.btn_eliminar_articulo_inventario.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_eliminar_articulo_inventario.Location = New System.Drawing.Point(3, 118)
+        Me.btn_eliminar_articulo_inventario.Location = New System.Drawing.Point(3, 138)
         Me.btn_eliminar_articulo_inventario.Name = "btn_eliminar_articulo_inventario"
-        Me.btn_eliminar_articulo_inventario.Size = New System.Drawing.Size(106, 23)
+        Me.btn_eliminar_articulo_inventario.Size = New System.Drawing.Size(83, 39)
         Me.btn_eliminar_articulo_inventario.TabIndex = 3
         Me.btn_eliminar_articulo_inventario.Text = "BORRAR ART"
         Me.btn_eliminar_articulo_inventario.UseVisualStyleBackColor = True
-        '
-        'txt_busqueda_inventario
-        '
-        Me.txt_busqueda_inventario.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txt_busqueda_inventario.Location = New System.Drawing.Point(3, 156)
-        Me.txt_busqueda_inventario.Name = "txt_busqueda_inventario"
-        Me.txt_busqueda_inventario.Size = New System.Drawing.Size(106, 20)
-        Me.txt_busqueda_inventario.TabIndex = 4
         '
         'TabPage1
         '
@@ -1346,30 +1422,57 @@ Partial Class frmMain
         '
         Me.GrupoBindingSource1.DataSource = GetType(MP_Lucas_Sanz.Grupo)
         '
-        'idAlmacen
+        'idMovimiento
         '
-        Me.idAlmacen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.idAlmacen.DataPropertyName = "codigoInventario"
-        Me.idAlmacen.HeaderText = "ID"
-        Me.idAlmacen.Name = "idAlmacen"
-        Me.idAlmacen.ReadOnly = True
-        Me.idAlmacen.Visible = False
+        Me.idMovimiento.HeaderText = "ID"
+        Me.idMovimiento.Name = "idMovimiento"
+        Me.idMovimiento.ReadOnly = True
+        Me.idMovimiento.Visible = False
         '
-        'nombreArticulo
+        'usuarioMovimiento
         '
-        Me.nombreArticulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.nombreArticulo.DataPropertyName = "ArticuloDeInventario.NombreDeArticulo"
-        Me.nombreArticulo.HeaderText = "Artículo"
-        Me.nombreArticulo.Name = "nombreArticulo"
-        Me.nombreArticulo.ReadOnly = True
+        Me.usuarioMovimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.usuarioMovimiento.HeaderText = "Usuario"
+        Me.usuarioMovimiento.Name = "usuarioMovimiento"
+        Me.usuarioMovimiento.ReadOnly = True
         '
-        'stockActual
+        'articuloMovimiento
         '
-        Me.stockActual.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.stockActual.DataPropertyName = "UnidadesDisponibles"
-        Me.stockActual.HeaderText = "Stock Actual"
-        Me.stockActual.Name = "stockActual"
-        Me.stockActual.ReadOnly = True
+        Me.articuloMovimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.articuloMovimiento.HeaderText = "Artículo"
+        Me.articuloMovimiento.Name = "articuloMovimiento"
+        Me.articuloMovimiento.ReadOnly = True
+        '
+        'tipoMovimiento
+        '
+        Me.tipoMovimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.tipoMovimiento.HeaderText = "Tipo"
+        Me.tipoMovimiento.Name = "tipoMovimiento"
+        Me.tipoMovimiento.ReadOnly = True
+        '
+        'facturaMovimiento
+        '
+        Me.facturaMovimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.facturaMovimiento.HeaderText = "Factura"
+        Me.facturaMovimiento.Name = "facturaMovimiento"
+        Me.facturaMovimiento.ReadOnly = True
+        '
+        'fechaMovimiento
+        '
+        Me.fechaMovimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        DataGridViewCellStyle12.Format = "d"
+        DataGridViewCellStyle12.NullValue = Nothing
+        Me.fechaMovimiento.DefaultCellStyle = DataGridViewCellStyle12
+        Me.fechaMovimiento.HeaderText = "Fecha"
+        Me.fechaMovimiento.Name = "fechaMovimiento"
+        Me.fechaMovimiento.ReadOnly = True
+        '
+        'stockMovimiento
+        '
+        Me.stockMovimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.stockMovimiento.HeaderText = "Stock"
+        Me.stockMovimiento.Name = "stockMovimiento"
+        Me.stockMovimiento.ReadOnly = True
         '
         'frmMain
         '
@@ -1404,6 +1507,7 @@ Partial Class frmMain
         Me.tab_inventario.ResumeLayout(False)
         Me.TableLayoutPanel7.ResumeLayout(False)
         CType(Me.dg_inventario, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dg_movimientos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel8.ResumeLayout(False)
         Me.TableLayoutPanel8.PerformLayout()
         Me.TabPage1.ResumeLayout(False)
@@ -1519,4 +1623,12 @@ Partial Class frmMain
     Friend WithEvents idAlmacen As DataGridViewTextBoxColumn
     Friend WithEvents nombreArticulo As DataGridViewTextBoxColumn
     Friend WithEvents stockActual As DataGridViewTextBoxColumn
+    Friend WithEvents dg_movimientos As DataGridView
+    Friend WithEvents idMovimiento As DataGridViewTextBoxColumn
+    Friend WithEvents usuarioMovimiento As DataGridViewTextBoxColumn
+    Friend WithEvents articuloMovimiento As DataGridViewTextBoxColumn
+    Friend WithEvents tipoMovimiento As DataGridViewTextBoxColumn
+    Friend WithEvents facturaMovimiento As DataGridViewTextBoxColumn
+    Friend WithEvents fechaMovimiento As DataGridViewTextBoxColumn
+    Friend WithEvents stockMovimiento As DataGridViewTextBoxColumn
 End Class

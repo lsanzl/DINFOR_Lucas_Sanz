@@ -1,7 +1,7 @@
 ﻿Public Class Movimiento
     Private codigoMovimiento As Integer
-    Private tipoMovimiento As Char
-    Private facturaMovimiento As Integer
+    Private tipoMovimiento As String
+    Private facturaMovimiento As String
     Private clienteMovimiento As Integer
     Private proveedorMovimiento As Integer
     Private fechaMovimiento As Date
@@ -16,19 +16,19 @@
             codigoMovimiento = value
         End Set
     End Property
-    Public Property TipoDeMovimiento() As Char
+    Public Property TipoDeMovimiento() As String
         Get
             Return tipoMovimiento
         End Get
-        Set(value As Char)
+        Set(value As String)
             tipoMovimiento = value
         End Set
     End Property
-    Public Property FacturaDeMovimiento() As Integer
+    Public Property FacturaDeMovimiento() As String
         Get
             Return facturaMovimiento
         End Get
-        Set(value As Integer)
+        Set(value As String)
             facturaMovimiento = value
         End Set
     End Property
@@ -76,8 +76,30 @@
     Public Sub New()
         MyBase.New()
     End Sub
-    Public Sub New(codigoMovimientoP As Integer, tipoMovimientoP As Char,
-                   facturaMovimientoP As Integer, usuarioMovimientoP As Integer, fechaMovimientoP As Date,
+    Public Sub New(tipoMovimientoP As String, facturaMovimientoP As String,
+                   usuarioMovimientoP As Integer, fechaMovimientoP As Date,
+                   articuloMovimientoP As Integer, stockActualP As Integer)
+        MyBase.New()
+        CodigoDeMovimiento = managerMovimientoAux.getIDMovimiento()
+        TipoDeMovimiento = tipoMovimientoP
+        FacturaDeMovimiento = facturaMovimientoP
+        FechaDeMovimiento = fechaMovimientoP
+        ArticuloDeMovimiento = articuloMovimientoP
+        StockActualDeMovimiento = stockActualP
+        If TipoDeMovimiento.Equals("V") Then
+            ClienteDeMovimiento = usuarioMovimientoP
+            ProveedorDeMovimiento = 0
+        ElseIf TipoDeMovimiento.Equals("C") Then
+            ProveedorDeMovimiento = usuarioMovimientoP
+            ClienteDeMovimiento = 0
+        Else
+            ClienteDeMovimiento = 0
+            ProveedorDeMovimiento = 0
+            FacturaDeMovimiento = 0
+        End If
+    End Sub
+    Public Sub New(codigoMovimientoP As Integer, tipoMovimientoP As Char, facturaMovimientoP As String,
+                   usuarioMovimientoP As Integer, fechaMovimientoP As Date,
                    articuloMovimientoP As Integer, stockActualP As Integer)
         MyBase.New()
         CodigoDeMovimiento = codigoMovimientoP

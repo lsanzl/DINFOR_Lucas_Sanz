@@ -108,6 +108,7 @@
     <Compile Include="Controller\ctrGrupo.vb" />
     <Compile Include="Controller\ctrInventario.vb" />
     <Compile Include="Controller\ctrMenu.vb" />
+    <Compile Include="Controller\ctrMovimiento.vb" />
     <Compile Include="Controller\ctrProveedor.vb" />
     <Compile Include="Manager\ManagerArticulo.vb" />
     <Compile Include="Manager\ManagerBanco.vb" />

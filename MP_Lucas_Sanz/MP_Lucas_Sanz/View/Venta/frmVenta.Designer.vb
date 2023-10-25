@@ -22,8 +22,6 @@ Partial Class frmVenta
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmVenta))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
@@ -43,10 +41,10 @@ Partial Class frmVenta
         Me.btn_modificar_venta = New System.Windows.Forms.Button()
         Me.btn_eliminar_venta = New System.Windows.Forms.Button()
         Me.btn_añadir_venta = New System.Windows.Forms.Button()
-        Me.dg_ventas = New System.Windows.Forms.DataGridView()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
         Me.btn_confirmar_venta = New System.Windows.Forms.Button()
         Me.lbl_precio_sumatorio_venta = New System.Windows.Forms.Label()
+        Me.dg_ventas = New System.Windows.Forms.DataGridView()
         Me.clienteVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.articuloVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.formaPagoVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -56,8 +54,8 @@ Partial Class frmVenta
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
-        CType(Me.dg_ventas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel4.SuspendLayout()
+        CType(Me.dg_ventas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -69,8 +67,8 @@ Partial Class frmVenta
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel2, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel3, 0, 1)
-        Me.TableLayoutPanel1.Controls.Add(Me.dg_ventas, 0, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel4, 0, 3)
+        Me.TableLayoutPanel1.Controls.Add(Me.dg_ventas, 0, 2)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(2, 2)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 4
@@ -297,29 +295,6 @@ Partial Class frmVenta
         Me.btn_añadir_venta.Text = "AÑADIR"
         Me.btn_añadir_venta.UseVisualStyleBackColor = True
         '
-        'dg_ventas
-        '
-        Me.dg_ventas.AllowUserToAddRows = False
-        Me.dg_ventas.AllowUserToDeleteRows = False
-        Me.dg_ventas.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg_ventas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.dg_ventas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_ventas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clienteVenta, Me.articuloVenta, Me.formaPagoVenta, Me.precioArticuloVenta, Me.cantidadVenta, Me.precioTotalVenta})
-        Me.dg_ventas.Location = New System.Drawing.Point(3, 199)
-        Me.dg_ventas.Name = "dg_ventas"
-        Me.dg_ventas.ReadOnly = True
-        Me.dg_ventas.Size = New System.Drawing.Size(714, 151)
-        Me.dg_ventas.TabIndex = 2
-        '
         'TableLayoutPanel4
         '
         Me.TableLayoutPanel4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -362,10 +337,21 @@ Partial Class frmVenta
         Me.lbl_precio_sumatorio_venta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.lbl_precio_sumatorio_venta.Visible = False
         '
+        'dg_ventas
+        '
+        Me.dg_ventas.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dg_ventas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dg_ventas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clienteVenta, Me.articuloVenta, Me.formaPagoVenta, Me.precioArticuloVenta, Me.cantidadVenta, Me.precioTotalVenta})
+        Me.dg_ventas.Location = New System.Drawing.Point(3, 199)
+        Me.dg_ventas.Name = "dg_ventas"
+        Me.dg_ventas.Size = New System.Drawing.Size(714, 151)
+        Me.dg_ventas.TabIndex = 4
+        '
         'clienteVenta
         '
         Me.clienteVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.clienteVenta.DataPropertyName = "ClienteDeVenta"
         Me.clienteVenta.HeaderText = "Cliente"
         Me.clienteVenta.Name = "clienteVenta"
         Me.clienteVenta.ReadOnly = True
@@ -373,7 +359,6 @@ Partial Class frmVenta
         'articuloVenta
         '
         Me.articuloVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.articuloVenta.DataPropertyName = "ArticuloDeVenta"
         Me.articuloVenta.HeaderText = "Artículo"
         Me.articuloVenta.Name = "articuloVenta"
         Me.articuloVenta.ReadOnly = True
@@ -381,16 +366,13 @@ Partial Class frmVenta
         'formaPagoVenta
         '
         Me.formaPagoVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.formaPagoVenta.DataPropertyName = "FormaDePagoVenta"
         Me.formaPagoVenta.HeaderText = "Pago"
         Me.formaPagoVenta.Name = "formaPagoVenta"
         Me.formaPagoVenta.ReadOnly = True
         '
         'precioArticuloVenta
         '
-        Me.precioArticuloVenta.DataPropertyName = "PrecioDeArticuloVenta"
-        DataGridViewCellStyle2.Format = "N2"
-        Me.precioArticuloVenta.DefaultCellStyle = DataGridViewCellStyle2
+        Me.precioArticuloVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.precioArticuloVenta.HeaderText = "Precio Ud"
         Me.precioArticuloVenta.Name = "precioArticuloVenta"
         Me.precioArticuloVenta.ReadOnly = True
@@ -398,7 +380,6 @@ Partial Class frmVenta
         'cantidadVenta
         '
         Me.cantidadVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.cantidadVenta.DataPropertyName = "CantidadDeVenta"
         Me.cantidadVenta.HeaderText = "Cantidad"
         Me.cantidadVenta.Name = "cantidadVenta"
         Me.cantidadVenta.ReadOnly = True
@@ -406,8 +387,7 @@ Partial Class frmVenta
         'precioTotalVenta
         '
         Me.precioTotalVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.precioTotalVenta.DataPropertyName = "PrecioTotalDeVenta"
-        Me.precioTotalVenta.HeaderText = "Precio Total"
+        Me.precioTotalVenta.HeaderText = "Total"
         Me.precioTotalVenta.Name = "precioTotalVenta"
         Me.precioTotalVenta.ReadOnly = True
         '
@@ -429,9 +409,9 @@ Partial Class frmVenta
         Me.TableLayoutPanel2.ResumeLayout(False)
         Me.TableLayoutPanel2.PerformLayout()
         Me.TableLayoutPanel3.ResumeLayout(False)
-        CType(Me.dg_ventas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel4.ResumeLayout(False)
         Me.TableLayoutPanel4.PerformLayout()
+        CType(Me.dg_ventas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -452,12 +432,12 @@ Partial Class frmVenta
     Friend WithEvents btn_modificar_venta As Button
     Friend WithEvents btn_eliminar_venta As Button
     Friend WithEvents btn_añadir_venta As Button
-    Friend WithEvents dg_ventas As DataGridView
     Friend WithEvents TableLayoutPanel4 As TableLayoutPanel
     Friend WithEvents btn_confirmar_venta As Button
     Friend WithEvents lbl_precio_sumatorio_venta As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents dp_fecha_venta As DateTimePicker
+    Friend WithEvents dg_ventas As DataGridView
     Friend WithEvents clienteVenta As DataGridViewTextBoxColumn
     Friend WithEvents articuloVenta As DataGridViewTextBoxColumn
     Friend WithEvents formaPagoVenta As DataGridViewTextBoxColumn

@@ -44,13 +44,13 @@ Public Class ManagerInventario
         End Try
         Return Nothing
     End Function
-    Public Sub addUnidades(cantidadSumar As Integer, inventarioPasado As Inventario, articuloPasado As Articulo)
+    Public Sub addUnidades(cantidadSumar As Integer, articuloPasado As Integer)
         cmd = New SqlCommand("UPDATE INVENTARIOS SET 
                             UNIDADES_INVENTARIO = UNIDADES_INVENTARIO + @CantidadSumar
-                            WHERE ID_INVENTARIO = @CodigoInventario;", connectionDBManager)
+                            WHERE ID_ARTICULO = @CodigoArticulo;", connectionDBManager)
         With cmd.Parameters
             .Add("@CantidadSumar", SqlDbType.Int).Value = cantidadSumar
-            .Add("@CodigoInventario", SqlDbType.Int).Value = inventarioPasado.CodigoDeInventario
+            .Add("@CodigoArticulo", SqlDbType.Int).Value = articuloPasado
         End With
         Try
             cmd.ExecuteNonQuery()
@@ -58,8 +58,14 @@ Public Class ManagerInventario
             MessageBox.Show("Error al añadir unidades: " + vbCrLf + ex.ToString())
         End Try
     End Sub
-    Public Sub deleteUnidades(cantidadRestar As Integer, inventarioPasado As Inventario, articuloPasado As Articulo)
-        If inventarioPasado.UnidadesDisponibles - cantidadRestar < 0 Then
+    Public Sub deleteUnidades(cantidadRestar As Integer, articuloPasado As Integer)
+        cmd = New SqlCommand("SELECT UNIDADES_INVENTARIO FROM INVENTARIOS 
+                            WHERE ID_ARTICULO = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = articuloPasado
+        Dim cantidadObject As Object = cmd.ExecuteScalar
+        Dim unidadesDisponibles As Integer = Convert.ToInt32(cantidadObject)
+
+        If unidadesDisponibles - cantidadRestar < 0 Then
             frmConfirmacionUnidadesNegativas.ShowDialog()
             If Not frmConfirmacionUnidadesNegativas.respuesta Then
                 Return
@@ -67,10 +73,10 @@ Public Class ManagerInventario
         End If
         cmd = New SqlCommand("UPDATE INVENTARIOS SET 
                             UNIDADES_INVENTARIO = UNIDADES_INVENTARIO - @CantidadRestar
-                            WHERE ID_INVENTARIO = @CodigoInventario;", connectionDBManager)
+                            WHERE ID_ARTICULO = @CodigoArticulo;", connectionDBManager)
         With cmd.Parameters
             .Add("@CantidadRestar", SqlDbType.Int).Value = cantidadRestar
-            .Add("@CodigoInventario", SqlDbType.Int).Value = inventarioPasado.CodigoDeInventario
+            .Add("@CodigoArticulo", SqlDbType.Int).Value = articuloPasado
         End With
         Try
             cmd.ExecuteNonQuery()

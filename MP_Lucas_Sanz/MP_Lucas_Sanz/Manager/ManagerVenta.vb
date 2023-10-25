@@ -20,6 +20,7 @@ Public Class ManagerVenta
             Dim fecha As Date
             Dim eliminadoInt As Integer
             Dim eliminado As Boolean
+            Dim factura As String
 
             dr.Read()
             Do
@@ -31,6 +32,7 @@ Public Class ManagerVenta
                 cantidad = Convert.ToInt32(dr(5))
                 fecha = Convert.ToDateTime(dr(6))
                 eliminadoInt = Convert.ToInt32(dr(7))
+                factura = dr(8).ToString()
 
                 If eliminadoInt = 0 Then
                     eliminado = False
@@ -38,7 +40,7 @@ Public Class ManagerVenta
                     eliminado = True
                 End If
 
-                ventaAux = New Venta(codigo, cliente, articulo, formaPago, precio, cantidad, fecha, eliminado)
+                ventaAux = New Venta(codigo, cliente, articulo, formaPago, precio, cantidad, fecha, eliminado, factura)
                 listaVentas.Add(ventaAux)
             Loop While dr.Read()
         End If
@@ -48,14 +50,13 @@ Public Class ManagerVenta
     Public Sub addVenta(ventaTemp As Venta)
         Dim listaArticulos As List(Of Articulo) = managerArticuloAux.getArticulos()
         Dim articuloFind As Articulo = listaArticulos.Find(Function(a) a.CodigoDeArticulo = ventaTemp.ArticuloDeVenta)
-        Dim codigoVenta As Integer = getIDCompra()
+        Dim codigoVenta As Integer = getIDVenta()
         Dim eliminadoInt As Integer
         If ventaTemp.VentaEliminada Then
             eliminadoInt = 1
         Else
             eliminadoInt = 0
         End If
-
         cmd = New SqlCommand("INSERT INTO VENTAS VALUES 
                                 (@Codigo,
                                 @Cliente, 
@@ -64,7 +65,8 @@ Public Class ManagerVenta
                                 @PVPVenta,
                                 @Cantidad,
                                 @Fecha,
-                                @Eliminado);", connectionDBManager)
+                                @Eliminado,
+                                @Factura);", connectionDBManager)
         With cmd.Parameters
             .Add("@Codigo", SqlDbType.Int).Value = codigoVenta
             .Add("@Cliente", SqlDbType.Int).Value = ventaTemp.ClienteDeVenta
@@ -74,6 +76,7 @@ Public Class ManagerVenta
             .Add("@Cantidad", SqlDbType.Int).Value = ventaTemp.CantidadDeVenta
             .Add("@Fecha", SqlDbType.Date).Value = ventaTemp.FechaDeVenta
             .Add("@Eliminado", SqlDbType.Bit).Value = eliminadoInt
+            .Add("@Factura", SqlDbType.Char, 10).Value = ventaTemp.FacturaDeVenta
         End With
         Try
             cmd.ExecuteNonQuery()
@@ -108,7 +111,20 @@ Public Class ManagerVenta
             MessageBox.Show(ex.ToString())
         End Try
     End Sub
-    Public Function getIDCompra() As Integer
+    Public Function checkNumFactura(factura As String) As Boolean
+        cmd = New SqlCommand("SELECT NUMERO_FACTURA FROM VENTAS WHERE NUMERO_FACTURA = @Factura", connectionDBManager)
+        cmd.Parameters.Add("@Factura", SqlDbType.Char, 10).Value = factura
+        Try
+            Dim facturaObj As Object = cmd.ExecuteScalar
+            If facturaObj Is DBNull.Value Then
+                Return False
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
+        End Try
+        Return True
+    End Function
+    Public Function getIDVenta() As Integer
         cmd = New SqlCommand("SELECT MAX(ID_VENTA) FROM VENTAS;", connectionDBManager)
         Dim maxActual As Object = cmd.ExecuteScalar()
         Dim codigoVentaNuevo As Integer = Nothing

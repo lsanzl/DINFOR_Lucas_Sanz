@@ -31,11 +31,38 @@
     Public managerMovimientoAux As ManagerMovimiento = New ManagerMovimiento()
 
     ' ----- LISTAS AUXILIARES DE CADA CLASE -----
+    'ARTÍCULOS
     Public listaArticulosAux As List(Of Articulo) = New List(Of Articulo)
     Public Sub updateListaArticulos()
         listaArticulosAux = New List(Of Articulo)
         listaArticulosAux = managerArticuloAux.getArticulos()
     End Sub
+    Public Function getArticuloPorNombre(nombre As String) As Articulo
+        Return listaArticulosAux.Find(Function(a) a.NombreDeArticulo = nombre)
+    End Function
+    Public Function getArticuloPorCodigo(codigo As Integer) As Articulo
+        Return listaArticulosAux.Find(Function(a) a.CodigoDeArticulo = codigo)
+    End Function
+
+    'CLIENTES
+    Public listaClientesAux As List(Of Cliente) = New List(Of Cliente)
+    Public Sub updateListaClientes()
+        listaClientesAux = New List(Of Cliente)
+        listaClientesAux = managerClienteAux.getClientes()
+    End Sub
+    Public Function getClientePorCodigo(codigo As Integer) As Cliente
+        Return listaClientesAux.Find(Function(c) c.CodigoDelCliente = codigo)
+    End Function
+
+    'PROVEEDORES
+    Public listaProveedoresAux As List(Of Proveedor) = New List(Of Proveedor)
+    Public Sub updateListaProveedores()
+        listaProveedoresAux = New List(Of Proveedor)
+        listaProveedoresAux = managerProveedorAux.getProveedores()
+    End Sub
+    Public Function getProveedorPorCodigo(codigo As Integer) As Proveedor
+        Return listaProveedoresAux.Find(Function(p) p.CodigoDeProveedor = codigo)
+    End Function
 
     ' ------------ VARIABLES GLOBALES -------------
     Private empresaSeleccionadaDB As String = Nothing

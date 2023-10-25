@@ -8,6 +8,7 @@
     Private precioTotalVenta As Double
     Private fechaVenta As Date
     Private eliminadoVenta As Boolean
+    Private facturaVenta As String
 
     Public Property CodigoDeVenta() As Integer
         Get
@@ -81,11 +82,19 @@
             eliminadoVenta = value
         End Set
     End Property
+    Public Property FacturaDeVenta() As String
+        Get
+            Return facturaVenta
+        End Get
+        Set(value As String)
+            facturaVenta = value
+        End Set
+    End Property
 
     Public Sub New()
         MyBase.New()
     End Sub
-    Public Sub New(clienteP As String, articuloP As String, formaP As String, precioP As Double, cantidadP As Integer, fechaP As Date)
+    Public Sub New(clienteP As String, articuloP As String, formaP As String, precioP As Double, cantidadP As Integer, fechaP As Date, facturaP As String)
         MyBase.New()
         ClienteDeVenta = clienteP
         ArticuloDeVenta = articuloP
@@ -95,6 +104,7 @@
         FechaDeVenta = fechaP
         PrecioTotalDeVenta = PrecioDeArticuloVenta * CantidadDeVenta
         VentaEliminada = False
+        FacturaDeVenta = facturaP
     End Sub
     Public Sub New(codigoVentaP As Integer, clienteP As String, articuloP As String, formaP As String, precioP As Double, cantidadP As Integer, fechaP As Date)
         MyBase.New()
@@ -120,10 +130,33 @@
         PrecioTotalDeVenta = PrecioDeArticuloVenta * CantidadDeVenta
         VentaEliminada = eliminadoVentaP
     End Sub
+    Public Sub New(codigoVentaP As Integer, clienteP As String, articuloP As String, formaP As String, precioP As Double, cantidadP As Integer, fechaP As Date, eliminadoVentaP As Boolean, facturaVentaP As String)
+        MyBase.New()
+        CodigoDeVenta = codigoVentaP
+        ClienteDeVenta = clienteP
+        ArticuloDeVenta = articuloP
+        FormaDePagoVenta = formaP
+        PrecioDeArticuloVenta = precioP
+        CantidadDeVenta = cantidadP
+        FechaDeVenta = fechaP
+        PrecioTotalDeVenta = PrecioDeArticuloVenta * CantidadDeVenta
+        VentaEliminada = eliminadoVentaP
+        FacturaDeVenta = facturaVentaP
+    End Sub
     Public Function getVentas() As List(Of Venta)
         Return managerVentaAux.getVentas()
     End Function
     Public Sub addVenta()
         managerVentaAux.addVenta(Me)
     End Sub
+    Public Function getRandomFactura() As String
+        Dim random As New Random()
+        Dim numeroAleatorio As Integer
+        Dim facturaGenerada As String
+        Do
+            numeroAleatorio = random.Next(1, 90001)
+            facturaGenerada = "V" + numeroAleatorio.ToString()
+        Loop While Not managerVentaAux.checkNumFactura(facturaGenerada)
+        Return facturaGenerada
+    End Function
 End Class

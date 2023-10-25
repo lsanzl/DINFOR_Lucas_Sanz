@@ -1,12 +1,12 @@
 ﻿Imports System.ComponentModel
 
 Public Class infVenta
-    Dim listaVenta As BindingList(Of Venta) = New BindingList(Of Venta)
+    Dim listaVenta As List(Of Venta) = New List(Of Venta)
     Dim fechaVenta As Date
 
-    Public Sub New(listaVentaP As BindingList(Of Venta), fechaVentaP As Date)
+    Public Sub New(listaVentaP As List(Of Venta), fechaVentaP As Date)
         MyBase.New()
-        listaVenta = New BindingList(Of Venta)
+        listaVenta = New List(Of Venta)
         listaVenta = listaVentaP
         fechaVenta = fechaVentaP
 

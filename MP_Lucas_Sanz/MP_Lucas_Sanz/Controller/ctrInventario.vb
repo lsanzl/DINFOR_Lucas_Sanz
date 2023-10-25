@@ -103,7 +103,6 @@ Public Class ctrInventario
             frmInventario.btn_restar_unidades.Enabled = True
             frmInventario.btn_eliminar_articulo_inventario.Enabled = True
             Dim codigoInventario As Integer = frmInventario.dg_inventario.Rows(e.RowIndex).Cells("idAlmacen").Value
-            'inventarioTemp = frmInventario.dg_inventario.Rows(e.RowIndex).DataBoundItem
             inventarioTemp = managerInventarioAux.getInventario(codigoInventario)
         End If
     End Sub

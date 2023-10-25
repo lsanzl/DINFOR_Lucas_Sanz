@@ -16,5 +16,6 @@ Public Class frmMain
         Dim ctrInventario As ctrInventario = New ctrInventario(Me)
         Dim ctrMenu As ctrMenu = New ctrMenu(Me)
         Dim ctrConfiguraciones As ctrConfiguraciones = New ctrConfiguraciones(Me)
+        Dim ctrMovimiento As ctrMovimiento = New ctrMovimiento(Me)
     End Sub
 End Class

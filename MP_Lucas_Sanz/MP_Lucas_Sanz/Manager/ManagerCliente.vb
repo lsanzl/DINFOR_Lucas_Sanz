@@ -69,6 +69,7 @@ Public Class ManagerCliente
                 .Add("@Email", SqlDbType.Char, 100).Value = clientePasado.EmailDelCliente
             End With
             cmd.ExecuteNonQuery()
+            VariablesGlobales.updateListaClientes()
         Catch ex As Exception
             MessageBox.Show("Error al introducir un cliente: " + vbCrLf + ex.ToString())
         End Try
@@ -95,6 +96,7 @@ Public Class ManagerCliente
         End With
         Try
             cmd.ExecuteNonQuery()
+            VariablesGlobales.updateListaClientes()
         Catch ex As Exception
             MessageBox.Show("Error al modificar un cliente: " + vbCrLf + ex.ToString())
         End Try
@@ -110,6 +112,7 @@ Public Class ManagerCliente
         cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = clientePasado.CodigoDelCliente
         Try
             cmd.ExecuteNonQuery()
+            VariablesGlobales.updateListaClientes()
         Catch ex As Exception
             MessageBox.Show("Error al eliminar un cliente: " + vbCrLf + ex.ToString())
         End Try
@@ -133,6 +136,7 @@ Public Class ManagerCliente
         cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = codigoGrupo
         Try
             cmd.ExecuteNonQuery()
+            VariablesGlobales.updateListaClientes()
         Catch ex As Exception
             MessageBox.Show("Error al eliminar un cliente: " + vbCrLf + ex.ToString())
         End Try

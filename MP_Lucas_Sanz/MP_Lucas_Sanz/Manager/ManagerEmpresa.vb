@@ -102,7 +102,7 @@ Public Class ManagerEmpresa
         cmd.ExecuteNonQuery()
         cmd = New SqlCommand("INSERT INTO CLIENTES VALUES (0, 0, 0, 'SIN CLIENTE', '', '', '', '');", connectionDBManager)
         cmd.ExecuteNonQuery()
-        ' ---------------------- PROVEEDORES --------------------------
+        ' -------------------- PROVEEDORES -------------------------
         cmd = New SqlCommand("CREATE TABLE PROVEEDORES(
                             ID_PROVEEDOR INT PRIMARY KEY,
                             NOMBRE_PROVEEDOR VARCHAR(100),
@@ -122,7 +122,7 @@ Public Class ManagerEmpresa
         cmd.ExecuteNonQuery()
         cmd = New SqlCommand("INSERT INTO FAMILIAS VALUES (0, 'SIN FAMILIA');", connectionDBManager)
         cmd.ExecuteNonQuery()
-        ' ---------------------- ARTICULOS --------------------------
+        ' --------------------- ARTICULOS -------------------------
         cmd = New SqlCommand("CREATE TABLE ARTICULOS(
                             ID_ARTICULO INT PRIMARY KEY,
                             ID_FAMILIA INT,
@@ -136,7 +136,7 @@ Public Class ManagerEmpresa
         cmd.ExecuteNonQuery()
         cmd = New SqlCommand("INSERT INTO ARTICULOS VALUES(0, 0, 'SIN ARTICULO', '', 0, 0, '');", connectionDBManager)
         cmd.ExecuteNonQuery()
-        ' ---------------------- INVENTARIOS --------------------------
+        ' -------------------- INVENTARIOS ------------------------
         cmd = New SqlCommand("CREATE TABLE INVENTARIOS(
                             ID_INVENTARIO INT PRIMARY KEY,
                             ID_ARTICULO INT,
@@ -174,6 +174,21 @@ Public Class ManagerEmpresa
                             FOREIGN KEY(ID_FORMA_PAGO) REFERENCES FORMASPAGO(ID_FORMA_PAGO)
                             );", connectionDBManager)
         cmd.ExecuteNonQuery()
+        ' -------------------- MOVIMIENTOS ------------------------
+        cmd = New SqlCommand("CREATE TABLE MOVIMIENTOS(
+                            ID_MOVIMIENTO INT PRIMARY KEY,
+                            ID_CLIENTE INT,
+                            ID_PROVEEDOR INT,
+                            ID_ARTICULO INT,
+                            TIPO_MOVIMIENTO CHAR,
+                            FACTURA_MOVIMIENTO VARCHAR(10),
+                            FECHA_MOVIMIENTO DATE,
+                            STOCK_MOVIMIENTO INT,
+                            FOREIGN KEY (ID_CLIENTE) REFERENCES CLIENTES(ID_CLIENTE),
+                            FOREIGN KEY (ID_PROVEEDOR) REFERENCES PROVEEDORES(ID_PROVEEDOR),
+                            FOREIGN KEY (ID_ARTICULO) REFERENCES ARTICULOS(ID_ARTICULO)
+                            );", connectionDBManager)
+        cmd.ExecuteNonQuery()
     End Sub
     Public Function checkEmpresa(nombreEmpresa As String) As Boolean
         cmd = New SqlCommand("SELECT NAME
@@ -194,6 +209,7 @@ Public Class ManagerEmpresa
         Try
             cmd.ExecuteNonQuery()
             VariablesGlobales.updateListaArticulos()
+            VariablesGlobales.updateListaClientes()
         Catch ex As Exception
             MessageBox.Show(ex.ToString())
         End Try
@@ -203,6 +219,7 @@ Public Class ManagerEmpresa
         Try
             cmd.ExecuteNonQuery()
             VariablesGlobales.updateListaArticulos()
+            VariablesGlobales.updateListaClientes()
         Catch ex As Exception
             MessageBox.Show(ex.ToString())
         End Try
