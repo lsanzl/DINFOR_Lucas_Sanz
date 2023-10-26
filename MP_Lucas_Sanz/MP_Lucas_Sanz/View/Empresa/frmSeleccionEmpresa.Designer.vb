@@ -42,6 +42,7 @@ Partial Class frmSeleccionEmpresa
         Me.dg_empresas.MultiSelect = False
         Me.dg_empresas.Name = "dg_empresas"
         Me.dg_empresas.ReadOnly = True
+        Me.dg_empresas.RowHeadersVisible = False
         Me.dg_empresas.Size = New System.Drawing.Size(581, 231)
         Me.dg_empresas.TabIndex = 0
         '

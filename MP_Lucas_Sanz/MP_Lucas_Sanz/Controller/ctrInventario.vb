@@ -3,8 +3,10 @@ Imports System.Net.Mail
 
 Public Class ctrInventario
     Dim frmInventario As frmMain
+    Dim ctrMovimiento As ctrMovimiento
     Dim inventarioTemp As Inventario
     Dim listaInventario As List(Of Inventario) = New List(Of Inventario)
+    Dim cantidadNueva As Integer
 
     Public Sub New(frmPasado As frmMain)
         MyBase.New()
@@ -17,9 +19,11 @@ Public Class ctrInventario
         AddHandler frmInventario.txt_busqueda_inventario.TextChanged, AddressOf text_changed_txt_busqueda_inventario
         AddHandler frmInventario.tab_main.SelectedIndexChanged, AddressOf tab_main_SelectedIndexChanged
         AddHandler frmInventario.dg_inventario.CellClick, AddressOf click_cell_dg_inventario
+        AddHandler frmInventario.dg_inventario.CellEndEdit, AddressOf cell_end_edit_dg_inventarios
     End Sub
 
-    Private Sub fillDGInventario()
+    Public Sub fillDGInventario()
+        frmInventario.dg_inventario.ClearSelection()
         frmInventario.btn_añadir_unidades.Enabled = False
         frmInventario.btn_restar_unidades.Enabled = False
         frmInventario.btn_eliminar_articulo_inventario.Enabled = False
@@ -38,13 +42,28 @@ Public Class ctrInventario
         Next
         frmInventario.dg_inventario.ClearSelection()
     End Sub
-
+    Private Sub cell_end_edit_dg_inventarios(sender As Object, e As DataGridViewCellEventArgs)
+        If frmInventario.dg_inventario.Columns(e.ColumnIndex).Name = "stockActual" AndAlso e.RowIndex >= 0 Then
+            cantidadNueva = frmInventario.dg_inventario.Rows(e.RowIndex).Cells("stockActual").Value
+            Dim cantidadVariar As Integer = cantidadNueva - inventarioTemp.UnidadesDisponibles
+            managerInventarioAux.setUnidades(cantidadNueva, inventarioTemp.ArticuloDeInventario.CodigoDeArticulo)
+            reajusteStock(cantidadVariar, inventarioTemp)
+            fillDGInventario()
+        End If
+    End Sub
+    Private Sub reajusteStock(cantidad As Integer, inventario As Inventario)
+        Dim nuevoMovimiento As Movimiento = New Movimiento("R", "", 0, DateTime.Now.ToString("dd/MM/yyyy"), inventario.ArticuloDeInventario.CodigoDeArticulo, inventario.UnidadesDisponibles + cantidad, cantidad)
+        nuevoMovimiento.addMovimiento()
+        ctrMovimiento = New ctrMovimiento(frmInventario)
+        ctrMovimiento.fillDGMovimientos()
+    End Sub
     Private Sub click_btn_añadir_unidades(sender As Object, e As EventArgs)
         frmUnidadesInventario.Text = $"Añadir unidades de {inventarioTemp.ArticuloDeInventario.NombreDeArticulo}"
         frmUnidadesInventario.btn_confirmar_unidades.Text = "Añadir"
         frmUnidadesInventario.ShowDialog()
         If frmUnidadesInventario.confirmado Then
             inventarioTemp.addUnidades(frmUnidadesInventario.cantidadVariar)
+            reajusteStock(frmUnidadesInventario.cantidadVariar, inventarioTemp)
         End If
         fillDGInventario()
     End Sub
@@ -54,6 +73,7 @@ Public Class ctrInventario
         frmUnidadesInventario.ShowDialog()
         If frmUnidadesInventario.confirmado Then
             inventarioTemp.deleteUnidades(frmUnidadesInventario.cantidadVariar)
+            reajusteStock(-frmUnidadesInventario.cantidadVariar, inventarioTemp)
         End If
         fillDGInventario()
     End Sub
@@ -77,26 +97,37 @@ Public Class ctrInventario
     End Function
     Private Sub text_changed_txt_busqueda_inventario(sender As Object, e As EventArgs)
         Dim textoBusqueda As String = frmInventario.txt_busqueda_inventario.Text
-        Dim dg As DataGridView = frmInventario.dg_inventario
+        Dim dg_inv As DataGridView = frmInventario.dg_inventario
+        Dim dg_mov As DataGridView = frmInventario.dg_movimientos
 
-        If frmInventario.txt_busqueda_inventario.Text = Nothing Then   'SI BUSQUEDA VACIA -> TODAS LAS FILAS NORMALES'
-            For Each fila As DataGridViewRow In dg.Rows
+        If frmInventario.txt_busqueda_inventario.Text = Nothing Then
+            For Each fila As DataGridViewRow In dg_inv.Rows
+                fila.Visible = True
+            Next
+            For Each fila As DataGridViewRow In dg_mov.Rows
                 fila.Visible = True
             Next
             Exit Sub
         End If
-
-        For Each fila As DataGridViewRow In dg.Rows
-            If lookForText(fila.Cells("NombreDeArticuloDataGridViewTextBoxColumn1").Value.ToString().Trim, textoBusqueda.Trim) Then
-                dg.CurrentCell = Nothing
+        For Each fila As DataGridViewRow In dg_inv.Rows
+            If lookForText(fila.Cells("nombreArticulo").Value.ToString().Trim, textoBusqueda.Trim) Then
+                dg_inv.CurrentCell = Nothing
                 fila.Visible = True
             Else
-                dg.CurrentCell = Nothing
+                dg_inv.CurrentCell = Nothing
+                fila.Visible = False
+            End If
+        Next
+        For Each fila As DataGridViewRow In dg_mov.Rows
+            If lookForText(fila.Cells("articuloMovimiento").Value.ToString().Trim, textoBusqueda.Trim) Then
+                dg_inv.CurrentCell = Nothing
+                fila.Visible = True
+            Else
+                dg_inv.CurrentCell = Nothing
                 fila.Visible = False
             End If
         Next
     End Sub
-
     Private Sub click_cell_dg_inventario(sender As Object, e As DataGridViewCellEventArgs)
         If e.RowIndex >= 0 Then
             frmInventario.btn_añadir_unidades.Enabled = True

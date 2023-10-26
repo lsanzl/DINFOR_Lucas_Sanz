@@ -153,9 +153,9 @@ Public Class ManagerArticulo
         cmd.Parameters.Add("@Nombre", SqlDbType.Char, 100).Value = nombre
         Dim nombreObj As Object = cmd.ExecuteScalar
         If nombreObj Is DBNull.Value Then
-            Return True
-        Else
             Return False
+        Else
+            Return True
         End If
     End Function
     Public Function getArticuloConcreto(codigo As Integer) As Articulo

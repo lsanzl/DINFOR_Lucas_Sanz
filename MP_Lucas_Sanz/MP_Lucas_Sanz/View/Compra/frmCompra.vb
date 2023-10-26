@@ -2,16 +2,17 @@
 
 Public Class frmCompra
     Dim listaFormasPago As List(Of FormaPago) = New List(Of FormaPago)
-    Dim listaCompras As BindingList(Of Compra) = New BindingList(Of Compra)()
+    Dim listaCompras As List(Of Compra) = New List(Of Compra)()
     Dim compraTemp As Compra = New Compra()
     Dim dt As New DataTable()
     Dim proveedorSeleccionado As Proveedor
     Dim articuloSeleccionado As Articulo
+    Dim facturaGenerada As String
 
     Private Sub frmCompra_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        listaCompras = New BindingList(Of Compra)
+        listaCompras = New List(Of Compra)
+        facturaGenerada = compraAux.getRandomFactura()
         clearFields()
-        dg_compras.DataSource = listaCompras
     End Sub
 
     Private Sub click_btn_busqueda_proveedor(sender As Object, e As EventArgs) Handles btn_busqueda_proveedor.Click
@@ -103,8 +104,9 @@ Public Class frmCompra
         Dim fechaCompra As Date = dp_fecha_compra.Value
 
         Dim precioVenta As Double = precioCompra * (1 + porcBeneficio / 100)
+        Dim codigoCompra As Integer = managerCompraAux.getIDCompra()
 
-        Dim compraTemp As Compra = New Compra(proveedorSeleccionado.CodigoDeProveedor, codigoArticuloSeleccionado, formaPagoSeleccionada, precioVenta, cantidadSeleccionada, fechaCompra)
+        Dim compraTemp As Compra = New Compra(codigoCompra, proveedorSeleccionado.CodigoDeProveedor, codigoArticuloSeleccionado, formaPagoSeleccionada, precioVenta, cantidadSeleccionada, fechaCompra, facturaGenerada)
         listaCompras.Add(compraTemp)
         fillDGCompras()
         clearFieldsDatos()
@@ -131,8 +133,19 @@ Public Class frmCompra
         End If
     End Sub
     Private Sub fillDGCompras()
-        dg_compras.DataSource = listaCompras
-        dg_compras.Refresh()
+        dg_compras.Rows.Clear()
+        Dim articuloItem As Articulo
+        For Each item As Compra In listaCompras
+            Dim index As Integer = dg_compras.Rows.Add()
+            articuloItem = managerArticuloAux.getArticuloConcreto(item.ArticuloDeCompra)
+            dg_compras.Rows(index).Cells("idCompra").Value = item.CodigoDeCompra
+            dg_compras.Rows(index).Cells("proveedorCompra").Value = item.ProveedorDeCompra
+            dg_compras.Rows(index).Cells("articuloCompra").Value = articuloItem.NombreDeArticulo
+            dg_compras.Rows(index).Cells("formaPagoCompra").Value = item.FormaDePagoCompra
+            dg_compras.Rows(index).Cells("precioArticuloCompra").Value = item.PrecioDeArticuloCompra
+            dg_compras.Rows(index).Cells("cantidadCompra").Value = item.CantidadDeCompra
+            dg_compras.Rows(index).Cells("precioTotalCompra").Value = item.PrecioTotalDeCompra
+        Next
         If dg_compras.RowCount > 0 Then
             btn_confirmar_compra.Enabled = True
             btn_busqueda_proveedor.Enabled = False
@@ -157,7 +170,8 @@ Public Class frmCompra
         If e.RowIndex >= 0 Then
             btn_eliminar_compra.Enabled = True
             btn_modificar_compra.Enabled = True
-            compraTemp = dg_compras.Rows(e.RowIndex).DataBoundItem
+            Dim codigoTemp As Integer = dg_compras.Rows(e.RowIndex).Cells("idCompra").Value
+            compraTemp = listaCompras.Find(Function(c) c.CodigoDeCompra = codigoTemp)
         End If
     End Sub
 
@@ -166,10 +180,19 @@ Public Class frmCompra
             MessageBox.Show("Introduzca primero alguna compra")
             Return
         End If
-        For Each comprilla As Compra In listaCompras
-            comprilla.addCompra()
-        Next
         Dim fechaCompra As Date = dp_fecha_compra.Value
+        Dim movimientoTemp As Movimiento = New Movimiento()
+        Dim stockActual As Integer
+
+        For Each item As Compra In listaCompras
+            item.addCompra()
+            Dim articuloFind As Articulo = VariablesGlobales.getArticuloPorCodigo(item.ArticuloDeCompra)
+            managerInventarioAux.addUnidades(item.CantidadDeCompra, articuloFind.CodigoDeArticulo)
+            stockActual = managerInventarioAux.checkStock(articuloFind.CodigoDeArticulo)
+            movimientoTemp = New Movimiento("C", facturaGenerada, item.ProveedorDeCompra, fechaCompra, articuloFind.CodigoDeArticulo, stockActual, item.CantidadDeCompra)
+            movimientoTemp.addMovimiento()
+        Next
+
         Dim informe As infCompra = New infCompra(listaCompras, fechaCompra)
         clearFields()
     End Sub

@@ -19,6 +19,7 @@ Public Class ManagerMovimiento
             Dim clienteMovimiento As Integer
             Dim proveedorMovimiento As Integer
             Dim articuloMovimiento As Integer
+            Dim cantidadMovimiento As Integer
             Dim tipoMovimiento As String
             Dim facturaMovimiento As String
             Dim fechaMovimiento As Date
@@ -32,10 +33,11 @@ Public Class ManagerMovimiento
                 clienteMovimiento = Convert.ToInt32(dr(1))
                 proveedorMovimiento = Convert.ToInt32(dr(2))
                 articuloMovimiento = Convert.ToInt32(dr(3))
-                tipoMovimiento = dr(4).ToString()
-                facturaMovimiento = dr(5).ToString()
-                fechaMovimiento = CDate(dr(6))
-                stockMovimiento = Convert.ToInt32(dr(7))
+                cantidadMovimiento = Convert.ToInt32(dr(4))
+                tipoMovimiento = dr(5).ToString()
+                facturaMovimiento = dr(6).ToString()
+                fechaMovimiento = CDate(dr(7))
+                stockMovimiento = Convert.ToInt32(dr(8))
 
                 If tipoMovimiento.Equals("V") Then
                     usuarioMovimiento = clienteMovimiento
@@ -45,7 +47,7 @@ Public Class ManagerMovimiento
                     usuarioMovimiento = 0
                 End If
 
-                movimientoTemp = New Movimiento(codigoMovimiento, tipoMovimiento, facturaMovimiento, usuarioMovimiento, fechaMovimiento, articuloMovimiento, stockMovimiento)
+                movimientoTemp = New Movimiento(codigoMovimiento, tipoMovimiento, facturaMovimiento, usuarioMovimiento, fechaMovimiento, cantidadMovimiento, articuloMovimiento, stockMovimiento)
                 listaMovimientos.Add(movimientoTemp)
             Loop While dr.Read()
             dr.Close()
@@ -60,6 +62,7 @@ Public Class ManagerMovimiento
                                 @Cliente,
                                 @Proveedor,
                                 @Articulo,
+                                @Cantidad,
                                 @Tipo,
                                 @Factura,
                                 @Fecha,
@@ -69,6 +72,7 @@ Public Class ManagerMovimiento
             .Add("@Cliente", SqlDbType.Int).Value = movimientoTemp.ClienteDeMovimiento
             .Add("@Proveedor", SqlDbType.Int).Value = movimientoTemp.ProveedorDeMovimiento
             .Add("@Articulo", SqlDbType.Int).Value = movimientoTemp.ArticuloDeMovimiento
+            .Add("@Cantidad", SqlDbType.Int).Value = movimientoTemp.CantidadDeMovimiento
             .Add("@Tipo", SqlDbType.Char, 1).Value = movimientoTemp.TipoDeMovimiento
             .Add("@Factura", SqlDbType.Char, 10).Value = movimientoTemp.FacturaDeMovimiento
             .Add("@Fecha", SqlDbType.Date).Value = movimientoTemp.FechaDeMovimiento
@@ -76,6 +80,7 @@ Public Class ManagerMovimiento
         End With
         Try
             cmd.ExecuteNonQuery()
+            VariablesGlobales.updateListaMovimientos()
         Catch ex As Exception
             MessageBox.Show(ex.ToString())
         End Try
@@ -85,6 +90,7 @@ Public Class ManagerMovimiento
                                 ID_CLIENTE = @Cliente,
                                 ID_PROVEEDOR = @Proveedor,
                                 ID_ARTICULO = @Articulo,
+                                CANTIDAD_MOVIMIENTO = @Cantidad,
                                 TIPO_MOVIMIENTO = @Tipo,
                                 FACTURA_MOVIMIENTO = @Factura,
                                 FECHA_MOVIMIENTO = @Fecha,
@@ -95,6 +101,7 @@ Public Class ManagerMovimiento
             .Add("@Cliente", SqlDbType.Int).Value = movimientoTemp.ClienteDeMovimiento
             .Add("@Proveedor", SqlDbType.Int).Value = movimientoTemp.ProveedorDeMovimiento
             .Add("@Articulo", SqlDbType.Int).Value = movimientoTemp.ArticuloDeMovimiento
+            .Add("@Cantidad", SqlDbType.Int).Value = movimientoTemp.CantidadDeMovimiento
             .Add("@Tipo", SqlDbType.Char, 1).Value = movimientoTemp.TipoDeMovimiento
             .Add("@Factura", SqlDbType.Char, 10).Value = movimientoTemp.FacturaDeMovimiento
             .Add("@Fecha", SqlDbType.Date).Value = movimientoTemp.FechaDeMovimiento
@@ -102,6 +109,7 @@ Public Class ManagerMovimiento
         End With
         Try
             cmd.ExecuteNonQuery()
+            VariablesGlobales.updateListaMovimientos()
         Catch ex As Exception
             MessageBox.Show(ex.ToString())
         End Try
@@ -115,13 +123,34 @@ Public Class ManagerMovimiento
             MessageBox.Show(ex.ToString())
         End Try
     End Sub
-    Public Sub reajustarStock(movimiento As Movimiento, cantidad As Integer)
-        If movimiento.TipoDeMovimiento.Equals("V") Then
-            cmd = New SqlCommand("UPDATE MOVIMIENTOS SET 
-                                STOCK_MOVIMIENTO = STOCK_MOVIMIENTO + @Cantidad
-                                WHERE ID_MOVIMIENTO > @Codigo
-                                AND ID_ARTICULO = @Articulo;", connectionDBManager)
-        End If
+    Public Sub reajustarStock(movimiento As Movimiento, cantidad As Integer, cantidadNueva As Integer)
+        cmd = New SqlCommand("UPDATE MOVIMIENTOS SET 
+                            STOCK_MOVIMIENTO = STOCK_MOVIMIENTO + @Cantidad
+                            WHERE ID_MOVIMIENTO >= @Codigo
+                            AND ID_ARTICULO = @Articulo;", connectionDBManager)
+        With cmd.Parameters
+            .Add("@Cantidad", SqlDbType.Int).Value = cantidad
+            .Add("@Codigo", SqlDbType.Int).Value = movimiento.CodigoDeMovimiento
+            .Add("@Articulo", SqlDbType.Int).Value = movimiento.ArticuloDeMovimiento
+        End With
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Error al actualizar unidades:" + vbCrLf + ex.ToString())
+        End Try
+        cmd = New SqlCommand("UPDATE MOVIMIENTOS SET
+                            CANTIDAD_MOVIMIENTO = @Cantidad
+                            WHERE ID_MOVIMIENTO = @Codigo;", connectionDBManager)
+        With cmd.Parameters
+            .Add("@Cantidad", SqlDbType.Int).Value = cantidadNueva
+            .Add("@Codigo", SqlDbType.Int).Value = movimiento.CodigoDeMovimiento
+        End With
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Error al actualizar unidades:" + vbCrLf + ex.ToString())
+        End Try
+        VariablesGlobales.updateListaMovimientos()
     End Sub
     Public Function getIDMovimiento() As Integer
         cmd = New SqlCommand("SELECT MAX(ID_MOVIMIENTO) FROM MOVIMIENTOS;", connectionDBManager)

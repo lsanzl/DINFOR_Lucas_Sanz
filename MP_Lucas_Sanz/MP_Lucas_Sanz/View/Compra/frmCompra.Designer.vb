@@ -24,8 +24,6 @@ Partial Class frmCompra
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCompra))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
@@ -46,22 +44,23 @@ Partial Class frmCompra
         Me.btn_eliminar_compra = New System.Windows.Forms.Button()
         Me.btn_añadir_compra = New System.Windows.Forms.Button()
         Me.dg_compras = New System.Windows.Forms.DataGridView()
-        Me.CompraBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.idCompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.proveedorCompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.articuloCompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.formaPagoCompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.precioArticuloCompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cantidadCompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.precioTotalCompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
         Me.btn_confirmar_compra = New System.Windows.Forms.Button()
         Me.lbl_precio_sumatorio = New System.Windows.Forms.Label()
-        Me.ProveedorDeCompraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ArticuloDeCompraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FormaDePagoCompraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PrecioDeArticuloCompraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CantidadDeCompraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PrecioTotalDeCompraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CompraBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
         CType(Me.dg_compras, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CompraBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel4.SuspendLayout()
+        CType(Me.CompraBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -307,7 +306,6 @@ Partial Class frmCompra
         Me.dg_compras.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dg_compras.AutoGenerateColumns = False
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -317,17 +315,62 @@ Partial Class frmCompra
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dg_compras.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dg_compras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_compras.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ProveedorDeCompraDataGridViewTextBoxColumn, Me.ArticuloDeCompraDataGridViewTextBoxColumn, Me.FormaDePagoCompraDataGridViewTextBoxColumn, Me.PrecioDeArticuloCompraDataGridViewTextBoxColumn, Me.CantidadDeCompraDataGridViewTextBoxColumn, Me.PrecioTotalDeCompraDataGridViewTextBoxColumn})
-        Me.dg_compras.DataSource = Me.CompraBindingSource
+        Me.dg_compras.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idCompra, Me.proveedorCompra, Me.articuloCompra, Me.formaPagoCompra, Me.precioArticuloCompra, Me.cantidadCompra, Me.precioTotalCompra})
         Me.dg_compras.Location = New System.Drawing.Point(3, 199)
         Me.dg_compras.Name = "dg_compras"
         Me.dg_compras.ReadOnly = True
+        Me.dg_compras.RowHeadersVisible = False
         Me.dg_compras.Size = New System.Drawing.Size(714, 151)
         Me.dg_compras.TabIndex = 2
         '
-        'CompraBindingSource
+        'idCompra
         '
-        Me.CompraBindingSource.DataSource = GetType(MP_Lucas_Sanz.Compra)
+        Me.idCompra.HeaderText = "ID"
+        Me.idCompra.Name = "idCompra"
+        Me.idCompra.ReadOnly = True
+        Me.idCompra.Visible = False
+        '
+        'proveedorCompra
+        '
+        Me.proveedorCompra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.proveedorCompra.HeaderText = "Proveedor"
+        Me.proveedorCompra.Name = "proveedorCompra"
+        Me.proveedorCompra.ReadOnly = True
+        '
+        'articuloCompra
+        '
+        Me.articuloCompra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.articuloCompra.HeaderText = "Artículo"
+        Me.articuloCompra.Name = "articuloCompra"
+        Me.articuloCompra.ReadOnly = True
+        '
+        'formaPagoCompra
+        '
+        Me.formaPagoCompra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.formaPagoCompra.HeaderText = "Pago"
+        Me.formaPagoCompra.Name = "formaPagoCompra"
+        Me.formaPagoCompra.ReadOnly = True
+        '
+        'precioArticuloCompra
+        '
+        Me.precioArticuloCompra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.precioArticuloCompra.HeaderText = "Precio Ud"
+        Me.precioArticuloCompra.Name = "precioArticuloCompra"
+        Me.precioArticuloCompra.ReadOnly = True
+        '
+        'cantidadCompra
+        '
+        Me.cantidadCompra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.cantidadCompra.HeaderText = "Cantidad"
+        Me.cantidadCompra.Name = "cantidadCompra"
+        Me.cantidadCompra.ReadOnly = True
+        '
+        'precioTotalCompra
+        '
+        Me.precioTotalCompra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.precioTotalCompra.HeaderText = "Total"
+        Me.precioTotalCompra.Name = "precioTotalCompra"
+        Me.precioTotalCompra.ReadOnly = True
         '
         'TableLayoutPanel4
         '
@@ -371,58 +414,9 @@ Partial Class frmCompra
         Me.lbl_precio_sumatorio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.lbl_precio_sumatorio.Visible = False
         '
-        'ProveedorDeCompraDataGridViewTextBoxColumn
+        'CompraBindingSource
         '
-        Me.ProveedorDeCompraDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ProveedorDeCompraDataGridViewTextBoxColumn.DataPropertyName = "ProveedorDeCompra"
-        Me.ProveedorDeCompraDataGridViewTextBoxColumn.HeaderText = "Proveedor"
-        Me.ProveedorDeCompraDataGridViewTextBoxColumn.Name = "ProveedorDeCompraDataGridViewTextBoxColumn"
-        Me.ProveedorDeCompraDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ArticuloDeCompraDataGridViewTextBoxColumn
-        '
-        Me.ArticuloDeCompraDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ArticuloDeCompraDataGridViewTextBoxColumn.DataPropertyName = "ArticuloDeCompra"
-        Me.ArticuloDeCompraDataGridViewTextBoxColumn.HeaderText = "Artículo"
-        Me.ArticuloDeCompraDataGridViewTextBoxColumn.Name = "ArticuloDeCompraDataGridViewTextBoxColumn"
-        Me.ArticuloDeCompraDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'FormaDePagoCompraDataGridViewTextBoxColumn
-        '
-        Me.FormaDePagoCompraDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.FormaDePagoCompraDataGridViewTextBoxColumn.DataPropertyName = "FormaDePagoCompra"
-        Me.FormaDePagoCompraDataGridViewTextBoxColumn.HeaderText = "Pago"
-        Me.FormaDePagoCompraDataGridViewTextBoxColumn.Name = "FormaDePagoCompraDataGridViewTextBoxColumn"
-        Me.FormaDePagoCompraDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PrecioDeArticuloCompraDataGridViewTextBoxColumn
-        '
-        Me.PrecioDeArticuloCompraDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.PrecioDeArticuloCompraDataGridViewTextBoxColumn.DataPropertyName = "PrecioDeArticuloCompra"
-        DataGridViewCellStyle2.Format = "N2"
-        Me.PrecioDeArticuloCompraDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
-        Me.PrecioDeArticuloCompraDataGridViewTextBoxColumn.HeaderText = "Precio Ud"
-        Me.PrecioDeArticuloCompraDataGridViewTextBoxColumn.Name = "PrecioDeArticuloCompraDataGridViewTextBoxColumn"
-        Me.PrecioDeArticuloCompraDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CantidadDeCompraDataGridViewTextBoxColumn
-        '
-        Me.CantidadDeCompraDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CantidadDeCompraDataGridViewTextBoxColumn.DataPropertyName = "CantidadDeCompra"
-        Me.CantidadDeCompraDataGridViewTextBoxColumn.HeaderText = "Cantidad"
-        Me.CantidadDeCompraDataGridViewTextBoxColumn.Name = "CantidadDeCompraDataGridViewTextBoxColumn"
-        Me.CantidadDeCompraDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PrecioTotalDeCompraDataGridViewTextBoxColumn
-        '
-        Me.PrecioTotalDeCompraDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.PrecioTotalDeCompraDataGridViewTextBoxColumn.DataPropertyName = "PrecioTotalDeCompra"
-        DataGridViewCellStyle3.Format = "N2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.PrecioTotalDeCompraDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
-        Me.PrecioTotalDeCompraDataGridViewTextBoxColumn.HeaderText = "Precio Total"
-        Me.PrecioTotalDeCompraDataGridViewTextBoxColumn.Name = "PrecioTotalDeCompraDataGridViewTextBoxColumn"
-        Me.PrecioTotalDeCompraDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CompraBindingSource.DataSource = GetType(MP_Lucas_Sanz.Compra)
         '
         'frmCompra
         '
@@ -443,9 +437,9 @@ Partial Class frmCompra
         Me.TableLayoutPanel2.PerformLayout()
         Me.TableLayoutPanel3.ResumeLayout(False)
         CType(Me.dg_compras, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CompraBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel4.ResumeLayout(False)
         Me.TableLayoutPanel4.PerformLayout()
+        CType(Me.CompraBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -473,10 +467,11 @@ Partial Class frmCompra
     Friend WithEvents lbl_precio_sumatorio As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents dp_fecha_compra As DateTimePicker
-    Friend WithEvents ProveedorDeCompraDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ArticuloDeCompraDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents FormaDePagoCompraDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PrecioDeArticuloCompraDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents CantidadDeCompraDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PrecioTotalDeCompraDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents idCompra As DataGridViewTextBoxColumn
+    Friend WithEvents proveedorCompra As DataGridViewTextBoxColumn
+    Friend WithEvents articuloCompra As DataGridViewTextBoxColumn
+    Friend WithEvents formaPagoCompra As DataGridViewTextBoxColumn
+    Friend WithEvents precioArticuloCompra As DataGridViewTextBoxColumn
+    Friend WithEvents cantidadCompra As DataGridViewTextBoxColumn
+    Friend WithEvents precioTotalCompra As DataGridViewTextBoxColumn
 End Class

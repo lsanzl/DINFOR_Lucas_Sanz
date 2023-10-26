@@ -7,6 +7,7 @@
     Private fechaMovimiento As Date
     Private articuloMovimiento As Integer
     Private stockActualMovimiento As Integer
+    Private cantidadMovimiento As Integer
 
     Public Property CodigoDeMovimiento() As Integer
         Get
@@ -72,13 +73,22 @@
             stockActualMovimiento = value
         End Set
     End Property
+    Public Property CantidadDeMovimiento() As Integer
+        Get
+            Return cantidadMovimiento
+        End Get
+        Set(value As Integer)
+            cantidadMovimiento = value
+        End Set
+    End Property
 
     Public Sub New()
         MyBase.New()
     End Sub
     Public Sub New(tipoMovimientoP As String, facturaMovimientoP As String,
                    usuarioMovimientoP As Integer, fechaMovimientoP As Date,
-                   articuloMovimientoP As Integer, stockActualP As Integer)
+                   articuloMovimientoP As Integer, stockActualP As Integer,
+                   cantidadMovimientoP As Integer)
         MyBase.New()
         CodigoDeMovimiento = managerMovimientoAux.getIDMovimiento()
         TipoDeMovimiento = tipoMovimientoP
@@ -86,6 +96,7 @@
         FechaDeMovimiento = fechaMovimientoP
         ArticuloDeMovimiento = articuloMovimientoP
         StockActualDeMovimiento = stockActualP
+        cantidadMovimiento = cantidadMovimientoP
         If TipoDeMovimiento.Equals("V") Then
             ClienteDeMovimiento = usuarioMovimientoP
             ProveedorDeMovimiento = 0
@@ -99,7 +110,7 @@
         End If
     End Sub
     Public Sub New(codigoMovimientoP As Integer, tipoMovimientoP As Char, facturaMovimientoP As String,
-                   usuarioMovimientoP As Integer, fechaMovimientoP As Date,
+                   usuarioMovimientoP As Integer, fechaMovimientoP As Date, cantidadMovimientoP As Integer,
                    articuloMovimientoP As Integer, stockActualP As Integer)
         MyBase.New()
         CodigoDeMovimiento = codigoMovimientoP
@@ -108,6 +119,7 @@
         FechaDeMovimiento = fechaMovimientoP
         ArticuloDeMovimiento = articuloMovimientoP
         StockActualDeMovimiento = stockActualP
+        cantidadMovimiento = cantidadMovimientoP
         If tipoMovimiento.Equals("V") Then
             ClienteDeMovimiento = usuarioMovimientoP
         ElseIf tipoMovimiento.Equals("C") Then

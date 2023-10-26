@@ -22,6 +22,7 @@ Partial Class frmVenta
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmVenta))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
@@ -45,6 +46,7 @@ Partial Class frmVenta
         Me.btn_confirmar_venta = New System.Windows.Forms.Button()
         Me.lbl_precio_sumatorio_venta = New System.Windows.Forms.Label()
         Me.dg_ventas = New System.Windows.Forms.DataGridView()
+        Me.idVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clienteVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.articuloVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.formaPagoVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -339,15 +341,33 @@ Partial Class frmVenta
         '
         'dg_ventas
         '
+        Me.dg_ventas.AllowUserToAddRows = False
         Me.dg_ventas.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_ventas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dg_ventas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_ventas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.clienteVenta, Me.articuloVenta, Me.formaPagoVenta, Me.precioArticuloVenta, Me.cantidadVenta, Me.precioTotalVenta})
+        Me.dg_ventas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idVenta, Me.clienteVenta, Me.articuloVenta, Me.formaPagoVenta, Me.precioArticuloVenta, Me.cantidadVenta, Me.precioTotalVenta})
         Me.dg_ventas.Location = New System.Drawing.Point(3, 199)
         Me.dg_ventas.Name = "dg_ventas"
+        Me.dg_ventas.ReadOnly = True
+        Me.dg_ventas.RowHeadersVisible = False
         Me.dg_ventas.Size = New System.Drawing.Size(714, 151)
         Me.dg_ventas.TabIndex = 4
+        '
+        'idVenta
+        '
+        Me.idVenta.HeaderText = "ID"
+        Me.idVenta.Name = "idVenta"
+        Me.idVenta.ReadOnly = True
+        Me.idVenta.Visible = False
         '
         'clienteVenta
         '
@@ -438,6 +458,7 @@ Partial Class frmVenta
     Friend WithEvents Label5 As Label
     Friend WithEvents dp_fecha_venta As DateTimePicker
     Friend WithEvents dg_ventas As DataGridView
+    Friend WithEvents idVenta As DataGridViewTextBoxColumn
     Friend WithEvents clienteVenta As DataGridViewTextBoxColumn
     Friend WithEvents articuloVenta As DataGridViewTextBoxColumn
     Friend WithEvents formaPagoVenta As DataGridViewTextBoxColumn

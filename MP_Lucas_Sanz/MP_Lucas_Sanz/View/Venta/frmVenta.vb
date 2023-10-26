@@ -29,8 +29,10 @@ Public Class frmVenta
         Dim frmBusquedaNuevo As frmBusqueda = New frmBusqueda(articuloAux)
         frmBusquedaNuevo.Text = "BÚSQUEDA DE ARTÍCULOS"
         frmBusquedaNuevo.ShowDialog()
-        articuloSeleccionado = frmBusquedaNuevo.articuloSeleccionado
-        txt_articulo_seleccionado_venta.Text = articuloSeleccionado.NombreDeArticulo
+        If frmBusquedaNuevo.articuloSeleccionado IsNot Nothing Then
+            articuloSeleccionado = frmBusquedaNuevo.articuloSeleccionado
+            txt_articulo_seleccionado_venta.Text = articuloSeleccionado.NombreDeArticulo
+        End If
     End Sub
     Private Sub clearFields()
         txt_cliente_seleccionado.Clear()
@@ -114,8 +116,8 @@ Public Class frmVenta
             Return
         End If
         Dim precioVentaArticulo As Double = precioVenta * (1 + porcBeneficio / 100)
-
-        ventaTemp = New Venta(clienteSeleccionado.CodigoDelCliente, articuloSeleccionado.CodigoDeArticulo, formaPagoSeleccionada, precioVentaArticulo, cantidadSeleccionada, fechaVenta, facturaGenerada)
+        Dim codigoVenta As Integer = managerVentaAux.getIDVenta()
+        ventaTemp = New Venta(codigoVenta, clienteSeleccionado.CodigoDelCliente, articuloSeleccionado.CodigoDeArticulo, formaPagoSeleccionada, precioVentaArticulo, cantidadSeleccionada, fechaVenta, False, facturaGenerada)
         listaVentas.Add(ventaTemp)
         fillDGVentas()
         clearFieldsDatos()
@@ -133,8 +135,10 @@ Public Class frmVenta
     End Sub
     Private Sub click_btn_modificar_venta(sender As Object, e As EventArgs) Handles btn_modificar_venta.Click
         If btn_modificar_venta.Text.Equals("MODIFICAR") Then
-            txt_articulo_seleccionado_venta.Text = ventaTemp.ArticuloDeVenta
-            txt_cliente_seleccionado.Text = ventaTemp.ClienteDeVenta
+            Dim articuloTemp As Articulo = VariablesGlobales.getArticuloPorCodigo(ventaTemp.ArticuloDeVenta)
+            Dim clienteTemp As Cliente = VariablesGlobales.getClientePorCodigo(ventaTemp.ClienteDeVenta)
+            txt_articulo_seleccionado_venta.Text = articuloTemp.NombreDeArticulo
+            txt_cliente_seleccionado.Text = clienteTemp.NombreDelCliente
             txt_cantidad_seleccionada_venta.Text = ventaTemp.CantidadDeVenta
             cb_forma_pago_seleccionada_venta.SelectedValue = ventaTemp.FormaDePagoVenta
             btn_modificar_venta.Text = "CONFIRMAR"
@@ -142,6 +146,8 @@ Public Class frmVenta
             listaVentas.Remove(ventaTemp)
             añadirVenta()
             btn_modificar_venta.Text = "MODIFICAR"
+            btn_modificar_venta.Enabled = False
+            btn_eliminar_venta.Enabled = False
         End If
     End Sub
     Private Sub fillDGVentas()
@@ -150,6 +156,7 @@ Public Class frmVenta
         For Each item As Venta In listaVentas
             Dim index As Integer = dg_ventas.Rows.Add()
             articuloItem = managerArticuloAux.getArticuloConcreto(item.ArticuloDeVenta)
+            dg_ventas.Rows(index).Cells("idVenta").Value = item.CodigoDeVenta
             dg_ventas.Rows(index).Cells("clienteVenta").Value = item.ClienteDeVenta
             dg_ventas.Rows(index).Cells("articuloVenta").Value = articuloItem.NombreDeArticulo
             dg_ventas.Rows(index).Cells("formaPagoVenta").Value = item.FormaDePagoVenta
@@ -159,7 +166,12 @@ Public Class frmVenta
         Next
         If dg_ventas.RowCount > 0 Then
             btn_confirmar_venta.Enabled = True
+            btn_busqueda_cliente.Enabled = False
+        Else
+            btn_confirmar_venta.Enabled = False
+            btn_busqueda_cliente.Enabled = True
         End If
+        dg_ventas.ClearSelection()
     End Sub
     Private Sub calcularTotal()
         lbl_precio_sumatorio_venta.Visible = True
@@ -176,15 +188,8 @@ Public Class frmVenta
         If e.RowIndex >= 0 And dg_ventas.Rows(e.RowIndex).Cells("articuloVenta").Value <> Nothing Then
             btn_eliminar_venta.Enabled = True
             btn_modificar_venta.Enabled = True
-            Dim clienteTemp As Integer = dg_ventas.Rows(e.RowIndex).Cells("clienteVenta").Value
-            Dim nombreArticulo As String = dg_ventas.Rows(e.RowIndex).Cells("articuloVenta").Value
-            Dim articuloTemp As Articulo = VariablesGlobales.getArticuloPorNombre(nombreArticulo)
-            Dim formaPagoTemp As Integer = dg_ventas.Rows(e.RowIndex).Cells("formaPagoVenta").Value
-            Dim precioTemp As Double = dg_ventas.Rows(e.RowIndex).Cells("precioArticuloVenta").Value
-            Dim cantidadTemp As Integer = dg_ventas.Rows(e.RowIndex).Cells("cantidadVenta").Value
-            ventaTemp = listaVentas.Find(Function(v) v.ClienteDeVenta = clienteTemp And v.ArticuloDeVenta = articuloTemp.CodigoDeArticulo And
-                                             v.FormaDePagoVenta = formaPagoTemp And v.PrecioDeArticuloVenta = precioTemp And
-                                             v.CantidadDeVenta = cantidadTemp)
+            Dim codigoTemp As Integer = dg_ventas.Rows(e.RowIndex).Cells("idVenta").Value
+            ventaTemp = listaVentas.Find(Function(v) v.CodigoDeVenta = codigoTemp)
         End If
     End Sub
     Private Function checkStockage(cantidadSeleccionada As Integer) As Boolean
@@ -210,7 +215,7 @@ Public Class frmVenta
             Dim articuloFind As Articulo = VariablesGlobales.getArticuloPorCodigo(item.ArticuloDeVenta)
             managerInventarioAux.deleteUnidades(item.CantidadDeVenta, articuloFind.CodigoDeArticulo)
             stockActual = managerInventarioAux.checkStock(articuloFind.CodigoDeArticulo)
-            movimientoTemp = New Movimiento("V", facturaGenerada, item.ClienteDeVenta, fechaVenta, articuloFind.CodigoDeArticulo, stockActual)
+            movimientoTemp = New Movimiento("V", facturaGenerada, item.ClienteDeVenta, fechaVenta, articuloFind.CodigoDeArticulo, stockActual, item.CantidadDeVenta)
             movimientoTemp.addMovimiento()
         Next
 

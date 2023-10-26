@@ -44,6 +44,20 @@ Public Class ManagerInventario
         End Try
         Return Nothing
     End Function
+    Public Sub setUnidades(cantidadNueva As Integer, articuloPasado As Integer)
+        cmd = New SqlCommand("UPDATE INVENTARIOS SET
+                            UNIDADES_INVENTARIO = @Cantidad
+                            WHERE ID_ARTICULO = @Codigo;", connectionDBManager)
+        With cmd.Parameters
+            .Add("@Cantidad", SqlDbType.Int).Value = cantidadNueva
+            .Add("@Codigo", SqlDbType.Int).Value = articuloPasado
+        End With
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
+        End Try
+    End Sub
     Public Sub addUnidades(cantidadSumar As Integer, articuloPasado As Integer)
         cmd = New SqlCommand("UPDATE INVENTARIOS SET 
                             UNIDADES_INVENTARIO = UNIDADES_INVENTARIO + @CantidadSumar

@@ -65,6 +65,7 @@ Partial Class frmBusqueda
         Me.dg_resultados_busqueda.Location = New System.Drawing.Point(3, 3)
         Me.dg_resultados_busqueda.Name = "dg_resultados_busqueda"
         Me.dg_resultados_busqueda.ReadOnly = True
+        Me.dg_resultados_busqueda.RowHeadersVisible = False
         Me.dg_resultados_busqueda.Size = New System.Drawing.Size(293, 216)
         Me.dg_resultados_busqueda.TabIndex = 0
         '

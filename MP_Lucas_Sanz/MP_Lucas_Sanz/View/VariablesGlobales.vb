@@ -64,6 +64,16 @@
         Return listaProveedoresAux.Find(Function(p) p.CodigoDeProveedor = codigo)
     End Function
 
+    'MOVIMIENTOS
+    Public listaMovimientosAux As List(Of Movimiento) = New List(Of Movimiento)
+    Public Sub updateListaMovimientos()
+        listaMovimientosAux = New List(Of Movimiento)
+        listaMovimientosAux = managerMovimientoAux.getMovimientos()
+    End Sub
+    Public Function getMovimientoPorCodigo(codigo As Integer) As Movimiento
+        Return listaMovimientosAux.Find(Function(m) m.CodigoDeMovimiento = codigo)
+    End Function
+
     ' ------------ VARIABLES GLOBALES -------------
     Private empresaSeleccionadaDB As String = Nothing
     Private seleccionadaEmpresa As Boolean = False

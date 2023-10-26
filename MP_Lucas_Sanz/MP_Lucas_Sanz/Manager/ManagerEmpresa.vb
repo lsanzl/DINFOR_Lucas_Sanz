@@ -180,6 +180,7 @@ Public Class ManagerEmpresa
                             ID_CLIENTE INT,
                             ID_PROVEEDOR INT,
                             ID_ARTICULO INT,
+                            CANTIDAD_MOVIMIENTO INT,
                             TIPO_MOVIMIENTO CHAR,
                             FACTURA_MOVIMIENTO VARCHAR(10),
                             FECHA_MOVIMIENTO DATE,
@@ -210,6 +211,8 @@ Public Class ManagerEmpresa
             cmd.ExecuteNonQuery()
             VariablesGlobales.updateListaArticulos()
             VariablesGlobales.updateListaClientes()
+            VariablesGlobales.updateListaProveedores()
+            VariablesGlobales.updateListaMovimientos()
         Catch ex As Exception
             MessageBox.Show(ex.ToString())
         End Try
@@ -220,6 +223,8 @@ Public Class ManagerEmpresa
             cmd.ExecuteNonQuery()
             VariablesGlobales.updateListaArticulos()
             VariablesGlobales.updateListaClientes()
+            VariablesGlobales.updateListaProveedores()
+            VariablesGlobales.updateListaMovimientos()
         Catch ex As Exception
             MessageBox.Show(ex.ToString())
         End Try

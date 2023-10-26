@@ -12,25 +12,27 @@ Public Class ManagerCompra
         dr = cmd.ExecuteReader()
         If dr.HasRows Then
             Dim codigo As Integer
-            Dim proveedor As String
+            Dim proveedor As Integer
             Dim articulo As String
-            Dim formaPago As String
+            Dim formaPago As Integer
             Dim precio As Double
             Dim cantidad As Integer
             Dim fecha As Date
+            Dim factura As String
             Dim eliminadoInt As Integer
             Dim eliminado As Boolean
 
             dr.Read()
             Do
                 codigo = Convert.ToInt32(dr(0))
-                proveedor = dr(1).ToString().Trim()
+                proveedor = Convert.ToInt32(dr(1))
                 articulo = dr(2).ToString().Trim()
-                formaPago = dr(3).ToString().Trim()
+                formaPago = Convert.ToInt32(dr(3))
                 precio = Convert.ToDouble(dr(4))
                 cantidad = Convert.ToInt32(dr(5))
                 fecha = Convert.ToDateTime(dr(6))
                 eliminado = Convert.ToInt32(dr(7))
+                factura = dr(8).ToString().Trim()
 
                 If eliminadoInt = 0 Then
                     eliminado = False
@@ -38,7 +40,7 @@ Public Class ManagerCompra
                     eliminado = True
                 End If
 
-                compraAux = New Compra(codigo, proveedor, articulo, formaPago, precio, cantidad, fecha, eliminado)
+                compraAux = New Compra(codigo, proveedor, articulo, formaPago, precio, cantidad, fecha, eliminado, factura)
                 listaCompras.Add(compraAux)
             Loop While dr.Read()
         End If
@@ -62,7 +64,8 @@ Public Class ManagerCompra
                                 @PVPCompra,
                                 @Cantidad,
                                 @Fecha,
-                                @Eliminado);", connectionDBManager)
+                                @Eliminado,
+                                @Factura);", connectionDBManager)
         With cmd.Parameters
             .Add("@Codigo", SqlDbType.Int).Value = codigoCompra
             .Add("@Proveedor", SqlDbType.Char, 6).Value = compraTemp.ProveedorDeCompra
@@ -72,6 +75,7 @@ Public Class ManagerCompra
             .Add("@Cantidad", SqlDbType.Int).Value = compraTemp.CantidadDeCompra
             .Add("@Fecha", SqlDbType.Date).Value = compraTemp.FechaDeCompra
             .Add("@Eliminado", SqlDbType.Bit).Value = eliminadoInt
+            .Add("@Factura", SqlDbType.Char, 10).Value = compraTemp.FacturaDeCompra
         End With
         Try
             cmd.ExecuteNonQuery()
@@ -106,6 +110,19 @@ Public Class ManagerCompra
             MessageBox.Show(ex.ToString())
         End Try
     End Sub
+    Public Function checkNumFactura(factura As String) As Boolean
+        cmd = New SqlCommand("SELECT FACTURA_COMPRA FROM COMPRAS WHERE FACTURA_COMPRA = @Factura", connectionDBManager)
+        cmd.Parameters.Add("@Factura", SqlDbType.Char, 10).Value = factura
+        Try
+            Dim facturaObj As Object = cmd.ExecuteScalar
+            If facturaObj Is DBNull.Value Then
+                Return False
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
+        End Try
+        Return True
+    End Function
     Public Function getIDCompra() As Integer
         cmd = New SqlCommand("SELECT MAX(ID_COMPRA) FROM COMPRAS;", connectionDBManager)
         Dim maxActual As Object = cmd.ExecuteScalar()
