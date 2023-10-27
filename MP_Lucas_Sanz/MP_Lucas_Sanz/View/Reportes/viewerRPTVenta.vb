@@ -8,22 +8,28 @@ Public Class viewerRPTVenta
 
     Dim pdfExportado As Boolean = False
     Dim report As rptVenta
+    Dim venta As Venta
+    Dim exportedFile As String
+    Dim clienteFind As Cliente
 
     Public Sub New()
         MyBase.New()
         InitializeComponent()
         pdfExportado = False
     End Sub
-    Public Sub New(reportP As rptVenta)
+    Public Sub New(reportP As rptVenta, ventaP As Venta)
         MyBase.New()
         InitializeComponent()
 
         report = reportP
+        venta = ventaP
+        clienteFind = VariablesGlobales.getClientePorCodigo(venta.ClienteDeVenta)
         pdfExportado = False
     End Sub
 
     Private Sub exportPDF()
-        Dim exportPath As String = "C:\Users\Puesto\Desktop\Reportes"
+        Dim exportPath As String = "C:\Users\Puesto\Desktop\Reportes\Ventas\"
+        exportedFile = exportPath + venta.FacturaDeVenta + ".pdf"
         If Not System.IO.Directory.Exists(exportPath) Then
             System.IO.Directory.CreateDirectory(exportPath)
         End If
@@ -32,7 +38,7 @@ Public Class viewerRPTVenta
             Dim cFinalDestination As New DiskFileDestinationOptions
             Dim cFormatOptions As New PdfRtfWordFormatOptions
 
-            cFinalDestination.DiskFileName = "C:\Users\Puesto\Desktop\Reportes\reporteExportado.pdf"
+            cFinalDestination.DiskFileName = exportedFile
             cExportOptions = report.ExportOptions
 
             With cExportOptions
@@ -52,14 +58,14 @@ Public Class viewerRPTVenta
             MessageBox.Show("PDF NO GENERADO")
             Return
         End If
-        Dim pdfFilePath As String = "C:\Users\Puesto\Desktop\Reportes\reporteExportado.pdf"
+        Dim pdfFilePath As String = exportedFile
         Dim pdfAttachment As New Attachment(pdfFilePath, MediaTypeNames.Application.Pdf)
-        pdfAttachment.Name = "Factura de Venta"
+        pdfAttachment.Name = venta.FacturaDeVenta
 
         Dim fromAddress As New MailAddress("locitronki@gmail.com", "Lucas")
         Dim toAddress As New MailAddress("locitronki2@gmail.com", "Lucas 2")
-        Dim subject As String = "ASUNTO!!"
-        Dim body As String = "CUERPO!!!"
+        Dim subject As String = $"Factura: {venta.FacturaDeVenta}"
+        Dim body As String = $"Hola {clienteFind.NombreDelCliente}, aquí tienes tu factura número {venta.FacturaDeVenta} con fecha {venta.FechaDeVenta.ToString("dd/MM/yyyy")}"
 
         Dim smtpClient As New SmtpClient()
         smtpClient.Host = "smtp.gmail.com"
@@ -80,8 +86,15 @@ Public Class viewerRPTVenta
         End Try
     End Sub
 
-    Private Sub click_btn_enviar_correo(sender As Object, e As EventArgs) Handles btn_enviar_correo.Click
+    Private Sub click_btn_enviar_correo_venta(sender As Object, e As EventArgs) Handles btn_enviar_correo_venta.Click
         exportPDF()
         sendEmail()
+    End Sub
+    Private Sub click_btn_guardar_venta_pdf(sender As Object, e As EventArgs) Handles btn_guardar_venta_pdf.Click
+        exportPDF()
+    End Sub
+
+    Private Sub viewerRPTVenta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class

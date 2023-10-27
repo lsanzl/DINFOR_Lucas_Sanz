@@ -2,17 +2,22 @@
     Dim frmProveedor As frmMain
     Dim listaProveedores As List(Of Proveedor)
     Dim proveedorTemp As Proveedor
+    Dim criterioBusqueda As String = "nombreProveedor"
 
     Public Sub New(frmPasado As frmMain)
         MyBase.New()
         frmProveedor = frmPasado
         listaProveedores = New List(Of Proveedor)
+        frmProveedor.rdb_nombre_proveedor.Checked = True
 
         AddHandler frmProveedor.btn_añadir_proveedor.Click, AddressOf click_btn_añadir_proveedor
         AddHandler frmProveedor.btn_modificar_proveedor.Click, AddressOf click_btn_modificar_proveedor
         AddHandler frmProveedor.btn_eliminar_proveedor.Click, AddressOf click_btn_eliminar_proveedor
         AddHandler frmProveedor.dg_proveedores.CellClick, AddressOf click_cell_dg_proveedores
         AddHandler frmProveedor.tab_main.SelectedIndexChanged, AddressOf tab_main_SelectedIndexChanged
+        AddHandler frmProveedor.rdb_codigo_proveedor.CheckedChanged, AddressOf checked_changed_gb_proveedores
+        AddHandler frmProveedor.rdb_nombre_proveedor.CheckedChanged, AddressOf checked_changed_gb_proveedores
+        AddHandler frmProveedor.txt_busqueda_proveedor.TextChanged, AddressOf text_changed_txt_busqueda_proveedor
     End Sub
 
     Private Sub fillDGProveedores()
@@ -92,6 +97,42 @@
         frmProveedor.btn_modificar_proveedor.Enabled = True
         frmProveedor.btn_eliminar_proveedor.Enabled = True
         proveedorTemp = frmProveedor.dg_proveedores.Rows(e.RowIndex).DataBoundItem
+    End Sub
+    Private Sub checked_changed_gb_proveedores(sender As Object, e As EventArgs)
+        If frmProveedor.rdb_codigo_proveedor.Checked Then
+            criterioBusqueda = "codigoProveedor"
+        Else
+            criterioBusqueda = "nombreProveedor"
+        End If
+    End Sub
+    Private Function lookForText(textoOrigen As String, textoBusqueda As String) As Boolean
+        Dim resultado As Integer
+        resultado = InStr(1, textoOrigen, textoBusqueda)
+        If resultado > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+    Private Sub text_changed_txt_busqueda_proveedor(sender As Object, e As EventArgs)
+        Dim textoBusqueda As String = frmProveedor.txt_busqueda_proveedor.Text
+        Dim dg As DataGridView = frmProveedor.dg_proveedores
+
+        If frmProveedor.txt_busqueda_proveedor.Text = Nothing Then
+            For Each fila As DataGridViewRow In dg.Rows
+                fila.Visible = True
+            Next
+            Exit Sub
+        End If
+        For Each fila As DataGridViewRow In dg.Rows
+            If lookForText(fila.Cells(criterioBusqueda).Value.ToString().Trim, textoBusqueda.Trim) Then
+                dg.CurrentCell = Nothing
+                fila.Visible = True
+            Else
+                dg.CurrentCell = Nothing
+                fila.Visible = False
+            End If
+        Next
     End Sub
     Private Sub tab_main_SelectedIndexChanged(sender As Object, e As EventArgs)
         If frmProveedor.tab_main.SelectedTab.Text.Equals("ARTÍCULOS/PROVEEDORES") Then

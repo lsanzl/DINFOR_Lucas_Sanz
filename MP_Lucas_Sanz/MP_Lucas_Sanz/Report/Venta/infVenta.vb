@@ -46,7 +46,7 @@ Public Class infVenta
         informe.SetDataSource(ds)
         informe.Refresh()
 
-        Dim visorRPT As viewerRPTVenta = New viewerRPTVenta(informe)
+        Dim visorRPT As viewerRPTVenta = New viewerRPTVenta(informe, listaVenta(0))
         visorRPT.crvVenta.ReportSource = informe
         visorRPT.Text = "Informe de Venta"
         visorRPT.WindowState = FormWindowState.Maximized

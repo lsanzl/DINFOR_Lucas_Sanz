@@ -3,16 +3,21 @@
     Dim formaPagoSeleccionado As Boolean = False
     Dim listaFormasPago As List(Of FormaPago) = New List(Of FormaPago)
     Dim formaPagoTemp As FormaPago
+    Dim criterioBusqueda As String = "nombreFormaPago"
 
     Public Sub New(frmPasado As frmMain)
         MyBase.New()
         frmFormasPago = frmPasado
+        frmFormasPago.rdb_nombre_forma_pago.Checked = True
 
         AddHandler frmFormasPago.btn_añadir_forma_pago.Click, AddressOf click_btn_añadir_forma_pago
         AddHandler frmFormasPago.btn_modificar_forma_pago.Click, AddressOf click_btn_modificar_forma_pago
         AddHandler frmFormasPago.btn_eliminar_forma_pago.Click, AddressOf click_btn_eliminar_forma_pago
         AddHandler frmFormasPago.dg_formas_pago.CellClick, AddressOf click_cell_formas_pago
         AddHandler frmFormasPago.tab_main.SelectedIndexChanged, AddressOf tab_main_SelectedIndexChanged
+        AddHandler frmFormasPago.rdb_codigo_forma_pago.CheckedChanged, AddressOf checked_changed_gb_formas_pago
+        AddHandler frmFormasPago.rdb_nombre_forma_pago.CheckedChanged, AddressOf checked_changed_gb_formas_pago
+        AddHandler frmFormasPago.txt_busqueda_forma_pago.TextChanged, AddressOf text_changed_txt_busqueda_forma_pago
     End Sub
 
     Public Sub fillDGFormasPago()
@@ -75,7 +80,42 @@
         formaPagoTemp.deleteFormaPago()
         fillDGFormasPago()
     End Sub
+    Private Sub checked_changed_gb_formas_pago(sender As Object, e As EventArgs)
+        If frmFormasPago.rdb_codigo_forma_pago.Checked Then
+            criterioBusqueda = "codigoFormaPago"
+        Else
+            criterioBusqueda = "nombreFormaPago"
+        End If
+    End Sub
+    Private Function lookForText(textoOrigen As String, textoBusqueda As String) As Boolean
+        Dim resultado As Integer
+        resultado = InStr(1, textoOrigen, textoBusqueda)
+        If resultado > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+    Private Sub text_changed_txt_busqueda_forma_pago(sender As Object, e As EventArgs)
+        Dim textoBusqueda As String = frmFormasPago.txt_busqueda_forma_pago.Text
+        Dim dg As DataGridView = frmFormasPago.dg_formas_pago
 
+        If frmFormasPago.txt_busqueda_forma_pago.Text = Nothing Then
+            For Each fila As DataGridViewRow In dg.Rows
+                fila.Visible = True
+            Next
+            Exit Sub
+        End If
+        For Each fila As DataGridViewRow In dg.Rows
+            If lookForText(fila.Cells(criterioBusqueda).Value.ToString().Trim, textoBusqueda.Trim) Then
+                dg.CurrentCell = Nothing
+                fila.Visible = True
+            Else
+                dg.CurrentCell = Nothing
+                fila.Visible = False
+            End If
+        Next
+    End Sub
     Private Sub tab_main_SelectedIndexChanged(sender As Object, e As EventArgs)
         If frmFormasPago.tab_main.SelectedTab.Text.Equals("BANCOS/PAGOS") Then
             fillDGFormasPago()

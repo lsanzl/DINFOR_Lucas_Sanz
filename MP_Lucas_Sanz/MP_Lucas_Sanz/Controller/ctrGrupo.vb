@@ -2,17 +2,21 @@
     Public frmGrupo As frmMain
     Dim listaGrupos As List(Of Grupo) = New List(Of Grupo)
     Dim grupoTemp As Grupo
+    Dim criterioBusqueda As String = "codigoGrupo"
 
     Public Sub New(frmGrupoPasado As frmMain)
         MyBase.New()
         frmGrupo = frmGrupoPasado
+        frmGrupo.rdb_nombre_grupo.Checked = True
 
         AddHandler frmGrupo.btn_añadir_grupo.Click, AddressOf click_btn_añadir_grupo
         AddHandler frmGrupo.btn_modificar_grupo.Click, AddressOf click_btn_modificar_grupo
         AddHandler frmGrupo.btn_eliminar_grupo.Click, AddressOf click_btn_eliminar_grupo
         AddHandler frmGrupo.dg_grupos.CellClick, AddressOf click_cell_dg_grupos
         AddHandler frmGrupo.tab_main.SelectedIndexChanged, AddressOf tab_main_SelectedIndexChanged
-
+        AddHandler frmGrupo.rdb_codigo_grupo.CheckedChanged, AddressOf checked_changed_gb_grupos
+        AddHandler frmGrupo.rdb_nombre_grupo.CheckedChanged, AddressOf checked_changed_gb_grupos
+        AddHandler frmGrupo.txt_busqueda_grupo.TextChanged, AddressOf text_changed_txt_busqueda_grupo
     End Sub
 
     Public Sub fillDGGrupos()
@@ -66,7 +70,42 @@
             grupoTemp = frmGrupo.dg_grupos.Rows(e.RowIndex).DataBoundItem
         End If
     End Sub
+    Private Sub checked_changed_gb_grupos(sender As Object, e As EventArgs)
+        If frmGrupo.rdb_codigo_grupo.Checked Then
+            criterioBusqueda = "codigoGrupo"
+        Else
+            criterioBusqueda = "nombreGrupo"
+        End If
+    End Sub
+    Private Function lookForText(textoOrigen As String, textoBusqueda As String) As Boolean
+        Dim resultado As Integer
+        resultado = InStr(1, textoOrigen, textoBusqueda)
+        If resultado > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+    Private Sub text_changed_txt_busqueda_grupo(sender As Object, e As EventArgs)
+        Dim textoBusqueda As String = frmGrupo.txt_busqueda_grupo.Text
+        Dim dg As DataGridView = frmGrupo.dg_grupos
 
+        If frmGrupo.txt_busqueda_grupo.Text = Nothing Then
+            For Each fila As DataGridViewRow In dg.Rows
+                fila.Visible = True
+            Next
+            Exit Sub
+        End If
+        For Each fila As DataGridViewRow In dg.Rows
+            If lookForText(fila.Cells(criterioBusqueda).Value.ToString().Trim, textoBusqueda.Trim) Then
+                dg.CurrentCell = Nothing
+                fila.Visible = True
+            Else
+                dg.CurrentCell = Nothing
+                fila.Visible = False
+            End If
+        Next
+    End Sub
     Private Sub tab_main_SelectedIndexChanged(sender As Object, e As EventArgs)
         If frmGrupo.tab_main.SelectedTab.Text.Equals("CLIENTES/GRUPOS") Then
             fillDGGrupos()

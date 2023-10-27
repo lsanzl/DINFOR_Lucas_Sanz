@@ -126,11 +126,11 @@ Public Class ManagerMovimiento
     Public Sub reajustarStock(movimiento As Movimiento, cantidad As Integer, cantidadNueva As Integer)
         cmd = New SqlCommand("UPDATE MOVIMIENTOS SET 
                             STOCK_MOVIMIENTO = STOCK_MOVIMIENTO + @Cantidad
-                            WHERE ID_MOVIMIENTO >= @Codigo
+                            WHERE FECHA_MOVIMIENTO >= @Fecha
                             AND ID_ARTICULO = @Articulo;", connectionDBManager)
         With cmd.Parameters
             .Add("@Cantidad", SqlDbType.Int).Value = cantidad
-            .Add("@Codigo", SqlDbType.Int).Value = movimiento.CodigoDeMovimiento
+            .Add("@Fecha", SqlDbType.Date).Value = movimiento.FechaDeMovimiento
             .Add("@Articulo", SqlDbType.Int).Value = movimiento.ArticuloDeMovimiento
         End With
         Try

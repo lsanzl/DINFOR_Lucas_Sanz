@@ -23,6 +23,7 @@
         frmMovimiento.dg_movimientos.ClearSelection()
         listaMovimientos = New List(Of Movimiento)
         listaMovimientos = managerMovimientoAux.getMovimientos()
+        listaMovimientos = listaMovimientos.OrderBy(Function(m) m.FechaDeMovimiento).ToList()
         frmMovimiento.dg_movimientos.Rows.Clear()
 
         For Each item As Movimiento In listaMovimientos
@@ -64,12 +65,12 @@
             currentCell = frmMovimiento.dg_movimientos.CurrentCell
 
             currentCell.Style.BackColor = Color.Beige
-            currentCell.Style.Font = New Font(12, FontStyle.Bold)
+            currentCell.Style.Font = New Font(currentCell.InheritedStyle.Font.FontFamily, 12, FontStyle.Bold)
         End If
     End Sub
     Private Sub cell_end_edit_dg_movimientos(sender As Object, e As DataGridViewCellEventArgs)
         currentCell.Style.BackColor = Color.White
-        currentCell.Style.Font = New Font(FontStyle.Regular, 8)
+        currentCell.Style.Font = New Font(currentCell.InheritedStyle.Font.FontFamily, 8, FontStyle.Regular)
         If cantidadNueva = Nothing Or cantidadNueva = movimientoTemp.CantidadDeMovimiento Then
             Return
         End If
