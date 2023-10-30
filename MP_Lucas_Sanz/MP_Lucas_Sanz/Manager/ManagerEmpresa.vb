@@ -167,8 +167,10 @@ Public Class ManagerEmpresa
                             ID_FORMA_PAGO INT,
                             PRECIO_VENTA_ARTICULO DECIMAL(10,2),
                             CANTIDAD_VENTA INT,
+                            DESCUENTO_VENTA DECIMAL(5,2),
                             FECHA_VENTA DATE,
                             ELIMINADO_VENTA BIT,
+                            FACTURA_VENTA VARCHAR(10),
                             FOREIGN KEY(ID_CLIENTE) REFERENCES CLIENTES(ID_CLIENTE),
                             FOREIGN KEY(ID_ARTICULO) REFERENCES ARTICULOS(ID_ARTICULO),
                             FOREIGN KEY(ID_FORMA_PAGO) REFERENCES FORMASPAGO(ID_FORMA_PAGO)
@@ -188,6 +190,12 @@ Public Class ManagerEmpresa
                             FOREIGN KEY (ID_CLIENTE) REFERENCES CLIENTES(ID_CLIENTE),
                             FOREIGN KEY (ID_PROVEEDOR) REFERENCES PROVEEDORES(ID_PROVEEDOR),
                             FOREIGN KEY (ID_ARTICULO) REFERENCES ARTICULOS(ID_ARTICULO)
+                            );", connectionDBManager)
+        cmd.ExecuteNonQuery()
+        ' --------------------- IMPUESTOS -------------------------
+        cmd = New SqlCommand("CREATE TABLE IMPUESTOS(
+                            ID_IMPUESTOS INT PRIMARY KEY,
+                            IMPUESTO DECIMAL(5,2)
                             );", connectionDBManager)
         cmd.ExecuteNonQuery()
     End Sub
@@ -213,6 +221,8 @@ Public Class ManagerEmpresa
             VariablesGlobales.updateListaClientes()
             VariablesGlobales.updateListaProveedores()
             VariablesGlobales.updateListaMovimientos()
+            VariablesGlobales.updateListaImpuestos()
+            VariablesGlobales.updateListaFamilias()
         Catch ex As Exception
             MessageBox.Show(ex.ToString())
         End Try
@@ -225,6 +235,8 @@ Public Class ManagerEmpresa
             VariablesGlobales.updateListaClientes()
             VariablesGlobales.updateListaProveedores()
             VariablesGlobales.updateListaMovimientos()
+            VariablesGlobales.updateListaImpuestos()
+            VariablesGlobales.updateListaFamilias()
         Catch ex As Exception
             MessageBox.Show(ex.ToString())
         End Try

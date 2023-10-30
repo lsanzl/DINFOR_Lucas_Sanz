@@ -14,6 +14,7 @@
     Public compraAux As Compra = New Compra()
     Public ventaAux As Venta = New Venta()
     Public movimientoAux As Movimiento = New Movimiento()
+    Public impuestoAux As Impuesto = New Impuesto()
 
     ' ----- MANAGERS AUXILIARES DE CADA CLASE -----
     Public managerEmpAux As ManagerEmpresa = New ManagerEmpresa()
@@ -29,6 +30,7 @@
     Public managerVentaAux As ManagerVenta = New ManagerVenta()
     Public managerConfiguracionAux As ManagerConfiguracion = New ManagerConfiguracion()
     Public managerMovimientoAux As ManagerMovimiento = New ManagerMovimiento()
+    Public managerImpuestoAux As ManagerImpuesto = New ManagerImpuesto()
 
     ' ----- LISTAS AUXILIARES DE CADA CLASE -----
     'ARTÍCULOS
@@ -72,6 +74,26 @@
     End Sub
     Public Function getMovimientoPorCodigo(codigo As Integer) As Movimiento
         Return listaMovimientosAux.Find(Function(m) m.CodigoDeMovimiento = codigo)
+    End Function
+
+    'IMPUESTOS
+    Public listaImpuestosAux As List(Of Impuesto) = New List(Of Impuesto)
+    Public Sub updateListaImpuestos()
+        listaImpuestosAux = New List(Of Impuesto)
+        listaImpuestosAux = managerImpuestoAux.getImpuestos()
+    End Sub
+    Public Function getImpuestoPorCodigo(codigo As Integer) As Impuesto
+        Return listaImpuestosAux.Find(Function(y) y.CodigoDeImpuesto = codigo)
+    End Function
+
+    'FAMILIAS
+    Public listaFamiliasAux As List(Of Familia) = New List(Of Familia)
+    Public Sub updateListaFamilias()
+        listaFamiliasAux = New List(Of Familia)
+        listaFamiliasAux = managerFamiliaAux.getFamilias()
+    End Sub
+    Public Function getFamiliaPorCodigo(codigo As Integer) As Familia
+        Return listaFamiliasAux.Find(Function(f) f.CodigoDeFamilia = codigo)
     End Function
 
     ' ------------ VARIABLES GLOBALES -------------

@@ -41,6 +41,8 @@ Partial Class frmNuevoArticulo
         Me.cb_tipo_unidad_articulo = New System.Windows.Forms.ComboBox()
         Me.btn_familias_articulos = New System.Windows.Forms.Button()
         Me.btn_confirmar_articulo = New System.Windows.Forms.Button()
+        Me.btn_impuestos_articulos = New System.Windows.Forms.Button()
+        Me.txt_impuesto_articulo = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -73,6 +75,8 @@ Partial Class frmNuevoArticulo
         Me.TableLayoutPanel1.Controls.Add(Me.cb_tipo_unidad_articulo, 1, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.btn_familias_articulos, 2, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.btn_confirmar_articulo, 5, 3)
+        Me.TableLayoutPanel1.Controls.Add(Me.btn_impuestos_articulos, 2, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.txt_impuesto_articulo, 3, 1)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(12, 12)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 4
@@ -90,8 +94,7 @@ Partial Class frmNuevoArticulo
         Me.txt_descripcion_articulo.Location = New System.Drawing.Point(390, 3)
         Me.txt_descripcion_articulo.Multiline = True
         Me.txt_descripcion_articulo.Name = "txt_descripcion_articulo"
-        Me.TableLayoutPanel1.SetRowSpan(Me.txt_descripcion_articulo, 2)
-        Me.txt_descripcion_articulo.Size = New System.Drawing.Size(383, 89)
+        Me.txt_descripcion_articulo.Size = New System.Drawing.Size(383, 42)
         Me.txt_descripcion_articulo.TabIndex = 10
         '
         'lbl_codigo_articulo
@@ -260,6 +263,26 @@ Partial Class frmNuevoArticulo
         Me.btn_confirmar_articulo.Text = "Confirmar"
         Me.btn_confirmar_articulo.UseVisualStyleBackColor = True
         '
+        'btn_impuestos_articulos
+        '
+        Me.btn_impuestos_articulos.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_impuestos_articulos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_impuestos_articulos.Location = New System.Drawing.Point(261, 60)
+        Me.btn_impuestos_articulos.Name = "btn_impuestos_articulos"
+        Me.btn_impuestos_articulos.Size = New System.Drawing.Size(123, 23)
+        Me.btn_impuestos_articulos.TabIndex = 18
+        Me.btn_impuestos_articulos.Text = "Impuesto"
+        Me.btn_impuestos_articulos.UseVisualStyleBackColor = True
+        '
+        'txt_impuesto_articulo
+        '
+        Me.txt_impuesto_articulo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_impuesto_articulo.Location = New System.Drawing.Point(390, 62)
+        Me.txt_impuesto_articulo.Name = "txt_impuesto_articulo"
+        Me.txt_impuesto_articulo.ReadOnly = True
+        Me.txt_impuesto_articulo.Size = New System.Drawing.Size(123, 20)
+        Me.txt_impuesto_articulo.TabIndex = 19
+        '
         'frmNuevoArticulo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -298,4 +321,6 @@ Partial Class frmNuevoArticulo
     Friend WithEvents cb_tipo_unidad_articulo As ComboBox
     Friend WithEvents btn_familias_articulos As Button
     Friend WithEvents btn_confirmar_articulo As Button
+    Friend WithEvents btn_impuestos_articulos As Button
+    Friend WithEvents txt_impuesto_articulo As TextBox
 End Class

@@ -8,6 +8,11 @@ Public Class frmVenta
     Dim clienteSeleccionado As Cliente
     Dim articuloSeleccionado As Articulo
     Dim facturaGenerada As String
+    Dim doubleParse As Double
+    Dim brutoTotal As Double
+    Dim baseImponibleTotal As Double
+    Dim impuestoTotal As Double
+    Dim precioTotal As Double
 
     Private Sub frmVenta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         listaVentas = New List(Of Venta)
@@ -38,8 +43,15 @@ Public Class frmVenta
         txt_cliente_seleccionado.Clear()
         txt_cantidad_seleccionada_venta.Clear()
         txt_articulo_seleccionado_venta.Clear()
-        lbl_precio_sumatorio_venta.Visible = False
-        lbl_precio_sumatorio_venta.Text = Nothing
+        txt_descuento_venta.Clear()
+        lbl_bruto.Text = Nothing
+        lbl_base_imponible.Text = Nothing
+        lbl_impuesto.Text = Nothing
+        lbl_total.Text = Nothing
+        lbl_bruto.Visible = False
+        lbl_base_imponible.Visible = False
+        lbl_impuesto.Visible = False
+        lbl_total.Visible = False
 
         dt.Clear()
         cb_forma_pago_seleccionada_venta.DataSource = Nothing
@@ -70,6 +82,7 @@ Public Class frmVenta
     Private Sub clearFieldsDatos()
         txt_articulo_seleccionado_venta.Clear()
         txt_cantidad_seleccionada_venta.Clear()
+        txt_descuento_venta.Clear()
         cb_forma_pago_seleccionada_venta.SelectedIndex = -1
     End Sub
 
@@ -90,6 +103,10 @@ Public Class frmVenta
             MessageBox.Show("Introduzca cantidad válida")
             Return False
         End If
+        If Not String.IsNullOrEmpty(txt_descuento_venta.Text) And Not Double.TryParse(txt_descuento_venta.Text, doubleParse) Then
+            MessageBox.Show("Introduzca descuento válido")
+            Return False
+        End If
         Return True
     End Function
 
@@ -105,6 +122,7 @@ Public Class frmVenta
         Dim precioVenta As Double = Convert.ToDouble(managerArticuloAux.getCampoArticulo(articuloSeleccionado.CodigoDeArticulo, "PRECIO_COMPRA_ARTICULO"))
         Dim porcBeneficio As Double = Convert.ToDouble(managerArticuloAux.getCampoArticulo(articuloSeleccionado.CodigoDeArticulo, "PORC_BENEFICIO_ARTICULO"))
         Dim fechaVenta As Date = dp_fecha_venta.Value
+        Dim descuentoVenta As Double = Convert.ToDouble(txt_descuento_venta.Text)
 
         Dim cantidadTemporalTotal As Integer = cantidadSeleccionada
         For Each item As Venta In listaVentas
@@ -117,7 +135,7 @@ Public Class frmVenta
         End If
         Dim precioVentaArticulo As Double = precioVenta * (1 + porcBeneficio / 100)
         Dim codigoVenta As Integer = managerVentaAux.getIDVenta()
-        ventaTemp = New Venta(codigoVenta, clienteSeleccionado.CodigoDelCliente, articuloSeleccionado.CodigoDeArticulo, formaPagoSeleccionada, precioVentaArticulo, cantidadSeleccionada, fechaVenta, False, facturaGenerada)
+        ventaTemp = New Venta(codigoVenta, clienteSeleccionado.CodigoDelCliente, articuloSeleccionado.CodigoDeArticulo, formaPagoSeleccionada, precioVentaArticulo, cantidadSeleccionada, fechaVenta, False, facturaGenerada, descuentoVenta)
         listaVentas.Add(ventaTemp)
         fillDGVentas()
         clearFieldsDatos()
@@ -140,6 +158,7 @@ Public Class frmVenta
             txt_articulo_seleccionado_venta.Text = articuloTemp.NombreDeArticulo
             txt_cliente_seleccionado.Text = clienteTemp.NombreDelCliente
             txt_cantidad_seleccionada_venta.Text = ventaTemp.CantidadDeVenta
+            txt_descuento_venta.Text = ventaTemp.DescuentoDeVenta
             cb_forma_pago_seleccionada_venta.SelectedValue = ventaTemp.FormaDePagoVenta
             btn_modificar_venta.Text = "CONFIRMAR"
         Else
@@ -156,13 +175,19 @@ Public Class frmVenta
         For Each item As Venta In listaVentas
             Dim index As Integer = dg_ventas.Rows.Add()
             articuloItem = managerArticuloAux.getArticuloConcreto(item.ArticuloDeVenta)
+            Dim baseImponible As Double = item.PrecioDeArticuloVenta * (1 - item.DescuentoDeVenta / 100)
+            Dim impuesto As Double = baseImponible * (articuloItem.ImpuestoDeArticulo / 100)
+
             dg_ventas.Rows(index).Cells("idVenta").Value = item.CodigoDeVenta
             dg_ventas.Rows(index).Cells("clienteVenta").Value = item.ClienteDeVenta
             dg_ventas.Rows(index).Cells("articuloVenta").Value = articuloItem.NombreDeArticulo
             dg_ventas.Rows(index).Cells("formaPagoVenta").Value = item.FormaDePagoVenta
-            dg_ventas.Rows(index).Cells("precioArticuloVenta").Value = item.PrecioDeArticuloVenta
+            dg_ventas.Rows(index).Cells("precioBrutoVenta").Value = item.PrecioDeArticuloVenta * item.CantidadDeVenta
             dg_ventas.Rows(index).Cells("cantidadVenta").Value = item.CantidadDeVenta
-            dg_ventas.Rows(index).Cells("precioTotalVenta").Value = item.PrecioTotalDeVenta
+            dg_ventas.Rows(index).Cells("descuentoVenta").Value = item.DescuentoDeVenta
+            dg_ventas.Rows(index).Cells("baseImponible").Value = baseImponible * item.CantidadDeVenta
+            dg_ventas.Rows(index).Cells("impuestoVenta").Value = impuesto * item.CantidadDeVenta
+            dg_ventas.Rows(index).Cells("precioTotalVenta").Value = (baseImponible + impuesto) * item.CantidadDeVenta
         Next
         If dg_ventas.RowCount > 0 Then
             btn_confirmar_venta.Enabled = True
@@ -174,15 +199,38 @@ Public Class frmVenta
         dg_ventas.ClearSelection()
     End Sub
     Private Sub calcularTotal()
-        lbl_precio_sumatorio_venta.Visible = True
-        Dim precioTotal As Double = 0
+        lbl_total.Visible = True
+        lbl_bruto.Visible = True
+        lbl_base_imponible.Visible = True
+        lbl_impuesto.Visible = True
+
+        brutoTotal = 0
+        baseImponibleTotal = 0
+        impuestoTotal = 0
+        precioTotal = 0
+        Dim baseImponibleTemp As Double
+        Dim impuestoTemp As Double
+        Dim articuloTemp As Articulo
+
         For Each ventilla As Venta In listaVentas
-            precioTotal += ventilla.PrecioTotalDeVenta
+            articuloTemp = VariablesGlobales.getArticuloPorCodigo(ventilla.ArticuloDeVenta)
+            baseImponibleTemp = ventilla.PrecioDeArticuloVenta * (1 - ventilla.DescuentoDeVenta / 100)
+            impuestoTemp = baseImponibleTemp * articuloTemp.ImpuestoDeArticulo / 100
+            brutoTotal += ventilla.PrecioDeArticuloVenta * ventilla.CantidadDeVenta
+            baseImponibleTotal += baseImponibleTemp * ventilla.CantidadDeVenta
+            impuestoTotal += impuestoTemp * ventilla.CantidadDeVenta
+            precioTotal += (baseImponibleTemp + impuestoTemp) * ventilla.CantidadDeVenta
         Next
-        If precioTotal = 0 Then
-            lbl_precio_sumatorio_venta.Visible = False
+        If brutoTotal = 0 Then
+            lbl_total.Visible = False
+            lbl_bruto.Visible = False
+            lbl_base_imponible.Visible = False
+            lbl_impuesto.Visible = False
         End If
-        lbl_precio_sumatorio_venta.Text = $"Importe total: {precioTotal}€"
+        lbl_total.Text = $"Importe total: {precioTotal.ToString("N2")}€"
+        lbl_bruto.Text = $"Bruto total: {brutoTotal.ToString("N2")}€"
+        lbl_base_imponible.Text = $"Base imponible total: {baseImponibleTotal.ToString("N2")}€"
+        lbl_impuesto.Text = $"Impuesto total: {impuestoTotal.ToString("N2")}€"
     End Sub
     Private Sub click_cell_dg_ventas(sender As Object, e As DataGridViewCellEventArgs) Handles dg_ventas.CellClick
         If e.RowIndex >= 0 And dg_ventas.Rows(e.RowIndex).Cells("articuloVenta").Value <> Nothing Then
@@ -219,7 +267,7 @@ Public Class frmVenta
             movimientoTemp.addMovimiento()
         Next
 
-        Dim informe As infVenta = New infVenta(listaVentas, fechaVenta)
+        Dim informe As infVenta = New infVenta(listaVentas, fechaVenta, brutoTotal, baseImponibleTotal, impuestoTotal, precioTotal)
         clearFields()
     End Sub
 End Class

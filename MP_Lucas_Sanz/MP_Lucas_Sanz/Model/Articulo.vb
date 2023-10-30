@@ -7,6 +7,7 @@
     Private porcBeneficioArticulo As Double
     Private pvpVentaArticulo As Double
     Private tipoUnidadArticulo As String
+    Private impuestoArticulo As Double
 
     Public Property CodigoDeArticulo() As Integer
         Get
@@ -72,13 +73,21 @@
             tipoUnidadArticulo = value
         End Set
     End Property
+    Public Property ImpuestoDeArticulo() As Double
+        Get
+            Return impuestoArticulo
+        End Get
+        Set(value As Double)
+            impuestoArticulo = value
+        End Set
+    End Property
 
     Public Sub New()
         MyBase.New()
     End Sub
     Public Sub New(nombrePasado As String, descripcionPasada As String,
                    pvpCompraPasado As Double, porcBeneficioPasado As Double,
-                   tipoArticuloPasado As String, familiaPasada As Integer)
+                   tipoArticuloPasado As String, familiaPasada As Integer, impuestoPasado As Double)
         MyBase.New()
         NombreDeArticulo = nombrePasado
         DescripcionDeArticulo = descripcionPasada
@@ -86,12 +95,13 @@
         PorcentajeDeBeneficio = porcBeneficioPasado
         TipoDeUnidadArticulo = tipoArticuloPasado
         FamiliaDeArticulo = familiaPasada
+        impuestoArticulo = impuestoPasado
 
         PVPVentaDeArticulo = PVPCompraDeArticulo * (1 + PorcentajeDeBeneficio / 100)
     End Sub
     Public Sub New(codigoPasado As Integer, nombrePasado As String, descripcionPasada As String,
                    pvpCompraPasado As Double, porcBeneficioPasado As Double,
-                   tipoArticuloPasado As String, familiaPasada As Integer)
+                   tipoArticuloPasado As String, familiaPasada As Integer, impuestoPasado As Double)
         MyBase.New()
         CodigoDeArticulo = codigoPasado
         NombreDeArticulo = nombrePasado
@@ -100,6 +110,7 @@
         PorcentajeDeBeneficio = porcBeneficioPasado
         TipoDeUnidadArticulo = tipoArticuloPasado
         FamiliaDeArticulo = familiaPasada
+        impuestoArticulo = impuestoPasado
 
         PVPVentaDeArticulo = PVPCompraDeArticulo * (1 + PorcentajeDeBeneficio / 100)
     End Sub

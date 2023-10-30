@@ -24,11 +24,11 @@ Partial Class frmNuevaFamilia
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmNuevaFamilia))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.btn_confirmar_familia = New System.Windows.Forms.Button()
+        Me.txt_nombre_familia = New System.Windows.Forms.TextBox()
         Me.lbl_codigo_familia = New System.Windows.Forms.Label()
         Me.lbl_nombre_familia = New System.Windows.Forms.Label()
         Me.txt_codigo_familia = New System.Windows.Forms.TextBox()
-        Me.txt_nombre_familia = New System.Windows.Forms.TextBox()
+        Me.btn_confirmar_familia = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -52,16 +52,13 @@ Partial Class frmNuevaFamilia
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(322, 79)
         Me.TableLayoutPanel1.TabIndex = 0
         '
-        'btn_confirmar_familia
+        'txt_nombre_familia
         '
-        Me.btn_confirmar_familia.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_confirmar_familia.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_confirmar_familia.Location = New System.Drawing.Point(259, 97)
-        Me.btn_confirmar_familia.Name = "btn_confirmar_familia"
-        Me.btn_confirmar_familia.Size = New System.Drawing.Size(75, 23)
-        Me.btn_confirmar_familia.TabIndex = 1
-        Me.btn_confirmar_familia.Text = "Confirmar"
-        Me.btn_confirmar_familia.UseVisualStyleBackColor = True
+        Me.txt_nombre_familia.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_nombre_familia.Location = New System.Drawing.Point(63, 49)
+        Me.txt_nombre_familia.Name = "txt_nombre_familia"
+        Me.txt_nombre_familia.Size = New System.Drawing.Size(256, 20)
+        Me.txt_nombre_familia.TabIndex = 3
         '
         'lbl_codigo_familia
         '
@@ -95,13 +92,16 @@ Partial Class frmNuevaFamilia
         Me.txt_codigo_familia.Size = New System.Drawing.Size(256, 20)
         Me.txt_codigo_familia.TabIndex = 2
         '
-        'txt_nombre_familia
+        'btn_confirmar_familia
         '
-        Me.txt_nombre_familia.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txt_nombre_familia.Location = New System.Drawing.Point(63, 49)
-        Me.txt_nombre_familia.Name = "txt_nombre_familia"
-        Me.txt_nombre_familia.Size = New System.Drawing.Size(256, 20)
-        Me.txt_nombre_familia.TabIndex = 3
+        Me.btn_confirmar_familia.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_confirmar_familia.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_confirmar_familia.Location = New System.Drawing.Point(259, 97)
+        Me.btn_confirmar_familia.Name = "btn_confirmar_familia"
+        Me.btn_confirmar_familia.Size = New System.Drawing.Size(75, 23)
+        Me.btn_confirmar_familia.TabIndex = 1
+        Me.btn_confirmar_familia.Text = "Confirmar"
+        Me.btn_confirmar_familia.UseVisualStyleBackColor = True
         '
         'frmNuevaFamilia
         '

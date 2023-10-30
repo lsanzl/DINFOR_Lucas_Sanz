@@ -119,6 +119,7 @@
     <Compile Include="Manager\ManagerFamilia.vb" />
     <Compile Include="Manager\ManagerFormaPago.vb" />
     <Compile Include="Manager\ManagerGrupo.vb" />
+    <Compile Include="Manager\ManagerImpuesto.vb" />
     <Compile Include="Manager\ManagerInventario.vb" />
     <Compile Include="Manager\ManagerMovimiento.vb" />
     <Compile Include="Manager\ManagerProveedor.vb" />
@@ -130,6 +131,7 @@
     <Compile Include="Model\Familia.vb" />
     <Compile Include="Model\FormaPago.vb" />
     <Compile Include="Model\Grupo.vb" />
+    <Compile Include="Model\Impuesto.vb" />
     <Compile Include="Model\Inventario.vb" />
     <Compile Include="Model\Movimiento.vb" />
     <Compile Include="Model\Proveedor.vb" />

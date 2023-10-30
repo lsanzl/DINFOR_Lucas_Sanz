@@ -17,6 +17,7 @@ Public Class ManagerVenta
             Dim formaPago As String
             Dim precio As Double
             Dim cantidad As Integer
+            Dim descuento As Double
             Dim fecha As Date
             Dim eliminadoInt As Integer
             Dim eliminado As Boolean
@@ -30,9 +31,10 @@ Public Class ManagerVenta
                 formaPago = Convert.ToInt32(dr(3))
                 precio = Convert.ToDouble(dr(4))
                 cantidad = Convert.ToInt32(dr(5))
-                fecha = Convert.ToDateTime(dr(6))
-                eliminadoInt = Convert.ToInt32(dr(7))
-                factura = dr(8).ToString()
+                descuento = Convert.ToDouble(dr(6))
+                fecha = Convert.ToDateTime(dr(7))
+                eliminadoInt = Convert.ToInt32(dr(8))
+                factura = dr(9).ToString()
 
                 If eliminadoInt = 0 Then
                     eliminado = False
@@ -40,7 +42,7 @@ Public Class ManagerVenta
                     eliminado = True
                 End If
 
-                ventaAux = New Venta(codigo, cliente, articulo, formaPago, precio, cantidad, fecha, eliminado, factura)
+                ventaAux = New Venta(codigo, cliente, articulo, formaPago, precio, cantidad, fecha, eliminado, factura, descuento)
                 listaVentas.Add(ventaAux)
             Loop While dr.Read()
         End If
@@ -64,6 +66,7 @@ Public Class ManagerVenta
                                 @FormaPago,
                                 @PVPVenta,
                                 @Cantidad,
+                                @Descuento,
                                 @Fecha,
                                 @Eliminado,
                                 @Factura);", connectionDBManager)
@@ -74,6 +77,7 @@ Public Class ManagerVenta
             .Add("@FormaPago", SqlDbType.Int).Value = ventaTemp.FormaDePagoVenta
             .Add("@PVPVenta", SqlDbType.Decimal, 10, 2).Value = ventaTemp.PrecioDeArticuloVenta
             .Add("@Cantidad", SqlDbType.Int).Value = ventaTemp.CantidadDeVenta
+            .Add("@Descuento", SqlDbType.Decimal, 5, 2).Value = ventaTemp.DescuentoDeVenta
             .Add("@Fecha", SqlDbType.Date).Value = ventaTemp.FechaDeVenta
             .Add("@Eliminado", SqlDbType.Bit).Value = eliminadoInt
             .Add("@Factura", SqlDbType.Char, 10).Value = ventaTemp.FacturaDeVenta
@@ -112,7 +116,7 @@ Public Class ManagerVenta
         End Try
     End Sub
     Public Function checkNumFactura(factura As String) As Boolean
-        cmd = New SqlCommand("SELECT NUMERO_FACTURA FROM VENTAS WHERE NUMERO_FACTURA = @Factura", connectionDBManager)
+        cmd = New SqlCommand("SELECT FACTURA_VENTA FROM VENTAS WHERE FACTURA_VENTA = @Factura", connectionDBManager)
         cmd.Parameters.Add("@Factura", SqlDbType.Char, 10).Value = factura
         Try
             Dim facturaObj As Object = cmd.ExecuteScalar

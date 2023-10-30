@@ -5,6 +5,7 @@
     Private formaPagoVenta As Integer
     Private precioArticuloVenta As Double
     Private cantidadVenta As Integer
+    Private descuentoVenta As Double
     Private precioTotalVenta As Double
     Private fechaVenta As Date
     Private eliminadoVenta As Boolean
@@ -58,6 +59,14 @@
             cantidadVenta = value
         End Set
     End Property
+    Public Property DescuentoDeVenta() As Double
+        Get
+            Return descuentoVenta
+        End Get
+        Set(value As Double)
+            descuentoVenta = value
+        End Set
+    End Property
     Public Property PrecioTotalDeVenta() As Double
         Get
             Return precioTotalVenta
@@ -94,19 +103,20 @@
     Public Sub New()
         MyBase.New()
     End Sub
-    Public Sub New(clienteP As String, articuloP As String, formaP As String, precioP As Double, cantidadP As Integer, fechaP As Date, facturaP As String)
+    Public Sub New(clienteP As String, articuloP As String, formaP As String, precioP As Double, cantidadP As Integer, fechaP As Date, facturaP As String, descuentoP As Double)
         MyBase.New()
         ClienteDeVenta = clienteP
         ArticuloDeVenta = articuloP
         FormaDePagoVenta = formaP
         PrecioDeArticuloVenta = precioP
         CantidadDeVenta = cantidadP
+        descuentoVenta = descuentoP
         FechaDeVenta = fechaP
         PrecioTotalDeVenta = PrecioDeArticuloVenta * CantidadDeVenta
         VentaEliminada = False
         FacturaDeVenta = facturaP
     End Sub
-    Public Sub New(codigoVentaP As Integer, clienteP As String, articuloP As String, formaP As String, precioP As Double, cantidadP As Integer, fechaP As Date)
+    Public Sub New(codigoVentaP As Integer, clienteP As String, articuloP As String, formaP As String, precioP As Double, cantidadP As Integer, fechaP As Date, descuentoP As Double)
         MyBase.New()
         CodigoDeVenta = codigoVentaP
         ClienteDeVenta = clienteP
@@ -114,11 +124,12 @@
         FormaDePagoVenta = formaP
         PrecioDeArticuloVenta = precioP
         CantidadDeVenta = cantidadP
+        descuentoVenta = descuentoP
         FechaDeVenta = fechaP
         PrecioTotalDeVenta = PrecioDeArticuloVenta * CantidadDeVenta
         VentaEliminada = False
     End Sub
-    Public Sub New(codigoVentaP As Integer, clienteP As String, articuloP As String, formaP As String, precioP As Double, cantidadP As Integer, fechaP As Date, eliminadoVentaP As Boolean)
+    Public Sub New(codigoVentaP As Integer, clienteP As String, articuloP As String, formaP As String, precioP As Double, cantidadP As Integer, fechaP As Date, eliminadoVentaP As Boolean, descuentoP As Double)
         MyBase.New()
         CodigoDeVenta = codigoVentaP
         ClienteDeVenta = clienteP
@@ -126,11 +137,12 @@
         FormaDePagoVenta = formaP
         PrecioDeArticuloVenta = precioP
         CantidadDeVenta = cantidadP
+        descuentoVenta = descuentoP
         FechaDeVenta = fechaP
         PrecioTotalDeVenta = PrecioDeArticuloVenta * CantidadDeVenta
         VentaEliminada = eliminadoVentaP
     End Sub
-    Public Sub New(codigoVentaP As Integer, clienteP As String, articuloP As String, formaP As String, precioP As Double, cantidadP As Integer, fechaP As Date, eliminadoVentaP As Boolean, facturaVentaP As String)
+    Public Sub New(codigoVentaP As Integer, clienteP As String, articuloP As String, formaP As String, precioP As Double, cantidadP As Integer, fechaP As Date, eliminadoVentaP As Boolean, facturaVentaP As String, descuentoP As Double)
         MyBase.New()
         CodigoDeVenta = codigoVentaP
         ClienteDeVenta = clienteP
@@ -138,6 +150,7 @@
         FormaDePagoVenta = formaP
         PrecioDeArticuloVenta = precioP
         CantidadDeVenta = cantidadP
+        descuentoVenta = descuentoP
         FechaDeVenta = fechaP
         PrecioTotalDeVenta = PrecioDeArticuloVenta * CantidadDeVenta
         VentaEliminada = eliminadoVentaP

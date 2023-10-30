@@ -18,6 +18,7 @@ Public Class ManagerArticulo
             Dim pvpCompraArticulo As Double
             Dim porcBeneficioArticulo As Double
             Dim tipoUnidadArticulo As String
+            Dim impuestoArticulo As Double
 
             dr.Read()
             Do
@@ -28,9 +29,10 @@ Public Class ManagerArticulo
                 pvpCompraArticulo = Convert.ToDouble(dr(4))
                 porcBeneficioArticulo = Convert.ToDouble(dr(5))
                 tipoUnidadArticulo = dr(6).ToString().Trim()
+                impuestoArticulo = Convert.ToDouble(dr(7))
 
                 articuloAux = New Articulo(codigoArticulo, nombreArticulo, descripcionArticulo,
-                                            pvpCompraArticulo, porcBeneficioArticulo, tipoUnidadArticulo, familiaArticulo)
+                                            pvpCompraArticulo, porcBeneficioArticulo, tipoUnidadArticulo, familiaArticulo, impuestoArticulo)
 
                 listaArticulos.Add(articuloAux)
             Loop While dr.Read()
@@ -51,7 +53,8 @@ Public Class ManagerArticulo
                             @Descripcion, 
                             @PVPCompra, 
                             @PorcentajeBeneficio, 
-                            @TipoUnidad);", connectionDBManager)
+                            @TipoUnidad,
+                            @Impuesto);", connectionDBManager)
         With cmd.Parameters
             .Add("@Codigo", SqlDbType.Int).Value = codigoNuevo
             .Add("@Familia", SqlDbType.Int).Value = articuloPasado.FamiliaDeArticulo
@@ -60,6 +63,7 @@ Public Class ManagerArticulo
             .Add("@PVPCompra", SqlDbType.Decimal, 10, 2).Value = articuloPasado.PVPCompraDeArticulo
             .Add("@PorcentajeBeneficio", SqlDbType.Decimal, 5, 2).Value = articuloPasado.PorcentajeDeBeneficio
             .Add("@TipoUnidad", SqlDbType.Char, 50).Value = articuloPasado.TipoDeUnidadArticulo
+            .Add("@Impuesto", SqlDbType.Decimal, 5, 2).Value = articuloPasado.ImpuestoDeArticulo
         End With
         Try
             cmd.ExecuteNonQuery()
@@ -75,7 +79,8 @@ Public Class ManagerArticulo
                             DESCRIPCION_ARTICULO = @Descripcion,
                             PRECIO_COMPRA_ARTICULO = @PVPCompra,
                             PORC_BENEFICIO_ARTICULO = @PorcentajeBeneficio,
-                            TIPO_UNIDAD = @TipoUnidad                          
+                            TIPO_UNIDAD = @TipoUnidad,
+                            IMPUESTO_ARTICULO = @Impuesto
                             WHERE ID_ARTICULO = @Codigo;", connectionDBManager)
         With cmd.Parameters
             .Add("@Codigo", SqlDbType.Int).Value = articuloPasado.CodigoDeArticulo
@@ -85,6 +90,7 @@ Public Class ManagerArticulo
             .Add("@PVPCompra", SqlDbType.Decimal, 10, 2).Value = articuloPasado.PVPCompraDeArticulo
             .Add("@PorcentajeBeneficio", SqlDbType.Decimal, 5, 2).Value = articuloPasado.PorcentajeDeBeneficio
             .Add("@TipoUnidad", SqlDbType.Char, 50).Value = articuloPasado.TipoDeUnidadArticulo
+            .Add("@Impuesto", SqlDbType.Decimal, 5, 2).Value = articuloPasado.ImpuestoDeArticulo
         End With
         Try
             cmd.ExecuteNonQuery()

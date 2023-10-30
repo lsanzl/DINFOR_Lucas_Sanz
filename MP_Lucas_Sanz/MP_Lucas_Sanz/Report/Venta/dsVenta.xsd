@@ -21,6 +21,9 @@
               <xs:element name="Precio_x0020_Unitario" msprop:Generator_ColumnVarNameInTable="columnPrecio_Unitario" msprop:Generator_ColumnPropNameInRow="Precio_Unitario" msprop:Generator_ColumnPropNameInTable="Precio_UnitarioColumn" msprop:Generator_UserColumnName="Precio Unitario" type="xs:string" minOccurs="0" />
               <xs:element name="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" msprop:Generator_UserColumnName="Cantidad" type="xs:string" minOccurs="0" />
               <xs:element name="Precio_x0020_Total" msprop:Generator_ColumnVarNameInTable="columnPrecio_Total" msprop:Generator_ColumnPropNameInRow="Precio_Total" msprop:Generator_ColumnPropNameInTable="Precio_TotalColumn" msprop:Generator_UserColumnName="Precio Total" type="xs:double" minOccurs="0" />
+              <xs:element name="Impuesto" msprop:Generator_ColumnVarNameInTable="columnImpuesto" msprop:Generator_ColumnPropNameInRow="Impuesto" msprop:Generator_ColumnPropNameInTable="ImpuestoColumn" msprop:Generator_UserColumnName="Impuesto" type="xs:string" minOccurs="0" />
+              <xs:element name="Descuento" msprop:Generator_ColumnVarNameInTable="columnDescuento" msprop:Generator_ColumnPropNameInRow="Descuento" msprop:Generator_ColumnPropNameInTable="DescuentoColumn" msprop:Generator_UserColumnName="Descuento" type="xs:string" minOccurs="0" />
+              <xs:element name="Base_x0020_Imponible" msprop:Generator_ColumnVarNameInTable="columnBase_Imponible" msprop:Generator_ColumnPropNameInRow="Base_Imponible" msprop:Generator_ColumnPropNameInTable="Base_ImponibleColumn" msprop:Generator_UserColumnName="Base Imponible" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -33,6 +36,16 @@
               <xs:element name="NIF" msprop:Generator_ColumnVarNameInTable="columnNIF" msprop:Generator_ColumnPropNameInRow="NIF" msprop:Generator_ColumnPropNameInTable="NIFColumn" msprop:Generator_UserColumnName="NIF" type="xs:string" minOccurs="0" />
               <xs:element name="Email" msprop:Generator_ColumnVarNameInTable="columnEmail" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnPropNameInTable="EmailColumn" msprop:Generator_UserColumnName="Email" type="xs:string" minOccurs="0" />
               <xs:element name="Fecha_x0020_Venta" msprop:Generator_ColumnVarNameInTable="columnFecha_Venta" msprop:Generator_ColumnPropNameInRow="Fecha_Venta" msprop:Generator_ColumnPropNameInTable="Fecha_VentaColumn" msprop:Generator_UserColumnName="Fecha Venta" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Desglose" msprop:Generator_TableClassName="DesgloseDataTable" msprop:Generator_TableVarName="tableDesglose" msprop:Generator_RowChangedName="DesgloseRowChanged" msprop:Generator_TablePropName="Desglose" msprop:Generator_RowDeletingName="DesgloseRowDeleting" msprop:Generator_RowChangingName="DesgloseRowChanging" msprop:Generator_RowEvHandlerName="DesgloseRowChangeEventHandler" msprop:Generator_RowDeletedName="DesgloseRowDeleted" msprop:Generator_RowClassName="DesgloseRow" msprop:Generator_UserTableName="Desglose" msprop:Generator_RowEvArgName="DesgloseRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Bruto" msprop:Generator_ColumnVarNameInTable="columnBruto" msprop:Generator_ColumnPropNameInRow="Bruto" msprop:Generator_ColumnPropNameInTable="BrutoColumn" msprop:Generator_UserColumnName="Bruto" type="xs:double" minOccurs="0" />
+              <xs:element name="Base_x0020_Imponible" msprop:Generator_ColumnVarNameInTable="columnBase_Imponible" msprop:Generator_ColumnPropNameInRow="Base_Imponible" msprop:Generator_ColumnPropNameInTable="Base_ImponibleColumn" msprop:Generator_UserColumnName="Base Imponible" type="xs:double" minOccurs="0" />
+              <xs:element name="Impuesto" msprop:Generator_ColumnVarNameInTable="columnImpuesto" msprop:Generator_ColumnPropNameInRow="Impuesto" msprop:Generator_ColumnPropNameInTable="ImpuestoColumn" msprop:Generator_UserColumnName="Impuesto" type="xs:double" minOccurs="0" />
+              <xs:element name="Precio_x0020_Total" msprop:Generator_ColumnVarNameInTable="columnPrecio_Total" msprop:Generator_ColumnPropNameInRow="Precio_Total" msprop:Generator_ColumnPropNameInTable="Precio_TotalColumn" msprop:Generator_UserColumnName="Precio Total" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

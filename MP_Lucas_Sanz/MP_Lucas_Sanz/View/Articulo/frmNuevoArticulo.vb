@@ -1,6 +1,7 @@
 ﻿Public Class frmNuevoArticulo
     Private listaUnidades As List(Of String) = New List(Of String) From {"Kgs", "Metros", "Unidades", "Litros"}
     Dim familiaSeleccionada As Integer = Nothing
+    Dim impuestoSeleccionado As Integer = Nothing
     Dim pvpCompraDouble As Double
     Dim porcBenefDouble As Double
 
@@ -43,7 +44,11 @@
         End If
         Dim familiaTemp As Integer = Nothing
         If Not String.IsNullOrEmpty(txt_familia_articulo.Text) Then
-            familiaTemp = Convert.ToInt32(txt_familia_articulo.Text)
+            familiaTemp = familiaSeleccionada
+        End If
+        Dim impuestoTemp As Integer = Nothing
+        If Not String.IsNullOrEmpty(txt_impuesto_articulo.Text) Then
+            impuestoTemp = impuestoSeleccionado
         End If
 
         Dim codigoTemp As Integer
@@ -55,7 +60,7 @@
         If btn_confirmar_articulo.Text.Equals("Modificar") Then
             unidadTemp = cb_tipo_unidad_articulo.Text
         End If
-        Dim articuloTemp As Articulo = New Articulo(codigoTemp, nombreTemp, descrTemp, pvpCompraTemp, porcTemp, unidadTemp, familiaTemp)
+        Dim articuloTemp As Articulo = New Articulo(codigoTemp, nombreTemp, descrTemp, pvpCompraTemp, porcTemp, unidadTemp, familiaTemp, impuestoTemp)
         If btn_confirmar_articulo.Text.Equals("Modificar") Then
             articuloTemp.modifyArticulo()
         Else
@@ -87,9 +92,20 @@
     End Function
     Private Sub click_btn_familias_articulo(sender As Object, e As EventArgs) Handles btn_familias_articulos.Click
         txt_familia_articulo.Clear()
+        frmFamilias.Text = "Familias"
         frmFamilias.ShowDialog()
         familiaSeleccionada = frmFamilias.familiaSeleccionada
-        txt_familia_articulo.Text = familiaSeleccionada
+        Dim familiaTemp As Familia = New Familia()
+        familiaTemp = VariablesGlobales.getFamiliaPorCodigo(familiaSeleccionada)
+        txt_familia_articulo.Text = familiaTemp.NombreDeFamilia
+    End Sub
+    Private Sub click_btn_impuestos_articulos(sender As Object, e As EventArgs) Handles btn_impuestos_articulos.Click
+        txt_impuesto_articulo.Clear()
+        frmFamilias.Text = "Impuestos"
+        frmFamilias.ShowDialog()
+        impuestoSeleccionado = frmFamilias.impuestoSeleccionado
+        Dim impuestoTemp As Impuesto = VariablesGlobales.getImpuestoPorCodigo(impuestoSeleccionado)
+        txt_impuesto_articulo.Text = impuestoTemp.CantidadImpuesto
     End Sub
 
     Private Sub txtchanged_pvp_compra_articulo(sender As Object, e As EventArgs) Handles txt_pvp_compra_articulo.TextChanged, txt_porc_beneficio_articulo.TextChanged
