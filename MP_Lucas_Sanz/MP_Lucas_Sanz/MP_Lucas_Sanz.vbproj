@@ -101,6 +101,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\ctrAlbaran.vb" />
     <Compile Include="Controller\ctrArticulo.vb" />
     <Compile Include="Controller\ctrCliente.vb" />
     <Compile Include="Controller\ctrConfiguraciones.vb" />
@@ -139,6 +140,9 @@
     <Compile Include="Report\Compra\dsCompra.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>dsCompra.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Compra\dsCompra.vb">
       <DependentUpon>dsCompra.xsd</DependentUpon>
     </Compile>
     <Compile Include="Report\Compra\infCompra.vb" />

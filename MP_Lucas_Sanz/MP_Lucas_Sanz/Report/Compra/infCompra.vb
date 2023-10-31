@@ -3,19 +3,28 @@
 Public Class infCompra
     Dim listaCompra As List(Of Compra) = New List(Of Compra)
     Dim fechaCompra As Date
+    Dim brutoTotal As Double
+    Dim baseImponibleTotal As Double
+    Dim impuestoTotal As Double
+    Dim precioTotal As Double
 
-    Public Sub New(listaCompraP As List(Of Compra), fechaCompraP As Date)
+    Public Sub New(listaCompraP As List(Of Compra), fechaCompraP As Date, brutoTotalP As Double, baseImponibleTotalP As Double, impuestoTotalP As Double, precioTotalP As Double)
         MyBase.New()
         listaCompra = New List(Of Compra)
         listaCompra = listaCompraP
         fechaCompra = fechaCompraP
+        brutoTotal = brutoTotalP
+        baseImponibleTotal = baseImponibleTotalP
+        impuestoTotal = impuestoTotalP
+        precioTotal = precioTotalP
 
         showReport()
     End Sub
     Private Sub showReport()
         Dim codigoProveedor As String = listaCompra(0).ProveedorDeCompra
-        Dim listaArticulos As List(Of Articulo) = managerArticuloAux.getArticulos()
-        Dim articuloSeleccionado As Articulo
+        Dim articuloTemp As Articulo
+        Dim baseImponible As Double
+        Dim impuesto As Double
         Dim ds As DataSet = New dsCompra
 
         Dim dr As DataRow
@@ -23,14 +32,19 @@ Public Class infCompra
         For Each c As Compra In listaCompra
             dr = ds.Tables("Compra").NewRow()
 
-            articuloSeleccionado = listaArticulos.Find(Function(art) art.CodigoDeArticulo = c.ArticuloDeCompra)
+            articuloTemp = VariablesGlobales.getArticuloPorCodigo(c.ArticuloDeCompra)
+            baseImponible = c.PrecioDeArticuloCompra * (1 - c.DescuentoDeCompra / 100)
+            impuesto = baseImponible * (articuloTemp.ImpuestoDeArticulo / 100)
 
             dr("Proveedor") = c.ProveedorDeCompra
-            dr("Artículo") = articuloSeleccionado.NombreDeArticulo
+            dr("Artículo") = articuloTemp.NombreDeArticulo
             dr("Forma Pago") = c.FormaDePagoCompra
             dr("Precio Unitario") = c.PrecioDeArticuloCompra
             dr("Cantidad") = c.CantidadDeCompra
-            dr("Precio Total") = c.PrecioDeArticuloCompra * c.CantidadDeCompra
+            dr("Descuento") = c.DescuentoDeCompra
+            dr("Base Imponible") = baseImponible * c.CantidadDeCompra
+            dr("Impuesto") = impuesto * c.CantidadDeCompra
+            dr("Precio Total") = (baseImponible + impuesto) * c.CantidadDeCompra
 
             ds.Tables("Compra").Rows.Add(dr)
         Next
@@ -47,11 +61,19 @@ Public Class infCompra
 
         ds.Tables("Proveedor").Rows.Add(drP)
 
+        dr = ds.Tables("Desglose").NewRow()
+        dr("Bruto") = brutoTotal
+        dr("Base Imponible") = baseImponibleTotal
+        dr("Impuesto") = impuestoTotal
+        dr("Precio Total") = precioTotal
+
+        ds.Tables("Desglose").Rows.Add(dr)
+
         Dim informe As New rptCompra()
         informe.SetDataSource(ds)
         informe.Refresh()
 
-        Dim visorRPT As viewerRPTCompra = New viewerRPTCompra()
+        Dim visorRPT As viewerRPTCompra = New viewerRPTCompra(informe, listaCompra(0))
         visorRPT.crvCompra.ReportSource = informe
         visorRPT.Text = "Informe de Compra"
         visorRPT.WindowState = FormWindowState.Maximized

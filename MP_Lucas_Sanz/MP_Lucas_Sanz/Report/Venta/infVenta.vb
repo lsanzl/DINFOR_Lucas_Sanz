@@ -42,7 +42,7 @@ Public Class infVenta
             dr("Descuento") = v.DescuentoDeVenta
             dr("Base Imponible") = baseImponible * v.CantidadDeVenta
             dr("Impuesto") = impuesto * v.CantidadDeVenta
-            dr("Precio Total") = baseImponible + impuesto
+            dr("Precio Total") = (baseImponible + impuesto) * v.CantidadDeVenta
 
             ds.Tables("Venta").Rows.Add(dr)
         Next

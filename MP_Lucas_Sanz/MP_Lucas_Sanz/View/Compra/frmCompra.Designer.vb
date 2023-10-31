@@ -24,9 +24,15 @@ Partial Class frmCompra
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCompra))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
+        Me.txt_descuento_compra = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -44,16 +50,23 @@ Partial Class frmCompra
         Me.btn_eliminar_compra = New System.Windows.Forms.Button()
         Me.btn_añadir_compra = New System.Windows.Forms.Button()
         Me.dg_compras = New System.Windows.Forms.DataGridView()
+        Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
+        Me.lbl_impuesto = New System.Windows.Forms.Label()
+        Me.lbl_base_imponible = New System.Windows.Forms.Label()
+        Me.btn_confirmar_compra = New System.Windows.Forms.Button()
+        Me.lbl_total_compra = New System.Windows.Forms.Label()
+        Me.lbl_bruto = New System.Windows.Forms.Label()
         Me.idCompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.proveedorCompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.articuloCompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.formaPagoCompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.precioArticuloCompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.precioUnitario = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.precioBrutoCompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cantidadCompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.descuentoCompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.baseImponibleCompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.impuestoCompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.precioTotalCompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
-        Me.btn_confirmar_compra = New System.Windows.Forms.Button()
-        Me.lbl_precio_sumatorio = New System.Windows.Forms.Label()
         Me.CompraBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
@@ -81,7 +94,7 @@ Partial Class frmCompra
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(720, 394)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(790, 394)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'TableLayoutPanel2
@@ -95,6 +108,8 @@ Partial Class frmCompra
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
+        Me.TableLayoutPanel2.Controls.Add(Me.txt_descuento_compra, 0, 2)
+        Me.TableLayoutPanel2.Controls.Add(Me.Label6, 0, 2)
         Me.TableLayoutPanel2.Controls.Add(Me.Label3, 0, 1)
         Me.TableLayoutPanel2.Controls.Add(Me.Label1, 0, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.Label2, 3, 0)
@@ -113,8 +128,29 @@ Partial Class frmCompra
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(714, 151)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(784, 151)
         Me.TableLayoutPanel2.TabIndex = 0
+        '
+        'txt_descuento_compra
+        '
+        Me.txt_descuento_compra.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_descuento_compra.Location = New System.Drawing.Point(81, 115)
+        Me.txt_descuento_compra.Name = "txt_descuento_compra"
+        Me.txt_descuento_compra.Size = New System.Drawing.Size(299, 20)
+        Me.txt_descuento_compra.TabIndex = 13
+        Me.txt_descuento_compra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label6
+        '
+        Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(3, 119)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(72, 13)
+        Me.Label6.TabIndex = 12
+        Me.Label6.Text = "Descuento:"
+        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label3
         '
@@ -123,7 +159,7 @@ Partial Class frmCompra
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(3, 68)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(69, 13)
+        Me.Label3.Size = New System.Drawing.Size(72, 13)
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Artículo:"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -135,7 +171,7 @@ Partial Class frmCompra
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(3, 18)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(69, 13)
+        Me.Label1.Size = New System.Drawing.Size(72, 13)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Proveedor:"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -145,7 +181,7 @@ Partial Class frmCompra
         Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(377, 18)
+        Me.Label2.Location = New System.Drawing.Point(417, 18)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(96, 13)
         Me.Label2.TabIndex = 1
@@ -157,7 +193,7 @@ Partial Class frmCompra
         Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(377, 68)
+        Me.Label4.Location = New System.Drawing.Point(417, 68)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(96, 13)
         Me.Label4.TabIndex = 3
@@ -168,10 +204,10 @@ Partial Class frmCompra
         '
         Me.txt_proveedor_seleccionado.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txt_proveedor_seleccionado.Enabled = False
-        Me.txt_proveedor_seleccionado.Location = New System.Drawing.Point(78, 15)
+        Me.txt_proveedor_seleccionado.Location = New System.Drawing.Point(81, 15)
         Me.txt_proveedor_seleccionado.Name = "txt_proveedor_seleccionado"
         Me.txt_proveedor_seleccionado.ReadOnly = True
-        Me.txt_proveedor_seleccionado.Size = New System.Drawing.Size(262, 20)
+        Me.txt_proveedor_seleccionado.Size = New System.Drawing.Size(299, 20)
         Me.txt_proveedor_seleccionado.TabIndex = 4
         Me.txt_proveedor_seleccionado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -179,19 +215,19 @@ Partial Class frmCompra
         '
         Me.txt_articulo_seleccionado.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txt_articulo_seleccionado.Enabled = False
-        Me.txt_articulo_seleccionado.Location = New System.Drawing.Point(78, 65)
+        Me.txt_articulo_seleccionado.Location = New System.Drawing.Point(81, 65)
         Me.txt_articulo_seleccionado.Name = "txt_articulo_seleccionado"
         Me.txt_articulo_seleccionado.ReadOnly = True
-        Me.txt_articulo_seleccionado.Size = New System.Drawing.Size(262, 20)
+        Me.txt_articulo_seleccionado.Size = New System.Drawing.Size(299, 20)
         Me.txt_articulo_seleccionado.TabIndex = 5
         Me.txt_articulo_seleccionado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'txt_cantidad_seleccionada
         '
         Me.txt_cantidad_seleccionada.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txt_cantidad_seleccionada.Location = New System.Drawing.Point(479, 65)
+        Me.txt_cantidad_seleccionada.Location = New System.Drawing.Point(519, 65)
         Me.txt_cantidad_seleccionada.Name = "txt_cantidad_seleccionada"
-        Me.txt_cantidad_seleccionada.Size = New System.Drawing.Size(232, 20)
+        Me.txt_cantidad_seleccionada.Size = New System.Drawing.Size(262, 20)
         Me.txt_cantidad_seleccionada.TabIndex = 6
         Me.txt_cantidad_seleccionada.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -199,7 +235,7 @@ Partial Class frmCompra
         '
         Me.btn_busqueda_proveedor.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.btn_busqueda_proveedor.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.lupa
-        Me.btn_busqueda_proveedor.Location = New System.Drawing.Point(346, 12)
+        Me.btn_busqueda_proveedor.Location = New System.Drawing.Point(386, 12)
         Me.btn_busqueda_proveedor.Name = "btn_busqueda_proveedor"
         Me.btn_busqueda_proveedor.Size = New System.Drawing.Size(25, 25)
         Me.btn_busqueda_proveedor.TabIndex = 7
@@ -209,7 +245,7 @@ Partial Class frmCompra
         '
         Me.btn_busqueda_articulo.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.btn_busqueda_articulo.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.lupa
-        Me.btn_busqueda_articulo.Location = New System.Drawing.Point(346, 62)
+        Me.btn_busqueda_articulo.Location = New System.Drawing.Point(386, 62)
         Me.btn_busqueda_articulo.Name = "btn_busqueda_articulo"
         Me.btn_busqueda_articulo.Size = New System.Drawing.Size(25, 25)
         Me.btn_busqueda_articulo.TabIndex = 8
@@ -219,9 +255,9 @@ Partial Class frmCompra
         '
         Me.cb_forma_pago_seleccionada.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cb_forma_pago_seleccionada.FormattingEnabled = True
-        Me.cb_forma_pago_seleccionada.Location = New System.Drawing.Point(479, 14)
+        Me.cb_forma_pago_seleccionada.Location = New System.Drawing.Point(519, 14)
         Me.cb_forma_pago_seleccionada.Name = "cb_forma_pago_seleccionada"
-        Me.cb_forma_pago_seleccionada.Size = New System.Drawing.Size(232, 21)
+        Me.cb_forma_pago_seleccionada.Size = New System.Drawing.Size(262, 21)
         Me.cb_forma_pago_seleccionada.TabIndex = 9
         '
         'Label5
@@ -229,7 +265,7 @@ Partial Class frmCompra
         Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(377, 119)
+        Me.Label5.Location = New System.Drawing.Point(417, 119)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(96, 13)
         Me.Label5.TabIndex = 10
@@ -241,9 +277,9 @@ Partial Class frmCompra
         Me.dp_fecha_compra.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dp_fecha_compra.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dp_fecha_compra.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dp_fecha_compra.Location = New System.Drawing.Point(479, 115)
+        Me.dp_fecha_compra.Location = New System.Drawing.Point(519, 115)
         Me.dp_fecha_compra.Name = "dp_fecha_compra"
-        Me.dp_fecha_compra.Size = New System.Drawing.Size(232, 20)
+        Me.dp_fecha_compra.Size = New System.Drawing.Size(262, 20)
         Me.dp_fecha_compra.TabIndex = 11
         Me.dp_fecha_compra.Value = New Date(2023, 10, 17, 0, 0, 0, 0)
         '
@@ -263,14 +299,14 @@ Partial Class frmCompra
         Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
         Me.TableLayoutPanel3.RowCount = 1
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel3.Size = New System.Drawing.Size(714, 33)
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(784, 33)
         Me.TableLayoutPanel3.TabIndex = 1
         '
         'btn_modificar_compra
         '
         Me.btn_modificar_compra.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.btn_modificar_compra.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_modificar_compra.Location = New System.Drawing.Point(540, 3)
+        Me.btn_modificar_compra.Location = New System.Drawing.Point(598, 3)
         Me.btn_modificar_compra.Name = "btn_modificar_compra"
         Me.btn_modificar_compra.Size = New System.Drawing.Size(110, 27)
         Me.btn_modificar_compra.TabIndex = 2
@@ -281,7 +317,7 @@ Partial Class frmCompra
         '
         Me.btn_eliminar_compra.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.btn_eliminar_compra.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_eliminar_compra.Location = New System.Drawing.Point(302, 3)
+        Me.btn_eliminar_compra.Location = New System.Drawing.Point(336, 3)
         Me.btn_eliminar_compra.Name = "btn_eliminar_compra"
         Me.btn_eliminar_compra.Size = New System.Drawing.Size(110, 27)
         Me.btn_eliminar_compra.TabIndex = 1
@@ -292,7 +328,7 @@ Partial Class frmCompra
         '
         Me.btn_añadir_compra.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.btn_añadir_compra.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_añadir_compra.Location = New System.Drawing.Point(64, 3)
+        Me.btn_añadir_compra.Location = New System.Drawing.Point(75, 3)
         Me.btn_añadir_compra.Name = "btn_añadir_compra"
         Me.btn_añadir_compra.Size = New System.Drawing.Size(110, 27)
         Me.btn_añadir_compra.TabIndex = 0
@@ -315,13 +351,99 @@ Partial Class frmCompra
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dg_compras.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dg_compras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_compras.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idCompra, Me.proveedorCompra, Me.articuloCompra, Me.formaPagoCompra, Me.precioArticuloCompra, Me.cantidadCompra, Me.precioTotalCompra})
+        Me.dg_compras.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idCompra, Me.proveedorCompra, Me.articuloCompra, Me.formaPagoCompra, Me.precioUnitario, Me.precioBrutoCompra, Me.cantidadCompra, Me.descuentoCompra, Me.baseImponibleCompra, Me.impuestoCompra, Me.precioTotalCompra})
         Me.dg_compras.Location = New System.Drawing.Point(3, 199)
         Me.dg_compras.Name = "dg_compras"
-        Me.dg_compras.ReadOnly = True
         Me.dg_compras.RowHeadersVisible = False
-        Me.dg_compras.Size = New System.Drawing.Size(714, 151)
+        Me.dg_compras.Size = New System.Drawing.Size(784, 151)
         Me.dg_compras.TabIndex = 2
+        '
+        'TableLayoutPanel4
+        '
+        Me.TableLayoutPanel4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel4.ColumnCount = 5
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.TableLayoutPanel4.Controls.Add(Me.lbl_impuesto, 0, 0)
+        Me.TableLayoutPanel4.Controls.Add(Me.lbl_base_imponible, 0, 0)
+        Me.TableLayoutPanel4.Controls.Add(Me.btn_confirmar_compra, 4, 0)
+        Me.TableLayoutPanel4.Controls.Add(Me.lbl_total_compra, 1, 0)
+        Me.TableLayoutPanel4.Controls.Add(Me.lbl_bruto, 0, 0)
+        Me.TableLayoutPanel4.Location = New System.Drawing.Point(3, 356)
+        Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
+        Me.TableLayoutPanel4.RowCount = 1
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel4.Size = New System.Drawing.Size(784, 35)
+        Me.TableLayoutPanel4.TabIndex = 3
+        '
+        'lbl_impuesto
+        '
+        Me.lbl_impuesto.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_impuesto.AutoSize = True
+        Me.lbl_impuesto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_impuesto.Location = New System.Drawing.Point(315, 10)
+        Me.lbl_impuesto.Name = "lbl_impuesto"
+        Me.lbl_impuesto.Size = New System.Drawing.Size(150, 15)
+        Me.lbl_impuesto.TabIndex = 12
+        Me.lbl_impuesto.Text = "Impuesto:"
+        Me.lbl_impuesto.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lbl_impuesto.Visible = False
+        '
+        'lbl_base_imponible
+        '
+        Me.lbl_base_imponible.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_base_imponible.AutoSize = True
+        Me.lbl_base_imponible.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_base_imponible.Location = New System.Drawing.Point(159, 10)
+        Me.lbl_base_imponible.Name = "lbl_base_imponible"
+        Me.lbl_base_imponible.Size = New System.Drawing.Size(150, 15)
+        Me.lbl_base_imponible.TabIndex = 11
+        Me.lbl_base_imponible.Text = "Base Imponible:"
+        Me.lbl_base_imponible.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lbl_base_imponible.Visible = False
+        '
+        'btn_confirmar_compra
+        '
+        Me.btn_confirmar_compra.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.btn_confirmar_compra.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_confirmar_compra.Location = New System.Drawing.Point(627, 6)
+        Me.btn_confirmar_compra.Name = "btn_confirmar_compra"
+        Me.btn_confirmar_compra.Size = New System.Drawing.Size(154, 23)
+        Me.btn_confirmar_compra.TabIndex = 4
+        Me.btn_confirmar_compra.Text = "CONFIRMAR COMPRA"
+        Me.btn_confirmar_compra.UseVisualStyleBackColor = True
+        '
+        'lbl_total_compra
+        '
+        Me.lbl_total_compra.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_total_compra.AutoSize = True
+        Me.lbl_total_compra.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_total_compra.ForeColor = System.Drawing.Color.Black
+        Me.lbl_total_compra.Location = New System.Drawing.Point(471, 10)
+        Me.lbl_total_compra.Name = "lbl_total_compra"
+        Me.lbl_total_compra.Size = New System.Drawing.Size(150, 15)
+        Me.lbl_total_compra.TabIndex = 9
+        Me.lbl_total_compra.Text = "Importe Total:"
+        Me.lbl_total_compra.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lbl_total_compra.Visible = False
+        '
+        'lbl_bruto
+        '
+        Me.lbl_bruto.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_bruto.AutoSize = True
+        Me.lbl_bruto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_bruto.Location = New System.Drawing.Point(3, 10)
+        Me.lbl_bruto.Name = "lbl_bruto"
+        Me.lbl_bruto.Size = New System.Drawing.Size(150, 15)
+        Me.lbl_bruto.TabIndex = 10
+        Me.lbl_bruto.Text = "Bruto:"
+        Me.lbl_bruto.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lbl_bruto.Visible = False
         '
         'idCompra
         '
@@ -351,12 +473,21 @@ Partial Class frmCompra
         Me.formaPagoCompra.Name = "formaPagoCompra"
         Me.formaPagoCompra.ReadOnly = True
         '
-        'precioArticuloCompra
+        'precioUnitario
         '
-        Me.precioArticuloCompra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.precioArticuloCompra.HeaderText = "Precio Ud"
-        Me.precioArticuloCompra.Name = "precioArticuloCompra"
-        Me.precioArticuloCompra.ReadOnly = True
+        Me.precioUnitario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.precioUnitario.HeaderText = "Precio Ud"
+        Me.precioUnitario.Name = "precioUnitario"
+        '
+        'precioBrutoCompra
+        '
+        Me.precioBrutoCompra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        DataGridViewCellStyle2.Format = "N2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.precioBrutoCompra.DefaultCellStyle = DataGridViewCellStyle2
+        Me.precioBrutoCompra.HeaderText = "Bruto"
+        Me.precioBrutoCompra.Name = "precioBrutoCompra"
+        Me.precioBrutoCompra.ReadOnly = True
         '
         'cantidadCompra
         '
@@ -365,54 +496,40 @@ Partial Class frmCompra
         Me.cantidadCompra.Name = "cantidadCompra"
         Me.cantidadCompra.ReadOnly = True
         '
+        'descuentoCompra
+        '
+        Me.descuentoCompra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.descuentoCompra.HeaderText = "Descuento"
+        Me.descuentoCompra.Name = "descuentoCompra"
+        Me.descuentoCompra.ReadOnly = True
+        '
+        'baseImponibleCompra
+        '
+        Me.baseImponibleCompra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        DataGridViewCellStyle3.Format = "N2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.baseImponibleCompra.DefaultCellStyle = DataGridViewCellStyle3
+        Me.baseImponibleCompra.HeaderText = "Base Imponible"
+        Me.baseImponibleCompra.Name = "baseImponibleCompra"
+        Me.baseImponibleCompra.ReadOnly = True
+        '
+        'impuestoCompra
+        '
+        Me.impuestoCompra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        DataGridViewCellStyle4.Format = "N2"
+        Me.impuestoCompra.DefaultCellStyle = DataGridViewCellStyle4
+        Me.impuestoCompra.HeaderText = "Impuesto"
+        Me.impuestoCompra.Name = "impuestoCompra"
+        Me.impuestoCompra.ReadOnly = True
+        '
         'precioTotalCompra
         '
         Me.precioTotalCompra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        DataGridViewCellStyle5.Format = "N2"
+        Me.precioTotalCompra.DefaultCellStyle = DataGridViewCellStyle5
         Me.precioTotalCompra.HeaderText = "Total"
         Me.precioTotalCompra.Name = "precioTotalCompra"
         Me.precioTotalCompra.ReadOnly = True
-        '
-        'TableLayoutPanel4
-        '
-        Me.TableLayoutPanel4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel4.ColumnCount = 2
-        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel4.Controls.Add(Me.btn_confirmar_compra, 1, 0)
-        Me.TableLayoutPanel4.Controls.Add(Me.lbl_precio_sumatorio, 0, 0)
-        Me.TableLayoutPanel4.Location = New System.Drawing.Point(3, 356)
-        Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
-        Me.TableLayoutPanel4.RowCount = 1
-        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel4.Size = New System.Drawing.Size(714, 35)
-        Me.TableLayoutPanel4.TabIndex = 3
-        '
-        'btn_confirmar_compra
-        '
-        Me.btn_confirmar_compra.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.btn_confirmar_compra.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_confirmar_compra.Location = New System.Drawing.Point(546, 6)
-        Me.btn_confirmar_compra.Name = "btn_confirmar_compra"
-        Me.btn_confirmar_compra.Size = New System.Drawing.Size(165, 23)
-        Me.btn_confirmar_compra.TabIndex = 4
-        Me.btn_confirmar_compra.Text = "CONFIRMAR COMPRA"
-        Me.btn_confirmar_compra.UseVisualStyleBackColor = True
-        '
-        'lbl_precio_sumatorio
-        '
-        Me.lbl_precio_sumatorio.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.lbl_precio_sumatorio.AutoSize = True
-        Me.lbl_precio_sumatorio.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_precio_sumatorio.ForeColor = System.Drawing.Color.Navy
-        Me.lbl_precio_sumatorio.Location = New System.Drawing.Point(443, 9)
-        Me.lbl_precio_sumatorio.Name = "lbl_precio_sumatorio"
-        Me.lbl_precio_sumatorio.Size = New System.Drawing.Size(97, 16)
-        Me.lbl_precio_sumatorio.TabIndex = 5
-        Me.lbl_precio_sumatorio.Text = "Precio Total:"
-        Me.lbl_precio_sumatorio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.lbl_precio_sumatorio.Visible = False
         '
         'CompraBindingSource
         '
@@ -422,7 +539,7 @@ Partial Class frmCompra
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(724, 398)
+        Me.ClientSize = New System.Drawing.Size(794, 398)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -464,14 +581,23 @@ Partial Class frmCompra
     Friend WithEvents CompraBindingSource As BindingSource
     Friend WithEvents TableLayoutPanel4 As TableLayoutPanel
     Friend WithEvents btn_confirmar_compra As Button
-    Friend WithEvents lbl_precio_sumatorio As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents dp_fecha_compra As DateTimePicker
+    Friend WithEvents txt_descuento_compra As TextBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents lbl_impuesto As Label
+    Friend WithEvents lbl_base_imponible As Label
+    Friend WithEvents lbl_total_compra As Label
+    Friend WithEvents lbl_bruto As Label
     Friend WithEvents idCompra As DataGridViewTextBoxColumn
     Friend WithEvents proveedorCompra As DataGridViewTextBoxColumn
     Friend WithEvents articuloCompra As DataGridViewTextBoxColumn
     Friend WithEvents formaPagoCompra As DataGridViewTextBoxColumn
-    Friend WithEvents precioArticuloCompra As DataGridViewTextBoxColumn
+    Friend WithEvents precioUnitario As DataGridViewTextBoxColumn
+    Friend WithEvents precioBrutoCompra As DataGridViewTextBoxColumn
     Friend WithEvents cantidadCompra As DataGridViewTextBoxColumn
+    Friend WithEvents descuentoCompra As DataGridViewTextBoxColumn
+    Friend WithEvents baseImponibleCompra As DataGridViewTextBoxColumn
+    Friend WithEvents impuestoCompra As DataGridViewTextBoxColumn
     Friend WithEvents precioTotalCompra As DataGridViewTextBoxColumn
 End Class

@@ -25,8 +25,8 @@ Public Class frmVenta
         frmBusquedaNuevo.Text = "BÚSQUEDA DE CLIENTES"
         frmBusquedaNuevo.ShowDialog()
         clienteSeleccionado = Nothing
-        clienteSeleccionado = frmBusquedaNuevo.clienteSeleccionado
         If clienteSeleccionado IsNot Nothing Then
+            clienteSeleccionado = frmBusquedaNuevo.clienteSeleccionado
             txt_cliente_seleccionado.Text = clienteSeleccionado.NombreDelCliente
         End If
     End Sub
@@ -170,6 +170,10 @@ Public Class frmVenta
         End If
     End Sub
     Private Sub fillDGVentas()
+        If listaVentas.Count = 0 Then
+            Return
+        End If
+        Dim clienteTemp As Cliente = VariablesGlobales.getClientePorCodigo(clienteSeleccionado.CodigoDelCliente)
         dg_ventas.Rows.Clear()
         Dim articuloItem As Articulo
         For Each item As Venta In listaVentas
@@ -179,9 +183,10 @@ Public Class frmVenta
             Dim impuesto As Double = baseImponible * (articuloItem.ImpuestoDeArticulo / 100)
 
             dg_ventas.Rows(index).Cells("idVenta").Value = item.CodigoDeVenta
-            dg_ventas.Rows(index).Cells("clienteVenta").Value = item.ClienteDeVenta
+            dg_ventas.Rows(index).Cells("clienteVenta").Value = clienteTemp.NombreDelCliente
             dg_ventas.Rows(index).Cells("articuloVenta").Value = articuloItem.NombreDeArticulo
             dg_ventas.Rows(index).Cells("formaPagoVenta").Value = item.FormaDePagoVenta
+            dg_ventas.Rows(index).Cells("precioUnitario").Value = item.PrecioDeArticuloVenta
             dg_ventas.Rows(index).Cells("precioBrutoVenta").Value = item.PrecioDeArticuloVenta * item.CantidadDeVenta
             dg_ventas.Rows(index).Cells("cantidadVenta").Value = item.CantidadDeVenta
             dg_ventas.Rows(index).Cells("descuentoVenta").Value = item.DescuentoDeVenta
@@ -192,9 +197,11 @@ Public Class frmVenta
         If dg_ventas.RowCount > 0 Then
             btn_confirmar_venta.Enabled = True
             btn_busqueda_cliente.Enabled = False
+            cb_forma_pago_seleccionada_venta.Enabled = False
         Else
             btn_confirmar_venta.Enabled = False
             btn_busqueda_cliente.Enabled = True
+            cb_forma_pago_seleccionada_venta.Enabled = True
         End If
         dg_ventas.ClearSelection()
     End Sub
@@ -269,5 +276,31 @@ Public Class frmVenta
 
         Dim informe As infVenta = New infVenta(listaVentas, fechaVenta, brutoTotal, baseImponibleTotal, impuestoTotal, precioTotal)
         clearFields()
+    End Sub
+
+    Private Sub cell_end_edit_dg_ventas(sender As Object, e As DataGridViewCellEventArgs) Handles dg_ventas.CellEndEdit
+        Dim precioBrutoNuevo As Double
+        Dim porcentajeNuevo As Double
+        Dim articuloMod As Articulo = VariablesGlobales.getArticuloPorCodigo(ventaTemp.ArticuloDeVenta)
+        If dg_ventas.Columns(e.ColumnIndex).Name = "precioUnitario" AndAlso e.RowIndex >= 0 Then
+            precioBrutoNuevo = dg_ventas.Rows(e.RowIndex).Cells("precioUnitario").Value
+            porcentajeNuevo = ((100 * precioBrutoNuevo) / articuloMod.PVPCompraDeArticulo) - 100
+            listaVentas.Remove(ventaTemp)
+            ventaTemp.PrecioDeArticuloVenta = precioBrutoNuevo
+            listaVentas.Add(ventaTemp)
+            Dim dr As DialogResult = MessageBox.Show("¿Desea cambiar el porcentaje de beneficio del producto?", "Nuevo precio compra", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If (dr = DialogResult.Yes) Then
+                articuloMod.PorcentajeDeBeneficio = porcentajeNuevo
+                articuloMod.modifyArticulo()
+            End If
+            fillDGVentas()
+            calcularTotal()
+        End If
+    End Sub
+    Private Sub closed_frm_venta(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        clearFields()
+        clearFieldsDatos()
+        listaVentas = New List(Of Venta)
+        fillDGVentas()
     End Sub
 End Class

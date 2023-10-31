@@ -72,7 +72,7 @@
         currentCell.Style.BackColor = Color.White
         currentCell.Style.Font = New Font(currentCell.InheritedStyle.Font.FontFamily, 8, FontStyle.Regular)
         If cantidadNueva = Nothing Or cantidadNueva = movimientoTemp.CantidadDeMovimiento Then
-            Return
+            Exit Sub
         End If
         Dim cantidadActual As Integer = movimientoTemp.CantidadDeMovimiento
         Dim cantidadModificar As Integer

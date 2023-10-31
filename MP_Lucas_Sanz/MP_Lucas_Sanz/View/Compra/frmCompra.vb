@@ -8,6 +8,11 @@ Public Class frmCompra
     Dim proveedorSeleccionado As Proveedor
     Dim articuloSeleccionado As Articulo
     Dim facturaGenerada As String
+    Dim doubleParse As Double
+    Dim brutoTotal As Double
+    Dim baseImponibleTotal As Double
+    Dim impuestoTotal As Double
+    Dim precioTotal As Double
 
     Private Sub frmCompra_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         listaCompras = New List(Of Compra)
@@ -19,8 +24,11 @@ Public Class frmCompra
         Dim frmBusquedaNuevo As frmBusqueda = New frmBusqueda(proveedorAux)
         frmBusquedaNuevo.Text = "BÚSQUEDA DE PROVEEDORES"
         frmBusquedaNuevo.ShowDialog()
-        proveedorSeleccionado = frmBusquedaNuevo.proveedorSeleccionado
-        txt_proveedor_seleccionado.Text = proveedorSeleccionado.CodigoDeProveedor
+        proveedorSeleccionado = Nothing
+        If proveedorSeleccionado IsNot Nothing Then
+            proveedorSeleccionado = frmBusquedaNuevo.proveedorSeleccionado
+            txt_proveedor_seleccionado.Text = proveedorSeleccionado.NombreDeProveedor
+        End If
     End Sub
     Private Sub click_btn_busqueda_articulo(sender As Object, e As EventArgs) Handles btn_busqueda_articulo.Click
         Dim frmBusquedaNuevo As frmBusqueda = New frmBusqueda(articuloAux)
@@ -33,8 +41,14 @@ Public Class frmCompra
         txt_proveedor_seleccionado.Clear()
         txt_cantidad_seleccionada.Clear()
         txt_articulo_seleccionado.Clear()
-        lbl_precio_sumatorio.Visible = False
-        lbl_precio_sumatorio.Text = Nothing
+        lbl_total_compra.Visible = False
+        lbl_bruto.Visible = False
+        lbl_base_imponible.Visible = False
+        lbl_impuesto.Visible = False
+        lbl_bruto.Text = Nothing
+        lbl_base_imponible.Text = Nothing
+        lbl_impuesto.Text = Nothing
+        lbl_total_compra.Text = Nothing
 
         dt.Clear()
         cb_forma_pago_seleccionada.DataSource = Nothing
@@ -66,6 +80,7 @@ Public Class frmCompra
     Private Sub clearFieldsDatos()
         txt_articulo_seleccionado.Clear()
         txt_cantidad_seleccionada.Clear()
+        txt_descuento_compra.Clear()
         cb_forma_pago_seleccionada.SelectedIndex = -1
     End Sub
 
@@ -86,6 +101,10 @@ Public Class frmCompra
             MessageBox.Show("Introduzca cantidad válida")
             Return False
         End If
+        If Not String.IsNullOrEmpty(txt_descuento_compra.Text) And Not Double.TryParse(txt_descuento_compra.Text, doubleParse) Then
+            MessageBox.Show("Introduzca descuento válido")
+            Return False
+        End If
         Return True
     End Function
 
@@ -102,17 +121,21 @@ Public Class frmCompra
         Dim precioCompra As Double = Convert.ToDouble(managerArticuloAux.getCampoArticulo(codigoArticuloSeleccionado, "PRECIO_COMPRA_ARTICULO"))
         Dim porcBeneficio As Double = Convert.ToDouble(managerArticuloAux.getCampoArticulo(codigoArticuloSeleccionado, "PORC_BENEFICIO_ARTICULO"))
         Dim fechaCompra As Date = dp_fecha_compra.Value
+        Dim descuentoCompra As Double = Convert.ToDouble(txt_descuento_compra.Text)
 
         Dim precioVenta As Double = precioCompra * (1 + porcBeneficio / 100)
         Dim codigoCompra As Integer = managerCompraAux.getIDCompra()
 
-        Dim compraTemp As Compra = New Compra(codigoCompra, proveedorSeleccionado.CodigoDeProveedor, codigoArticuloSeleccionado, formaPagoSeleccionada, precioVenta, cantidadSeleccionada, fechaCompra, facturaGenerada)
+        compraTemp = New Compra(codigoCompra, proveedorSeleccionado.CodigoDeProveedor, codigoArticuloSeleccionado, formaPagoSeleccionada, precioVenta, cantidadSeleccionada, fechaCompra, False, facturaGenerada, descuentoCompra)
         listaCompras.Add(compraTemp)
         fillDGCompras()
         clearFieldsDatos()
         calcularTotal()
     End Sub
     Private Sub click_btn_eliminar_compra(sender As Object, e As EventArgs) Handles btn_eliminar_compra.Click
+        Dim cantidadDevuelta As Integer = compraTemp.CantidadDeCompra
+        Dim articuloDevuelto As Integer = compraTemp.ArticuloDeCompra
+        managerInventarioAux.deleteUnidades(cantidadDevuelta, articuloDevuelto)
         listaCompras.Remove(compraTemp)
         btn_eliminar_compra.Enabled = False
         btn_modificar_compra.Enabled = False
@@ -121,15 +144,20 @@ Public Class frmCompra
     End Sub
     Private Sub click_btn_modificar_compra(sender As Object, e As EventArgs) Handles btn_modificar_compra.Click
         If btn_modificar_compra.Text.Equals("MODIFICAR") Then
-            txt_articulo_seleccionado.Text = managerArticuloAux.getCampoArticulo(compraTemp.ArticuloDeCompra, "NOMBRE_ARTICULO")
-            txt_proveedor_seleccionado.Text = compraTemp.ProveedorDeCompra
+            Dim articuloTemp As Articulo = VariablesGlobales.getArticuloPorCodigo(compraTemp.ArticuloDeCompra)
+            Dim proveedorTemp As Proveedor = VariablesGlobales.getProveedorPorCodigo(compraTemp.ProveedorDeCompra)
+            txt_articulo_seleccionado.Text = articuloTemp.NombreDeArticulo
+            txt_proveedor_seleccionado.Text = proveedorTemp.NombreDeProveedor
             txt_cantidad_seleccionada.Text = compraTemp.CantidadDeCompra
+            txt_descuento_compra.Text = compraTemp.DescuentoDeCompra
             cb_forma_pago_seleccionada.SelectedValue = compraTemp.FormaDePagoCompra
             btn_modificar_compra.Text = "CONFIRMAR"
         Else
             listaCompras.Remove(compraTemp)
             añadirCompra()
             btn_modificar_compra.Text = "MODIFICAR"
+            btn_modificar_compra.Enabled = False
+            btn_eliminar_compra.Enabled = False
         End If
     End Sub
     Private Sub fillDGCompras()
@@ -138,32 +166,65 @@ Public Class frmCompra
         For Each item As Compra In listaCompras
             Dim index As Integer = dg_compras.Rows.Add()
             articuloItem = managerArticuloAux.getArticuloConcreto(item.ArticuloDeCompra)
+            Dim baseImponible As Double = item.PrecioDeArticuloCompra * (1 - item.DescuentoDeCompra / 100)
+            Dim impuesto As Double = baseImponible * (articuloItem.ImpuestoDeArticulo / 100)
+
             dg_compras.Rows(index).Cells("idCompra").Value = item.CodigoDeCompra
             dg_compras.Rows(index).Cells("proveedorCompra").Value = item.ProveedorDeCompra
             dg_compras.Rows(index).Cells("articuloCompra").Value = articuloItem.NombreDeArticulo
             dg_compras.Rows(index).Cells("formaPagoCompra").Value = item.FormaDePagoCompra
-            dg_compras.Rows(index).Cells("precioArticuloCompra").Value = item.PrecioDeArticuloCompra
+            dg_compras.Rows(index).Cells("precioUnitario").Value = item.PrecioDeArticuloCompra
+            dg_compras.Rows(index).Cells("precioBrutoCompra").Value = item.PrecioDeArticuloCompra * item.CantidadDeCompra
             dg_compras.Rows(index).Cells("cantidadCompra").Value = item.CantidadDeCompra
-            dg_compras.Rows(index).Cells("precioTotalCompra").Value = item.PrecioTotalDeCompra
+            dg_compras.Rows(index).Cells("descuentoCompra").Value = item.DescuentoDeCompra
+            dg_compras.Rows(index).Cells("baseImponibleCompra").Value = baseImponible * item.CantidadDeCompra
+            dg_compras.Rows(index).Cells("impuestoCompra").Value = impuesto * item.CantidadDeCompra
+            dg_compras.Rows(index).Cells("precioTotalCompra").Value = (baseImponible + impuesto) * item.CantidadDeCompra
         Next
         If dg_compras.RowCount > 0 Then
             btn_confirmar_compra.Enabled = True
             btn_busqueda_proveedor.Enabled = False
+            cb_forma_pago_seleccionada.Enabled = False
         Else
             btn_confirmar_compra.Enabled = False
             btn_busqueda_proveedor.Enabled = True
+            cb_forma_pago_seleccionada.Enabled = True
         End If
+        dg_compras.ClearSelection()
     End Sub
     Private Sub calcularTotal()
-        lbl_precio_sumatorio.Visible = True
-        Dim precioTotal As Double = 0
+        lbl_total_compra.Visible = True
+        lbl_bruto.Visible = True
+        lbl_base_imponible.Visible = True
+        lbl_impuesto.Visible = True
+
+        brutoTotal = 0
+        baseImponibleTotal = 0
+        impuestoTotal = 0
+        precioTotal = 0
+        Dim baseImponibleTemp As Double
+        Dim impuestoTemp As Double
+        Dim articuloTemp As Articulo
+
         For Each comprilla As Compra In listaCompras
-            precioTotal += comprilla.PrecioTotalDeCompra
+            articuloTemp = VariablesGlobales.getArticuloPorCodigo(comprilla.ArticuloDeCompra)
+            baseImponibleTemp = comprilla.PrecioDeArticuloCompra * (1 - comprilla.DescuentoDeCompra / 100)
+            impuestoTemp = baseImponibleTemp * (articuloTemp.ImpuestoDeArticulo / 100)
+            brutoTotal += comprilla.PrecioDeArticuloCompra * comprilla.CantidadDeCompra
+            baseImponibleTotal += baseImponibleTemp * comprilla.CantidadDeCompra
+            impuestoTotal += impuestoTemp * comprilla.CantidadDeCompra
+            precioTotal += (baseImponibleTemp + impuestoTemp) * comprilla.CantidadDeCompra
         Next
-        If precioTotal = 0 Then
-            lbl_precio_sumatorio.Visible = False
+        If brutoTotal = 0 Then
+            lbl_total_compra.Visible = False
+            lbl_bruto.Visible = False
+            lbl_base_imponible.Visible = False
+            lbl_impuesto.Visible = False
         End If
-        lbl_precio_sumatorio.Text = $"Precio total: {precioTotal}€"
+        lbl_total_compra.Text = $"Precio total: {precioTotal.ToString("N2")}€"
+        lbl_bruto.Text = $"Bruto total: {brutoTotal.ToString("N2")}"
+        lbl_base_imponible.Text = $"Base imponible total: {baseImponibleTotal.ToString("N2")}"
+        lbl_impuesto.Text = $"Impuesto total: {impuestoTotal.ToString("N2")}"
     End Sub
 
     Private Sub click_cell_dg_compras(sender As Object, e As DataGridViewCellEventArgs) Handles dg_compras.CellClick
@@ -193,7 +254,30 @@ Public Class frmCompra
             movimientoTemp.addMovimiento()
         Next
 
-        Dim informe As infCompra = New infCompra(listaCompras, fechaCompra)
+        Dim informe As infCompra = New infCompra(listaCompras, fechaCompra, brutoTotal, baseImponibleTotal, impuestoTotal, precioTotal)
         clearFields()
+    End Sub
+    Private Sub cell_end_edit_dg_compras(sender As Object, e As DataGridViewCellEventArgs) Handles dg_compras.CellEndEdit
+        Dim precioBrutoNuevo As Double
+        If dg_compras.Columns(e.ColumnIndex).Name = "precioUnitario" AndAlso e.RowIndex >= 0 Then
+            precioBrutoNuevo = dg_compras.Rows(e.RowIndex).Cells("precioUnitario").Value
+            listaCompras.Remove(compraTemp)
+            compraTemp.PrecioDeArticuloCompra = precioBrutoNuevo
+            listaCompras.Add(compraTemp)
+            Dim dr As DialogResult = MessageBox.Show("¿Desea cambiar el precio de compra del producto?", "Nuevo precio compra", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If (dr = DialogResult.Yes) Then
+                Dim articuloMod As Articulo = VariablesGlobales.getArticuloPorCodigo(compraTemp.ArticuloDeCompra)
+                articuloMod.PVPCompraDeArticulo = precioBrutoNuevo
+                articuloMod.modifyArticulo()
+            End If
+            fillDGCompras()
+            calcularTotal()
+        End If
+    End Sub
+    Private Sub closed_frm_compra(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        clearFields()
+        clearFieldsDatos()
+        listaCompras = New List(Of Compra)
+        fillDGCompras()
     End Sub
 End Class

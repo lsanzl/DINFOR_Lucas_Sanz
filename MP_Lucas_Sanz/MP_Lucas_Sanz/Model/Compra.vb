@@ -5,6 +5,7 @@
     Private formaPagoCompra As Integer
     Private precioArticuloCompra As Double
     Private cantidadCompra As Integer
+    Private descuentoCompra As Double
     Private precioTotalCompra As Double
     Private fechaCompra As Date
     Private eliminadoCompra As Boolean
@@ -58,6 +59,14 @@
             cantidadCompra = value
         End Set
     End Property
+    Public Property DescuentoDeCompra() As Double
+        Get
+            Return descuentoCompra
+        End Get
+        Set(value As Double)
+            descuentoCompra = value
+        End Set
+    End Property
     Public Property PrecioTotalDeCompra() As Double
         Get
             Return precioTotalCompra
@@ -94,19 +103,20 @@
     Public Sub New()
         MyBase.New()
     End Sub
-    Public Sub New(proveedorP As Integer, articuloP As String, formaP As Integer, precioP As Double, cantidadP As Integer, fechaP As Date, facturaP As String)
+    Public Sub New(proveedorP As Integer, articuloP As String, formaP As Integer, precioP As Double, cantidadP As Integer, fechaP As Date, facturaP As String, descuentoP As Double)
         MyBase.New()
         ProveedorDeCompra = proveedorP
         ArticuloDeCompra = articuloP
         FormaDePagoCompra = formaP
         PrecioDeArticuloCompra = precioP
         CantidadDeCompra = cantidadP
+        descuentoCompra = descuentoP
         FechaDeCompra = fechaP
         PrecioTotalDeCompra = PrecioDeArticuloCompra * CantidadDeCompra
         CompraEliminada = False
         facturaCompra = facturaP
     End Sub
-    Public Sub New(codigoCompraP As Integer, proveedorP As Integer, articuloP As String, formaP As Integer, precioP As Double, cantidadP As Integer, fechaP As Date, facturaP As String)
+    Public Sub New(codigoCompraP As Integer, proveedorP As Integer, articuloP As String, formaP As Integer, precioP As Double, cantidadP As Integer, fechaP As Date, facturaP As String, descuentoP As Double)
         MyBase.New()
         CodigoDeCompra = codigoCompraP
         ProveedorDeCompra = proveedorP
@@ -114,12 +124,13 @@
         FormaDePagoCompra = formaP
         PrecioDeArticuloCompra = precioP
         CantidadDeCompra = cantidadP
+        descuentoCompra = descuentoP
         FechaDeCompra = fechaP
         PrecioTotalDeCompra = PrecioDeArticuloCompra * CantidadDeCompra
         CompraEliminada = False
         facturaCompra = facturaP
     End Sub
-    Public Sub New(codigoCompraP As Integer, proveedorP As Integer, articuloP As String, formaP As Integer, precioP As Double, cantidadP As Integer, fechaP As Date, eliminadaCompraP As Boolean, facturaP As String)
+    Public Sub New(codigoCompraP As Integer, proveedorP As Integer, articuloP As String, formaP As Integer, precioP As Double, cantidadP As Integer, fechaP As Date, eliminadaCompraP As Boolean, facturaP As String, descuentoP As Double)
         MyBase.New()
         CodigoDeCompra = codigoCompraP
         ProveedorDeCompra = proveedorP
@@ -127,6 +138,7 @@
         FormaDePagoCompra = formaP
         PrecioDeArticuloCompra = precioP
         CantidadDeCompra = cantidadP
+        descuentoCompra = descuentoP
         FechaDeCompra = fechaP
         PrecioTotalDeCompra = PrecioDeArticuloCompra * CantidadDeCompra
         CompraEliminada = eliminadaCompraP
@@ -144,7 +156,7 @@
         Dim facturaGenerada As String
         Do
             numeroAleatorio = random.Next(1, 90001)
-            facturaGenerada = "V" + numeroAleatorio.ToString()
+            facturaGenerada = "C" + numeroAleatorio.ToString()
         Loop While Not managerCompraAux.checkNumFactura(facturaGenerada)
         Return facturaGenerada
     End Function

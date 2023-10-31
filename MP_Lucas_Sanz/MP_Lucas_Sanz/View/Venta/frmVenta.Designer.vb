@@ -31,6 +31,7 @@ Partial Class frmVenta
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmVenta))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -43,23 +44,23 @@ Partial Class frmVenta
         Me.cb_forma_pago_seleccionada_venta = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.dp_fecha_venta = New System.Windows.Forms.DateTimePicker()
+        Me.txt_descuento_venta = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.btn_modificar_venta = New System.Windows.Forms.Button()
         Me.btn_eliminar_venta = New System.Windows.Forms.Button()
         Me.btn_añadir_venta = New System.Windows.Forms.Button()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
+        Me.lbl_impuesto = New System.Windows.Forms.Label()
+        Me.lbl_base_imponible = New System.Windows.Forms.Label()
         Me.btn_confirmar_venta = New System.Windows.Forms.Button()
         Me.lbl_total = New System.Windows.Forms.Label()
-        Me.dg_ventas = New System.Windows.Forms.DataGridView()
         Me.lbl_bruto = New System.Windows.Forms.Label()
-        Me.lbl_base_imponible = New System.Windows.Forms.Label()
-        Me.lbl_impuesto = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.txt_descuento_venta = New System.Windows.Forms.TextBox()
+        Me.dg_ventas = New System.Windows.Forms.DataGridView()
         Me.idVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clienteVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.articuloVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.formaPagoVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.precioUnitario = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.precioBrutoVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cantidadVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.descuentoVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -127,6 +128,18 @@ Partial Class frmVenta
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
         Me.TableLayoutPanel2.Size = New System.Drawing.Size(839, 151)
         Me.TableLayoutPanel2.TabIndex = 0
+        '
+        'Label6
+        '
+        Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(3, 119)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(72, 13)
+        Me.Label6.TabIndex = 12
+        Me.Label6.Text = "Descuento:"
+        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label3
         '
@@ -258,6 +271,14 @@ Partial Class frmVenta
         Me.dp_fecha_venta.TabIndex = 11
         Me.dp_fecha_venta.Value = New Date(2023, 10, 17, 0, 0, 0, 0)
         '
+        'txt_descuento_venta
+        '
+        Me.txt_descuento_venta.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_descuento_venta.Location = New System.Drawing.Point(81, 115)
+        Me.txt_descuento_venta.Name = "txt_descuento_venta"
+        Me.txt_descuento_venta.Size = New System.Drawing.Size(262, 20)
+        Me.txt_descuento_venta.TabIndex = 13
+        '
         'TableLayoutPanel3
         '
         Me.TableLayoutPanel3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -332,9 +353,35 @@ Partial Class frmVenta
         Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
         Me.TableLayoutPanel4.RowCount = 1
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
         Me.TableLayoutPanel4.Size = New System.Drawing.Size(839, 35)
         Me.TableLayoutPanel4.TabIndex = 3
+        '
+        'lbl_impuesto
+        '
+        Me.lbl_impuesto.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_impuesto.AutoSize = True
+        Me.lbl_impuesto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_impuesto.Location = New System.Drawing.Point(337, 10)
+        Me.lbl_impuesto.Name = "lbl_impuesto"
+        Me.lbl_impuesto.Size = New System.Drawing.Size(161, 15)
+        Me.lbl_impuesto.TabIndex = 8
+        Me.lbl_impuesto.Text = "Impuesto:"
+        Me.lbl_impuesto.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lbl_impuesto.Visible = False
+        '
+        'lbl_base_imponible
+        '
+        Me.lbl_base_imponible.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_base_imponible.AutoSize = True
+        Me.lbl_base_imponible.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_base_imponible.Location = New System.Drawing.Point(170, 10)
+        Me.lbl_base_imponible.Name = "lbl_base_imponible"
+        Me.lbl_base_imponible.Size = New System.Drawing.Size(161, 15)
+        Me.lbl_base_imponible.TabIndex = 7
+        Me.lbl_base_imponible.Text = "Base Imponible:"
+        Me.lbl_base_imponible.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lbl_base_imponible.Visible = False
         '
         'btn_confirmar_venta
         '
@@ -361,6 +408,19 @@ Partial Class frmVenta
         Me.lbl_total.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.lbl_total.Visible = False
         '
+        'lbl_bruto
+        '
+        Me.lbl_bruto.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_bruto.AutoSize = True
+        Me.lbl_bruto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_bruto.Location = New System.Drawing.Point(3, 10)
+        Me.lbl_bruto.Name = "lbl_bruto"
+        Me.lbl_bruto.Size = New System.Drawing.Size(161, 15)
+        Me.lbl_bruto.TabIndex = 6
+        Me.lbl_bruto.Text = "Bruto:"
+        Me.lbl_bruto.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lbl_bruto.Visible = False
+        '
         'dg_ventas
         '
         Me.dg_ventas.AllowUserToAddRows = False
@@ -376,78 +436,17 @@ Partial Class frmVenta
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dg_ventas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dg_ventas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_ventas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idVenta, Me.clienteVenta, Me.articuloVenta, Me.formaPagoVenta, Me.precioBrutoVenta, Me.cantidadVenta, Me.descuentoVenta, Me.baseImponible, Me.impuestoVenta, Me.precioTotalVenta})
+        Me.dg_ventas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idVenta, Me.clienteVenta, Me.articuloVenta, Me.formaPagoVenta, Me.precioUnitario, Me.precioBrutoVenta, Me.cantidadVenta, Me.descuentoVenta, Me.baseImponible, Me.impuestoVenta, Me.precioTotalVenta})
         Me.dg_ventas.Location = New System.Drawing.Point(3, 199)
         Me.dg_ventas.Name = "dg_ventas"
-        Me.dg_ventas.ReadOnly = True
         Me.dg_ventas.RowHeadersVisible = False
         Me.dg_ventas.Size = New System.Drawing.Size(839, 151)
         Me.dg_ventas.TabIndex = 4
-        '
-        'lbl_bruto
-        '
-        Me.lbl_bruto.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbl_bruto.AutoSize = True
-        Me.lbl_bruto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_bruto.Location = New System.Drawing.Point(3, 10)
-        Me.lbl_bruto.Name = "lbl_bruto"
-        Me.lbl_bruto.Size = New System.Drawing.Size(161, 15)
-        Me.lbl_bruto.TabIndex = 6
-        Me.lbl_bruto.Text = "Bruto:"
-        Me.lbl_bruto.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.lbl_bruto.Visible = False
-        '
-        'lbl_base_imponible
-        '
-        Me.lbl_base_imponible.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbl_base_imponible.AutoSize = True
-        Me.lbl_base_imponible.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_base_imponible.Location = New System.Drawing.Point(170, 10)
-        Me.lbl_base_imponible.Name = "lbl_base_imponible"
-        Me.lbl_base_imponible.Size = New System.Drawing.Size(161, 15)
-        Me.lbl_base_imponible.TabIndex = 7
-        Me.lbl_base_imponible.Text = "Base Imponible:"
-        Me.lbl_base_imponible.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.lbl_base_imponible.Visible = False
-        '
-        'lbl_impuesto
-        '
-        Me.lbl_impuesto.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbl_impuesto.AutoSize = True
-        Me.lbl_impuesto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_impuesto.Location = New System.Drawing.Point(337, 10)
-        Me.lbl_impuesto.Name = "lbl_impuesto"
-        Me.lbl_impuesto.Size = New System.Drawing.Size(161, 15)
-        Me.lbl_impuesto.TabIndex = 8
-        Me.lbl_impuesto.Text = "Impuesto:"
-        Me.lbl_impuesto.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.lbl_impuesto.Visible = False
-        '
-        'Label6
-        '
-        Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(3, 119)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(72, 13)
-        Me.Label6.TabIndex = 12
-        Me.Label6.Text = "Descuento:"
-        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'txt_descuento_venta
-        '
-        Me.txt_descuento_venta.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txt_descuento_venta.Location = New System.Drawing.Point(81, 115)
-        Me.txt_descuento_venta.Name = "txt_descuento_venta"
-        Me.txt_descuento_venta.Size = New System.Drawing.Size(262, 20)
-        Me.txt_descuento_venta.TabIndex = 13
         '
         'idVenta
         '
         Me.idVenta.HeaderText = "ID"
         Me.idVenta.Name = "idVenta"
-        Me.idVenta.ReadOnly = True
         Me.idVenta.Visible = False
         '
         'clienteVenta
@@ -455,21 +454,24 @@ Partial Class frmVenta
         Me.clienteVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.clienteVenta.HeaderText = "Cliente"
         Me.clienteVenta.Name = "clienteVenta"
-        Me.clienteVenta.ReadOnly = True
         '
         'articuloVenta
         '
         Me.articuloVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.articuloVenta.HeaderText = "Artículo"
         Me.articuloVenta.Name = "articuloVenta"
-        Me.articuloVenta.ReadOnly = True
         '
         'formaPagoVenta
         '
         Me.formaPagoVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.formaPagoVenta.HeaderText = "Pago"
         Me.formaPagoVenta.Name = "formaPagoVenta"
-        Me.formaPagoVenta.ReadOnly = True
+        '
+        'precioUnitario
+        '
+        Me.precioUnitario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.precioUnitario.HeaderText = "Precio Ud"
+        Me.precioUnitario.Name = "precioUnitario"
         '
         'precioBrutoVenta
         '
@@ -479,14 +481,12 @@ Partial Class frmVenta
         Me.precioBrutoVenta.DefaultCellStyle = DataGridViewCellStyle2
         Me.precioBrutoVenta.HeaderText = "Bruto"
         Me.precioBrutoVenta.Name = "precioBrutoVenta"
-        Me.precioBrutoVenta.ReadOnly = True
         '
         'cantidadVenta
         '
         Me.cantidadVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.cantidadVenta.HeaderText = "Cantidad"
         Me.cantidadVenta.Name = "cantidadVenta"
-        Me.cantidadVenta.ReadOnly = True
         '
         'descuentoVenta
         '
@@ -496,7 +496,6 @@ Partial Class frmVenta
         Me.descuentoVenta.DefaultCellStyle = DataGridViewCellStyle3
         Me.descuentoVenta.HeaderText = "Descuento"
         Me.descuentoVenta.Name = "descuentoVenta"
-        Me.descuentoVenta.ReadOnly = True
         '
         'baseImponible
         '
@@ -506,7 +505,6 @@ Partial Class frmVenta
         Me.baseImponible.DefaultCellStyle = DataGridViewCellStyle4
         Me.baseImponible.HeaderText = "Base Imponible"
         Me.baseImponible.Name = "baseImponible"
-        Me.baseImponible.ReadOnly = True
         '
         'impuestoVenta
         '
@@ -516,7 +514,6 @@ Partial Class frmVenta
         Me.impuestoVenta.DefaultCellStyle = DataGridViewCellStyle5
         Me.impuestoVenta.HeaderText = "Impuesto"
         Me.impuestoVenta.Name = "impuestoVenta"
-        Me.impuestoVenta.ReadOnly = True
         '
         'precioTotalVenta
         '
@@ -526,7 +523,6 @@ Partial Class frmVenta
         Me.precioTotalVenta.DefaultCellStyle = DataGridViewCellStyle6
         Me.precioTotalVenta.HeaderText = "Total"
         Me.precioTotalVenta.Name = "precioTotalVenta"
-        Me.precioTotalVenta.ReadOnly = True
         '
         'frmVenta
         '
@@ -584,6 +580,7 @@ Partial Class frmVenta
     Friend WithEvents clienteVenta As DataGridViewTextBoxColumn
     Friend WithEvents articuloVenta As DataGridViewTextBoxColumn
     Friend WithEvents formaPagoVenta As DataGridViewTextBoxColumn
+    Friend WithEvents precioUnitario As DataGridViewTextBoxColumn
     Friend WithEvents precioBrutoVenta As DataGridViewTextBoxColumn
     Friend WithEvents cantidadVenta As DataGridViewTextBoxColumn
     Friend WithEvents descuentoVenta As DataGridViewTextBoxColumn

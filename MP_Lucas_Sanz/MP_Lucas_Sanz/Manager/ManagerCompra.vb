@@ -17,6 +17,7 @@ Public Class ManagerCompra
             Dim formaPago As Integer
             Dim precio As Double
             Dim cantidad As Integer
+            Dim descuento As Double
             Dim fecha As Date
             Dim factura As String
             Dim eliminadoInt As Integer
@@ -30,9 +31,10 @@ Public Class ManagerCompra
                 formaPago = Convert.ToInt32(dr(3))
                 precio = Convert.ToDouble(dr(4))
                 cantidad = Convert.ToInt32(dr(5))
-                fecha = Convert.ToDateTime(dr(6))
-                eliminado = Convert.ToInt32(dr(7))
-                factura = dr(8).ToString().Trim()
+                descuento = Convert.ToDouble(dr(6))
+                fecha = Convert.ToDateTime(dr(7))
+                eliminado = Convert.ToInt32(dr(8))
+                factura = dr(9).ToString().Trim()
 
                 If eliminadoInt = 0 Then
                     eliminado = False
@@ -40,7 +42,7 @@ Public Class ManagerCompra
                     eliminado = True
                 End If
 
-                compraAux = New Compra(codigo, proveedor, articulo, formaPago, precio, cantidad, fecha, eliminado, factura)
+                compraAux = New Compra(codigo, proveedor, articulo, formaPago, precio, cantidad, fecha, eliminado, factura, descuento)
                 listaCompras.Add(compraAux)
             Loop While dr.Read()
         End If
@@ -63,6 +65,7 @@ Public Class ManagerCompra
                                 @FormaPago,
                                 @PVPCompra,
                                 @Cantidad,
+                                @Descuento,
                                 @Fecha,
                                 @Eliminado,
                                 @Factura);", connectionDBManager)
@@ -73,6 +76,7 @@ Public Class ManagerCompra
             .Add("@FormaPago", SqlDbType.Char, 5).Value = compraTemp.FormaDePagoCompra
             .Add("@PVPCompra", SqlDbType.Decimal, 10, 2).Value = compraTemp.PrecioDeArticuloCompra
             .Add("@Cantidad", SqlDbType.Int).Value = compraTemp.CantidadDeCompra
+            .Add("@Descuento", SqlDbType.Decimal, 5, 2).Value = compraTemp.DescuentoDeCompra
             .Add("@Fecha", SqlDbType.Date).Value = compraTemp.FechaDeCompra
             .Add("@Eliminado", SqlDbType.Bit).Value = eliminadoInt
             .Add("@Factura", SqlDbType.Char, 10).Value = compraTemp.FacturaDeCompra

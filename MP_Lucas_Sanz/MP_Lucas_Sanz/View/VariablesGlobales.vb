@@ -96,9 +96,24 @@
         Return listaFamiliasAux.Find(Function(f) f.CodigoDeFamilia = codigo)
     End Function
 
+    'VENTAS
+    Public listaVentasAux As List(Of Venta) = New List(Of Venta)
+    Public Sub updateListaVentas()
+        listaVentasAux = New List(Of Venta)
+        listaVentasAux = managerVentaAux.getVentas()
+    End Sub
+
+    'COMPRAS
+    Public listaComprasAux As List(Of Compra) = New List(Of Compra)
+    Public Sub updateListaCompras()
+        listaComprasAux = New List(Of Compra)
+        listaComprasAux = managerCompraAux.getCompras()
+    End Sub
+
     ' ------------ VARIABLES GLOBALES -------------
     Private empresaSeleccionadaDB As String = Nothing
     Private seleccionadaEmpresa As Boolean = False
+    Public albaranSeleccionado As String = ""
 
     Public Sub setEmpresaSeleccionadaDB(nombre As String)
         empresaSeleccionadaDB = nombre

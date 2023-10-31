@@ -152,8 +152,10 @@ Public Class ManagerEmpresa
                             ID_FORMA_PAGO INT,
                             PRECIO_ARTICULO_COMPRA DECIMAL(10,2),
                             CANTIDAD_COMPRA INT,
+                            DESCUENTO_COMPRA DECIMAL(5,2),
                             FECHA_COMPRA DATE,
                             ELIMINADO_COMPRA BIT,
+                            FACTURA_COMPRA VARCHAR(10),
                             FOREIGN KEY(ID_PROVEEDOR) REFERENCES PROVEEDORES(ID_PROVEEDOR),
                             FOREIGN KEY(ID_ARTICULO) REFERENCES ARTICULOS(ID_ARTICULO),
                             FOREIGN KEY(ID_FORMA_PAGO) REFERENCES FORMASPAGO(ID_FORMA_PAGO)
@@ -223,6 +225,8 @@ Public Class ManagerEmpresa
             VariablesGlobales.updateListaMovimientos()
             VariablesGlobales.updateListaImpuestos()
             VariablesGlobales.updateListaFamilias()
+            VariablesGlobales.updateListaCompras()
+            VariablesGlobales.updateListaVentas()
         Catch ex As Exception
             MessageBox.Show(ex.ToString())
         End Try
@@ -237,6 +241,8 @@ Public Class ManagerEmpresa
             VariablesGlobales.updateListaMovimientos()
             VariablesGlobales.updateListaImpuestos()
             VariablesGlobales.updateListaFamilias()
+            VariablesGlobales.updateListaCompras()
+            VariablesGlobales.updateListaVentas()
         Catch ex As Exception
             MessageBox.Show(ex.ToString())
         End Try
