@@ -87,6 +87,37 @@ Public Class ManagerCompra
             MessageBox.Show("Error al introducir una compra: " + vbCrLf + ex.ToString())
         End Try
     End Sub
+    Public Sub modifyCompra(c As Compra)
+        cmd = New SqlCommand("UPDATE COMPRAS SET
+                            ID_FORMA_PAGO = @FormaPago,
+                            PRECIO_ARTICULO_COMPRA = @PrecioCompra,
+                            CANTIDAD_COMPRA = @Cantidad,
+                            DESCUENTO_COMPRA = @Descuento,
+                            FECHA_COMPRA = @Fecha
+                            WHERE ID_COMPRA = @Codigo;", connectionDBManager)
+        With cmd.Parameters
+            .Add("@FormaPago", SqlDbType.Int).Value = c.FormaDePagoCompra
+            .Add("@PrecioCompra", SqlDbType.Decimal, 10, 2).Value = c.PrecioDeArticuloCompra
+            .Add("@Cantidad", SqlDbType.Int).Value = c.CantidadDeCompra
+            .Add("@Descuento", SqlDbType.Decimal, 5, 2).Value = c.DescuentoDeCompra
+            .Add("@Fecha", SqlDbType.Date).Value = c.FechaDeCompra
+            .Add("@Codigo", SqlDbType.Int).Value = c.CodigoDeCompra
+        End With
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
+        End Try
+    End Sub
+    Public Sub deleteCompra(compra As Compra)
+        cmd = New SqlCommand("DELETE FROM COMPRAS WHERE ID_COMPRA = @Codigo;", connectionDBManager)
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = compra.CodigoDeCompra
+        Try
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
+        End Try
+    End Sub
     Public Sub deleteCompraArticulo(codigoArticulo As Integer)
         cmd = New SqlCommand("DELETE FROM COMPRAS WHERE ID_ARTICULO = @Codigo;", connectionDBManager)
         cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = codigoArticulo

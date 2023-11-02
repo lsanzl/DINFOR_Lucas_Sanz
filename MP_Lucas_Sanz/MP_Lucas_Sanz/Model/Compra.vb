@@ -150,6 +150,12 @@
     Public Sub addCompra()
         managerCompraAux.addCompra(Me)
     End Sub
+    Public Sub modifyCompra()
+        managerCompraAux.modifyCompra(Me)
+    End Sub
+    Public Sub deleteCompra()
+        managerCompraAux.deleteCompra(Me)
+    End Sub
     Public Function getRandomFactura() As String
         Dim random As New Random()
         Dim numeroAleatorio As Integer

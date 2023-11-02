@@ -3,10 +3,13 @@
 Public Class frmVenta
     Dim listaFormasPago As List(Of FormaPago) = New List(Of FormaPago)
     Dim listaVentas As List(Of Venta) = New List(Of Venta)
+    Dim listaVentasEliminadas As List(Of Venta) = New List(Of Venta)
+    Dim borrado As Boolean
+    Dim modificacion As Boolean = False
     Dim ventaTemp As Venta = New Venta()
     Dim dt As New DataTable()
-    Dim clienteSeleccionado As Cliente
-    Dim articuloSeleccionado As Articulo
+    Dim clienteSeleccionado As Cliente = Nothing
+    Dim articuloSeleccionado As Articulo = Nothing
     Dim facturaGenerada As String
     Dim doubleParse As Double
     Dim brutoTotal As Double
@@ -17,14 +20,14 @@ Public Class frmVenta
     Private Sub frmVenta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         listaVentas = New List(Of Venta)
         facturaGenerada = ventaAux.getRandomFactura()
-        clearFields()
+        fillFields()
     End Sub
 
     Private Sub click_btn_busqueda_cliente(sender As Object, e As EventArgs) Handles btn_busqueda_cliente.Click
         Dim frmBusquedaNuevo As frmBusquedaVenta = New frmBusquedaVenta(clienteAux)
         frmBusquedaNuevo.Text = "BÚSQUEDA DE CLIENTES"
         frmBusquedaNuevo.ShowDialog()
-        clienteSeleccionado = Nothing
+        clienteSeleccionado = frmBusquedaNuevo.clienteSeleccionado
         If clienteSeleccionado IsNot Nothing Then
             clienteSeleccionado = frmBusquedaNuevo.clienteSeleccionado
             txt_cliente_seleccionado.Text = clienteSeleccionado.NombreDelCliente
@@ -38,6 +41,24 @@ Public Class frmVenta
             articuloSeleccionado = frmBusquedaNuevo.articuloSeleccionado
             txt_articulo_seleccionado_venta.Text = articuloSeleccionado.NombreDeArticulo
         End If
+    End Sub
+    Private Sub fillFields()
+        listaFormasPago = formaPagoAux.getFormasPago()
+
+        If Not dt.Columns.Contains("Nombre") Then
+            dt.Columns.Add("Nombre")
+            dt.Columns.Add("Codigo")
+        End If
+        For Each formilla As FormaPago In listaFormasPago
+            Dim fila As DataRow = dt.NewRow()
+            fila("Nombre") = formilla.NombreDePago
+            fila("Codigo") = formilla.CodigoDePago
+            dt.Rows.Add(fila)
+        Next
+        cb_forma_pago_seleccionada_venta.DataSource = dt
+        cb_forma_pago_seleccionada_venta.DisplayMember = "Nombre"
+        cb_forma_pago_seleccionada_venta.ValueMember = "Codigo"
+        cb_forma_pago_seleccionada_venta.SelectedIndex = -1
     End Sub
     Private Sub clearFields()
         txt_cliente_seleccionado.Clear()
@@ -179,6 +200,39 @@ Public Class frmVenta
         For Each item As Venta In listaVentas
             Dim index As Integer = dg_ventas.Rows.Add()
             articuloItem = managerArticuloAux.getArticuloConcreto(item.ArticuloDeVenta)
+            Dim baseImponible As Double = item.PrecioDeArticuloVenta * (1 - item.DescuentoDeVenta / 100)
+            Dim impuesto As Double = baseImponible * (articuloItem.ImpuestoDeArticulo / 100)
+
+            dg_ventas.Rows(index).Cells("idVenta").Value = item.CodigoDeVenta
+            dg_ventas.Rows(index).Cells("clienteVenta").Value = clienteTemp.NombreDelCliente
+            dg_ventas.Rows(index).Cells("articuloVenta").Value = articuloItem.NombreDeArticulo
+            dg_ventas.Rows(index).Cells("formaPagoVenta").Value = item.FormaDePagoVenta
+            dg_ventas.Rows(index).Cells("precioUnitario").Value = item.PrecioDeArticuloVenta
+            dg_ventas.Rows(index).Cells("precioBrutoVenta").Value = item.PrecioDeArticuloVenta * item.CantidadDeVenta
+            dg_ventas.Rows(index).Cells("cantidadVenta").Value = item.CantidadDeVenta
+            dg_ventas.Rows(index).Cells("descuentoVenta").Value = item.DescuentoDeVenta
+            dg_ventas.Rows(index).Cells("baseImponible").Value = baseImponible * item.CantidadDeVenta
+            dg_ventas.Rows(index).Cells("impuestoVenta").Value = impuesto * item.CantidadDeVenta
+            dg_ventas.Rows(index).Cells("precioTotalVenta").Value = (baseImponible + impuesto) * item.CantidadDeVenta
+        Next
+        If dg_ventas.RowCount > 0 Then
+            btn_confirmar_venta.Enabled = True
+            btn_busqueda_cliente.Enabled = False
+            cb_forma_pago_seleccionada_venta.Enabled = False
+        Else
+            btn_confirmar_venta.Enabled = False
+            btn_busqueda_cliente.Enabled = True
+            cb_forma_pago_seleccionada_venta.Enabled = True
+        End If
+        dg_ventas.ClearSelection()
+    End Sub
+    Public Sub fillDGVentas(listaFacturas As List(Of Venta))
+        dg_ventas.Rows.Clear()
+        Dim clienteTemp As Cliente = VariablesGlobales.getClientePorCodigo(listaFacturas(0).ClienteDeVenta)
+        Dim articuloItem As Articulo
+        For Each item As Venta In listaFacturas
+            Dim index As Integer = dg_ventas.Rows.Add()
+            articuloItem = VariablesGlobales.getArticuloPorCodigo(item.ArticuloDeVenta)
             Dim baseImponible As Double = item.PrecioDeArticuloVenta * (1 - item.DescuentoDeVenta / 100)
             Dim impuesto As Double = baseImponible * (articuloItem.ImpuestoDeArticulo / 100)
 

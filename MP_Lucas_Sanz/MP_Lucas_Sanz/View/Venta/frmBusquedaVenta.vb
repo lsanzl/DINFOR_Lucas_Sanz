@@ -3,8 +3,8 @@
     Public Property codigoSeleccionado As String
     Dim listaArticulos As List(Of Articulo)
     Dim listaClientes As List(Of Cliente)
-    Public articuloSeleccionado As Articulo
-    Public clienteSeleccionado As Cliente
+    Public articuloSeleccionado As Articulo = Nothing
+    Public clienteSeleccionado As Cliente = Nothing
     Dim clase As Object
 
     Private Sub frmBusquedaVenta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -20,7 +20,7 @@
         dg_resultados_busqueda_ventas.Columns.Add("codigo", "Código")
 
         If TypeOf clase Is Cliente Then
-            Dim listaClientes As List(Of Cliente) = managerClienteAux.getClientes()
+            Dim listaClientes As List(Of Cliente) = VariablesGlobales.listaClientesAux
             Dim contador As Integer = 0
             For Each cliente As Cliente In listaClientes
                 dg_resultados_busqueda_ventas.Rows.Add()
@@ -32,7 +32,7 @@
             Next
         End If
         If TypeOf clase Is Articulo Then
-            Dim listaArticulos As List(Of Articulo) = articuloAux.getArticulos()
+            Dim listaArticulos As List(Of Articulo) = VariablesGlobales.listaArticulosAux
             Dim contador As Integer = 0
             For Each articulo As Articulo In listaArticulos
                 dg_resultados_busqueda_ventas.Rows.Add()
@@ -87,9 +87,9 @@
     Private Sub double_click_cell_dg_resultados_busqueda(sender As Object, e As DataGridViewCellEventArgs) Handles dg_resultados_busqueda_ventas.CellDoubleClick
         codigoSeleccionado = dg_resultados_busqueda_ventas.Rows(e.RowIndex).Cells(1).Value.ToString()
         If TypeOf clase Is Articulo Then
-            articuloSeleccionado = listaArticulos.Find(Function(art) art.CodigoDeArticulo = codigoSeleccionado)
+            articuloSeleccionado = VariablesGlobales.getArticuloPorCodigo(codigoSeleccionado)
         Else
-            clienteSeleccionado = listaClientes.Find(Function(c) c.CodigoDelCliente = codigoSeleccionado)
+            clienteSeleccionado = VariablesGlobales.getClientePorCodigo(codigoSeleccionado)
         End If
         Close()
     End Sub

@@ -35,15 +35,23 @@ Partial Class frmMain
         Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.tab_main = New System.Windows.Forms.TabControl()
         Me.tab_menu_principal = New System.Windows.Forms.TabPage()
         Me.tlp_menu_main = New System.Windows.Forms.TableLayoutPanel()
         Me.btn_menu_inventario = New System.Windows.Forms.Button()
         Me.btn_menu_configuraciones = New System.Windows.Forms.Button()
+        Me.TableLayoutPanel16 = New System.Windows.Forms.TableLayoutPanel()
+        Me.btn_efectuar_venta = New System.Windows.Forms.Button()
+        Me.btn_ver_ventas = New System.Windows.Forms.Button()
+        Me.TableLayoutPanel17 = New System.Windows.Forms.TableLayoutPanel()
+        Me.btn_ver_compras = New System.Windows.Forms.Button()
+        Me.btn_efectuar_compra = New System.Windows.Forms.Button()
         Me.tab_bancos_pagos = New System.Windows.Forms.TabPage()
         Me.tlp_main_bancos_pagos = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel13 = New System.Windows.Forms.TableLayoutPanel()
@@ -144,18 +152,23 @@ Partial Class frmMain
         Me.facturaMovimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.fechaMovimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.stockMovimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.tab_albaranes = New System.Windows.Forms.TabPage()
         Me.tab_configuraciones = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel9 = New System.Windows.Forms.TableLayoutPanel()
         Me.btn_actualizacion_campo_extra = New System.Windows.Forms.Button()
         Me.btn_actualizacion_añadir_tabla = New System.Windows.Forms.Button()
         Me.btn_actualizacion_añadir_fk = New System.Windows.Forms.Button()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
-        Me.TableLayoutPanel16 = New System.Windows.Forms.TableLayoutPanel()
-        Me.btn_efectuar_venta = New System.Windows.Forms.Button()
-        Me.btn_ver_ventas = New System.Windows.Forms.Button()
-        Me.TableLayoutPanel17 = New System.Windows.Forms.TableLayoutPanel()
-        Me.btn_efectuar_compra = New System.Windows.Forms.Button()
-        Me.btn_ver_compras = New System.Windows.Forms.Button()
+        Me.TableLayoutPanel18 = New System.Windows.Forms.TableLayoutPanel()
+        Me.dg_albaranes = New System.Windows.Forms.DataGridView()
+        Me.TableLayoutPanel19 = New System.Windows.Forms.TableLayoutPanel()
+        Me.idAlbaran = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.personaAlbaran = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.formaPagoAlbaran = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fechaAlbaran = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.tipoAlbaran = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.facturaAlbaran = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.verAlbaran = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.codigoFormaPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.nombreFormaPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BancoAsignadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -183,18 +196,14 @@ Partial Class frmMain
         Me.ClienteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.BancoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GrupoBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.tab_albaranes = New System.Windows.Forms.TabPage()
-        Me.dg_albaranes = New System.Windows.Forms.DataGridView()
-        Me.idAlbaran = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.personaAlbaran = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.formaPagoAlbaran = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.fechaAlbaran = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.tipoAlbaran = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.facturaAlbaran = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.verAlbaran = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.gb_ver_albaranes = New System.Windows.Forms.GroupBox()
+        Me.rdb_ver_ventas = New System.Windows.Forms.RadioButton()
+        Me.rdb_ver_compras = New System.Windows.Forms.RadioButton()
         Me.tab_main.SuspendLayout()
         Me.tab_menu_principal.SuspendLayout()
         Me.tlp_menu_main.SuspendLayout()
+        Me.TableLayoutPanel16.SuspendLayout()
+        Me.TableLayoutPanel17.SuspendLayout()
         Me.tab_bancos_pagos.SuspendLayout()
         Me.tlp_main_bancos_pagos.SuspendLayout()
         Me.TableLayoutPanel13.SuspendLayout()
@@ -230,10 +239,12 @@ Partial Class frmMain
         CType(Me.dg_inventario, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel8.SuspendLayout()
         CType(Me.dg_movimientos, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tab_albaranes.SuspendLayout()
         Me.tab_configuraciones.SuspendLayout()
         Me.TableLayoutPanel9.SuspendLayout()
-        Me.TableLayoutPanel16.SuspendLayout()
-        Me.TableLayoutPanel17.SuspendLayout()
+        Me.TableLayoutPanel18.SuspendLayout()
+        CType(Me.dg_albaranes, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TableLayoutPanel19.SuspendLayout()
         CType(Me.FormaPagoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GrupoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ArticuloBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -242,8 +253,7 @@ Partial Class frmMain
         CType(Me.ClienteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BancoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GrupoBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tab_albaranes.SuspendLayout()
-        CType(Me.dg_albaranes, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gb_ver_albaranes.SuspendLayout()
         Me.SuspendLayout()
         '
         'tab_main
@@ -333,6 +343,101 @@ Partial Class frmMain
         Me.btn_menu_configuraciones.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btn_menu_configuraciones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.btn_menu_configuraciones.UseVisualStyleBackColor = False
+        '
+        'TableLayoutPanel16
+        '
+        Me.TableLayoutPanel16.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel16.ColumnCount = 1
+        Me.TableLayoutPanel16.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel16.Controls.Add(Me.btn_efectuar_venta, 0, 0)
+        Me.TableLayoutPanel16.Controls.Add(Me.btn_ver_ventas, 0, 1)
+        Me.TableLayoutPanel16.Location = New System.Drawing.Point(3, 3)
+        Me.TableLayoutPanel16.Name = "TableLayoutPanel16"
+        Me.TableLayoutPanel16.RowCount = 2
+        Me.TableLayoutPanel16.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.0!))
+        Me.TableLayoutPanel16.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.TableLayoutPanel16.Size = New System.Drawing.Size(389, 189)
+        Me.TableLayoutPanel16.TabIndex = 4
+        '
+        'btn_efectuar_venta
+        '
+        Me.btn_efectuar_venta.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_efectuar_venta.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.btn_efectuar_venta.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_efectuar_venta.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.venta
+        Me.btn_efectuar_venta.Location = New System.Drawing.Point(8, 8)
+        Me.btn_efectuar_venta.Margin = New System.Windows.Forms.Padding(8)
+        Me.btn_efectuar_venta.Name = "btn_efectuar_venta"
+        Me.btn_efectuar_venta.Size = New System.Drawing.Size(373, 135)
+        Me.btn_efectuar_venta.TabIndex = 1
+        Me.btn_efectuar_venta.Text = "VENTA"
+        Me.btn_efectuar_venta.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btn_efectuar_venta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.btn_efectuar_venta.UseVisualStyleBackColor = False
+        '
+        'btn_ver_ventas
+        '
+        Me.btn_ver_ventas.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_ver_ventas.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.btn_ver_ventas.Location = New System.Drawing.Point(8, 159)
+        Me.btn_ver_ventas.Margin = New System.Windows.Forms.Padding(8)
+        Me.btn_ver_ventas.Name = "btn_ver_ventas"
+        Me.btn_ver_ventas.Size = New System.Drawing.Size(373, 22)
+        Me.btn_ver_ventas.TabIndex = 2
+        Me.btn_ver_ventas.Text = "ALBARANES DE VENTA"
+        Me.btn_ver_ventas.UseVisualStyleBackColor = False
+        '
+        'TableLayoutPanel17
+        '
+        Me.TableLayoutPanel17.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel17.ColumnCount = 1
+        Me.TableLayoutPanel17.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel17.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel17.Controls.Add(Me.btn_ver_compras, 0, 1)
+        Me.TableLayoutPanel17.Controls.Add(Me.btn_efectuar_compra, 0, 0)
+        Me.TableLayoutPanel17.Location = New System.Drawing.Point(3, 198)
+        Me.TableLayoutPanel17.Name = "TableLayoutPanel17"
+        Me.TableLayoutPanel17.RowCount = 2
+        Me.TableLayoutPanel17.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.0!))
+        Me.TableLayoutPanel17.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.TableLayoutPanel17.Size = New System.Drawing.Size(389, 190)
+        Me.TableLayoutPanel17.TabIndex = 5
+        '
+        'btn_ver_compras
+        '
+        Me.btn_ver_compras.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_ver_compras.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btn_ver_compras.Location = New System.Drawing.Point(8, 160)
+        Me.btn_ver_compras.Margin = New System.Windows.Forms.Padding(8)
+        Me.btn_ver_compras.Name = "btn_ver_compras"
+        Me.btn_ver_compras.Size = New System.Drawing.Size(373, 22)
+        Me.btn_ver_compras.TabIndex = 3
+        Me.btn_ver_compras.Text = "ALBARANES DE COMPRA"
+        Me.btn_ver_compras.UseVisualStyleBackColor = False
+        '
+        'btn_efectuar_compra
+        '
+        Me.btn_efectuar_compra.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_efectuar_compra.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btn_efectuar_compra.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_efectuar_compra.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.inventario
+        Me.btn_efectuar_compra.Location = New System.Drawing.Point(8, 8)
+        Me.btn_efectuar_compra.Margin = New System.Windows.Forms.Padding(8)
+        Me.btn_efectuar_compra.Name = "btn_efectuar_compra"
+        Me.btn_efectuar_compra.Size = New System.Drawing.Size(373, 136)
+        Me.btn_efectuar_compra.TabIndex = 2
+        Me.btn_efectuar_compra.Text = "COMPRA"
+        Me.btn_efectuar_compra.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btn_efectuar_compra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.btn_efectuar_compra.UseVisualStyleBackColor = False
         '
         'tab_bancos_pagos
         '
@@ -1658,6 +1763,18 @@ Partial Class frmMain
         Me.stockMovimiento.Name = "stockMovimiento"
         Me.stockMovimiento.ReadOnly = True
         '
+        'tab_albaranes
+        '
+        Me.tab_albaranes.Controls.Add(Me.TableLayoutPanel18)
+        Me.tab_albaranes.ImageIndex = 5
+        Me.tab_albaranes.Location = New System.Drawing.Point(4, 54)
+        Me.tab_albaranes.Name = "tab_albaranes"
+        Me.tab_albaranes.Padding = New System.Windows.Forms.Padding(3)
+        Me.tab_albaranes.Size = New System.Drawing.Size(791, 388)
+        Me.tab_albaranes.TabIndex = 6
+        Me.tab_albaranes.Text = "ALBARANES"
+        Me.tab_albaranes.UseVisualStyleBackColor = True
+        '
         'tab_configuraciones
         '
         Me.tab_configuraciones.Controls.Add(Me.TableLayoutPanel9)
@@ -1741,100 +1858,120 @@ Partial Class frmMain
         Me.ImageList1.Images.SetKeyName(4, "configuraciones.ico")
         Me.ImageList1.Images.SetKeyName(5, "albaran.png")
         '
-        'TableLayoutPanel16
+        'TableLayoutPanel18
         '
-        Me.TableLayoutPanel16.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.TableLayoutPanel18.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel16.ColumnCount = 1
-        Me.TableLayoutPanel16.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel16.Controls.Add(Me.btn_efectuar_venta, 0, 0)
-        Me.TableLayoutPanel16.Controls.Add(Me.btn_ver_ventas, 0, 1)
-        Me.TableLayoutPanel16.Location = New System.Drawing.Point(3, 3)
-        Me.TableLayoutPanel16.Name = "TableLayoutPanel16"
-        Me.TableLayoutPanel16.RowCount = 2
-        Me.TableLayoutPanel16.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.0!))
-        Me.TableLayoutPanel16.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel16.Size = New System.Drawing.Size(389, 189)
-        Me.TableLayoutPanel16.TabIndex = 4
+        Me.TableLayoutPanel18.ColumnCount = 2
+        Me.TableLayoutPanel18.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.0!))
+        Me.TableLayoutPanel18.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel18.Controls.Add(Me.dg_albaranes, 0, 0)
+        Me.TableLayoutPanel18.Controls.Add(Me.TableLayoutPanel19, 1, 0)
+        Me.TableLayoutPanel18.Location = New System.Drawing.Point(0, 0)
+        Me.TableLayoutPanel18.Name = "TableLayoutPanel18"
+        Me.TableLayoutPanel18.Padding = New System.Windows.Forms.Padding(3)
+        Me.TableLayoutPanel18.RowCount = 1
+        Me.TableLayoutPanel18.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel18.Size = New System.Drawing.Size(791, 388)
+        Me.TableLayoutPanel18.TabIndex = 0
         '
-        'btn_efectuar_venta
+        'dg_albaranes
         '
-        Me.btn_efectuar_venta.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.dg_albaranes.AllowUserToAddRows = False
+        Me.dg_albaranes.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_efectuar_venta.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.btn_efectuar_venta.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_efectuar_venta.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.venta
-        Me.btn_efectuar_venta.Location = New System.Drawing.Point(8, 8)
-        Me.btn_efectuar_venta.Margin = New System.Windows.Forms.Padding(8)
-        Me.btn_efectuar_venta.Name = "btn_efectuar_venta"
-        Me.btn_efectuar_venta.Size = New System.Drawing.Size(373, 135)
-        Me.btn_efectuar_venta.TabIndex = 1
-        Me.btn_efectuar_venta.Text = "VENTA"
-        Me.btn_efectuar_venta.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btn_efectuar_venta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.btn_efectuar_venta.UseVisualStyleBackColor = False
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_albaranes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle15
+        Me.dg_albaranes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dg_albaranes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idAlbaran, Me.personaAlbaran, Me.formaPagoAlbaran, Me.fechaAlbaran, Me.tipoAlbaran, Me.facturaAlbaran, Me.verAlbaran})
+        Me.dg_albaranes.Location = New System.Drawing.Point(6, 6)
+        Me.dg_albaranes.Name = "dg_albaranes"
+        Me.dg_albaranes.ReadOnly = True
+        Me.dg_albaranes.RowHeadersVisible = False
+        Me.dg_albaranes.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dg_albaranes.Size = New System.Drawing.Size(582, 376)
+        Me.dg_albaranes.TabIndex = 1
         '
-        'btn_ver_ventas
+        'TableLayoutPanel19
         '
-        Me.btn_ver_ventas.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_ver_ventas.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.btn_ver_ventas.Location = New System.Drawing.Point(8, 159)
-        Me.btn_ver_ventas.Margin = New System.Windows.Forms.Padding(8)
-        Me.btn_ver_ventas.Name = "btn_ver_ventas"
-        Me.btn_ver_ventas.Size = New System.Drawing.Size(373, 22)
-        Me.btn_ver_ventas.TabIndex = 2
-        Me.btn_ver_ventas.Text = "ALBARANES DE VENTA"
-        Me.btn_ver_ventas.UseVisualStyleBackColor = False
-        '
-        'TableLayoutPanel17
-        '
-        Me.TableLayoutPanel17.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.TableLayoutPanel19.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel17.ColumnCount = 1
-        Me.TableLayoutPanel17.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel17.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel17.Controls.Add(Me.btn_ver_compras, 0, 1)
-        Me.TableLayoutPanel17.Controls.Add(Me.btn_efectuar_compra, 0, 0)
-        Me.TableLayoutPanel17.Location = New System.Drawing.Point(3, 198)
-        Me.TableLayoutPanel17.Name = "TableLayoutPanel17"
-        Me.TableLayoutPanel17.RowCount = 2
-        Me.TableLayoutPanel17.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.0!))
-        Me.TableLayoutPanel17.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel17.Size = New System.Drawing.Size(389, 190)
-        Me.TableLayoutPanel17.TabIndex = 5
+        Me.TableLayoutPanel19.ColumnCount = 1
+        Me.TableLayoutPanel19.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel19.Controls.Add(Me.gb_ver_albaranes, 0, 0)
+        Me.TableLayoutPanel19.Location = New System.Drawing.Point(594, 6)
+        Me.TableLayoutPanel19.Name = "TableLayoutPanel19"
+        Me.TableLayoutPanel19.RowCount = 4
+        Me.TableLayoutPanel19.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel19.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.TableLayoutPanel19.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.TableLayoutPanel19.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.0!))
+        Me.TableLayoutPanel19.Size = New System.Drawing.Size(191, 376)
+        Me.TableLayoutPanel19.TabIndex = 2
         '
-        'btn_efectuar_compra
+        'idAlbaran
         '
-        Me.btn_efectuar_compra.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_efectuar_compra.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btn_efectuar_compra.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_efectuar_compra.Image = Global.MP_Lucas_Sanz.My.Resources.Resources.inventario
-        Me.btn_efectuar_compra.Location = New System.Drawing.Point(8, 8)
-        Me.btn_efectuar_compra.Margin = New System.Windows.Forms.Padding(8)
-        Me.btn_efectuar_compra.Name = "btn_efectuar_compra"
-        Me.btn_efectuar_compra.Size = New System.Drawing.Size(373, 136)
-        Me.btn_efectuar_compra.TabIndex = 2
-        Me.btn_efectuar_compra.Text = "COMPRA"
-        Me.btn_efectuar_compra.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btn_efectuar_compra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.btn_efectuar_compra.UseVisualStyleBackColor = False
+        Me.idAlbaran.HeaderText = "ID"
+        Me.idAlbaran.Name = "idAlbaran"
+        Me.idAlbaran.ReadOnly = True
+        Me.idAlbaran.Visible = False
         '
-        'btn_ver_compras
+        'personaAlbaran
         '
-        Me.btn_ver_compras.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_ver_compras.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btn_ver_compras.Location = New System.Drawing.Point(8, 160)
-        Me.btn_ver_compras.Margin = New System.Windows.Forms.Padding(8)
-        Me.btn_ver_compras.Name = "btn_ver_compras"
-        Me.btn_ver_compras.Size = New System.Drawing.Size(373, 22)
-        Me.btn_ver_compras.TabIndex = 3
-        Me.btn_ver_compras.Text = "ALBARANES DE COMPRA"
-        Me.btn_ver_compras.UseVisualStyleBackColor = False
+        Me.personaAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.personaAlbaran.HeaderText = "Entidad"
+        Me.personaAlbaran.Name = "personaAlbaran"
+        Me.personaAlbaran.ReadOnly = True
+        '
+        'formaPagoAlbaran
+        '
+        Me.formaPagoAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.formaPagoAlbaran.HeaderText = "Forma Pago"
+        Me.formaPagoAlbaran.Name = "formaPagoAlbaran"
+        Me.formaPagoAlbaran.ReadOnly = True
+        '
+        'fechaAlbaran
+        '
+        Me.fechaAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        DataGridViewCellStyle16.Format = "d"
+        DataGridViewCellStyle16.NullValue = Nothing
+        Me.fechaAlbaran.DefaultCellStyle = DataGridViewCellStyle16
+        Me.fechaAlbaran.HeaderText = "Fecha"
+        Me.fechaAlbaran.Name = "fechaAlbaran"
+        Me.fechaAlbaran.ReadOnly = True
+        '
+        'tipoAlbaran
+        '
+        Me.tipoAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.tipoAlbaran.HeaderText = "Tipo Movimiento"
+        Me.tipoAlbaran.Name = "tipoAlbaran"
+        Me.tipoAlbaran.ReadOnly = True
+        '
+        'facturaAlbaran
+        '
+        Me.facturaAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.facturaAlbaran.HeaderText = "Factura"
+        Me.facturaAlbaran.Name = "facturaAlbaran"
+        Me.facturaAlbaran.ReadOnly = True
+        '
+        'verAlbaran
+        '
+        Me.verAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.verAlbaran.DefaultCellStyle = DataGridViewCellStyle17
+        Me.verAlbaran.HeaderText = ""
+        Me.verAlbaran.Name = "verAlbaran"
+        Me.verAlbaran.ReadOnly = True
         '
         'codigoFormaPago
         '
@@ -2032,90 +2169,44 @@ Partial Class frmMain
         '
         Me.GrupoBindingSource1.DataSource = GetType(MP_Lucas_Sanz.Grupo)
         '
-        'tab_albaranes
+        'gb_ver_albaranes
         '
-        Me.tab_albaranes.Controls.Add(Me.dg_albaranes)
-        Me.tab_albaranes.ImageIndex = 5
-        Me.tab_albaranes.Location = New System.Drawing.Point(4, 54)
-        Me.tab_albaranes.Name = "tab_albaranes"
-        Me.tab_albaranes.Padding = New System.Windows.Forms.Padding(3)
-        Me.tab_albaranes.Size = New System.Drawing.Size(791, 388)
-        Me.tab_albaranes.TabIndex = 6
-        Me.tab_albaranes.Text = "ALBARANES"
-        Me.tab_albaranes.UseVisualStyleBackColor = True
-        '
-        'dg_albaranes
-        '
-        Me.dg_albaranes.AllowUserToAddRows = False
-        Me.dg_albaranes.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.gb_ver_albaranes.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg_albaranes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle15
-        Me.dg_albaranes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_albaranes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idAlbaran, Me.personaAlbaran, Me.formaPagoAlbaran, Me.fechaAlbaran, Me.tipoAlbaran, Me.facturaAlbaran, Me.verAlbaran})
-        Me.dg_albaranes.Location = New System.Drawing.Point(0, 0)
-        Me.dg_albaranes.Name = "dg_albaranes"
-        Me.dg_albaranes.ReadOnly = True
-        Me.dg_albaranes.RowHeadersVisible = False
-        Me.dg_albaranes.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dg_albaranes.Size = New System.Drawing.Size(791, 388)
-        Me.dg_albaranes.TabIndex = 0
+        Me.gb_ver_albaranes.Controls.Add(Me.rdb_ver_compras)
+        Me.gb_ver_albaranes.Controls.Add(Me.rdb_ver_ventas)
+        Me.gb_ver_albaranes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gb_ver_albaranes.Location = New System.Drawing.Point(3, 3)
+        Me.gb_ver_albaranes.Name = "gb_ver_albaranes"
+        Me.gb_ver_albaranes.Size = New System.Drawing.Size(185, 88)
+        Me.gb_ver_albaranes.TabIndex = 0
+        Me.gb_ver_albaranes.TabStop = False
+        Me.gb_ver_albaranes.Text = "Ver albaranes"
         '
-        'idAlbaran
+        'rdb_ver_ventas
         '
-        Me.idAlbaran.HeaderText = "ID"
-        Me.idAlbaran.Name = "idAlbaran"
-        Me.idAlbaran.ReadOnly = True
-        Me.idAlbaran.Visible = False
+        Me.rdb_ver_ventas.AutoSize = True
+        Me.rdb_ver_ventas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rdb_ver_ventas.Location = New System.Drawing.Point(57, 28)
+        Me.rdb_ver_ventas.Name = "rdb_ver_ventas"
+        Me.rdb_ver_ventas.Size = New System.Drawing.Size(58, 17)
+        Me.rdb_ver_ventas.TabIndex = 0
+        Me.rdb_ver_ventas.TabStop = True
+        Me.rdb_ver_ventas.Text = "Ventas"
+        Me.rdb_ver_ventas.UseVisualStyleBackColor = True
         '
-        'personaAlbaran
+        'rdb_ver_compras
         '
-        Me.personaAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.personaAlbaran.HeaderText = "Entidad"
-        Me.personaAlbaran.Name = "personaAlbaran"
-        Me.personaAlbaran.ReadOnly = True
-        '
-        'formaPagoAlbaran
-        '
-        Me.formaPagoAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.formaPagoAlbaran.HeaderText = "Forma Pago"
-        Me.formaPagoAlbaran.Name = "formaPagoAlbaran"
-        Me.formaPagoAlbaran.ReadOnly = True
-        '
-        'fechaAlbaran
-        '
-        Me.fechaAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.fechaAlbaran.HeaderText = "Fecha"
-        Me.fechaAlbaran.Name = "fechaAlbaran"
-        Me.fechaAlbaran.ReadOnly = True
-        '
-        'tipoAlbaran
-        '
-        Me.tipoAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.tipoAlbaran.HeaderText = "Tipo Movimiento"
-        Me.tipoAlbaran.Name = "tipoAlbaran"
-        Me.tipoAlbaran.ReadOnly = True
-        '
-        'facturaAlbaran
-        '
-        Me.facturaAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.facturaAlbaran.HeaderText = "Factura"
-        Me.facturaAlbaran.Name = "facturaAlbaran"
-        Me.facturaAlbaran.ReadOnly = True
-        '
-        'verAlbaran
-        '
-        Me.verAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.verAlbaran.HeaderText = ""
-        Me.verAlbaran.Name = "verAlbaran"
-        Me.verAlbaran.ReadOnly = True
+        Me.rdb_ver_compras.AutoSize = True
+        Me.rdb_ver_compras.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rdb_ver_compras.Location = New System.Drawing.Point(57, 53)
+        Me.rdb_ver_compras.Name = "rdb_ver_compras"
+        Me.rdb_ver_compras.Size = New System.Drawing.Size(66, 17)
+        Me.rdb_ver_compras.TabIndex = 1
+        Me.rdb_ver_compras.TabStop = True
+        Me.rdb_ver_compras.Text = "Compras"
+        Me.rdb_ver_compras.UseVisualStyleBackColor = True
         '
         'frmMain
         '
@@ -2129,6 +2220,8 @@ Partial Class frmMain
         Me.tab_main.ResumeLayout(False)
         Me.tab_menu_principal.ResumeLayout(False)
         Me.tlp_menu_main.ResumeLayout(False)
+        Me.TableLayoutPanel16.ResumeLayout(False)
+        Me.TableLayoutPanel17.ResumeLayout(False)
         Me.tab_bancos_pagos.ResumeLayout(False)
         Me.tlp_main_bancos_pagos.ResumeLayout(False)
         Me.TableLayoutPanel13.ResumeLayout(False)
@@ -2177,10 +2270,12 @@ Partial Class frmMain
         Me.TableLayoutPanel8.ResumeLayout(False)
         Me.TableLayoutPanel8.PerformLayout()
         CType(Me.dg_movimientos, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tab_albaranes.ResumeLayout(False)
         Me.tab_configuraciones.ResumeLayout(False)
         Me.TableLayoutPanel9.ResumeLayout(False)
-        Me.TableLayoutPanel16.ResumeLayout(False)
-        Me.TableLayoutPanel17.ResumeLayout(False)
+        Me.TableLayoutPanel18.ResumeLayout(False)
+        CType(Me.dg_albaranes, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TableLayoutPanel19.ResumeLayout(False)
         CType(Me.FormaPagoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GrupoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ArticuloBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2189,8 +2284,8 @@ Partial Class frmMain
         CType(Me.ClienteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BancoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GrupoBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.tab_albaranes.ResumeLayout(False)
-        CType(Me.dg_albaranes, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gb_ver_albaranes.ResumeLayout(False)
+        Me.gb_ver_albaranes.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2340,7 +2435,9 @@ Partial Class frmMain
     Friend WithEvents btn_ver_compras As Button
     Friend WithEvents btn_efectuar_compra As Button
     Friend WithEvents tab_albaranes As TabPage
+    Friend WithEvents TableLayoutPanel18 As TableLayoutPanel
     Friend WithEvents dg_albaranes As DataGridView
+    Friend WithEvents TableLayoutPanel19 As TableLayoutPanel
     Friend WithEvents idAlbaran As DataGridViewTextBoxColumn
     Friend WithEvents personaAlbaran As DataGridViewTextBoxColumn
     Friend WithEvents formaPagoAlbaran As DataGridViewTextBoxColumn
@@ -2348,4 +2445,7 @@ Partial Class frmMain
     Friend WithEvents tipoAlbaran As DataGridViewTextBoxColumn
     Friend WithEvents facturaAlbaran As DataGridViewTextBoxColumn
     Friend WithEvents verAlbaran As DataGridViewButtonColumn
+    Friend WithEvents gb_ver_albaranes As GroupBox
+    Friend WithEvents rdb_ver_compras As RadioButton
+    Friend WithEvents rdb_ver_ventas As RadioButton
 End Class

@@ -227,6 +227,7 @@ Public Class ManagerEmpresa
             VariablesGlobales.updateListaFamilias()
             VariablesGlobales.updateListaCompras()
             VariablesGlobales.updateListaVentas()
+            VariablesGlobales.updateListaFormasPago()
         Catch ex As Exception
             MessageBox.Show(ex.ToString())
         End Try
@@ -243,6 +244,7 @@ Public Class ManagerEmpresa
             VariablesGlobales.updateListaFamilias()
             VariablesGlobales.updateListaCompras()
             VariablesGlobales.updateListaVentas()
+            VariablesGlobales.updateListaFormasPago()
         Catch ex As Exception
             MessageBox.Show(ex.ToString())
         End Try

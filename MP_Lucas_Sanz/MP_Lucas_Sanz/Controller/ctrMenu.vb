@@ -29,7 +29,7 @@
     Private Sub click_btn_menu_configuraciones(sender As Object, e As EventArgs)
         For Each tab As TabPage In frmMenu.tab_main.TabPages
             If tab.Text.Equals("CONFIGURACIONES") Then
-                frmMenu.tab_main.SelectedIndex = tab.TabIndex
+                frmMenu.tab_main.SelectedIndex = tab.TabIndex + 1
             End If
         Next
     End Sub
@@ -37,7 +37,7 @@
         VariablesGlobales.albaranSeleccionado = "Ventas"
         For Each tab As TabPage In frmMenu.tab_main.TabPages
             If tab.Text.Equals("ALBARANES") Then
-                frmMenu.tab_main.SelectedIndex = tab.TabIndex
+                frmMenu.tab_main.SelectedIndex = tab.TabIndex - 1
             End If
         Next
     End Sub
@@ -45,7 +45,7 @@
         VariablesGlobales.albaranSeleccionado = "Compras"
         For Each tab As TabPage In frmMenu.tab_main.TabPages
             If tab.Text.Equals("ALBARANES") Then
-                frmMenu.tab_main.SelectedIndex = tab.TabIndex
+                frmMenu.tab_main.SelectedIndex = tab.TabIndex - 1
             End If
         Next
     End Sub

@@ -3,6 +3,11 @@ Imports System.Net.Mail
 Imports System.Net.Mime
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
+Imports System
+Imports System.Net
+Imports System.Text
+Imports System.IO
+Imports System.Web
 
 Public Class viewerRPTVenta
 
@@ -52,6 +57,23 @@ Public Class viewerRPTVenta
             MessageBox.Show(ex.ToString())
         End Try
         pdfExportado = True
+    End Sub
+    Private Sub sendWhatsapp()
+        Dim WebRequest As HttpWebRequest
+        Dim instance_id As String = "instance1150"
+        Dim token As String = "1g55hyy7ixrsi2"
+        Dim mobile_number As String = "14155552671"
+        Dim ultramsgApiUrl As String = "https://api.ultramsg.com/" + instance_id + "/messages/chat"
+        WebRequest = HttpWebRequest.Create(ultramsgApiUrl)
+        Dim postdata As String = "token=" + token + "&to=" + mobile_number + "&body=WhatsApp API on UltraMsg.com works good"
+        Dim enc As UTF8Encoding = New System.Text.UTF8Encoding()
+        Dim postdatabytes As Byte() = enc.GetBytes(postdata)
+        WebRequest.Method = "POST"
+        WebRequest.ContentType = "application/x-www-form-urlencoded"
+        WebRequest.GetRequestStream().Write(postdatabytes)
+        'WebRequest.GetRequestStream().Write(postdatabytes, 0, postdatabytes.Length) 
+        Dim ret As New System.IO.StreamReader(WebRequest.GetResponse().GetResponseStream())
+        Console.WriteLine(ret.ReadToEnd())
     End Sub
     Private Sub sendEmail()
         If Not pdfExportado Then

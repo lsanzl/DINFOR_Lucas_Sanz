@@ -102,6 +102,9 @@
         listaVentasAux = New List(Of Venta)
         listaVentasAux = managerVentaAux.getVentas()
     End Sub
+    Public Function getVentaPorCodigo(codigo As Integer)
+        Return listaVentasAux.Find(Function(v) v.CodigoDeVenta = codigo)
+    End Function
 
     'COMPRAS
     Public listaComprasAux As List(Of Compra) = New List(Of Compra)
@@ -109,11 +112,24 @@
         listaComprasAux = New List(Of Compra)
         listaComprasAux = managerCompraAux.getCompras()
     End Sub
+    Public Function getCompraPorCodigo(codigo As Integer)
+        Return listaComprasAux.Find(Function(c) c.CodigoDeCompra = codigo)
+    End Function
+
+    'FORMAS PAGO
+    Public listaFormasPagoAux As List(Of FormaPago) = New List(Of FormaPago)
+    Public Sub updateListaFormasPago()
+        listaFormasPagoAux = New List(Of FormaPago)
+        listaFormasPagoAux = managerFormaPagoAux.getFormaPagos()
+    End Sub
+    Public Function getFormaPagoPorCodigo(codigo As Integer)
+        Return listaFormasPagoAux.Find(Function(f) f.CodigoDePago = codigo)
+    End Function
 
     ' ------------ VARIABLES GLOBALES -------------
     Private empresaSeleccionadaDB As String = Nothing
     Private seleccionadaEmpresa As Boolean = False
-    Public albaranSeleccionado As String = ""
+    Public albaranSeleccionado As String = "Ventas"
 
     Public Sub setEmpresaSeleccionadaDB(nombre As String)
         empresaSeleccionadaDB = nombre
