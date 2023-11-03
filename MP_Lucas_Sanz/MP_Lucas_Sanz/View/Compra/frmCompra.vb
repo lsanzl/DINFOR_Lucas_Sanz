@@ -1,4 +1,5 @@
 ﻿Imports System.ComponentModel
+Imports CrystalDecisions.Shared
 
 Public Class frmCompra
     Dim listaFormasPago As List(Of FormaPago) = New List(Of FormaPago)
@@ -301,7 +302,40 @@ Public Class frmCompra
             compraTemp = listaCompras.Find(Function(c) c.CodigoDeCompra = codigoTemp)
         End If
     End Sub
+    Private Sub click_btn_guardar_pdf(sender As Object, e As EventArgs) Handles btn_guardar_pdf.Click
+        If dg_compras.RowCount = 0 Then
+            MessageBox.Show("Introduzca primero alguna compra")
+            Return
+        End If
 
+        Dim infCompra As infCompra = New infCompra(listaCompras, dp_fecha_compra.Value, brutoTotal, baseImponibleTotal, impuestoTotal, precioTotal)
+        Dim report As rptCompra = infCompra.getReport()
+
+        Dim exportPath As String = "C:\Users\Puesto\Desktop\Reportes\Compras\"
+        Dim exportedFile As String = exportPath + facturaGenerada + ".pdf"
+        If Not System.IO.Directory.Exists(exportPath) Then
+            System.IO.Directory.CreateDirectory(exportPath)
+        End If
+        Try
+            Dim cExportOptions As ExportOptions
+            Dim cFinalDestination As New DiskFileDestinationOptions
+            Dim cFormatOptions As New PdfRtfWordFormatOptions
+
+            cFinalDestination.DiskFileName = exportedFile
+            cExportOptions = report.ExportOptions
+
+            With cExportOptions
+                .ExportDestinationType = ExportDestinationType.DiskFile
+                .ExportFormatType = ExportFormatType.PortableDocFormat
+                .ExportDestinationOptions = cFinalDestination
+                .ExportFormatOptions = cFormatOptions
+            End With
+            report.Export()
+            MessageBox.Show("PDF guardado")
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
+        End Try
+    End Sub
     Private Sub click_btn_confirmar_compra(sender As Object, e As EventArgs) Handles btn_confirmar_compra.Click
         If dg_compras.RowCount = 0 Then
             MessageBox.Show("Introduzca primero alguna compra")
@@ -336,6 +370,7 @@ Public Class frmCompra
             Exit Sub
         End If
         Dim informe As infCompra = New infCompra(listaCompras, fechaCompra, brutoTotal, baseImponibleTotal, impuestoTotal, precioTotal)
+        informe.showReport()
         clearFields()
     End Sub
     Private Sub cell_end_edit_dg_compras(sender As Object, e As DataGridViewCellEventArgs) Handles dg_compras.CellEndEdit

@@ -52,7 +52,6 @@ Partial Class frmVenta
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
         Me.lbl_impuesto = New System.Windows.Forms.Label()
         Me.lbl_base_imponible = New System.Windows.Forms.Label()
-        Me.btn_confirmar_venta = New System.Windows.Forms.Button()
         Me.lbl_total = New System.Windows.Forms.Label()
         Me.lbl_bruto = New System.Windows.Forms.Label()
         Me.dg_ventas = New System.Windows.Forms.DataGridView()
@@ -67,6 +66,8 @@ Partial Class frmVenta
         Me.baseImponible = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.impuestoVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.precioTotalVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btn_guardar_pdf_venta = New System.Windows.Forms.Button()
+        Me.btn_confirmar_venta = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
@@ -92,7 +93,7 @@ Partial Class frmVenta
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(845, 394)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(890, 397)
         Me.TableLayoutPanel1.TabIndex = 1
         '
         'TableLayoutPanel2
@@ -126,7 +127,7 @@ Partial Class frmVenta
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(839, 151)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(884, 152)
         Me.TableLayoutPanel2.TabIndex = 0
         '
         'Label6
@@ -216,7 +217,7 @@ Partial Class frmVenta
         Me.txt_cantidad_seleccionada_venta.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txt_cantidad_seleccionada_venta.Location = New System.Drawing.Point(482, 65)
         Me.txt_cantidad_seleccionada_venta.Name = "txt_cantidad_seleccionada_venta"
-        Me.txt_cantidad_seleccionada_venta.Size = New System.Drawing.Size(354, 20)
+        Me.txt_cantidad_seleccionada_venta.Size = New System.Drawing.Size(399, 20)
         Me.txt_cantidad_seleccionada_venta.TabIndex = 6
         Me.txt_cantidad_seleccionada_venta.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -246,7 +247,7 @@ Partial Class frmVenta
         Me.cb_forma_pago_seleccionada_venta.FormattingEnabled = True
         Me.cb_forma_pago_seleccionada_venta.Location = New System.Drawing.Point(482, 14)
         Me.cb_forma_pago_seleccionada_venta.Name = "cb_forma_pago_seleccionada_venta"
-        Me.cb_forma_pago_seleccionada_venta.Size = New System.Drawing.Size(354, 21)
+        Me.cb_forma_pago_seleccionada_venta.Size = New System.Drawing.Size(399, 21)
         Me.cb_forma_pago_seleccionada_venta.TabIndex = 9
         '
         'Label5
@@ -265,16 +266,16 @@ Partial Class frmVenta
         '
         Me.dp_fecha_venta.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dp_fecha_venta.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dp_fecha_venta.Location = New System.Drawing.Point(482, 115)
+        Me.dp_fecha_venta.Location = New System.Drawing.Point(482, 116)
         Me.dp_fecha_venta.Name = "dp_fecha_venta"
-        Me.dp_fecha_venta.Size = New System.Drawing.Size(354, 20)
+        Me.dp_fecha_venta.Size = New System.Drawing.Size(399, 20)
         Me.dp_fecha_venta.TabIndex = 11
         Me.dp_fecha_venta.Value = New Date(2023, 10, 17, 0, 0, 0, 0)
         '
         'txt_descuento_venta
         '
         Me.txt_descuento_venta.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txt_descuento_venta.Location = New System.Drawing.Point(81, 115)
+        Me.txt_descuento_venta.Location = New System.Drawing.Point(81, 116)
         Me.txt_descuento_venta.Name = "txt_descuento_venta"
         Me.txt_descuento_venta.Size = New System.Drawing.Size(262, 20)
         Me.txt_descuento_venta.TabIndex = 13
@@ -291,11 +292,11 @@ Partial Class frmVenta
         Me.TableLayoutPanel3.Controls.Add(Me.btn_modificar_venta, 2, 0)
         Me.TableLayoutPanel3.Controls.Add(Me.btn_eliminar_venta, 1, 0)
         Me.TableLayoutPanel3.Controls.Add(Me.btn_añadir_venta, 0, 0)
-        Me.TableLayoutPanel3.Location = New System.Drawing.Point(3, 160)
+        Me.TableLayoutPanel3.Location = New System.Drawing.Point(3, 161)
         Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
         Me.TableLayoutPanel3.RowCount = 1
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel3.Size = New System.Drawing.Size(839, 33)
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(884, 33)
         Me.TableLayoutPanel3.TabIndex = 1
         '
         'btn_modificar_venta
@@ -303,7 +304,7 @@ Partial Class frmVenta
         Me.btn_modificar_venta.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.btn_modificar_venta.Enabled = False
         Me.btn_modificar_venta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_modificar_venta.Location = New System.Drawing.Point(643, 3)
+        Me.btn_modificar_venta.Location = New System.Drawing.Point(681, 3)
         Me.btn_modificar_venta.Name = "btn_modificar_venta"
         Me.btn_modificar_venta.Size = New System.Drawing.Size(110, 27)
         Me.btn_modificar_venta.TabIndex = 2
@@ -315,7 +316,7 @@ Partial Class frmVenta
         Me.btn_eliminar_venta.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.btn_eliminar_venta.Enabled = False
         Me.btn_eliminar_venta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_eliminar_venta.Location = New System.Drawing.Point(363, 3)
+        Me.btn_eliminar_venta.Location = New System.Drawing.Point(386, 3)
         Me.btn_eliminar_venta.Name = "btn_eliminar_venta"
         Me.btn_eliminar_venta.Size = New System.Drawing.Size(110, 27)
         Me.btn_eliminar_venta.TabIndex = 1
@@ -326,7 +327,7 @@ Partial Class frmVenta
         '
         Me.btn_añadir_venta.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.btn_añadir_venta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_añadir_venta.Location = New System.Drawing.Point(84, 3)
+        Me.btn_añadir_venta.Location = New System.Drawing.Point(92, 3)
         Me.btn_añadir_venta.Name = "btn_añadir_venta"
         Me.btn_añadir_venta.Size = New System.Drawing.Size(110, 27)
         Me.btn_añadir_venta.TabIndex = 0
@@ -338,87 +339,77 @@ Partial Class frmVenta
         Me.TableLayoutPanel4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel4.ColumnCount = 5
+        Me.TableLayoutPanel4.ColumnCount = 6
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.0!))
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.0!))
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.0!))
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.0!))
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.TableLayoutPanel4.Controls.Add(Me.btn_confirmar_venta, 5, 0)
         Me.TableLayoutPanel4.Controls.Add(Me.lbl_impuesto, 2, 0)
         Me.TableLayoutPanel4.Controls.Add(Me.lbl_base_imponible, 1, 0)
-        Me.TableLayoutPanel4.Controls.Add(Me.btn_confirmar_venta, 4, 0)
         Me.TableLayoutPanel4.Controls.Add(Me.lbl_total, 3, 0)
         Me.TableLayoutPanel4.Controls.Add(Me.lbl_bruto, 0, 0)
-        Me.TableLayoutPanel4.Location = New System.Drawing.Point(3, 356)
+        Me.TableLayoutPanel4.Controls.Add(Me.btn_guardar_pdf_venta, 4, 0)
+        Me.TableLayoutPanel4.Location = New System.Drawing.Point(3, 358)
         Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
         Me.TableLayoutPanel4.RowCount = 1
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
-        Me.TableLayoutPanel4.Size = New System.Drawing.Size(839, 35)
+        Me.TableLayoutPanel4.Size = New System.Drawing.Size(884, 36)
         Me.TableLayoutPanel4.TabIndex = 3
         '
         'lbl_impuesto
         '
         Me.lbl_impuesto.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbl_impuesto.AutoSize = True
-        Me.lbl_impuesto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_impuesto.Location = New System.Drawing.Point(337, 10)
+        Me.lbl_impuesto.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_impuesto.Location = New System.Drawing.Point(267, 11)
         Me.lbl_impuesto.Name = "lbl_impuesto"
-        Me.lbl_impuesto.Size = New System.Drawing.Size(161, 15)
+        Me.lbl_impuesto.Size = New System.Drawing.Size(126, 13)
         Me.lbl_impuesto.TabIndex = 8
         Me.lbl_impuesto.Text = "Impuesto:"
-        Me.lbl_impuesto.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lbl_impuesto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.lbl_impuesto.Visible = False
         '
         'lbl_base_imponible
         '
         Me.lbl_base_imponible.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbl_base_imponible.AutoSize = True
-        Me.lbl_base_imponible.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_base_imponible.Location = New System.Drawing.Point(170, 10)
+        Me.lbl_base_imponible.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_base_imponible.Location = New System.Drawing.Point(135, 11)
         Me.lbl_base_imponible.Name = "lbl_base_imponible"
-        Me.lbl_base_imponible.Size = New System.Drawing.Size(161, 15)
+        Me.lbl_base_imponible.Size = New System.Drawing.Size(126, 13)
         Me.lbl_base_imponible.TabIndex = 7
-        Me.lbl_base_imponible.Text = "Base Imponible:"
-        Me.lbl_base_imponible.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lbl_base_imponible.Text = "Base Imp:"
+        Me.lbl_base_imponible.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.lbl_base_imponible.Visible = False
-        '
-        'btn_confirmar_venta
-        '
-        Me.btn_confirmar_venta.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.btn_confirmar_venta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_confirmar_venta.Location = New System.Drawing.Point(696, 6)
-        Me.btn_confirmar_venta.Name = "btn_confirmar_venta"
-        Me.btn_confirmar_venta.Size = New System.Drawing.Size(140, 23)
-        Me.btn_confirmar_venta.TabIndex = 4
-        Me.btn_confirmar_venta.Text = "CONFIRMAR VENTA"
-        Me.btn_confirmar_venta.UseVisualStyleBackColor = True
         '
         'lbl_total
         '
         Me.lbl_total.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbl_total.AutoSize = True
-        Me.lbl_total.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_total.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_total.ForeColor = System.Drawing.Color.Black
-        Me.lbl_total.Location = New System.Drawing.Point(504, 10)
+        Me.lbl_total.Location = New System.Drawing.Point(399, 11)
         Me.lbl_total.Name = "lbl_total"
-        Me.lbl_total.Size = New System.Drawing.Size(161, 15)
+        Me.lbl_total.Size = New System.Drawing.Size(126, 13)
         Me.lbl_total.TabIndex = 5
         Me.lbl_total.Text = "Importe Total:"
-        Me.lbl_total.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lbl_total.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.lbl_total.Visible = False
         '
         'lbl_bruto
         '
         Me.lbl_bruto.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbl_bruto.AutoSize = True
-        Me.lbl_bruto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_bruto.Location = New System.Drawing.Point(3, 10)
+        Me.lbl_bruto.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_bruto.Location = New System.Drawing.Point(3, 11)
         Me.lbl_bruto.Name = "lbl_bruto"
-        Me.lbl_bruto.Size = New System.Drawing.Size(161, 15)
+        Me.lbl_bruto.Size = New System.Drawing.Size(126, 13)
         Me.lbl_bruto.TabIndex = 6
         Me.lbl_bruto.Text = "Bruto:"
-        Me.lbl_bruto.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lbl_bruto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.lbl_bruto.Visible = False
         '
         'dg_ventas
@@ -437,10 +428,10 @@ Partial Class frmVenta
         Me.dg_ventas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dg_ventas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dg_ventas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idVenta, Me.clienteVenta, Me.articuloVenta, Me.formaPagoVenta, Me.precioUnitario, Me.precioBrutoVenta, Me.cantidadVenta, Me.descuentoVenta, Me.baseImponible, Me.impuestoVenta, Me.precioTotalVenta})
-        Me.dg_ventas.Location = New System.Drawing.Point(3, 199)
+        Me.dg_ventas.Location = New System.Drawing.Point(3, 200)
         Me.dg_ventas.Name = "dg_ventas"
         Me.dg_ventas.RowHeadersVisible = False
-        Me.dg_ventas.Size = New System.Drawing.Size(839, 151)
+        Me.dg_ventas.Size = New System.Drawing.Size(884, 152)
         Me.dg_ventas.TabIndex = 4
         '
         'idVenta
@@ -524,11 +515,33 @@ Partial Class frmVenta
         Me.precioTotalVenta.HeaderText = "Total"
         Me.precioTotalVenta.Name = "precioTotalVenta"
         '
+        'btn_guardar_pdf_venta
+        '
+        Me.btn_guardar_pdf_venta.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_guardar_pdf_venta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_guardar_pdf_venta.Location = New System.Drawing.Point(531, 6)
+        Me.btn_guardar_pdf_venta.Name = "btn_guardar_pdf_venta"
+        Me.btn_guardar_pdf_venta.Size = New System.Drawing.Size(170, 23)
+        Me.btn_guardar_pdf_venta.TabIndex = 9
+        Me.btn_guardar_pdf_venta.Text = "GUARDAR PDF"
+        Me.btn_guardar_pdf_venta.UseVisualStyleBackColor = True
+        '
+        'btn_confirmar_venta
+        '
+        Me.btn_confirmar_venta.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_confirmar_venta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_confirmar_venta.Location = New System.Drawing.Point(707, 6)
+        Me.btn_confirmar_venta.Name = "btn_confirmar_venta"
+        Me.btn_confirmar_venta.Size = New System.Drawing.Size(174, 23)
+        Me.btn_confirmar_venta.TabIndex = 10
+        Me.btn_confirmar_venta.Text = "CONFIRMAR VENTA"
+        Me.btn_confirmar_venta.UseVisualStyleBackColor = True
+        '
         'frmVenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(849, 398)
+        Me.ClientSize = New System.Drawing.Size(894, 401)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -566,7 +579,6 @@ Partial Class frmVenta
     Friend WithEvents btn_eliminar_venta As Button
     Friend WithEvents btn_añadir_venta As Button
     Friend WithEvents TableLayoutPanel4 As TableLayoutPanel
-    Friend WithEvents btn_confirmar_venta As Button
     Friend WithEvents lbl_total As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents dp_fecha_venta As DateTimePicker
@@ -587,4 +599,6 @@ Partial Class frmVenta
     Friend WithEvents baseImponible As DataGridViewTextBoxColumn
     Friend WithEvents impuestoVenta As DataGridViewTextBoxColumn
     Friend WithEvents precioTotalVenta As DataGridViewTextBoxColumn
+    Friend WithEvents btn_confirmar_venta As Button
+    Friend WithEvents btn_guardar_pdf_venta As Button
 End Class

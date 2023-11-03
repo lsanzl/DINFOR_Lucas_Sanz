@@ -1,4 +1,5 @@
 ﻿Imports System.ComponentModel
+Imports CrystalDecisions.Shared
 
 Public Class frmVenta
     Dim listaFormasPago As List(Of FormaPago) = New List(Of FormaPago)
@@ -311,7 +312,40 @@ Public Class frmVenta
         End If
         Return True
     End Function
-    Private Sub click_btn_confirmar_venta(sender As Object, e As EventArgs) Handles btn_confirmar_venta.Click
+    Private Sub click_btn_guardar_pdf_venta(sender As Object, e As EventArgs) Handles btn_guardar_pdf_venta.Click
+        If dg_ventas.RowCount = 0 Then
+            MessageBox.Show("Introduzca primero alguna venta")
+            Return
+        End If
+
+        Dim infVenta As infVenta = New infVenta(listaVentas, dp_fecha_venta.Value, brutoTotal, baseImponibleTotal, impuestoTotal, precioTotal)
+        Dim report As rptVenta = infVenta.getReport()
+
+        Dim exportPath As String = "C:\Users\Puesto\Desktop\Reportes\Ventas\"
+        Dim exportedFile As String = exportPath + facturaGenerada + ".pdf"
+        If Not System.IO.Directory.Exists(exportPath) Then
+            System.IO.Directory.CreateDirectory(exportPath)
+        End If
+        Try
+            Dim cExportOptions As ExportOptions
+            Dim cFinalDestination As New DiskFileDestinationOptions
+            Dim cFormatOptions As New PdfRtfWordFormatOptions
+
+            cFinalDestination.DiskFileName = exportedFile
+            cExportOptions = report.ExportOptions
+
+            With cExportOptions
+                .ExportDestinationType = ExportDestinationType.DiskFile
+                .ExportFormatType = ExportFormatType.PortableDocFormat
+                .ExportDestinationOptions = cFinalDestination
+                .ExportFormatOptions = cFormatOptions
+            End With
+            report.Export()
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
+        End Try
+    End Sub
+    Private Sub click_btn_confirmar_venta(sender As Object, e As EventArgs)
         If dg_ventas.RowCount = 0 Then
             MessageBox.Show("Introduzca primero alguna venta")
             Return
@@ -329,6 +363,7 @@ Public Class frmVenta
         Next
 
         Dim informe As infVenta = New infVenta(listaVentas, fechaVenta, brutoTotal, baseImponibleTotal, impuestoTotal, precioTotal)
+        informe.showReport()
         clearFields()
     End Sub
 
