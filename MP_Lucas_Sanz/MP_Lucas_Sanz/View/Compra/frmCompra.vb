@@ -7,6 +7,7 @@ Public Class frmCompra
     Dim listaComprasEliminadas As List(Of Compra) = New List(Of Compra)
     Dim compraTemp As Compra = New Compra()
     Dim modificacion As Boolean = False
+    Dim verAlbaran As Boolean = True
     Dim dt As New DataTable()
     Dim proveedorSeleccionado As Proveedor
     Dim articuloSeleccionado As Articulo
@@ -153,12 +154,13 @@ Public Class frmCompra
         fillDGCompras()
         clearFieldsDatos()
         calcularTotal()
+        modificacion = True
     End Sub
     Private Sub eliminarCompra()
         Dim cantidadDevuelta As Integer = compraTemp.CantidadDeCompra
         Dim articuloDevuelto As Integer = compraTemp.ArticuloDeCompra
         managerInventarioAux.deleteUnidades(cantidadDevuelta, articuloDevuelto)
-        If modificacion Then
+        If verAlbaran Then
             listaComprasEliminadas.Add(compraTemp)
         End If
         listaCompras.Remove(compraTemp)
@@ -166,6 +168,7 @@ Public Class frmCompra
         btn_modificar_compra.Enabled = False
         fillDGCompras()
         calcularTotal()
+        modificacion = True
     End Sub
     Private Sub click_btn_eliminar_compra(sender As Object, e As EventArgs) Handles btn_eliminar_compra.Click
         eliminarCompra()
@@ -188,6 +191,7 @@ Public Class frmCompra
             btn_modificar_compra.Text = "MODIFICAR"
             btn_modificar_compra.Enabled = False
             btn_eliminar_compra.Enabled = False
+            modificacion = True
         End If
     End Sub
     Private Sub fillDGCompras()
@@ -223,7 +227,9 @@ Public Class frmCompra
         dg_compras.ClearSelection()
     End Sub
     Public Sub fillDGCompras(listaComprasPasada As List(Of Compra))
-        modificacion = True
+        RemoveHandler dg_compras.CellEndEdit, AddressOf cell_end_edit_dg_compras
+        'modificacion = True
+        verAlbaran = True
         listaCompras = New List(Of Compra)
         listaCompras = listaComprasPasada
         facturaGenerada = listaComprasPasada(0).FacturaDeCompra
@@ -258,6 +264,7 @@ Public Class frmCompra
             cb_forma_pago_seleccionada.Enabled = True
         End If
         dg_compras.ClearSelection()
+        AddHandler dg_compras.CellEndEdit, AddressOf cell_end_edit_dg_compras
     End Sub
     Private Sub calcularTotal()
         lbl_total_compra.Visible = True
@@ -341,6 +348,10 @@ Public Class frmCompra
             MessageBox.Show("Introduzca primero alguna compra")
             Return
         End If
+        If Not modificacion And verAlbaran Then
+            Me.Close()
+            Return
+        End If
         Dim fechaCompra As Date = dp_fecha_compra.Value
         Dim movimientoTemp As Movimiento = New Movimiento()
         Dim stockActual As Integer
@@ -386,7 +397,6 @@ Public Class frmCompra
                 articuloMod.PVPCompraDeArticulo = precioBrutoNuevo
                 articuloMod.modifyArticulo()
             End If
-            fillDGCompras()
             calcularTotal()
         End If
     End Sub

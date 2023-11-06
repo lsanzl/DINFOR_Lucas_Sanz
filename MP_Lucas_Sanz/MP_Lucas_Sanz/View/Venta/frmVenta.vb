@@ -7,6 +7,7 @@ Public Class frmVenta
     Dim listaVentasEliminadas As List(Of Venta) = New List(Of Venta)
     Dim borrado As Boolean
     Dim modificacion As Boolean = False
+    Dim verAlbaran As Boolean = False
     Dim ventaTemp As Venta = New Venta()
     Dim dt As New DataTable()
     Dim clienteSeleccionado As Cliente = Nothing
@@ -19,7 +20,9 @@ Public Class frmVenta
     Dim precioTotal As Double
 
     Private Sub frmVenta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        listaVentas = New List(Of Venta)
+        If Not verAlbaran Then
+            listaVentas = New List(Of Venta)
+        End If
         facturaGenerada = ventaAux.getRandomFactura()
         fillFields()
     End Sub
@@ -162,6 +165,7 @@ Public Class frmVenta
         fillDGVentas()
         clearFieldsDatos()
         calcularTotal()
+        modificacion = True
     End Sub
     Private Sub click_btn_eliminar_venta(sender As Object, e As EventArgs) Handles btn_eliminar_venta.Click
         Dim cantidadDevuelta As Integer = ventaTemp.CantidadDeVenta
@@ -172,13 +176,14 @@ Public Class frmVenta
         btn_modificar_venta.Enabled = False
         fillDGVentas()
         calcularTotal()
+        modificacion = True
     End Sub
     Private Sub click_btn_modificar_venta(sender As Object, e As EventArgs) Handles btn_modificar_venta.Click
         If btn_modificar_venta.Text.Equals("MODIFICAR") Then
-            Dim articuloTemp As Articulo = VariablesGlobales.getArticuloPorCodigo(ventaTemp.ArticuloDeVenta)
-            Dim clienteTemp As Cliente = VariablesGlobales.getClientePorCodigo(ventaTemp.ClienteDeVenta)
-            txt_articulo_seleccionado_venta.Text = articuloTemp.NombreDeArticulo
-            txt_cliente_seleccionado.Text = clienteTemp.NombreDelCliente
+            articuloSeleccionado = VariablesGlobales.getArticuloPorCodigo(ventaTemp.ArticuloDeVenta)
+            clienteSeleccionado = VariablesGlobales.getClientePorCodigo(ventaTemp.ClienteDeVenta)
+            txt_articulo_seleccionado_venta.Text = articuloSeleccionado.NombreDeArticulo
+            txt_cliente_seleccionado.Text = clienteSeleccionado.NombreDelCliente
             txt_cantidad_seleccionada_venta.Text = ventaTemp.CantidadDeVenta
             txt_descuento_venta.Text = ventaTemp.DescuentoDeVenta
             cb_forma_pago_seleccionada_venta.SelectedValue = ventaTemp.FormaDePagoVenta
@@ -189,6 +194,7 @@ Public Class frmVenta
             btn_modificar_venta.Text = "MODIFICAR"
             btn_modificar_venta.Enabled = False
             btn_eliminar_venta.Enabled = False
+            modificacion = True
         End If
     End Sub
     Private Sub fillDGVentas()
@@ -228,6 +234,8 @@ Public Class frmVenta
         dg_ventas.ClearSelection()
     End Sub
     Public Sub fillDGVentas(listaFacturas As List(Of Venta))
+        verAlbaran = True
+        listaVentas.AddRange(listaFacturas)
         dg_ventas.Rows.Clear()
         Dim clienteTemp As Cliente = VariablesGlobales.getClientePorCodigo(listaFacturas(0).ClienteDeVenta)
         Dim articuloItem As Articulo
@@ -345,9 +353,13 @@ Public Class frmVenta
             MessageBox.Show(ex.ToString())
         End Try
     End Sub
-    Private Sub click_btn_confirmar_venta(sender As Object, e As EventArgs)
+    Private Sub click_btn_confirmar_venta(sender As Object, e As EventArgs) Handles btn_confirmar_venta.Click
         If dg_ventas.RowCount = 0 Then
             MessageBox.Show("Introduzca primero alguna venta")
+            Return
+        End If
+        If verAlbaran And Not modificacion Then
+            Me.Close()
             Return
         End If
         Dim fechaVenta As Date = dp_fecha_venta.Value
@@ -382,7 +394,6 @@ Public Class frmVenta
                 articuloMod.PorcentajeDeBeneficio = porcentajeNuevo
                 articuloMod.modifyArticulo()
             End If
-            fillDGVentas()
             calcularTotal()
         End If
     End Sub

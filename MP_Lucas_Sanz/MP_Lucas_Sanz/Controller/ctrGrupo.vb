@@ -2,7 +2,7 @@
     Public frmGrupo As frmMain
     Dim listaGrupos As List(Of Grupo) = New List(Of Grupo)
     Dim grupoTemp As Grupo
-    Dim criterioBusqueda As String = "codigoGrupo"
+    Dim criterioBusqueda As String = "idGrupo"
 
     Public Sub New(frmGrupoPasado As frmMain)
         MyBase.New()
@@ -27,12 +27,18 @@
         frmNuevoGrupo.txt_codigo_grupo.Clear()
         frmNuevoGrupo.txt_nombre_grupo.Clear()
 
-        frmGrupo.dg_grupos.DataSource = Nothing
-        frmGrupo.dg_grupos.Rows.Clear()
-
-        listaGrupos = grupoAux.getGrupos()
-        frmGrupo.dg_grupos.DataSource = listaGrupos
+        Dim dg As DataGridView = frmGrupo.dg_grupos
+        dg.Rows.Clear()
+        listaGrupos = listaGruposAux
+        For Each g As Grupo In listaGrupos
+            Dim index As Integer = dg.Rows.Add()
+            With dg.Rows(index)
+                .Cells("idGrupo").Value = g.CodigoDeGrupo
+                .Cells("nombreGrupo").Value = g.NombreDeGrupo
+            End With
+        Next
         frmGrupo.dg_grupos.ClearSelection()
+        frmGrupo.txt_busqueda_grupo.Clear()
     End Sub
 
     Public Sub click_btn_añadir_grupo(sender As Object, e As EventArgs)
@@ -42,16 +48,17 @@
     End Sub
 
     Private Sub click_btn_modificar_grupo(sender As Object, e As EventArgs)
-        frmNuevoGrupo.Text = "Modificación de grupo"
-        frmNuevoGrupo.txt_codigo_grupo.Text = grupoTemp.CodigoDeGrupo
-        frmNuevoGrupo.txt_codigo_grupo.Enabled = False
-        frmNuevoGrupo.txt_nombre_grupo.Text = grupoTemp.NombreDeGrupo
-        frmNuevoGrupo.btn_confirmar_nuevo_grupo.Text = "Modificar"
-        frmNuevoGrupo.ShowDialog()
+        Dim frm As frmNuevoGrupo = New frmNuevoGrupo()
+        frm.Text = "Modificación de grupo"
+        frm.txt_codigo_grupo.Text = grupoTemp.CodigoDeGrupo
+        frm.txt_codigo_grupo.Enabled = False
+        frm.txt_nombre_grupo.Text = grupoTemp.NombreDeGrupo
+        frm.btn_confirmar_nuevo_grupo.Text = "Modificar"
+        frm.ShowDialog()
 
-        frmNuevoGrupo.txt_codigo_grupo.Clear()
-        frmNuevoGrupo.txt_codigo_grupo.Enabled = True
-        frmNuevoGrupo.txt_nombre_grupo.Clear()
+        frm.txt_codigo_grupo.Clear()
+        frm.txt_codigo_grupo.Enabled = True
+        frm.txt_nombre_grupo.Clear()
 
         fillDGGrupos()
     End Sub
@@ -67,12 +74,12 @@
         If e.RowIndex >= 0 Then
             frmGrupo.btn_modificar_grupo.Enabled = True
             frmGrupo.btn_eliminar_grupo.Enabled = True
-            grupoTemp = frmGrupo.dg_grupos.Rows(e.RowIndex).DataBoundItem
+            grupoTemp = getGrupoPorCodigo(frmGrupo.dg_grupos.Rows(e.RowIndex).Cells("idGrupo").Value)
         End If
     End Sub
     Private Sub checked_changed_gb_grupos(sender As Object, e As EventArgs)
         If frmGrupo.rdb_codigo_grupo.Checked Then
-            criterioBusqueda = "codigoGrupo"
+            criterioBusqueda = "idGrupo"
         Else
             criterioBusqueda = "nombreGrupo"
         End If

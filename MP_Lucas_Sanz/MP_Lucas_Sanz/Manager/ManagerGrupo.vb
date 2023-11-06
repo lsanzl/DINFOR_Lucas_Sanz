@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports MP_Lucas_Sanz.VariablesGlobales
 
 Public Class ManagerGrupo
 
@@ -34,6 +35,7 @@ Public Class ManagerGrupo
         End With
         Try
             cmd.ExecuteNonQuery()
+            updateListaGrupos()
         Catch ex As Exception
             MessageBox.Show("Error al introducir un grupo: " + vbCrLf + ex.ToString())
         End Try
@@ -48,6 +50,7 @@ Public Class ManagerGrupo
         End With
         Try
             cmd.ExecuteNonQuery()
+            updateListaGrupos()
         Catch ex As Exception
             MessageBox.Show("Error al modificar un grupo: " + vbCrLf + ex.ToString())
         End Try
@@ -63,6 +66,7 @@ Public Class ManagerGrupo
         cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = grupoPasado.CodigoDeGrupo
         Try
             cmd.ExecuteNonQuery()
+            updateListaGrupos()
         Catch ex As Exception
             MessageBox.Show("Error al eliminar un grupo: " + vbCrLf + ex.ToString())
         End Try

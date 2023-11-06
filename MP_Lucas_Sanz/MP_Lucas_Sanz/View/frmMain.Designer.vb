@@ -24,23 +24,20 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.tab_main = New System.Windows.Forms.TabControl()
         Me.tab_menu_principal = New System.Windows.Forms.TabPage()
         Me.tlp_menu_main = New System.Windows.Forms.TableLayoutPanel()
@@ -79,14 +76,6 @@ Partial Class frmMain
         Me.tab_clientes_grupos = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.dg_clientes = New System.Windows.Forms.DataGridView()
-        Me.codigoCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.nombreCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.nifCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.fechaNacCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.direccionCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.emailCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.grupoCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.bancoCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.btn_añadir_grupo = New System.Windows.Forms.Button()
         Me.btn_modificar_grupo = New System.Windows.Forms.Button()
@@ -115,7 +104,6 @@ Partial Class frmMain
         Me.rdb_nombre_articulo = New System.Windows.Forms.RadioButton()
         Me.rdb_codigo_articulo = New System.Windows.Forms.RadioButton()
         Me.dg_articulos = New System.Windows.Forms.DataGridView()
-        Me.impuestoArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TableLayoutPanel5 = New System.Windows.Forms.TableLayoutPanel()
         Me.btn_añadir_proveedor = New System.Windows.Forms.Button()
         Me.btn_modificar_proveedor = New System.Windows.Forms.Button()
@@ -125,7 +113,6 @@ Partial Class frmMain
         Me.btn_modificar_articulo = New System.Windows.Forms.Button()
         Me.btn_eliminar_articulo = New System.Windows.Forms.Button()
         Me.dg_proveedores = New System.Windows.Forms.DataGridView()
-        Me.datos = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.TableLayoutPanel14 = New System.Windows.Forms.TableLayoutPanel()
         Me.gb_proveedores = New System.Windows.Forms.GroupBox()
         Me.rdb_nombre_proveedor = New System.Windows.Forms.RadioButton()
@@ -134,9 +121,6 @@ Partial Class frmMain
         Me.tab_inventario = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel7 = New System.Windows.Forms.TableLayoutPanel()
         Me.dg_inventario = New System.Windows.Forms.DataGridView()
-        Me.idAlmacen = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.nombreArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.stockActual = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TableLayoutPanel8 = New System.Windows.Forms.TableLayoutPanel()
         Me.btn_restar_unidades = New System.Windows.Forms.Button()
         Me.btn_añadir_unidades = New System.Windows.Forms.Button()
@@ -153,15 +137,8 @@ Partial Class frmMain
         Me.fechaMovimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.stockMovimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tab_albaranes = New System.Windows.Forms.TabPage()
-        Me.tab_configuraciones = New System.Windows.Forms.TabPage()
-        Me.TableLayoutPanel9 = New System.Windows.Forms.TableLayoutPanel()
-        Me.btn_actualizacion_campo_extra = New System.Windows.Forms.Button()
-        Me.btn_actualizacion_añadir_tabla = New System.Windows.Forms.Button()
-        Me.btn_actualizacion_añadir_fk = New System.Windows.Forms.Button()
-        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.TableLayoutPanel18 = New System.Windows.Forms.TableLayoutPanel()
         Me.dg_albaranes = New System.Windows.Forms.DataGridView()
-        Me.TableLayoutPanel19 = New System.Windows.Forms.TableLayoutPanel()
         Me.idAlbaran = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.personaAlbaran = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.formaPagoAlbaran = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -169,36 +146,57 @@ Partial Class frmMain
         Me.tipoAlbaran = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.facturaAlbaran = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.verAlbaran = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.codigoFormaPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TableLayoutPanel19 = New System.Windows.Forms.TableLayoutPanel()
+        Me.gb_ver_albaranes = New System.Windows.Forms.GroupBox()
+        Me.rdb_ver_compras = New System.Windows.Forms.RadioButton()
+        Me.rdb_ver_ventas = New System.Windows.Forms.RadioButton()
+        Me.tab_configuraciones = New System.Windows.Forms.TabPage()
+        Me.TableLayoutPanel9 = New System.Windows.Forms.TableLayoutPanel()
+        Me.btn_actualizacion_campo_extra = New System.Windows.Forms.Button()
+        Me.btn_actualizacion_añadir_tabla = New System.Windows.Forms.Button()
+        Me.btn_actualizacion_añadir_fk = New System.Windows.Forms.Button()
+        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.idFormaPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.nombreFormaPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BancoAsignadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ActivoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.NumeroPlazosPagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PrimerPlazoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DiasPlazosDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FormaPagoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.codigoGrupo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.bancoFormaPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.activoFormaPago = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.numPlazosFormaPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.primerPlazoFormaPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.intervaloFormaPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.idCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.nombreCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.nifCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fechaNacimientoCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.direccionCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.emailCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.grupoCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.bancoCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.idGrupo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.nombreGrupo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.GrupoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.codigoArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.nombreArticulos = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DescripcionDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FamiliaDeArticuloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ArticuloBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.codigoProveedor = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.idArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.nombreArticuloo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.descripcionArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.pvpCompraArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.pvpVentaArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.impuestoArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.porcBeneficioArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.tipoUnidadArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.familiaArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.idProveedor = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.nombreProveedor = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.datos = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.idInventario = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.nombreArticulo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.stockActual = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProveedorBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ArticuloBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GrupoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.FormaPagoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.InventarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ClienteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.BancoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GrupoBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.gb_ver_albaranes = New System.Windows.Forms.GroupBox()
-        Me.rdb_ver_ventas = New System.Windows.Forms.RadioButton()
-        Me.rdb_ver_compras = New System.Windows.Forms.RadioButton()
+        Me.btn_eliminar_compra = New System.Windows.Forms.Button()
         Me.tab_main.SuspendLayout()
         Me.tab_menu_principal.SuspendLayout()
         Me.tlp_menu_main.SuspendLayout()
@@ -240,20 +238,20 @@ Partial Class frmMain
         Me.TableLayoutPanel8.SuspendLayout()
         CType(Me.dg_movimientos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tab_albaranes.SuspendLayout()
-        Me.tab_configuraciones.SuspendLayout()
-        Me.TableLayoutPanel9.SuspendLayout()
         Me.TableLayoutPanel18.SuspendLayout()
         CType(Me.dg_albaranes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel19.SuspendLayout()
-        CType(Me.FormaPagoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GrupoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ArticuloBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gb_ver_albaranes.SuspendLayout()
+        Me.tab_configuraciones.SuspendLayout()
+        Me.TableLayoutPanel9.SuspendLayout()
         CType(Me.ProveedorBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ArticuloBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GrupoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FormaPagoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.InventarioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClienteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BancoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GrupoBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gb_ver_albaranes.SuspendLayout()
         Me.SuspendLayout()
         '
         'tab_main
@@ -545,6 +543,7 @@ Partial Class frmMain
         '
         Me.dg_bancos.AllowUserToAddRows = False
         Me.dg_bancos.AllowUserToDeleteRows = False
+        Me.dg_bancos.AllowUserToResizeRows = False
         Me.dg_bancos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -552,6 +551,7 @@ Partial Class frmMain
         Me.dg_bancos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dg_bancos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.nombreBanco, Me.codigoBanco})
         Me.dg_bancos.Location = New System.Drawing.Point(6, 6)
+        Me.dg_bancos.MultiSelect = False
         Me.dg_bancos.Name = "dg_bancos"
         Me.dg_bancos.ReadOnly = True
         Me.dg_bancos.RowHeadersVisible = False
@@ -561,15 +561,13 @@ Partial Class frmMain
         '
         'nombreBanco
         '
-        Me.nombreBanco.DataPropertyName = "NombreDeBanco"
         Me.nombreBanco.HeaderText = "Nombre Banco"
         Me.nombreBanco.Name = "nombreBanco"
         Me.nombreBanco.ReadOnly = True
         '
         'codigoBanco
         '
-        Me.codigoBanco.DataPropertyName = "CodigoDeBanco"
-        Me.codigoBanco.HeaderText = "Codigo"
+        Me.codigoBanco.HeaderText = "Código"
         Me.codigoBanco.Name = "codigoBanco"
         Me.codigoBanco.ReadOnly = True
         '
@@ -577,12 +575,13 @@ Partial Class frmMain
         '
         Me.dg_formas_pago.AllowUserToAddRows = False
         Me.dg_formas_pago.AllowUserToDeleteRows = False
-        Me.dg_formas_pago.AutoGenerateColumns = False
+        Me.dg_formas_pago.AllowUserToResizeRows = False
+        Me.dg_formas_pago.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dg_formas_pago.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dg_formas_pago.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_formas_pago.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.codigoFormaPago, Me.nombreFormaPago, Me.BancoAsignadoDataGridViewTextBoxColumn, Me.ActivoDataGridViewTextBoxColumn, Me.NumeroPlazosPagoDataGridViewTextBoxColumn, Me.PrimerPlazoDataGridViewTextBoxColumn, Me.DiasPlazosDataGridViewTextBoxColumn})
-        Me.dg_formas_pago.DataSource = Me.FormaPagoBindingSource
-        Me.dg_formas_pago.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dg_formas_pago.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idFormaPago, Me.nombreFormaPago, Me.bancoFormaPago, Me.activoFormaPago, Me.numPlazosFormaPago, Me.primerPlazoFormaPago, Me.intervaloFormaPago})
         Me.dg_formas_pago.Location = New System.Drawing.Point(281, 6)
         Me.dg_formas_pago.MultiSelect = False
         Me.dg_formas_pago.Name = "dg_formas_pago"
@@ -799,6 +798,10 @@ Partial Class frmMain
         '
         Me.dg_clientes.AllowUserToAddRows = False
         Me.dg_clientes.AllowUserToDeleteRows = False
+        Me.dg_clientes.AllowUserToResizeRows = False
+        Me.dg_clientes.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dg_clientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
@@ -809,81 +812,13 @@ Partial Class frmMain
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dg_clientes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dg_clientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_clientes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.codigoCliente, Me.nombreCliente, Me.nifCliente, Me.fechaNacCliente, Me.direccionCliente, Me.emailCliente, Me.grupoCliente, Me.bancoCliente})
-        Me.dg_clientes.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dg_clientes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idCliente, Me.nombreCliente, Me.nifCliente, Me.fechaNacimientoCliente, Me.direccionCliente, Me.emailCliente, Me.grupoCliente, Me.bancoCliente})
         Me.dg_clientes.Location = New System.Drawing.Point(281, 6)
         Me.dg_clientes.MultiSelect = False
         Me.dg_clientes.Name = "dg_clientes"
         Me.dg_clientes.RowHeadersVisible = False
         Me.dg_clientes.Size = New System.Drawing.Size(505, 267)
         Me.dg_clientes.TabIndex = 1
-        '
-        'codigoCliente
-        '
-        Me.codigoCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.codigoCliente.DataPropertyName = "CodigoDelCliente"
-        Me.codigoCliente.HeaderText = "Código"
-        Me.codigoCliente.Name = "codigoCliente"
-        Me.codigoCliente.ReadOnly = True
-        '
-        'nombreCliente
-        '
-        Me.nombreCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.nombreCliente.DataPropertyName = "NombreDelCliente"
-        Me.nombreCliente.HeaderText = "Nombre"
-        Me.nombreCliente.Name = "nombreCliente"
-        Me.nombreCliente.ReadOnly = True
-        '
-        'nifCliente
-        '
-        Me.nifCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.nifCliente.DataPropertyName = "NifDelCliente"
-        Me.nifCliente.HeaderText = "NIF"
-        Me.nifCliente.Name = "nifCliente"
-        Me.nifCliente.ReadOnly = True
-        '
-        'fechaNacCliente
-        '
-        Me.fechaNacCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.fechaNacCliente.DataPropertyName = "FechaDeNacimientoDelCliente"
-        DataGridViewCellStyle2.Format = "d"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.fechaNacCliente.DefaultCellStyle = DataGridViewCellStyle2
-        Me.fechaNacCliente.HeaderText = "Fecha Nacimiento"
-        Me.fechaNacCliente.Name = "fechaNacCliente"
-        Me.fechaNacCliente.ReadOnly = True
-        '
-        'direccionCliente
-        '
-        Me.direccionCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.direccionCliente.DataPropertyName = "DireccionDelCliente"
-        Me.direccionCliente.HeaderText = "Dirección"
-        Me.direccionCliente.Name = "direccionCliente"
-        Me.direccionCliente.ReadOnly = True
-        '
-        'emailCliente
-        '
-        Me.emailCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.emailCliente.DataPropertyName = "EmailDelCliente"
-        Me.emailCliente.HeaderText = "Email"
-        Me.emailCliente.Name = "emailCliente"
-        Me.emailCliente.ReadOnly = True
-        '
-        'grupoCliente
-        '
-        Me.grupoCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.grupoCliente.DataPropertyName = "GrupoDelCliente"
-        Me.grupoCliente.HeaderText = "Grupo"
-        Me.grupoCliente.Name = "grupoCliente"
-        Me.grupoCliente.ReadOnly = True
-        '
-        'bancoCliente
-        '
-        Me.bancoCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.bancoCliente.DataPropertyName = "BancoDelCliente"
-        Me.bancoCliente.HeaderText = "Banco"
-        Me.bancoCliente.Name = "bancoCliente"
-        Me.bancoCliente.ReadOnly = True
         '
         'TableLayoutPanel2
         '
@@ -997,10 +932,10 @@ Partial Class frmMain
         '
         Me.dg_grupos.AllowUserToAddRows = False
         Me.dg_grupos.AllowUserToDeleteRows = False
+        Me.dg_grupos.AllowUserToResizeRows = False
         Me.dg_grupos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dg_grupos.AutoGenerateColumns = False
         Me.dg_grupos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
@@ -1011,8 +946,7 @@ Partial Class frmMain
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dg_grupos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.dg_grupos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_grupos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.codigoGrupo, Me.nombreGrupo})
-        Me.dg_grupos.DataSource = Me.GrupoBindingSource
+        Me.dg_grupos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idGrupo, Me.nombreGrupo})
         Me.dg_grupos.Location = New System.Drawing.Point(6, 6)
         Me.dg_grupos.MultiSelect = False
         Me.dg_grupos.Name = "dg_grupos"
@@ -1266,12 +1200,13 @@ Partial Class frmMain
         '
         Me.dg_articulos.AllowUserToAddRows = False
         Me.dg_articulos.AllowUserToDeleteRows = False
-        Me.dg_articulos.AutoGenerateColumns = False
+        Me.dg_articulos.AllowUserToResizeRows = False
+        Me.dg_articulos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dg_articulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dg_articulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_articulos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.codigoArticulo, Me.nombreArticulos, Me.DescripcionDeArticuloDataGridViewTextBoxColumn, Me.PVPCompraDeArticuloDataGridViewTextBoxColumn, Me.PVPVentaDeArticuloDataGridViewTextBoxColumn, Me.impuestoArticulo, Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn, Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn, Me.FamiliaDeArticuloDataGridViewTextBoxColumn})
-        Me.dg_articulos.DataSource = Me.ArticuloBindingSource
-        Me.dg_articulos.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dg_articulos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idArticulo, Me.nombreArticuloo, Me.descripcionArticulo, Me.pvpCompraArticulo, Me.pvpVentaArticulo, Me.impuestoArticulo, Me.porcBeneficioArticulo, Me.tipoUnidadArticulo, Me.familiaArticulo})
         Me.dg_articulos.Location = New System.Drawing.Point(281, 6)
         Me.dg_articulos.MultiSelect = False
         Me.dg_articulos.Name = "dg_articulos"
@@ -1279,12 +1214,6 @@ Partial Class frmMain
         Me.dg_articulos.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dg_articulos.Size = New System.Drawing.Size(505, 267)
         Me.dg_articulos.TabIndex = 1
-        '
-        'impuestoArticulo
-        '
-        Me.impuestoArticulo.HeaderText = "Impuesto"
-        Me.impuestoArticulo.Name = "impuestoArticulo"
-        Me.impuestoArticulo.ReadOnly = True
         '
         'TableLayoutPanel5
         '
@@ -1398,14 +1327,13 @@ Partial Class frmMain
         '
         Me.dg_proveedores.AllowUserToAddRows = False
         Me.dg_proveedores.AllowUserToDeleteRows = False
+        Me.dg_proveedores.AllowUserToResizeRows = False
         Me.dg_proveedores.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dg_proveedores.AutoGenerateColumns = False
         Me.dg_proveedores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dg_proveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_proveedores.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.codigoProveedor, Me.nombreProveedor, Me.datos})
-        Me.dg_proveedores.DataSource = Me.ProveedorBindingSource
+        Me.dg_proveedores.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idProveedor, Me.nombreProveedor, Me.datos})
         Me.dg_proveedores.Location = New System.Drawing.Point(6, 6)
         Me.dg_proveedores.MultiSelect = False
         Me.dg_proveedores.Name = "dg_proveedores"
@@ -1414,18 +1342,6 @@ Partial Class frmMain
         Me.dg_proveedores.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dg_proveedores.Size = New System.Drawing.Size(269, 267)
         Me.dg_proveedores.TabIndex = 4
-        '
-        'datos
-        '
-        Me.datos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.datos.DefaultCellStyle = DataGridViewCellStyle7
-        Me.datos.HeaderText = " "
-        Me.datos.Name = "datos"
-        Me.datos.ReadOnly = True
-        Me.datos.Text = "VER DATOS"
-        Me.datos.UseColumnTextForButtonValue = True
         '
         'TableLayoutPanel14
         '
@@ -1530,64 +1446,42 @@ Partial Class frmMain
         '
         Me.dg_inventario.AllowUserToAddRows = False
         Me.dg_inventario.AllowUserToDeleteRows = False
+        Me.dg_inventario.AllowUserToResizeRows = False
         Me.dg_inventario.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg_inventario.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_inventario.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.dg_inventario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_inventario.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idAlmacen, Me.nombreArticulo, Me.stockActual})
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg_inventario.DefaultCellStyle = DataGridViewCellStyle9
+        Me.dg_inventario.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idInventario, Me.nombreArticulo, Me.stockActual})
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg_inventario.DefaultCellStyle = DataGridViewCellStyle6
         Me.dg_inventario.Location = New System.Drawing.Point(6, 6)
+        Me.dg_inventario.MultiSelect = False
         Me.dg_inventario.Name = "dg_inventario"
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg_inventario.RowHeadersDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_inventario.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.dg_inventario.RowHeadersVisible = False
         Me.dg_inventario.Size = New System.Drawing.Size(190, 376)
         Me.dg_inventario.TabIndex = 0
-        '
-        'idAlmacen
-        '
-        Me.idAlmacen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.idAlmacen.DataPropertyName = "codigoInventario"
-        Me.idAlmacen.HeaderText = "ID"
-        Me.idAlmacen.Name = "idAlmacen"
-        Me.idAlmacen.ReadOnly = True
-        Me.idAlmacen.Visible = False
-        '
-        'nombreArticulo
-        '
-        Me.nombreArticulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.nombreArticulo.DataPropertyName = "ArticuloDeInventario.NombreDeArticulo"
-        Me.nombreArticulo.HeaderText = "Artículo"
-        Me.nombreArticulo.Name = "nombreArticulo"
-        Me.nombreArticulo.ReadOnly = True
-        '
-        'stockActual
-        '
-        Me.stockActual.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.stockActual.DataPropertyName = "UnidadesDisponibles"
-        Me.stockActual.HeaderText = "Stock Actual"
-        Me.stockActual.Name = "stockActual"
         '
         'TableLayoutPanel8
         '
@@ -1670,37 +1564,39 @@ Partial Class frmMain
         '
         Me.dg_movimientos.AllowUserToAddRows = False
         Me.dg_movimientos.AllowUserToDeleteRows = False
+        Me.dg_movimientos.AllowUserToResizeRows = False
         Me.dg_movimientos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_movimientos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
+        Me.dg_movimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dg_movimientos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idMovimiento, Me.usuarioMovimiento, Me.articuloMovimiento, Me.cantidadMovimiento, Me.tipoMovimiento, Me.facturaMovimiento, Me.fechaMovimiento, Me.stockMovimiento})
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg_movimientos.DefaultCellStyle = DataGridViewCellStyle10
+        Me.dg_movimientos.Location = New System.Drawing.Point(296, 6)
+        Me.dg_movimientos.MultiSelect = False
+        Me.dg_movimientos.Name = "dg_movimientos"
         DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
         DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg_movimientos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
-        Me.dg_movimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_movimientos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idMovimiento, Me.usuarioMovimiento, Me.articuloMovimiento, Me.cantidadMovimiento, Me.tipoMovimiento, Me.facturaMovimiento, Me.fechaMovimiento, Me.stockMovimiento})
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg_movimientos.DefaultCellStyle = DataGridViewCellStyle13
-        Me.dg_movimientos.Location = New System.Drawing.Point(296, 6)
-        Me.dg_movimientos.Name = "dg_movimientos"
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg_movimientos.RowHeadersDefaultCellStyle = DataGridViewCellStyle14
+        Me.dg_movimientos.RowHeadersDefaultCellStyle = DataGridViewCellStyle11
         Me.dg_movimientos.RowHeadersVisible = False
         Me.dg_movimientos.Size = New System.Drawing.Size(490, 376)
         Me.dg_movimientos.TabIndex = 3
@@ -1749,9 +1645,9 @@ Partial Class frmMain
         'fechaMovimiento
         '
         Me.fechaMovimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle12.Format = "d"
-        DataGridViewCellStyle12.NullValue = Nothing
-        Me.fechaMovimiento.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle9.Format = "d"
+        DataGridViewCellStyle9.NullValue = Nothing
+        Me.fechaMovimiento.DefaultCellStyle = DataGridViewCellStyle9
         Me.fechaMovimiento.HeaderText = "Fecha"
         Me.fechaMovimiento.Name = "fechaMovimiento"
         Me.fechaMovimiento.ReadOnly = True
@@ -1774,6 +1670,164 @@ Partial Class frmMain
         Me.tab_albaranes.TabIndex = 6
         Me.tab_albaranes.Text = "ALBARANES"
         Me.tab_albaranes.UseVisualStyleBackColor = True
+        '
+        'TableLayoutPanel18
+        '
+        Me.TableLayoutPanel18.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel18.ColumnCount = 2
+        Me.TableLayoutPanel18.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.0!))
+        Me.TableLayoutPanel18.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel18.Controls.Add(Me.dg_albaranes, 0, 0)
+        Me.TableLayoutPanel18.Controls.Add(Me.TableLayoutPanel19, 1, 0)
+        Me.TableLayoutPanel18.Location = New System.Drawing.Point(0, 0)
+        Me.TableLayoutPanel18.Name = "TableLayoutPanel18"
+        Me.TableLayoutPanel18.Padding = New System.Windows.Forms.Padding(3)
+        Me.TableLayoutPanel18.RowCount = 1
+        Me.TableLayoutPanel18.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel18.Size = New System.Drawing.Size(791, 388)
+        Me.TableLayoutPanel18.TabIndex = 0
+        '
+        'dg_albaranes
+        '
+        Me.dg_albaranes.AllowUserToAddRows = False
+        Me.dg_albaranes.AllowUserToResizeRows = False
+        Me.dg_albaranes.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_albaranes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
+        Me.dg_albaranes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dg_albaranes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idAlbaran, Me.personaAlbaran, Me.formaPagoAlbaran, Me.fechaAlbaran, Me.tipoAlbaran, Me.facturaAlbaran, Me.verAlbaran})
+        Me.dg_albaranes.Location = New System.Drawing.Point(6, 6)
+        Me.dg_albaranes.MultiSelect = False
+        Me.dg_albaranes.Name = "dg_albaranes"
+        Me.dg_albaranes.ReadOnly = True
+        Me.dg_albaranes.RowHeadersVisible = False
+        Me.dg_albaranes.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dg_albaranes.Size = New System.Drawing.Size(582, 376)
+        Me.dg_albaranes.TabIndex = 1
+        '
+        'idAlbaran
+        '
+        Me.idAlbaran.HeaderText = "ID"
+        Me.idAlbaran.Name = "idAlbaran"
+        Me.idAlbaran.ReadOnly = True
+        Me.idAlbaran.Visible = False
+        '
+        'personaAlbaran
+        '
+        Me.personaAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.personaAlbaran.HeaderText = "Entidad"
+        Me.personaAlbaran.Name = "personaAlbaran"
+        Me.personaAlbaran.ReadOnly = True
+        '
+        'formaPagoAlbaran
+        '
+        Me.formaPagoAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.formaPagoAlbaran.HeaderText = "Forma Pago"
+        Me.formaPagoAlbaran.Name = "formaPagoAlbaran"
+        Me.formaPagoAlbaran.ReadOnly = True
+        '
+        'fechaAlbaran
+        '
+        Me.fechaAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        DataGridViewCellStyle13.Format = "d"
+        DataGridViewCellStyle13.NullValue = Nothing
+        Me.fechaAlbaran.DefaultCellStyle = DataGridViewCellStyle13
+        Me.fechaAlbaran.HeaderText = "Fecha"
+        Me.fechaAlbaran.Name = "fechaAlbaran"
+        Me.fechaAlbaran.ReadOnly = True
+        '
+        'tipoAlbaran
+        '
+        Me.tipoAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.tipoAlbaran.HeaderText = "Tipo Movimiento"
+        Me.tipoAlbaran.Name = "tipoAlbaran"
+        Me.tipoAlbaran.ReadOnly = True
+        '
+        'facturaAlbaran
+        '
+        Me.facturaAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.facturaAlbaran.HeaderText = "Factura"
+        Me.facturaAlbaran.Name = "facturaAlbaran"
+        Me.facturaAlbaran.ReadOnly = True
+        '
+        'verAlbaran
+        '
+        Me.verAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.verAlbaran.DefaultCellStyle = DataGridViewCellStyle14
+        Me.verAlbaran.HeaderText = ""
+        Me.verAlbaran.Name = "verAlbaran"
+        Me.verAlbaran.ReadOnly = True
+        '
+        'TableLayoutPanel19
+        '
+        Me.TableLayoutPanel19.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel19.ColumnCount = 1
+        Me.TableLayoutPanel19.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel19.Controls.Add(Me.gb_ver_albaranes, 0, 0)
+        Me.TableLayoutPanel19.Controls.Add(Me.btn_eliminar_compra, 0, 1)
+        Me.TableLayoutPanel19.Location = New System.Drawing.Point(594, 6)
+        Me.TableLayoutPanel19.Name = "TableLayoutPanel19"
+        Me.TableLayoutPanel19.RowCount = 4
+        Me.TableLayoutPanel19.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel19.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.TableLayoutPanel19.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.TableLayoutPanel19.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.0!))
+        Me.TableLayoutPanel19.Size = New System.Drawing.Size(191, 376)
+        Me.TableLayoutPanel19.TabIndex = 2
+        '
+        'gb_ver_albaranes
+        '
+        Me.gb_ver_albaranes.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.gb_ver_albaranes.Controls.Add(Me.rdb_ver_compras)
+        Me.gb_ver_albaranes.Controls.Add(Me.rdb_ver_ventas)
+        Me.gb_ver_albaranes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gb_ver_albaranes.Location = New System.Drawing.Point(15, 10)
+        Me.gb_ver_albaranes.Margin = New System.Windows.Forms.Padding(15, 10, 15, 10)
+        Me.gb_ver_albaranes.Name = "gb_ver_albaranes"
+        Me.gb_ver_albaranes.Size = New System.Drawing.Size(161, 74)
+        Me.gb_ver_albaranes.TabIndex = 0
+        Me.gb_ver_albaranes.TabStop = False
+        Me.gb_ver_albaranes.Text = "Ver albaranes"
+        '
+        'rdb_ver_compras
+        '
+        Me.rdb_ver_compras.AutoSize = True
+        Me.rdb_ver_compras.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rdb_ver_compras.Location = New System.Drawing.Point(50, 48)
+        Me.rdb_ver_compras.Name = "rdb_ver_compras"
+        Me.rdb_ver_compras.Size = New System.Drawing.Size(66, 17)
+        Me.rdb_ver_compras.TabIndex = 1
+        Me.rdb_ver_compras.TabStop = True
+        Me.rdb_ver_compras.Text = "Compras"
+        Me.rdb_ver_compras.UseVisualStyleBackColor = True
+        '
+        'rdb_ver_ventas
+        '
+        Me.rdb_ver_ventas.AutoSize = True
+        Me.rdb_ver_ventas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rdb_ver_ventas.Location = New System.Drawing.Point(50, 23)
+        Me.rdb_ver_ventas.Name = "rdb_ver_ventas"
+        Me.rdb_ver_ventas.Size = New System.Drawing.Size(58, 17)
+        Me.rdb_ver_ventas.TabIndex = 0
+        Me.rdb_ver_ventas.TabStop = True
+        Me.rdb_ver_ventas.Text = "Ventas"
+        Me.rdb_ver_ventas.UseVisualStyleBackColor = True
         '
         'tab_configuraciones
         '
@@ -1858,300 +1912,256 @@ Partial Class frmMain
         Me.ImageList1.Images.SetKeyName(4, "configuraciones.ico")
         Me.ImageList1.Images.SetKeyName(5, "albaran.png")
         '
-        'TableLayoutPanel18
+        'idFormaPago
         '
-        Me.TableLayoutPanel18.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel18.ColumnCount = 2
-        Me.TableLayoutPanel18.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.0!))
-        Me.TableLayoutPanel18.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.TableLayoutPanel18.Controls.Add(Me.dg_albaranes, 0, 0)
-        Me.TableLayoutPanel18.Controls.Add(Me.TableLayoutPanel19, 1, 0)
-        Me.TableLayoutPanel18.Location = New System.Drawing.Point(0, 0)
-        Me.TableLayoutPanel18.Name = "TableLayoutPanel18"
-        Me.TableLayoutPanel18.Padding = New System.Windows.Forms.Padding(3)
-        Me.TableLayoutPanel18.RowCount = 1
-        Me.TableLayoutPanel18.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel18.Size = New System.Drawing.Size(791, 388)
-        Me.TableLayoutPanel18.TabIndex = 0
-        '
-        'dg_albaranes
-        '
-        Me.dg_albaranes.AllowUserToAddRows = False
-        Me.dg_albaranes.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg_albaranes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle15
-        Me.dg_albaranes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_albaranes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idAlbaran, Me.personaAlbaran, Me.formaPagoAlbaran, Me.fechaAlbaran, Me.tipoAlbaran, Me.facturaAlbaran, Me.verAlbaran})
-        Me.dg_albaranes.Location = New System.Drawing.Point(6, 6)
-        Me.dg_albaranes.Name = "dg_albaranes"
-        Me.dg_albaranes.ReadOnly = True
-        Me.dg_albaranes.RowHeadersVisible = False
-        Me.dg_albaranes.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dg_albaranes.Size = New System.Drawing.Size(582, 376)
-        Me.dg_albaranes.TabIndex = 1
-        '
-        'TableLayoutPanel19
-        '
-        Me.TableLayoutPanel19.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel19.ColumnCount = 1
-        Me.TableLayoutPanel19.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel19.Controls.Add(Me.gb_ver_albaranes, 0, 0)
-        Me.TableLayoutPanel19.Location = New System.Drawing.Point(594, 6)
-        Me.TableLayoutPanel19.Name = "TableLayoutPanel19"
-        Me.TableLayoutPanel19.RowCount = 4
-        Me.TableLayoutPanel19.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.TableLayoutPanel19.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel19.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel19.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.0!))
-        Me.TableLayoutPanel19.Size = New System.Drawing.Size(191, 376)
-        Me.TableLayoutPanel19.TabIndex = 2
-        '
-        'idAlbaran
-        '
-        Me.idAlbaran.HeaderText = "ID"
-        Me.idAlbaran.Name = "idAlbaran"
-        Me.idAlbaran.ReadOnly = True
-        Me.idAlbaran.Visible = False
-        '
-        'personaAlbaran
-        '
-        Me.personaAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.personaAlbaran.HeaderText = "Entidad"
-        Me.personaAlbaran.Name = "personaAlbaran"
-        Me.personaAlbaran.ReadOnly = True
-        '
-        'formaPagoAlbaran
-        '
-        Me.formaPagoAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.formaPagoAlbaran.HeaderText = "Forma Pago"
-        Me.formaPagoAlbaran.Name = "formaPagoAlbaran"
-        Me.formaPagoAlbaran.ReadOnly = True
-        '
-        'fechaAlbaran
-        '
-        Me.fechaAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle16.Format = "d"
-        DataGridViewCellStyle16.NullValue = Nothing
-        Me.fechaAlbaran.DefaultCellStyle = DataGridViewCellStyle16
-        Me.fechaAlbaran.HeaderText = "Fecha"
-        Me.fechaAlbaran.Name = "fechaAlbaran"
-        Me.fechaAlbaran.ReadOnly = True
-        '
-        'tipoAlbaran
-        '
-        Me.tipoAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.tipoAlbaran.HeaderText = "Tipo Movimiento"
-        Me.tipoAlbaran.Name = "tipoAlbaran"
-        Me.tipoAlbaran.ReadOnly = True
-        '
-        'facturaAlbaran
-        '
-        Me.facturaAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.facturaAlbaran.HeaderText = "Factura"
-        Me.facturaAlbaran.Name = "facturaAlbaran"
-        Me.facturaAlbaran.ReadOnly = True
-        '
-        'verAlbaran
-        '
-        Me.verAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.verAlbaran.DefaultCellStyle = DataGridViewCellStyle17
-        Me.verAlbaran.HeaderText = ""
-        Me.verAlbaran.Name = "verAlbaran"
-        Me.verAlbaran.ReadOnly = True
-        '
-        'codigoFormaPago
-        '
-        Me.codigoFormaPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.codigoFormaPago.DataPropertyName = "CodigoDePago"
-        Me.codigoFormaPago.HeaderText = "Código"
-        Me.codigoFormaPago.Name = "codigoFormaPago"
-        Me.codigoFormaPago.ReadOnly = True
+        Me.idFormaPago.HeaderText = "ID"
+        Me.idFormaPago.Name = "idFormaPago"
+        Me.idFormaPago.ReadOnly = True
+        Me.idFormaPago.Visible = False
         '
         'nombreFormaPago
         '
         Me.nombreFormaPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.nombreFormaPago.DataPropertyName = "NombreDePago"
         Me.nombreFormaPago.HeaderText = "Nombre"
         Me.nombreFormaPago.Name = "nombreFormaPago"
         Me.nombreFormaPago.ReadOnly = True
         '
-        'BancoAsignadoDataGridViewTextBoxColumn
+        'bancoFormaPago
         '
-        Me.BancoAsignadoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.BancoAsignadoDataGridViewTextBoxColumn.DataPropertyName = "BancoAsignado"
-        Me.BancoAsignadoDataGridViewTextBoxColumn.HeaderText = "Banco"
-        Me.BancoAsignadoDataGridViewTextBoxColumn.Name = "BancoAsignadoDataGridViewTextBoxColumn"
-        Me.BancoAsignadoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.bancoFormaPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.bancoFormaPago.HeaderText = "Banco"
+        Me.bancoFormaPago.Name = "bancoFormaPago"
+        Me.bancoFormaPago.ReadOnly = True
         '
-        'ActivoDataGridViewTextBoxColumn
+        'activoFormaPago
         '
-        Me.ActivoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ActivoDataGridViewTextBoxColumn.DataPropertyName = "Activo"
-        Me.ActivoDataGridViewTextBoxColumn.FalseValue = "0"
-        Me.ActivoDataGridViewTextBoxColumn.HeaderText = "Activo"
-        Me.ActivoDataGridViewTextBoxColumn.Name = "ActivoDataGridViewTextBoxColumn"
-        Me.ActivoDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ActivoDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.ActivoDataGridViewTextBoxColumn.TrueValue = "1"
+        Me.activoFormaPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.activoFormaPago.HeaderText = "Activo"
+        Me.activoFormaPago.Name = "activoFormaPago"
+        Me.activoFormaPago.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.activoFormaPago.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.activoFormaPago.Width = 68
         '
-        'NumeroPlazosPagoDataGridViewTextBoxColumn
+        'numPlazosFormaPago
         '
-        Me.NumeroPlazosPagoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.NumeroPlazosPagoDataGridViewTextBoxColumn.DataPropertyName = "NumeroPlazosPago"
-        Me.NumeroPlazosPagoDataGridViewTextBoxColumn.HeaderText = "Núm Plazos"
-        Me.NumeroPlazosPagoDataGridViewTextBoxColumn.Name = "NumeroPlazosPagoDataGridViewTextBoxColumn"
-        Me.NumeroPlazosPagoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.numPlazosFormaPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.numPlazosFormaPago.HeaderText = "Nº Plazos"
+        Me.numPlazosFormaPago.Name = "numPlazosFormaPago"
+        Me.numPlazosFormaPago.ReadOnly = True
         '
-        'PrimerPlazoDataGridViewTextBoxColumn
+        'primerPlazoFormaPago
         '
-        Me.PrimerPlazoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.PrimerPlazoDataGridViewTextBoxColumn.DataPropertyName = "PrimerPlazo"
-        Me.PrimerPlazoDataGridViewTextBoxColumn.HeaderText = "Primer Plazo"
-        Me.PrimerPlazoDataGridViewTextBoxColumn.Name = "PrimerPlazoDataGridViewTextBoxColumn"
-        Me.PrimerPlazoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.primerPlazoFormaPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.primerPlazoFormaPago.HeaderText = "Primer plazo"
+        Me.primerPlazoFormaPago.Name = "primerPlazoFormaPago"
+        Me.primerPlazoFormaPago.ReadOnly = True
         '
-        'DiasPlazosDataGridViewTextBoxColumn
+        'intervaloFormaPago
         '
-        Me.DiasPlazosDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DiasPlazosDataGridViewTextBoxColumn.DataPropertyName = "DiasPlazos"
-        Me.DiasPlazosDataGridViewTextBoxColumn.HeaderText = "Intervalo"
-        Me.DiasPlazosDataGridViewTextBoxColumn.Name = "DiasPlazosDataGridViewTextBoxColumn"
-        Me.DiasPlazosDataGridViewTextBoxColumn.ReadOnly = True
+        Me.intervaloFormaPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.intervaloFormaPago.HeaderText = "Intervalo"
+        Me.intervaloFormaPago.Name = "intervaloFormaPago"
+        Me.intervaloFormaPago.ReadOnly = True
         '
-        'FormaPagoBindingSource
+        'idCliente
         '
-        Me.FormaPagoBindingSource.DataSource = GetType(MP_Lucas_Sanz.FormaPago)
+        Me.idCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.idCliente.HeaderText = "ID"
+        Me.idCliente.Name = "idCliente"
+        Me.idCliente.ReadOnly = True
         '
-        'codigoGrupo
+        'nombreCliente
         '
-        Me.codigoGrupo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.codigoGrupo.DataPropertyName = "CodigoDeGrupo"
-        Me.codigoGrupo.HeaderText = "Código"
-        Me.codigoGrupo.Name = "codigoGrupo"
-        Me.codigoGrupo.ReadOnly = True
+        Me.nombreCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.nombreCliente.HeaderText = "Nombre"
+        Me.nombreCliente.Name = "nombreCliente"
+        Me.nombreCliente.ReadOnly = True
+        '
+        'nifCliente
+        '
+        Me.nifCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.nifCliente.HeaderText = "NIF"
+        Me.nifCliente.Name = "nifCliente"
+        Me.nifCliente.ReadOnly = True
+        '
+        'fechaNacimientoCliente
+        '
+        Me.fechaNacimientoCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        DataGridViewCellStyle2.Format = "d"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.fechaNacimientoCliente.DefaultCellStyle = DataGridViewCellStyle2
+        Me.fechaNacimientoCliente.HeaderText = "Fecha nacimiento"
+        Me.fechaNacimientoCliente.Name = "fechaNacimientoCliente"
+        Me.fechaNacimientoCliente.ReadOnly = True
+        '
+        'direccionCliente
+        '
+        Me.direccionCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.direccionCliente.HeaderText = "Dirección"
+        Me.direccionCliente.Name = "direccionCliente"
+        Me.direccionCliente.ReadOnly = True
+        '
+        'emailCliente
+        '
+        Me.emailCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.emailCliente.HeaderText = "Email"
+        Me.emailCliente.Name = "emailCliente"
+        Me.emailCliente.ReadOnly = True
+        '
+        'grupoCliente
+        '
+        Me.grupoCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.grupoCliente.HeaderText = "Grupo"
+        Me.grupoCliente.Name = "grupoCliente"
+        Me.grupoCliente.ReadOnly = True
+        '
+        'bancoCliente
+        '
+        Me.bancoCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.bancoCliente.HeaderText = "Banco"
+        Me.bancoCliente.Name = "bancoCliente"
+        Me.bancoCliente.ReadOnly = True
+        '
+        'idGrupo
+        '
+        Me.idGrupo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.idGrupo.HeaderText = "ID"
+        Me.idGrupo.Name = "idGrupo"
+        Me.idGrupo.ReadOnly = True
         '
         'nombreGrupo
         '
         Me.nombreGrupo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.nombreGrupo.DataPropertyName = "NombreDeGrupo"
-        Me.nombreGrupo.HeaderText = "Nombre del Grupo"
+        Me.nombreGrupo.HeaderText = "Nombre Grupo"
         Me.nombreGrupo.Name = "nombreGrupo"
         Me.nombreGrupo.ReadOnly = True
         '
-        'GrupoBindingSource
+        'idArticulo
         '
-        Me.GrupoBindingSource.DataSource = GetType(MP_Lucas_Sanz.Grupo)
+        Me.idArticulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.idArticulo.HeaderText = "ID"
+        Me.idArticulo.Name = "idArticulo"
+        Me.idArticulo.ReadOnly = True
         '
-        'codigoArticulo
+        'nombreArticuloo
         '
-        Me.codigoArticulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.codigoArticulo.DataPropertyName = "CodigoDeArticulo"
-        Me.codigoArticulo.HeaderText = "Código"
-        Me.codigoArticulo.Name = "codigoArticulo"
-        Me.codigoArticulo.ReadOnly = True
+        Me.nombreArticuloo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.nombreArticuloo.HeaderText = "Nombre"
+        Me.nombreArticuloo.Name = "nombreArticuloo"
+        Me.nombreArticuloo.ReadOnly = True
         '
-        'nombreArticulos
+        'descripcionArticulo
         '
-        Me.nombreArticulos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.nombreArticulos.DataPropertyName = "NombreDeArticulo"
-        Me.nombreArticulos.HeaderText = "Nombre"
-        Me.nombreArticulos.Name = "nombreArticulos"
-        Me.nombreArticulos.ReadOnly = True
+        Me.descripcionArticulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.descripcionArticulo.HeaderText = "Descripción"
+        Me.descripcionArticulo.Name = "descripcionArticulo"
+        Me.descripcionArticulo.ReadOnly = True
         '
-        'DescripcionDeArticuloDataGridViewTextBoxColumn
+        'pvpCompraArticulo
         '
-        Me.DescripcionDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DescripcionDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "DescripcionDeArticulo"
-        Me.DescripcionDeArticuloDataGridViewTextBoxColumn.HeaderText = "Descripción"
-        Me.DescripcionDeArticuloDataGridViewTextBoxColumn.Name = "DescripcionDeArticuloDataGridViewTextBoxColumn"
-        Me.DescripcionDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
+        Me.pvpCompraArticulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.pvpCompraArticulo.HeaderText = "PVP Compra"
+        Me.pvpCompraArticulo.Name = "pvpCompraArticulo"
+        Me.pvpCompraArticulo.ReadOnly = True
         '
-        'PVPCompraDeArticuloDataGridViewTextBoxColumn
+        'pvpVentaArticulo
         '
-        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "PVPCompraDeArticulo"
-        DataGridViewCellStyle4.Format = "N2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle4
-        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.HeaderText = "PVP Compra"
-        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.Name = "PVPCompraDeArticuloDataGridViewTextBoxColumn"
-        Me.PVPCompraDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
+        Me.pvpVentaArticulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.pvpVentaArticulo.HeaderText = "PVP Venta"
+        Me.pvpVentaArticulo.Name = "pvpVentaArticulo"
+        Me.pvpVentaArticulo.ReadOnly = True
         '
-        'PVPVentaDeArticuloDataGridViewTextBoxColumn
+        'impuestoArticulo
         '
-        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "PVPVentaDeArticulo"
-        DataGridViewCellStyle5.Format = "N2"
-        DataGridViewCellStyle5.NullValue = Nothing
-        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle5
-        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.HeaderText = "PVP Venta"
-        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.Name = "PVPVentaDeArticuloDataGridViewTextBoxColumn"
-        Me.PVPVentaDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
+        Me.impuestoArticulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.impuestoArticulo.HeaderText = "Impuesto"
+        Me.impuestoArticulo.Name = "impuestoArticulo"
+        Me.impuestoArticulo.ReadOnly = True
         '
-        'PorcentajeDeBeneficioDataGridViewTextBoxColumn
+        'porcBeneficioArticulo
         '
-        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.DataPropertyName = "PorcentajeDeBeneficio"
-        DataGridViewCellStyle6.Format = "N2"
-        DataGridViewCellStyle6.NullValue = Nothing
-        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle6
-        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.HeaderText = "% Beneficio"
-        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.Name = "PorcentajeDeBeneficioDataGridViewTextBoxColumn"
-        Me.PorcentajeDeBeneficioDataGridViewTextBoxColumn.ReadOnly = True
+        Me.porcBeneficioArticulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.porcBeneficioArticulo.HeaderText = "%Beneficio"
+        Me.porcBeneficioArticulo.Name = "porcBeneficioArticulo"
+        Me.porcBeneficioArticulo.ReadOnly = True
+        Me.porcBeneficioArticulo.Width = 94
         '
-        'TipoDeUnidadArticuloDataGridViewTextBoxColumn
+        'tipoUnidadArticulo
         '
-        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn.DataPropertyName = "TipoDeUnidadArticulo"
-        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn.HeaderText = "Unidad"
-        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn.Name = "TipoDeUnidadArticuloDataGridViewTextBoxColumn"
-        Me.TipoDeUnidadArticuloDataGridViewTextBoxColumn.ReadOnly = True
+        Me.tipoUnidadArticulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.tipoUnidadArticulo.HeaderText = "Ud"
+        Me.tipoUnidadArticulo.Name = "tipoUnidadArticulo"
+        Me.tipoUnidadArticulo.ReadOnly = True
         '
-        'FamiliaDeArticuloDataGridViewTextBoxColumn
+        'familiaArticulo
         '
-        Me.FamiliaDeArticuloDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.FamiliaDeArticuloDataGridViewTextBoxColumn.DataPropertyName = "FamiliaDeArticulo"
-        Me.FamiliaDeArticuloDataGridViewTextBoxColumn.HeaderText = "Familia"
-        Me.FamiliaDeArticuloDataGridViewTextBoxColumn.Name = "FamiliaDeArticuloDataGridViewTextBoxColumn"
-        Me.FamiliaDeArticuloDataGridViewTextBoxColumn.ReadOnly = True
+        Me.familiaArticulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.familiaArticulo.HeaderText = "Familia"
+        Me.familiaArticulo.Name = "familiaArticulo"
+        Me.familiaArticulo.ReadOnly = True
+        '
+        'idProveedor
+        '
+        Me.idProveedor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.idProveedor.HeaderText = "ID"
+        Me.idProveedor.Name = "idProveedor"
+        Me.idProveedor.ReadOnly = True
+        '
+        'nombreProveedor
+        '
+        Me.nombreProveedor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.nombreProveedor.HeaderText = "Nombre"
+        Me.nombreProveedor.Name = "nombreProveedor"
+        Me.nombreProveedor.ReadOnly = True
+        '
+        'datos
+        '
+        Me.datos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.datos.DefaultCellStyle = DataGridViewCellStyle4
+        Me.datos.HeaderText = " "
+        Me.datos.Name = "datos"
+        Me.datos.ReadOnly = True
+        Me.datos.Text = "VER DATOS"
+        Me.datos.UseColumnTextForButtonValue = True
+        '
+        'idInventario
+        '
+        Me.idInventario.HeaderText = "ID"
+        Me.idInventario.Name = "idInventario"
+        Me.idInventario.ReadOnly = True
+        Me.idInventario.Visible = False
+        '
+        'nombreArticulo
+        '
+        Me.nombreArticulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.nombreArticulo.HeaderText = "Artículo"
+        Me.nombreArticulo.Name = "nombreArticulo"
+        Me.nombreArticulo.ReadOnly = True
+        '
+        'stockActual
+        '
+        Me.stockActual.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.stockActual.HeaderText = "Stock Actal"
+        Me.stockActual.Name = "stockActual"
+        Me.stockActual.ReadOnly = True
+        '
+        'ProveedorBindingSource
+        '
+        Me.ProveedorBindingSource.DataSource = GetType(MP_Lucas_Sanz.Proveedor)
         '
         'ArticuloBindingSource
         '
         Me.ArticuloBindingSource.DataSource = GetType(MP_Lucas_Sanz.Articulo)
         '
-        'codigoProveedor
+        'GrupoBindingSource
         '
-        Me.codigoProveedor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.codigoProveedor.DataPropertyName = "CodigoDeProveedor"
-        Me.codigoProveedor.HeaderText = "Código Proveedor"
-        Me.codigoProveedor.Name = "codigoProveedor"
-        Me.codigoProveedor.ReadOnly = True
+        Me.GrupoBindingSource.DataSource = GetType(MP_Lucas_Sanz.Grupo)
         '
-        'nombreProveedor
+        'FormaPagoBindingSource
         '
-        Me.nombreProveedor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.nombreProveedor.DataPropertyName = "NombreDeProveedor"
-        Me.nombreProveedor.HeaderText = "Nombre Proveedor"
-        Me.nombreProveedor.Name = "nombreProveedor"
-        Me.nombreProveedor.ReadOnly = True
-        '
-        'ProveedorBindingSource
-        '
-        Me.ProveedorBindingSource.DataSource = GetType(MP_Lucas_Sanz.Proveedor)
+        Me.FormaPagoBindingSource.DataSource = GetType(MP_Lucas_Sanz.FormaPago)
         '
         'InventarioBindingSource
         '
@@ -2169,44 +2179,17 @@ Partial Class frmMain
         '
         Me.GrupoBindingSource1.DataSource = GetType(MP_Lucas_Sanz.Grupo)
         '
-        'gb_ver_albaranes
+        'btn_eliminar_compra
         '
-        Me.gb_ver_albaranes.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.gb_ver_albaranes.Controls.Add(Me.rdb_ver_compras)
-        Me.gb_ver_albaranes.Controls.Add(Me.rdb_ver_ventas)
-        Me.gb_ver_albaranes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.gb_ver_albaranes.Location = New System.Drawing.Point(3, 3)
-        Me.gb_ver_albaranes.Name = "gb_ver_albaranes"
-        Me.gb_ver_albaranes.Size = New System.Drawing.Size(185, 88)
-        Me.gb_ver_albaranes.TabIndex = 0
-        Me.gb_ver_albaranes.TabStop = False
-        Me.gb_ver_albaranes.Text = "Ver albaranes"
-        '
-        'rdb_ver_ventas
-        '
-        Me.rdb_ver_ventas.AutoSize = True
-        Me.rdb_ver_ventas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rdb_ver_ventas.Location = New System.Drawing.Point(57, 28)
-        Me.rdb_ver_ventas.Name = "rdb_ver_ventas"
-        Me.rdb_ver_ventas.Size = New System.Drawing.Size(58, 17)
-        Me.rdb_ver_ventas.TabIndex = 0
-        Me.rdb_ver_ventas.TabStop = True
-        Me.rdb_ver_ventas.Text = "Ventas"
-        Me.rdb_ver_ventas.UseVisualStyleBackColor = True
-        '
-        'rdb_ver_compras
-        '
-        Me.rdb_ver_compras.AutoSize = True
-        Me.rdb_ver_compras.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rdb_ver_compras.Location = New System.Drawing.Point(57, 53)
-        Me.rdb_ver_compras.Name = "rdb_ver_compras"
-        Me.rdb_ver_compras.Size = New System.Drawing.Size(66, 17)
-        Me.rdb_ver_compras.TabIndex = 1
-        Me.rdb_ver_compras.TabStop = True
-        Me.rdb_ver_compras.Text = "Compras"
-        Me.rdb_ver_compras.UseVisualStyleBackColor = True
+        Me.btn_eliminar_compra.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_eliminar_compra.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_eliminar_compra.Location = New System.Drawing.Point(15, 120)
+        Me.btn_eliminar_compra.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
+        Me.btn_eliminar_compra.Name = "btn_eliminar_compra"
+        Me.btn_eliminar_compra.Size = New System.Drawing.Size(161, 23)
+        Me.btn_eliminar_compra.TabIndex = 1
+        Me.btn_eliminar_compra.Text = "Eliminar"
+        Me.btn_eliminar_compra.UseVisualStyleBackColor = True
         '
         'frmMain
         '
@@ -2271,21 +2254,21 @@ Partial Class frmMain
         Me.TableLayoutPanel8.PerformLayout()
         CType(Me.dg_movimientos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tab_albaranes.ResumeLayout(False)
-        Me.tab_configuraciones.ResumeLayout(False)
-        Me.TableLayoutPanel9.ResumeLayout(False)
         Me.TableLayoutPanel18.ResumeLayout(False)
         CType(Me.dg_albaranes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel19.ResumeLayout(False)
-        CType(Me.FormaPagoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GrupoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ArticuloBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gb_ver_albaranes.ResumeLayout(False)
+        Me.gb_ver_albaranes.PerformLayout()
+        Me.tab_configuraciones.ResumeLayout(False)
+        Me.TableLayoutPanel9.ResumeLayout(False)
         CType(Me.ProveedorBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ArticuloBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GrupoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FormaPagoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.InventarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ClienteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BancoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GrupoBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.gb_ver_albaranes.ResumeLayout(False)
-        Me.gb_ver_albaranes.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2347,19 +2330,9 @@ Partial Class frmMain
     Friend WithEvents btn_eliminar_articulo_inventario As Button
     Friend WithEvents txt_busqueda_inventario As TextBox
     Friend WithEvents tlp_menu_main As TableLayoutPanel
-    Friend WithEvents nombreBanco As DataGridViewTextBoxColumn
-    Friend WithEvents codigoBanco As DataGridViewTextBoxColumn
     Friend WithEvents btn_menu_inventario As Button
     Friend WithEvents btn_menu_configuraciones As Button
     Friend WithEvents tab_configuraciones As TabPage
-    Friend WithEvents codigoCliente As DataGridViewTextBoxColumn
-    Friend WithEvents nombreCliente As DataGridViewTextBoxColumn
-    Friend WithEvents nifCliente As DataGridViewTextBoxColumn
-    Friend WithEvents fechaNacCliente As DataGridViewTextBoxColumn
-    Friend WithEvents direccionCliente As DataGridViewTextBoxColumn
-    Friend WithEvents emailCliente As DataGridViewTextBoxColumn
-    Friend WithEvents grupoCliente As DataGridViewTextBoxColumn
-    Friend WithEvents bancoCliente As DataGridViewTextBoxColumn
     Friend WithEvents TableLayoutPanel9 As TableLayoutPanel
     Friend WithEvents btn_actualizacion_campo_extra As Button
     Friend WithEvents btn_actualizacion_añadir_tabla As Button
@@ -2373,9 +2346,6 @@ Partial Class frmMain
     Friend WithEvents facturaMovimiento As DataGridViewTextBoxColumn
     Friend WithEvents fechaMovimiento As DataGridViewTextBoxColumn
     Friend WithEvents stockMovimiento As DataGridViewTextBoxColumn
-    Friend WithEvents idAlmacen As DataGridViewTextBoxColumn
-    Friend WithEvents nombreArticulo As DataGridViewTextBoxColumn
-    Friend WithEvents stockActual As DataGridViewTextBoxColumn
     Friend WithEvents TableLayoutPanel10 As TableLayoutPanel
     Friend WithEvents gb_grupos As GroupBox
     Friend WithEvents rdb_codigo_grupo As RadioButton
@@ -2387,8 +2357,6 @@ Partial Class frmMain
     Friend WithEvents rdb_nif_cliente As RadioButton
     Friend WithEvents rdb_nombre_cliente As RadioButton
     Friend WithEvents rdb_id_cliente As RadioButton
-    Friend WithEvents codigoGrupo As DataGridViewTextBoxColumn
-    Friend WithEvents nombreGrupo As DataGridViewTextBoxColumn
     Friend WithEvents TableLayoutPanel12 As TableLayoutPanel
     Friend WithEvents txt_busqueda_banco As TextBox
     Friend WithEvents gb_bancos As GroupBox
@@ -2399,13 +2367,6 @@ Partial Class frmMain
     Friend WithEvents gb_formas_pago As GroupBox
     Friend WithEvents rdb_nombre_forma_pago As RadioButton
     Friend WithEvents rdb_codigo_forma_pago As RadioButton
-    Friend WithEvents codigoFormaPago As DataGridViewTextBoxColumn
-    Friend WithEvents nombreFormaPago As DataGridViewTextBoxColumn
-    Friend WithEvents BancoAsignadoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ActivoDataGridViewTextBoxColumn As DataGridViewCheckBoxColumn
-    Friend WithEvents NumeroPlazosPagoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PrimerPlazoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DiasPlazosDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents TableLayoutPanel15 As TableLayoutPanel
     Friend WithEvents TableLayoutPanel14 As TableLayoutPanel
     Friend WithEvents gb_proveedores As GroupBox
@@ -2416,18 +2377,6 @@ Partial Class frmMain
     Friend WithEvents gb_articulos As GroupBox
     Friend WithEvents rdb_nombre_articulo As RadioButton
     Friend WithEvents rdb_codigo_articulo As RadioButton
-    Friend WithEvents codigoProveedor As DataGridViewTextBoxColumn
-    Friend WithEvents nombreProveedor As DataGridViewTextBoxColumn
-    Friend WithEvents datos As DataGridViewButtonColumn
-    Friend WithEvents codigoArticulo As DataGridViewTextBoxColumn
-    Friend WithEvents nombreArticulos As DataGridViewTextBoxColumn
-    Friend WithEvents DescripcionDeArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PVPCompraDeArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PVPVentaDeArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents impuestoArticulo As DataGridViewTextBoxColumn
-    Friend WithEvents PorcentajeDeBeneficioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents TipoDeUnidadArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents FamiliaDeArticuloDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents TableLayoutPanel16 As TableLayoutPanel
     Friend WithEvents btn_efectuar_venta As Button
     Friend WithEvents btn_ver_ventas As Button
@@ -2448,4 +2397,39 @@ Partial Class frmMain
     Friend WithEvents gb_ver_albaranes As GroupBox
     Friend WithEvents rdb_ver_compras As RadioButton
     Friend WithEvents rdb_ver_ventas As RadioButton
+    Friend WithEvents nombreBanco As DataGridViewTextBoxColumn
+    Friend WithEvents codigoBanco As DataGridViewTextBoxColumn
+    Friend WithEvents idFormaPago As DataGridViewTextBoxColumn
+    Friend WithEvents nombreFormaPago As DataGridViewTextBoxColumn
+    Friend WithEvents bancoFormaPago As DataGridViewTextBoxColumn
+    Friend WithEvents activoFormaPago As DataGridViewCheckBoxColumn
+    Friend WithEvents numPlazosFormaPago As DataGridViewTextBoxColumn
+    Friend WithEvents primerPlazoFormaPago As DataGridViewTextBoxColumn
+    Friend WithEvents intervaloFormaPago As DataGridViewTextBoxColumn
+    Friend WithEvents idCliente As DataGridViewTextBoxColumn
+    Friend WithEvents nombreCliente As DataGridViewTextBoxColumn
+    Friend WithEvents nifCliente As DataGridViewTextBoxColumn
+    Friend WithEvents fechaNacimientoCliente As DataGridViewTextBoxColumn
+    Friend WithEvents direccionCliente As DataGridViewTextBoxColumn
+    Friend WithEvents emailCliente As DataGridViewTextBoxColumn
+    Friend WithEvents grupoCliente As DataGridViewTextBoxColumn
+    Friend WithEvents bancoCliente As DataGridViewTextBoxColumn
+    Friend WithEvents idGrupo As DataGridViewTextBoxColumn
+    Friend WithEvents nombreGrupo As DataGridViewTextBoxColumn
+    Friend WithEvents idArticulo As DataGridViewTextBoxColumn
+    Friend WithEvents nombreArticuloo As DataGridViewTextBoxColumn
+    Friend WithEvents descripcionArticulo As DataGridViewTextBoxColumn
+    Friend WithEvents pvpCompraArticulo As DataGridViewTextBoxColumn
+    Friend WithEvents pvpVentaArticulo As DataGridViewTextBoxColumn
+    Friend WithEvents impuestoArticulo As DataGridViewTextBoxColumn
+    Friend WithEvents porcBeneficioArticulo As DataGridViewTextBoxColumn
+    Friend WithEvents tipoUnidadArticulo As DataGridViewTextBoxColumn
+    Friend WithEvents familiaArticulo As DataGridViewTextBoxColumn
+    Friend WithEvents idProveedor As DataGridViewTextBoxColumn
+    Friend WithEvents nombreProveedor As DataGridViewTextBoxColumn
+    Friend WithEvents datos As DataGridViewButtonColumn
+    Friend WithEvents idInventario As DataGridViewTextBoxColumn
+    Friend WithEvents nombreArticulo As DataGridViewTextBoxColumn
+    Friend WithEvents stockActual As DataGridViewTextBoxColumn
+    Friend WithEvents btn_eliminar_compra As Button
 End Class

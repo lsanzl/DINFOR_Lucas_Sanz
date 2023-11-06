@@ -25,31 +25,39 @@
         frmProveedor.btn_eliminar_proveedor.Enabled = False
 
         frmNuevoProveedor.btn_confirmar_proveedor.Text = "Confirmar"
-        clearFields()
 
-        frmProveedor.dg_proveedores.DataSource = Nothing
-        frmProveedor.dg_proveedores.Rows.Clear()
-
-        listaProveedores = proveedorAux.getProveedores()
-        frmProveedor.dg_proveedores.DataSource = listaProveedores
+        Dim dg As DataGridView = frmProveedor.dg_proveedores
+        listaProveedores = listaProveedoresAux
+        dg.Rows.Clear()
+        For Each p As Proveedor In listaProveedores
+            Dim index As Integer = dg.Rows.Add()
+            With dg.Rows(index)
+                .Cells("idProveedor").Value = p.CodigoDeProveedor
+                .Cells("nombreProveedor").Value = p.NombreDeProveedor
+            End With
+        Next
+        frmProveedor.txt_busqueda_proveedor.Clear()
         frmProveedor.dg_proveedores.ClearSelection()
     End Sub
 
     Public Sub click_btn_añadir_proveedor(sender As Object, e As EventArgs)
+        clearFields()
         frmNuevoProveedor.Text = "Creación nuevo proveedor"
         frmNuevoProveedor.ShowDialog()
         fillDGProveedores()
     End Sub
     Private Sub click_btn_modificar_proveedor(sender As Object, e As EventArgs)
-        frmNuevoProveedor.Text = "Modificación de proveedor"
-        frmNuevoProveedor.txt_codigo_proveedor.Text = proveedorTemp.CodigoDeProveedor
-        frmNuevoProveedor.txt_codigo_proveedor.Enabled = False
-        frmNuevoProveedor.txt_nombre_proveedor.Text = proveedorTemp.NombreDeProveedor
-        frmNuevoProveedor.txt_nif_proveedor.Text = proveedorTemp.NifDeProveedor
-        frmNuevoProveedor.txt_direccion_proveedor.Text = proveedorTemp.DireccionDeProveedor
-        frmNuevoProveedor.txt_poblacion_proveedor.Text = proveedorTemp.PoblacionDeProveedor
-        frmNuevoProveedor.txt_telefono_proveedor.Text = proveedorTemp.TelefonoDeProveedor
-        frmNuevoProveedor.btn_confirmar_proveedor.Text = "Modificar"
+        With frmNuevoProveedor
+            .Text = "Modificación de proveedor"
+            .txt_codigo_proveedor.Text = proveedorTemp.CodigoDeProveedor
+            .txt_codigo_proveedor.Enabled = False
+            .txt_nombre_proveedor.Text = proveedorTemp.NombreDeProveedor
+            .txt_nif_proveedor.Text = proveedorTemp.NifDeProveedor
+            .txt_direccion_proveedor.Text = proveedorTemp.DireccionDeProveedor
+            .txt_poblacion_proveedor.Text = proveedorTemp.PoblacionDeProveedor
+            .txt_telefono_proveedor.Text = proveedorTemp.TelefonoDeProveedor
+            .btn_confirmar_proveedor.Text = "Modificar"
+        End With
         frmNuevoProveedor.ShowDialog()
 
         clearFields()
@@ -60,47 +68,51 @@
         fillDGProveedores()
     End Sub
     Private Sub clearFields()
-        frmNuevoProveedor.txt_codigo_proveedor.Clear()
-        frmNuevoProveedor.txt_codigo_proveedor.Enabled = True
-        frmNuevoProveedor.txt_nombre_proveedor.Clear()
-        frmNuevoProveedor.txt_nif_proveedor.Clear()
-        frmNuevoProveedor.txt_direccion_proveedor.Clear()
-        frmNuevoProveedor.txt_poblacion_proveedor.Clear()
-        frmNuevoProveedor.txt_telefono_proveedor.Clear()
+        With frmNuevoProveedor
+            .txt_codigo_proveedor.Clear()
+            .txt_codigo_proveedor.Enabled = True
+            .txt_nombre_proveedor.Clear()
+            .txt_nif_proveedor.Clear()
+            .txt_direccion_proveedor.Clear()
+            .txt_poblacion_proveedor.Clear()
+            .txt_telefono_proveedor.Clear()
+        End With
     End Sub
     Private Sub click_cell_dg_proveedores(sender As Object, e As DataGridViewCellEventArgs)
         If Not e.RowIndex >= 0 Then
             Return
         End If
+        proveedorTemp = getProveedorPorCodigo(frmProveedor.dg_proveedores.Rows(e.RowIndex).Cells("idProveedor").Value)
+        Dim frm As frmVerDatosProveedor = New frmVerDatosProveedor()
         Dim currentCelll As DataGridViewCell = frmProveedor.dg_proveedores.CurrentCell
         If currentCelll.Value.Equals("VER DATOS") Then
-            proveedorTemp = frmProveedor.dg_proveedores.Rows(e.RowIndex).DataBoundItem
-            frmVerDatosProveedor.Text = $"Datos de {proveedorTemp.NombreDeProveedor}"
-            frmVerDatosProveedor.txt_codigo_proveedor.Text = proveedorTemp.CodigoDeProveedor
-            frmVerDatosProveedor.txt_nombre_proveedor.Text = proveedorTemp.NombreDeProveedor
-            frmVerDatosProveedor.txt_nif_proveedor.Text = proveedorTemp.NifDeProveedor
-            frmVerDatosProveedor.txt_direccion_proveedor.Text = proveedorTemp.DireccionDeProveedor
-            frmVerDatosProveedor.txt_poblacion_proveedor.Text = proveedorTemp.PoblacionDeProveedor
-            frmVerDatosProveedor.txt_telefono_proveedor.Text = proveedorTemp.TelefonoDeProveedor
+            With frm
+                .Text = $"Datos de {proveedorTemp.NombreDeProveedor}"
+                .txt_codigo_proveedor.Text = proveedorTemp.CodigoDeProveedor
+                .txt_nombre_proveedor.Text = proveedorTemp.NombreDeProveedor
+                .txt_nif_proveedor.Text = proveedorTemp.NifDeProveedor
+                .txt_direccion_proveedor.Text = proveedorTemp.DireccionDeProveedor
+                .txt_poblacion_proveedor.Text = proveedorTemp.PoblacionDeProveedor
+                .txt_telefono_proveedor.Text = proveedorTemp.TelefonoDeProveedor
 
-            frmVerDatosProveedor.txt_codigo_proveedor.Enabled = False
-            frmVerDatosProveedor.txt_nombre_proveedor.Enabled = False
-            frmVerDatosProveedor.txt_nif_proveedor.Enabled = False
-            frmVerDatosProveedor.txt_direccion_proveedor.Enabled = False
-            frmVerDatosProveedor.txt_poblacion_proveedor.Enabled = False
-            frmVerDatosProveedor.txt_telefono_proveedor.Enabled = False
-            frmVerDatosProveedor.ShowDialog()
+                .txt_codigo_proveedor.Enabled = False
+                .txt_nombre_proveedor.Enabled = False
+                .txt_nif_proveedor.Enabled = False
+                .txt_direccion_proveedor.Enabled = False
+                .txt_poblacion_proveedor.Enabled = False
+                .txt_telefono_proveedor.Enabled = False
+            End With
+            frm.ShowDialog()
             fillDGProveedores()
             Return
         End If
 
         frmProveedor.btn_modificar_proveedor.Enabled = True
         frmProveedor.btn_eliminar_proveedor.Enabled = True
-        proveedorTemp = frmProveedor.dg_proveedores.Rows(e.RowIndex).DataBoundItem
     End Sub
     Private Sub checked_changed_gb_proveedores(sender As Object, e As EventArgs)
         If frmProveedor.rdb_codigo_proveedor.Checked Then
-            criterioBusqueda = "codigoProveedor"
+            criterioBusqueda = "idProveedor"
         Else
             criterioBusqueda = "nombreProveedor"
         End If

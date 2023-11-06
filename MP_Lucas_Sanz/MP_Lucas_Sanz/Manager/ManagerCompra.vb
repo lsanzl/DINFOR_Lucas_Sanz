@@ -83,6 +83,7 @@ Public Class ManagerCompra
         End With
         Try
             cmd.ExecuteNonQuery()
+            updateListaCompras()
         Catch ex As Exception
             MessageBox.Show("Error al introducir una compra: " + vbCrLf + ex.ToString())
         End Try
@@ -105,15 +106,36 @@ Public Class ManagerCompra
         End With
         Try
             cmd.ExecuteNonQuery()
+            updateListaCompras()
         Catch ex As Exception
             MessageBox.Show(ex.ToString())
         End Try
     End Sub
-    Public Sub deleteCompra(compra As Compra)
+    Public Sub cambiarEliminadoCompra(compra As Compra)
+        Dim eliminado As Integer
+        cmd = New SqlCommand("UPDATE COMPRAS SET 
+                            ELIMINADO_COMPRA = @Eliminado
+                            WHERE ID_COMPRA = @Codigo;", connectionDBManager)
+        If compra.CompraEliminada Then
+            eliminado = 0
+        Else
+            eliminado = 1
+        End If
+        cmd.Parameters.Add("@Eliminado", SqlDbType.Bit).Value = eliminado
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = compra.CodigoDeCompra
+        Try
+            cmd.ExecuteNonQuery()
+            updateListaCompras()
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
+        End Try
+    End Sub
+    Public Sub deleteCompraTotal(compra As Compra)
         cmd = New SqlCommand("DELETE FROM COMPRAS WHERE ID_COMPRA = @Codigo;", connectionDBManager)
         cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = compra.CodigoDeCompra
         Try
             cmd.ExecuteNonQuery()
+            updateListaCompras()
         Catch ex As Exception
             MessageBox.Show(ex.ToString())
         End Try
@@ -123,6 +145,7 @@ Public Class ManagerCompra
         cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = codigoArticulo
         Try
             cmd.ExecuteNonQuery()
+            updateListaCompras()
         Catch ex As Exception
             MessageBox.Show(ex.ToString())
         End Try
@@ -132,6 +155,7 @@ Public Class ManagerCompra
         cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = codigoProveedor
         Try
             cmd.ExecuteNonQuery()
+            updateListaCompras()
         Catch ex As Exception
             MessageBox.Show(ex.ToString())
         End Try
@@ -141,6 +165,7 @@ Public Class ManagerCompra
         cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = codigoFormaPago
         Try
             cmd.ExecuteNonQuery()
+            updateListaCompras()
         Catch ex As Exception
             MessageBox.Show(ex.ToString())
         End Try

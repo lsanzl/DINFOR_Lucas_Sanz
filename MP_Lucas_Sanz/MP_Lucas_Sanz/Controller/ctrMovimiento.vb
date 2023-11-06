@@ -20,39 +20,38 @@
         AddHandler frmMovimiento.dg_movimientos.CellBeginEdit, AddressOf cell_begin_edit_dg_movimientos
     End Sub
     Public Sub fillDGMovimientos()
-        frmMovimiento.dg_movimientos.ClearSelection()
-        listaMovimientos = New List(Of Movimiento)
-        listaMovimientos = managerMovimientoAux.getMovimientos()
+        Dim dg As DataGridView = frmMovimiento.dg_movimientos
+        dg.Rows.Clear()
+        listaMovimientos = listaMovimientosAux
         listaMovimientos = listaMovimientos.OrderBy(Function(m) m.FechaDeMovimiento).ToList()
-        frmMovimiento.dg_movimientos.Rows.Clear()
-
-        For Each item As Movimiento In listaMovimientos
+        For Each m As Movimiento In listaMovimientos
             Dim index As Integer = frmMovimiento.dg_movimientos.Rows.Add()
-            articuloTemp = getArticuloPorCodigo(item.ArticuloDeMovimiento)
-
-            frmMovimiento.dg_movimientos.Rows(index).Cells("idMovimiento").Value = item.CodigoDeMovimiento
-            If item.TipoDeMovimiento.Equals("V") Then
-                clienteTemp = VariablesGlobales.getClientePorCodigo(item.ClienteDeMovimiento)
-                frmMovimiento.dg_movimientos.Rows(index).Cells("usuarioMovimiento").Value = clienteTemp.NombreDelCliente
-            ElseIf item.TipoDeMovimiento.Equals("C") Then
-                proveedorTemp = VariablesGlobales.getProveedorPorCodigo(item.ProveedorDeMovimiento)
-                frmMovimiento.dg_movimientos.Rows(index).Cells("usuarioMovimiento").Value = proveedorTemp.NombreDeProveedor
+            articuloTemp = getArticuloPorCodigo(m.ArticuloDeMovimiento)
+            With dg.Rows(index)
+                .Cells("idMovimiento").Value = m.CodigoDeMovimiento
+                .Cells("articuloMovimiento").Value = articuloTemp.NombreDeArticulo
+                .Cells("tipoMovimiento").Value = m.TipoDeMovimiento
+                .Cells("facturaMovimiento").Value = m.FacturaDeMovimiento
+                .Cells("fechaMovimiento").Value = m.FechaDeMovimiento
+                .Cells("stockMovimiento").Value = m.StockActualDeMovimiento
+                .Cells("cantidadMovimiento").Value = m.CantidadDeMovimiento
+            End With
+            If m.TipoDeMovimiento.Equals("V") Then
+                clienteTemp = VariablesGlobales.getClientePorCodigo(m.ClienteDeMovimiento)
+                dg.Rows(index).Cells("usuarioMovimiento").Value = clienteTemp.NombreDelCliente
+            ElseIf m.TipoDeMovimiento.Equals("C") Then
+                proveedorTemp = VariablesGlobales.getProveedorPorCodigo(m.ProveedorDeMovimiento)
+                dg.Rows(index).Cells("usuarioMovimiento").Value = proveedorTemp.NombreDeProveedor
             Else
-                frmMovimiento.dg_movimientos.Rows(index).Cells("usuarioMovimiento").Value = ""
+                dg.Rows(index).Cells("usuarioMovimiento").Value = ""
             End If
-            frmMovimiento.dg_movimientos.Rows(index).Cells("articuloMovimiento").Value = articuloTemp.NombreDeArticulo
-            frmMovimiento.dg_movimientos.Rows(index).Cells("tipoMovimiento").Value = item.TipoDeMovimiento
-            frmMovimiento.dg_movimientos.Rows(index).Cells("facturaMovimiento").Value = item.FacturaDeMovimiento
-            frmMovimiento.dg_movimientos.Rows(index).Cells("fechaMovimiento").Value = item.FechaDeMovimiento
-            frmMovimiento.dg_movimientos.Rows(index).Cells("stockMovimiento").Value = item.StockActualDeMovimiento
-            frmMovimiento.dg_movimientos.Rows(index).Cells("cantidadMovimiento").Value = item.CantidadDeMovimiento
         Next
-        frmMovimiento.dg_movimientos.ClearSelection()
+        frmMovimiento.txt_busqueda_inventario.Clear()
+        dg.ClearSelection()
     End Sub
     Private Sub cell_click_dg_movimientos(sender As Object, e As DataGridViewCellEventArgs)
         If e.RowIndex >= 0 Then
-            Dim codigoMov As Integer = frmMovimiento.dg_movimientos.Rows(e.RowIndex).Cells("idMovimiento").Value
-            movimientoTemp = VariablesGlobales.getMovimientoPorCodigo(codigoMov)
+            movimientoTemp = VariablesGlobales.getMovimientoPorCodigo(frmMovimiento.dg_movimientos.Rows(e.RowIndex).Cells("idMovimiento").Value)
         End If
     End Sub
     Private Sub cell_value_changed_dg_movimientos(sender As Object, e As DataGridViewCellEventArgs)
@@ -89,7 +88,6 @@
         cantidadNueva = 0
         movimientoTemp = New Movimiento()
         cantidadModificar = 0
-        fillDGMovimientos()
         ctrInventarioMovimiento = New ctrInventario(frmMovimiento)
         ctrInventarioMovimiento.fillDGInventario()
     End Sub

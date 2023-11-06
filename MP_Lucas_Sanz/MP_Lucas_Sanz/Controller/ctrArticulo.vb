@@ -2,7 +2,8 @@
     Dim frmArticulo As frmMain
     Dim listaArticulos As List(Of Articulo) = New List(Of Articulo)
     Dim articuloTemp As Articulo
-    Dim criterioBusqueda As String = "nombreArticulos"
+    Dim familiaTemp As Familia
+    Dim criterioBusqueda As String = "nombreArticuloo"
 
     Public Sub New(frmPasado As frmMain)
         MyBase.New()
@@ -23,6 +24,28 @@
         frmArticulo.btn_modificar_articulo.Enabled = False
         frmArticulo.btn_eliminar_articulo.Enabled = False
 
+        Dim dg As DataGridView = frmArticulo.dg_articulos
+        dg.Rows.Clear()
+        listaArticulos = listaArticulosAux
+        For Each a As Articulo In listaArticulos
+            Dim index As Integer = dg.Rows.Add()
+            familiaTemp = getFamiliaPorCodigo(a.FamiliaDeArticulo)
+            With dg.Rows(index)
+                .Cells("idArticulo").Value = a.CodigoDeArticulo
+                .Cells("nombreArticuloo").Value = a.NombreDeArticulo
+                .Cells("descripcionArticulo").Value = a.DescripcionDeArticulo
+                .Cells("pvpCompraArticulo").Value = a.PVPCompraDeArticulo
+                .Cells("pvpVentaArticulo").Value = a.PVPVentaDeArticulo
+                .Cells("impuestoArticulo").Value = a.ImpuestoDeArticulo
+                .Cells("porcBeneficioArticulo").Value = a.PorcentajeDeBeneficio
+                .Cells("tipoUnidadArticulo").Value = a.TipoDeUnidadArticulo
+                .Cells("familiaArticulo").Value = familiaTemp.NombreDeFamilia
+            End With
+        Next
+        frmArticulo.dg_articulos.ClearSelection()
+        frmArticulo.txt_busqueda_articulo.Clear()
+    End Sub
+    Private Sub clearFieldsNuevo()
         frmNuevoArticulo.btn_confirmar_articulo.Text = "Confirmar"
         frmNuevoArticulo.txt_codigo_articulo.Clear()
         frmNuevoArticulo.txt_nombre_articulo.Clear()
@@ -33,15 +56,10 @@
         frmNuevoArticulo.txt_familia_articulo.Clear()
         frmNuevoArticulo.cb_tipo_unidad_articulo.SelectedIndex = -1
         frmNuevoArticulo.txt_codigo_articulo.Enabled = True
-
-        frmArticulo.dg_articulos.DataSource = Nothing
-        frmArticulo.dg_articulos.Rows.Clear()
-        listaArticulos = articuloAux.getArticulos()
-        frmArticulo.dg_articulos.DataSource = listaArticulos
-        frmArticulo.dg_articulos.ClearSelection()
     End Sub
 
     Private Sub click_btn_añadir_articulo(sender As Object, e As EventArgs)
+        clearFieldsNuevo()
         frmNuevoArticulo.Text = "Creación nuevo artículo"
         frmNuevoArticulo.btn_confirmar_articulo.Text = "Confirmar"
         frmNuevoArticulo.ShowDialog()
@@ -72,14 +90,14 @@
         If e.RowIndex >= 0 Then
             frmArticulo.btn_modificar_articulo.Enabled = True
             frmArticulo.btn_eliminar_articulo.Enabled = True
-            articuloTemp = frmArticulo.dg_articulos.Rows(e.RowIndex).DataBoundItem
+            articuloTemp = getArticuloPorCodigo(frmArticulo.dg_articulos.Rows(e.RowIndex).Cells("idArticulo").Value)
         End If
     End Sub
     Private Sub checked_changed_gb_articulos(sender As Object, e As EventArgs)
         If frmArticulo.rdb_codigo_articulo.Checked Then
-            criterioBusqueda = "codigoArticulo"
+            criterioBusqueda = "idArticulo"
         Else
-            criterioBusqueda = "nombreArticulos"
+            criterioBusqueda = "nombreArticuloo"
         End If
     End Sub
     Private Function lookForText(textoOrigen As String, textoBusqueda As String) As Boolean

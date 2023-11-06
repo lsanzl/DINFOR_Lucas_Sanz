@@ -31,6 +31,7 @@ Public Class ManagerBanco
         End With
         Try
             cmd.ExecuteNonQuery()
+            VariablesGlobales.updateListaBancos()
         Catch ex As Exception
             MessageBox.Show("Error al introducir un banco: " + vbCrLf + ex.ToString())
         End Try
@@ -45,6 +46,7 @@ Public Class ManagerBanco
         End With
         Try
             cmd.ExecuteNonQuery()
+            VariablesGlobales.updateListaBancos()
         Catch ex As Exception
             MessageBox.Show("Error al modificar un banco: " + vbCrLf + ex.ToString())
         End Try
@@ -61,6 +63,7 @@ Public Class ManagerBanco
         cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = bancoTemp.CodigoDeBanco
         Try
             cmd.ExecuteNonQuery()
+            VariablesGlobales.updateListaBancos()
         Catch ex As Exception
             MessageBox.Show("Error al eliminar un banco: " + vbCrLf + ex.ToString())
         End Try

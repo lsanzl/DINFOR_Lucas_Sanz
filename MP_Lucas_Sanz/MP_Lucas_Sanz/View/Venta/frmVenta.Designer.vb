@@ -50,10 +50,12 @@ Partial Class frmVenta
         Me.btn_eliminar_venta = New System.Windows.Forms.Button()
         Me.btn_añadir_venta = New System.Windows.Forms.Button()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
+        Me.btn_confirmar_venta = New System.Windows.Forms.Button()
         Me.lbl_impuesto = New System.Windows.Forms.Label()
         Me.lbl_base_imponible = New System.Windows.Forms.Label()
         Me.lbl_total = New System.Windows.Forms.Label()
         Me.lbl_bruto = New System.Windows.Forms.Label()
+        Me.btn_guardar_pdf_venta = New System.Windows.Forms.Button()
         Me.dg_ventas = New System.Windows.Forms.DataGridView()
         Me.idVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clienteVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -66,8 +68,6 @@ Partial Class frmVenta
         Me.baseImponible = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.impuestoVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.precioTotalVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.btn_guardar_pdf_venta = New System.Windows.Forms.Button()
-        Me.btn_confirmar_venta = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
@@ -359,6 +359,17 @@ Partial Class frmVenta
         Me.TableLayoutPanel4.Size = New System.Drawing.Size(884, 36)
         Me.TableLayoutPanel4.TabIndex = 3
         '
+        'btn_confirmar_venta
+        '
+        Me.btn_confirmar_venta.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_confirmar_venta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_confirmar_venta.Location = New System.Drawing.Point(707, 6)
+        Me.btn_confirmar_venta.Name = "btn_confirmar_venta"
+        Me.btn_confirmar_venta.Size = New System.Drawing.Size(174, 23)
+        Me.btn_confirmar_venta.TabIndex = 10
+        Me.btn_confirmar_venta.Text = "CONFIRMAR VENTA"
+        Me.btn_confirmar_venta.UseVisualStyleBackColor = True
+        '
         'lbl_impuesto
         '
         Me.lbl_impuesto.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -412,9 +423,22 @@ Partial Class frmVenta
         Me.lbl_bruto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.lbl_bruto.Visible = False
         '
+        'btn_guardar_pdf_venta
+        '
+        Me.btn_guardar_pdf_venta.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_guardar_pdf_venta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_guardar_pdf_venta.Location = New System.Drawing.Point(531, 6)
+        Me.btn_guardar_pdf_venta.Name = "btn_guardar_pdf_venta"
+        Me.btn_guardar_pdf_venta.Size = New System.Drawing.Size(170, 23)
+        Me.btn_guardar_pdf_venta.TabIndex = 9
+        Me.btn_guardar_pdf_venta.Text = "GUARDAR PDF"
+        Me.btn_guardar_pdf_venta.UseVisualStyleBackColor = True
+        '
         'dg_ventas
         '
         Me.dg_ventas.AllowUserToAddRows = False
+        Me.dg_ventas.AllowUserToDeleteRows = False
+        Me.dg_ventas.AllowUserToResizeRows = False
         Me.dg_ventas.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -429,6 +453,7 @@ Partial Class frmVenta
         Me.dg_ventas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dg_ventas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idVenta, Me.clienteVenta, Me.articuloVenta, Me.formaPagoVenta, Me.precioUnitario, Me.precioBrutoVenta, Me.cantidadVenta, Me.descuentoVenta, Me.baseImponible, Me.impuestoVenta, Me.precioTotalVenta})
         Me.dg_ventas.Location = New System.Drawing.Point(3, 200)
+        Me.dg_ventas.MultiSelect = False
         Me.dg_ventas.Name = "dg_ventas"
         Me.dg_ventas.RowHeadersVisible = False
         Me.dg_ventas.Size = New System.Drawing.Size(884, 152)
@@ -514,28 +539,6 @@ Partial Class frmVenta
         Me.precioTotalVenta.DefaultCellStyle = DataGridViewCellStyle6
         Me.precioTotalVenta.HeaderText = "Total"
         Me.precioTotalVenta.Name = "precioTotalVenta"
-        '
-        'btn_guardar_pdf_venta
-        '
-        Me.btn_guardar_pdf_venta.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_guardar_pdf_venta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_guardar_pdf_venta.Location = New System.Drawing.Point(531, 6)
-        Me.btn_guardar_pdf_venta.Name = "btn_guardar_pdf_venta"
-        Me.btn_guardar_pdf_venta.Size = New System.Drawing.Size(170, 23)
-        Me.btn_guardar_pdf_venta.TabIndex = 9
-        Me.btn_guardar_pdf_venta.Text = "GUARDAR PDF"
-        Me.btn_guardar_pdf_venta.UseVisualStyleBackColor = True
-        '
-        'btn_confirmar_venta
-        '
-        Me.btn_confirmar_venta.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_confirmar_venta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_confirmar_venta.Location = New System.Drawing.Point(707, 6)
-        Me.btn_confirmar_venta.Name = "btn_confirmar_venta"
-        Me.btn_confirmar_venta.Size = New System.Drawing.Size(174, 23)
-        Me.btn_confirmar_venta.TabIndex = 10
-        Me.btn_confirmar_venta.Text = "CONFIRMAR VENTA"
-        Me.btn_confirmar_venta.UseVisualStyleBackColor = True
         '
         'frmVenta
         '

@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports MP_Lucas_Sanz.VariablesGlobales
 
 Public Class ManagerInventario
     Private cmd As SqlCommand
@@ -54,6 +55,7 @@ Public Class ManagerInventario
         End With
         Try
             cmd.ExecuteNonQuery()
+            updateListaInventarios()
         Catch ex As Exception
             MessageBox.Show(ex.ToString())
         End Try
@@ -68,6 +70,7 @@ Public Class ManagerInventario
         End With
         Try
             cmd.ExecuteNonQuery()
+            updateListaInventarios()
         Catch ex As Exception
             MessageBox.Show("Error al añadir unidades: " + vbCrLf + ex.ToString())
         End Try
@@ -94,6 +97,7 @@ Public Class ManagerInventario
         End With
         Try
             cmd.ExecuteNonQuery()
+            updateListaInventarios()
         Catch ex As Exception
             MessageBox.Show("Error al restar unidades: " + vbCrLf + ex.ToString())
         End Try
@@ -109,6 +113,7 @@ Public Class ManagerInventario
         End With
         Try
             cmd.ExecuteNonQuery()
+            updateListaInventarios()
         Catch ex As Exception
             MessageBox.Show("Error al introducir unidades: " + vbCrLf + ex.ToString())
         End Try
@@ -119,6 +124,7 @@ Public Class ManagerInventario
         cmd.Parameters.Add("@CodigoInventario", SqlDbType.Int).Value = inventarioPasado.CodigoDeInventario
         Try
             cmd.ExecuteNonQuery()
+            updateListaInventarios()
         Catch ex As Exception
             MessageBox.Show("Error al eliminar unidades: " + vbCrLf + ex.ToString())
         End Try
@@ -129,6 +135,7 @@ Public Class ManagerInventario
         cmd.Parameters.Add("@CodigoInventario", SqlDbType.Int).Value = codigoArticulo
         Try
             cmd.ExecuteNonQuery()
+            updateListaInventarios()
         Catch ex As Exception
             MessageBox.Show("Error al eliminar unidades: " + vbCrLf + ex.ToString())
         End Try

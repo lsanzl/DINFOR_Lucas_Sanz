@@ -33,6 +33,9 @@ Partial Class frmSeleccionEmpresa
         '
         'dg_empresas
         '
+        Me.dg_empresas.AllowUserToAddRows = False
+        Me.dg_empresas.AllowUserToDeleteRows = False
+        Me.dg_empresas.AllowUserToResizeRows = False
         Me.dg_empresas.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)

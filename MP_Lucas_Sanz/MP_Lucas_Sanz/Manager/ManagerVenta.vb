@@ -88,6 +88,25 @@ Public Class ManagerVenta
             MessageBox.Show("Error al introducir una venta: " + vbCrLf + ex.ToString())
         End Try
     End Sub
+    Public Sub cambiarEliminadoVenta(venta As Venta)
+        Dim eliminado As Integer
+        cmd = New SqlCommand("UPDATE VENTAS SET 
+                            ELIMINADO_VENTA = @Eliminado
+                            WHERE ID_VENTA = @Codigo;", connectionDBManager)
+        If venta.VentaEliminada Then
+            eliminado = 0
+        Else
+            eliminado = 1
+        End If
+        cmd.Parameters.Add("@Eliminado", SqlDbType.Bit).Value = eliminado
+        cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = venta.CodigoDeVenta
+        Try
+            cmd.ExecuteNonQuery()
+            updateListaVentas()
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
+        End Try
+    End Sub
     Public Sub deleteVentaArticulo(codigoArticulo As Integer)
         cmd = New SqlCommand("DELETE FROM VENTAS WHERE ID_ARTICULO = @Codigo;", connectionDBManager)
         cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = codigoArticulo

@@ -46,6 +46,16 @@
         Return listaArticulosAux.Find(Function(a) a.CodigoDeArticulo = codigo)
     End Function
 
+    'BANCOS
+    Public listaBancosAux As List(Of Banco) = New List(Of Banco)
+    Public Sub updateListaBancos()
+        listaBancosAux = New List(Of Banco)
+        listaBancosAux = managerBancoAux.getBancos()
+    End Sub
+    Public Function getBancoPorCodigo(codigo As Integer) As Banco
+        Return listaBancosAux.Find(Function(b) b.CodigoDeBanco = codigo)
+    End Function
+
     'CLIENTES
     Public listaClientesAux As List(Of Cliente) = New List(Of Cliente)
     Public Sub updateListaClientes()
@@ -54,56 +64,6 @@
     End Sub
     Public Function getClientePorCodigo(codigo As Integer) As Cliente
         Return listaClientesAux.Find(Function(c) c.CodigoDelCliente = codigo)
-    End Function
-
-    'PROVEEDORES
-    Public listaProveedoresAux As List(Of Proveedor) = New List(Of Proveedor)
-    Public Sub updateListaProveedores()
-        listaProveedoresAux = New List(Of Proveedor)
-        listaProveedoresAux = managerProveedorAux.getProveedores()
-    End Sub
-    Public Function getProveedorPorCodigo(codigo As Integer) As Proveedor
-        Return listaProveedoresAux.Find(Function(p) p.CodigoDeProveedor = codigo)
-    End Function
-
-    'MOVIMIENTOS
-    Public listaMovimientosAux As List(Of Movimiento) = New List(Of Movimiento)
-    Public Sub updateListaMovimientos()
-        listaMovimientosAux = New List(Of Movimiento)
-        listaMovimientosAux = managerMovimientoAux.getMovimientos()
-    End Sub
-    Public Function getMovimientoPorCodigo(codigo As Integer) As Movimiento
-        Return listaMovimientosAux.Find(Function(m) m.CodigoDeMovimiento = codigo)
-    End Function
-
-    'IMPUESTOS
-    Public listaImpuestosAux As List(Of Impuesto) = New List(Of Impuesto)
-    Public Sub updateListaImpuestos()
-        listaImpuestosAux = New List(Of Impuesto)
-        listaImpuestosAux = managerImpuestoAux.getImpuestos()
-    End Sub
-    Public Function getImpuestoPorCodigo(codigo As Integer) As Impuesto
-        Return listaImpuestosAux.Find(Function(y) y.CodigoDeImpuesto = codigo)
-    End Function
-
-    'FAMILIAS
-    Public listaFamiliasAux As List(Of Familia) = New List(Of Familia)
-    Public Sub updateListaFamilias()
-        listaFamiliasAux = New List(Of Familia)
-        listaFamiliasAux = managerFamiliaAux.getFamilias()
-    End Sub
-    Public Function getFamiliaPorCodigo(codigo As Integer) As Familia
-        Return listaFamiliasAux.Find(Function(f) f.CodigoDeFamilia = codigo)
-    End Function
-
-    'VENTAS
-    Public listaVentasAux As List(Of Venta) = New List(Of Venta)
-    Public Sub updateListaVentas()
-        listaVentasAux = New List(Of Venta)
-        listaVentasAux = managerVentaAux.getVentas()
-    End Sub
-    Public Function getVentaPorCodigo(codigo As Integer)
-        Return listaVentasAux.Find(Function(v) v.CodigoDeVenta = codigo)
     End Function
 
     'COMPRAS
@@ -116,15 +76,85 @@
         Return listaComprasAux.Find(Function(c) c.CodigoDeCompra = codigo)
     End Function
 
+    'FAMILIAS
+    Public listaFamiliasAux As List(Of Familia) = New List(Of Familia)
+    Public Sub updateListaFamilias()
+        listaFamiliasAux = New List(Of Familia)
+        listaFamiliasAux = managerFamiliaAux.getFamilias()
+    End Sub
+    Public Function getFamiliaPorCodigo(codigo As Integer) As Familia
+        Return listaFamiliasAux.Find(Function(f) f.CodigoDeFamilia = codigo)
+    End Function
+
     'FORMAS PAGO
     Public listaFormasPagoAux As List(Of FormaPago) = New List(Of FormaPago)
     Public Sub updateListaFormasPago()
         listaFormasPagoAux = New List(Of FormaPago)
         listaFormasPagoAux = managerFormaPagoAux.getFormaPagos()
     End Sub
-    Public Function getFormaPagoPorCodigo(codigo As Integer)
+    Public Function getFormaPagoPorCodigo(codigo As Integer) As FormaPago
         Return listaFormasPagoAux.Find(Function(f) f.CodigoDePago = codigo)
     End Function
+
+    'GRUPOS
+    Public listaGruposAux As List(Of Grupo) = New List(Of Grupo)
+    Public Sub updateListaGrupos()
+        listaGruposAux = managerGrupoAux.getGrupos()
+    End Sub
+    Public Function getGrupoPorCodigo(codigo As Integer) As Grupo
+        Return listaGruposAux.Find(Function(g) g.CodigoDeGrupo = codigo)
+    End Function
+
+    'IMPUESTOS
+    Public listaImpuestosAux As List(Of Impuesto) = New List(Of Impuesto)
+    Public Sub updateListaImpuestos()
+        listaImpuestosAux = New List(Of Impuesto)
+        listaImpuestosAux = managerImpuestoAux.getImpuestos()
+    End Sub
+    Public Function getImpuestoPorCodigo(codigo As Integer) As Impuesto
+        Return listaImpuestosAux.Find(Function(y) y.CodigoDeImpuesto = codigo)
+    End Function
+
+    'INVENTARIO
+    Public listaInventariosAux As List(Of Inventario) = New List(Of Inventario)
+    Public Sub updateListaInventarios()
+        listaInventariosAux = New List(Of Inventario)
+        listaInventariosAux = managerInventarioAux.getInventario()
+    End Sub
+    Public Function getInventarioPorCodigo(codigo As Integer) As Inventario
+        Return listaInventariosAux.Find(Function(i) i.CodigoDeInventario = codigo)
+    End Function
+
+    'MOVIMIENTOS
+    Public listaMovimientosAux As List(Of Movimiento) = New List(Of Movimiento)
+    Public Sub updateListaMovimientos()
+        listaMovimientosAux = New List(Of Movimiento)
+        listaMovimientosAux = managerMovimientoAux.getMovimientos()
+    End Sub
+    Public Function getMovimientoPorCodigo(codigo As Integer) As Movimiento
+        Return listaMovimientosAux.Find(Function(m) m.CodigoDeMovimiento = codigo)
+    End Function
+
+    'PROVEEDORES
+    Public listaProveedoresAux As List(Of Proveedor) = New List(Of Proveedor)
+    Public Sub updateListaProveedores()
+        listaProveedoresAux = New List(Of Proveedor)
+        listaProveedoresAux = managerProveedorAux.getProveedores()
+    End Sub
+    Public Function getProveedorPorCodigo(codigo As Integer) As Proveedor
+        Return listaProveedoresAux.Find(Function(p) p.CodigoDeProveedor = codigo)
+    End Function
+
+    'VENTAS
+    Public listaVentasAux As List(Of Venta) = New List(Of Venta)
+    Public Sub updateListaVentas()
+        listaVentasAux = New List(Of Venta)
+        listaVentasAux = managerVentaAux.getVentas()
+    End Sub
+    Public Function getVentaPorCodigo(codigo As Integer)
+        Return listaVentasAux.Find(Function(v) v.CodigoDeVenta = codigo)
+    End Function
+
 
     ' ------------ VARIABLES GLOBALES -------------
     Private empresaSeleccionadaDB As String = Nothing

@@ -21,15 +21,26 @@
     End Sub
 
     Public Sub fillDGFormasPago()
+        Dim dg As DataGridView = frmFormasPago.dg_formas_pago
         formaPagoTemp = Nothing
         formaPagoSeleccionado = False
         frmMain.btn_modificar_forma_pago.Enabled = False
         frmMain.btn_eliminar_forma_pago.Enabled = False
         frmNuevaFormaPago.btn_confirmar_forma_pago.Text = "Confirmar"
-        frmFormasPago.dg_formas_pago.DataSource = Nothing
-        frmFormasPago.dg_formas_pago.Rows.Clear()
-        listaFormasPago = formaPagoAux.getFormasPago()
-        frmFormasPago.dg_formas_pago.DataSource = listaFormasPago
+
+        dg.Rows.Clear()
+        listaFormasPago = VariablesGlobales.listaFormasPagoAux
+        For Each f As FormaPago In listaFormasPago
+            Dim index As Integer = dg.Rows.Add()
+            dg.Rows(index).Cells("idFormaPago").Value = f.CodigoDePago
+            dg.Rows(index).Cells("nombreFormaPago").Value = f.NombreDePago
+            dg.Rows(index).Cells("bancoFormaPago").Value = f.BancoAsignado
+            dg.Rows(index).Cells("activoFormaPago").Value = f.Activo
+            dg.Rows(index).Cells("numPlazosFormaPago").Value = f.NumeroPlazosPago
+            dg.Rows(index).Cells("primerPlazoFormaPago").Value = f.PrimerPlazo
+            dg.Rows(index).Cells("intervaloFormaPago").Value = f.DiasPlazos
+        Next
+        frmFormasPago.txt_busqueda_forma_pago.Clear()
         frmFormasPago.dg_formas_pago.ClearSelection()
     End Sub
 
@@ -37,17 +48,15 @@
         If Not e.RowIndex >= 0 Then
             Return
         End If
+        formaPagoTemp = VariablesGlobales.getFormaPagoPorCodigo(frmFormasPago.dg_formas_pago.Rows(e.RowIndex).Cells("idFormaPago").Value)
         Dim currentCelll As DataGridViewCell = frmFormasPago.dg_formas_pago.CurrentCell
         If currentCelll.OwningColumn.HeaderText.Equals("Activo") Then
-            formaPagoTemp = frmFormasPago.dg_formas_pago.Rows(e.RowIndex).DataBoundItem
             formaPagoTemp.changeEstado()
-            fillDGFormasPago()
             Return
         End If
 
         frmFormasPago.btn_modificar_forma_pago.Enabled = True
         frmFormasPago.btn_eliminar_forma_pago.Enabled = True
-        formaPagoTemp = frmFormasPago.dg_formas_pago.Rows(e.RowIndex).DataBoundItem
     End Sub
 
     Private Sub click_btn_añadir_forma_pago(sender As Object, e As EventArgs)
@@ -82,7 +91,7 @@
     End Sub
     Private Sub checked_changed_gb_formas_pago(sender As Object, e As EventArgs)
         If frmFormasPago.rdb_codigo_forma_pago.Checked Then
-            criterioBusqueda = "codigoFormaPago"
+            criterioBusqueda = "idFormaPago"
         Else
             criterioBusqueda = "nombreFormaPago"
         End If

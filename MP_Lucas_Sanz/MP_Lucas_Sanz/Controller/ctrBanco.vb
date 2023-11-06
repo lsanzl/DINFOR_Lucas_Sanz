@@ -27,10 +27,14 @@
         frmNuevoBanco.txt_codigo_banco.Clear()
         frmNuevoBanco.txt_nombre_banco.Clear()
 
-        frmBanco.dg_bancos.DataSource = Nothing
         frmBanco.dg_bancos.Rows.Clear()
-        listaBancos = bancoAux.getBancos()
-        frmBanco.dg_bancos.DataSource = listaBancos
+        listaBancos = VariablesGlobales.listaBancosAux
+        For Each b As Banco In listaBancos
+            Dim index As Integer = frmBanco.dg_bancos.Rows.Add()
+            frmBanco.dg_bancos.Rows(index).Cells("nombreBanco").Value = b.NombreDeBanco
+            frmBanco.dg_bancos.Rows(index).Cells("codigoBanco").Value = b.CodigoDeBanco
+        Next
+        frmBanco.txt_busqueda_banco.Clear()
         frmBanco.dg_bancos.ClearSelection()
     End Sub
 
@@ -66,7 +70,7 @@
         If e.RowIndex >= 0 Then
             frmBanco.btn_modificar_banco.Enabled = True
             frmBanco.btn_eliminar_banco.Enabled = True
-            bancoTemp = frmBanco.dg_bancos.Rows(e.RowIndex).DataBoundItem
+            bancoTemp = VariablesGlobales.getBancoPorCodigo(frmBanco.dg_bancos.Rows(e.RowIndex).Cells("codigoBanco").Value)
         End If
     End Sub
     Private Sub checked_changed_gb_bancos(sender As Object, e As EventArgs)

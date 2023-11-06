@@ -154,7 +154,7 @@
         managerCompraAux.modifyCompra(Me)
     End Sub
     Public Sub deleteCompra()
-        managerCompraAux.deleteCompra(Me)
+        managerCompraAux.cambiarEliminadoCompra(Me)
     End Sub
     Public Function getRandomFactura() As String
         Dim random As New Random()

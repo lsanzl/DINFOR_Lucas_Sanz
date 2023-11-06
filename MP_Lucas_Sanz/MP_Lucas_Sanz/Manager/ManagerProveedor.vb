@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports MP_Lucas_Sanz.VariablesGlobales
 
 Public Class ManagerProveedor
     Private cmd As SqlCommand
@@ -61,6 +62,7 @@ Public Class ManagerProveedor
         End With
         Try
             cmd.ExecuteNonQuery()
+            updateListaProveedores()
         Catch ex As Exception
             MessageBox.Show("Error al introducir un proveedor nuevo: " + vbCrLf + ex.ToString())
         End Try
@@ -83,6 +85,7 @@ Public Class ManagerProveedor
         End With
         Try
             cmd.ExecuteNonQuery()
+            updateListaProveedores()
         Catch ex As Exception
             MessageBox.Show("Error al modificar un proveedor nuevo: " + vbCrLf + ex.ToString())
         End Try
@@ -98,6 +101,7 @@ Public Class ManagerProveedor
         cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = proveedorDel.CodigoDeProveedor
         Try
             cmd.ExecuteNonQuery()
+            updateListaProveedores()
         Catch ex As Exception
             MessageBox.Show("Error al eliminar un proveedor nuevo: " + vbCrLf + ex.ToString())
         End Try

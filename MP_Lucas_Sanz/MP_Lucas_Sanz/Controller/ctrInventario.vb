@@ -1,5 +1,6 @@
 ﻿Imports System.Net
 Imports System.Net.Mail
+Imports MP_Lucas_Sanz.VariablesGlobales
 
 Public Class ctrInventario
     Dim frmInventario As frmMain
@@ -32,15 +33,18 @@ Public Class ctrInventario
         frmUnidadesInventario.txt_unidades_inventario.Clear()
         frmInventario.dg_inventario.Rows.Clear()
 
-        listaInventario = New List(Of Inventario)
-        listaInventario = inventarioAux.getInventario()
-        For Each item As Inventario In listaInventario
-            Dim index As Integer = frmInventario.dg_inventario.Rows.Add()
-            frmInventario.dg_inventario.Rows(index).Cells("idAlmacen").Value = item.CodigoDeInventario
-            frmInventario.dg_inventario.Rows(index).Cells("nombreArticulo").Value = item.ArticuloDeInventario.NombreDeArticulo
-            frmInventario.dg_inventario.Rows(index).Cells("stockActual").Value = item.UnidadesDisponibles
+        Dim dg As DataGridView = frmInventario.dg_inventario
+        listaInventario = listaInventariosAux
+        For Each i As Inventario In listaInventario
+            Dim index As Integer = dg.Rows.Add()
+            With dg.Rows(index)
+                .Cells("idInventario").Value = i.CodigoDeInventario
+                .Cells("nombreArticulo").Value = i.ArticuloDeInventario.NombreDeArticulo
+                .Cells("stockActual").Value = i.UnidadesDisponibles
+            End With
         Next
-        frmInventario.dg_inventario.ClearSelection()
+        frmInventario.txt_busqueda_inventario.Clear()
+        dg.ClearSelection()
     End Sub
     Private Sub cell_end_edit_dg_inventarios(sender As Object, e As DataGridViewCellEventArgs)
         If frmInventario.dg_inventario.Columns(e.ColumnIndex).Name = "stockActual" AndAlso e.RowIndex >= 0 Then
@@ -48,7 +52,6 @@ Public Class ctrInventario
             Dim cantidadVariar As Integer = cantidadNueva - inventarioTemp.UnidadesDisponibles
             managerInventarioAux.setUnidades(cantidadNueva, inventarioTemp.ArticuloDeInventario.CodigoDeArticulo)
             reajusteStock(cantidadVariar, inventarioTemp)
-            fillDGInventario()
         End If
     End Sub
     Private Sub reajusteStock(cantidad As Integer, inventario As Inventario)
@@ -133,8 +136,7 @@ Public Class ctrInventario
             frmInventario.btn_añadir_unidades.Enabled = True
             frmInventario.btn_restar_unidades.Enabled = True
             frmInventario.btn_eliminar_articulo_inventario.Enabled = True
-            Dim codigoInventario As Integer = frmInventario.dg_inventario.Rows(e.RowIndex).Cells("idAlmacen").Value
-            inventarioTemp = managerInventarioAux.getInventario(codigoInventario)
+            inventarioTemp = getInventarioPorCodigo(frmInventario.dg_inventario.Rows(e.RowIndex).Cells("idInventario").Value)
         End If
     End Sub
     Private Sub tab_main_SelectedIndexChanged(sender As Object, e As EventArgs)

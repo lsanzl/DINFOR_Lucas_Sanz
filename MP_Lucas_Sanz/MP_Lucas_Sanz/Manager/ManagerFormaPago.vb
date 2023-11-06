@@ -49,6 +49,7 @@ Public Class ManagerFormaPago
         End With
         Try
             cmd.ExecuteNonQuery()
+            updateListaFormasPago()
         Catch ex As Exception
             MessageBox.Show("Error al introducir una forma de pago: " + vbCrLf + ex.ToString())
         End Try
@@ -73,6 +74,7 @@ Public Class ManagerFormaPago
         End With
         Try
             cmd.ExecuteNonQuery()
+            updateListaFormasPago()
         Catch ex As Exception
             MessageBox.Show("Error al modificar una forma de pago: " + vbCrLf + ex.ToString())
         End Try
@@ -90,6 +92,7 @@ Public Class ManagerFormaPago
         cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = formaPagoSQL.CodigoDePago
         Try
             cmd.ExecuteNonQuery()
+            updateListaFormasPago()
         Catch ex As Exception
             MessageBox.Show("Error al eliminar una forma de pago: " + vbCrLf + ex.ToString())
         End Try
@@ -114,6 +117,7 @@ Public Class ManagerFormaPago
         cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = codigoBanco
         Try
             cmd.ExecuteNonQuery()
+            updateListaFormasPago()
         Catch ex As Exception
             MessageBox.Show("Error al eliminar una forma de pago: " + vbCrLf + ex.ToString())
         End Try
@@ -128,6 +132,7 @@ Public Class ManagerFormaPago
         End With
         Try
             cmd.ExecuteNonQuery()
+            updateListaFormasPago()
         Catch ex As Exception
             MessageBox.Show("Error al cambiar el estado de una forma de pago: " + vbCrLf + ex.ToString())
         End Try

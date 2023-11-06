@@ -219,15 +219,7 @@ Public Class ManagerEmpresa
         cmd = New SqlCommand($"USE {getEmpresaSeleccionada()};", connectionDBManager)
         Try
             cmd.ExecuteNonQuery()
-            VariablesGlobales.updateListaArticulos()
-            VariablesGlobales.updateListaClientes()
-            VariablesGlobales.updateListaProveedores()
-            VariablesGlobales.updateListaMovimientos()
-            VariablesGlobales.updateListaImpuestos()
-            VariablesGlobales.updateListaFamilias()
-            VariablesGlobales.updateListaCompras()
-            VariablesGlobales.updateListaVentas()
-            VariablesGlobales.updateListaFormasPago()
+            updateListasAux()
         Catch ex As Exception
             MessageBox.Show(ex.ToString())
         End Try
@@ -236,17 +228,23 @@ Public Class ManagerEmpresa
         cmd = New SqlCommand($"USE {nombreEmp};", connectionDBManager)
         Try
             cmd.ExecuteNonQuery()
-            VariablesGlobales.updateListaArticulos()
-            VariablesGlobales.updateListaClientes()
-            VariablesGlobales.updateListaProveedores()
-            VariablesGlobales.updateListaMovimientos()
-            VariablesGlobales.updateListaImpuestos()
-            VariablesGlobales.updateListaFamilias()
-            VariablesGlobales.updateListaCompras()
-            VariablesGlobales.updateListaVentas()
-            VariablesGlobales.updateListaFormasPago()
+            updateListasAux()
         Catch ex As Exception
             MessageBox.Show(ex.ToString())
         End Try
+    End Sub
+    Private Sub updateListasAux()
+        VariablesGlobales.updateListaArticulos()
+        VariablesGlobales.updateListaClientes()
+        VariablesGlobales.updateListaProveedores()
+        VariablesGlobales.updateListaMovimientos()
+        VariablesGlobales.updateListaImpuestos()
+        VariablesGlobales.updateListaFamilias()
+        VariablesGlobales.updateListaCompras()
+        VariablesGlobales.updateListaVentas()
+        VariablesGlobales.updateListaFormasPago()
+        VariablesGlobales.updateListaBancos()
+        VariablesGlobales.updateListaGrupos()
+        VariablesGlobales.updateListaInventarios()
     End Sub
 End Class

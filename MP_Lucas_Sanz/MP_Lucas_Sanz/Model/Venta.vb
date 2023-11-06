@@ -162,6 +162,9 @@
     Public Sub addVenta()
         managerVentaAux.addVenta(Me)
     End Sub
+    Public Sub deleteVenta()
+        managerVentaAux.cambiarEliminadoVenta(Me)
+    End Sub
     Public Function getRandomFactura() As String
         Dim random As New Random()
         Dim numeroAleatorio As Integer

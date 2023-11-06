@@ -1,7 +1,11 @@
-﻿Public Class ctrCliente
+﻿Imports MP_Lucas_Sanz.VariablesGlobales
+
+Public Class ctrCliente
     Public frmCliente As frmMain
     Dim listaClientes As List(Of Cliente) = New List(Of Cliente)
     Dim clienteTemp As Cliente
+    Dim bancoTemp As Banco
+    Dim grupoTemp As Grupo
     Dim criterioBusqueda As String = "nombreCliente"
 
     Public Sub New(frmClientePasado As frmMain)
@@ -21,17 +25,29 @@
     End Sub
 
     Public Sub fillDGClientes()
-        listaClientes.Clear()
-
+        Dim dg As DataGridView = frmCliente.dg_clientes
         frmCliente.btn_modificar_cliente.Enabled = False
         frmCliente.btn_eliminar_cliente.Enabled = False
 
-        frmCliente.dg_clientes.DataSource = Nothing
-        frmCliente.dg_clientes.Rows.Clear()
-        listaClientes = managerClienteAux.getClientes()
-        frmCliente.dg_clientes.DataSource = listaClientes
-
+        listaClientes = listaClientesAux
+        dg.Rows.Clear()
+        For Each c As Cliente In listaClientes
+            Dim index As Integer = dg.Rows.Add()
+            bancoTemp = getBancoPorCodigo(c.BancoDelCliente)
+            grupoTemp = getGrupoPorCodigo(c.GrupoDelCliente)
+            With dg.Rows(index)
+                .Cells("idCliente").Value = c.CodigoDelCliente
+                .Cells("nombreCliente").Value = c.NombreDelCliente
+                .Cells("nifCliente").Value = c.NifDelCliente
+                .Cells("fechaNacimientoCliente").Value = c.FechaDeNacimientoDelCliente
+                .Cells("direccionCliente").Value = c.DireccionDelCliente
+                .Cells("emailCliente").Value = c.EmailDelCliente
+                .Cells("grupoCliente").Value = grupoTemp.NombreDeGrupo
+                .Cells("bancoCliente").Value = bancoTemp.NombreDeBanco
+            End With
+        Next
         frmCliente.dg_clientes.ClearSelection()
+        frmCliente.txt_busqueda_cliente.Clear()
     End Sub
 
     Private Sub click_btn_añadir_cliente(sender As Object, e As EventArgs)
@@ -44,21 +60,24 @@
         fillDGClientes()
     End Sub
     Private Sub click_btn_modificar_cliente(sender As Object, e As EventArgs)
-        frmNuevoCliente.txt_codigo_cliente.Text = clienteTemp.CodigoDelCliente
-        frmNuevoCliente.txt_codigo_cliente.Enabled = False
-        frmNuevoCliente.txt_nombre_cliente.Text = clienteTemp.NombreDelCliente
-        frmNuevoCliente.txt_nif_cliente.Text = clienteTemp.NifDelCliente
-        frmNuevoCliente.txt_direccion_cliente.Text = clienteTemp.DireccionDelCliente
-        frmNuevoCliente.txt_direccion_cliente.Text = clienteTemp.DireccionDelCliente
-        frmNuevoCliente.dp_fecha_nacimiento_cliente.Value = clienteTemp.FechaDeNacimientoDelCliente
-        frmNuevoCliente.setBancoAsignadoMod(clienteTemp.BancoDelCliente)
-        frmNuevoCliente.setGrupoAsignadoMod(clienteTemp.GrupoDelCliente)
-        frmNuevoCliente.txt_email_cliente.Text = clienteTemp.EmailDelCliente
+        Dim frm As frmNuevoCliente = New frmNuevoCliente()
+        frm.txt_codigo_cliente.Text = clienteTemp.CodigoDelCliente
+        frm.txt_codigo_cliente.Enabled = False
+        frm.txt_nombre_cliente.Text = clienteTemp.NombreDelCliente
+        frm.txt_nif_cliente.Text = clienteTemp.NifDelCliente
+        frm.txt_direccion_cliente.Text = clienteTemp.DireccionDelCliente
+        frm.txt_direccion_cliente.Text = clienteTemp.DireccionDelCliente
+        frm.dp_fecha_nacimiento_cliente.Value = clienteTemp.FechaDeNacimientoDelCliente
+        frm.setBancoAsignadoMod(clienteTemp.BancoDelCliente)
+        frm.setGrupoAsignadoMod(clienteTemp.GrupoDelCliente)
+        frm.cb_banco_cliente.Text = clienteTemp.BancoDelCliente
+        frm.cb_grupo_cliente.Text = clienteTemp.GrupoDelCliente
+        frm.txt_email_cliente.Text = clienteTemp.EmailDelCliente
 
-        frmNuevoCliente.Text = "Modificación del cliente"
-        frmNuevoCliente.btn_confirmar_cliente.Text = "Modificar"
-        frmNuevoCliente.ShowDialog()
-        frmNuevoCliente.clearFields()
+        frm.Text = "Modificación del cliente"
+        frm.btn_confirmar_cliente.Text = "Modificar"
+        frm.ShowDialog()
+        frm.clearFields()
 
         fillDGClientes()
     End Sub
@@ -71,11 +90,12 @@
             frmCliente.btn_modificar_cliente.Enabled = True
             frmCliente.btn_eliminar_cliente.Enabled = True
             clienteTemp = frmCliente.dg_clientes.Rows(e.RowIndex).DataBoundItem
+            clienteTemp = getClientePorCodigo(frmCliente.dg_clientes.Rows(e.RowIndex).Cells("idCliente").Value)
         End If
     End Sub
     Private Sub checked_changed_gb_clientes(sender As Object, e As EventArgs)
         If frmCliente.rdb_id_cliente.Checked Then
-            criterioBusqueda = "codigoCliente"
+            criterioBusqueda = "idCliente"
         ElseIf frmCliente.rdb_nombre_cliente.Checked Then
             criterioBusqueda = "nombreCliente"
         Else
