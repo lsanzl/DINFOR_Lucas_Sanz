@@ -31,8 +31,7 @@ Public Class frmVenta
         Dim frmBusquedaNuevo As frmBusquedaVenta = New frmBusquedaVenta(clienteAux)
         frmBusquedaNuevo.Text = "BÚSQUEDA DE CLIENTES"
         frmBusquedaNuevo.ShowDialog()
-        clienteSeleccionado = frmBusquedaNuevo.clienteSeleccionado
-        If clienteSeleccionado IsNot Nothing Then
+        If frmBusquedaNuevo.clienteSeleccionado IsNot Nothing Then
             clienteSeleccionado = frmBusquedaNuevo.clienteSeleccionado
             txt_cliente_seleccionado.Text = clienteSeleccionado.NombreDelCliente
         End If
@@ -366,7 +365,11 @@ Public Class frmVenta
         Dim stockActual As Integer
         Dim movimientoTemp As Movimiento = New Movimiento()
         For Each item As Venta In listaVentas
-            item.addVenta()
+            If VariablesGlobales.listaVentasAux.Contains(item) Then
+                item.modifyVenta()
+            Else
+                item.addVenta()
+            End If
             Dim articuloFind As Articulo = VariablesGlobales.getArticuloPorCodigo(item.ArticuloDeVenta)
             managerInventarioAux.deleteUnidades(item.CantidadDeVenta, articuloFind.CodigoDeArticulo)
             stockActual = managerInventarioAux.checkStock(articuloFind.CodigoDeArticulo)

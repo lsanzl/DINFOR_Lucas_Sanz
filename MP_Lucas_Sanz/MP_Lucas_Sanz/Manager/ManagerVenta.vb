@@ -34,7 +34,7 @@ Public Class ManagerVenta
                 descuento = Convert.ToDouble(dr(6))
                 fecha = Convert.ToDateTime(dr(7))
                 eliminadoInt = Convert.ToInt32(dr(8))
-                factura = dr(9).ToString()
+                factura = dr(9).ToString().Trim()
 
                 If eliminadoInt = 0 Then
                     eliminado = False
@@ -86,6 +86,29 @@ Public Class ManagerVenta
             cmd.ExecuteNonQuery()
         Catch ex As Exception
             MessageBox.Show("Error al introducir una venta: " + vbCrLf + ex.ToString())
+        End Try
+    End Sub
+    Public Sub modifyVenta(v As Venta)
+        cmd = New SqlCommand("UPDATE VENTAS SET
+                            ID_FORMA_PAGO = @FormaPago,
+                            PRECIO_VENTA_ARTICULO = @PrecioCompra,
+                            CANTIDAD_VENTA = @Cantidad,
+                            DESCUENTO_VENTA = @Descuento,
+                            FECHA_VENTA = @Fecha
+                            WHERE ID_VENTA = @Codigo;", connectionDBManager)
+        With cmd.Parameters
+            .Add("@FormaPago", SqlDbType.Int).Value = v.FormaDePagoVenta
+            .Add("@PrecioCompra", SqlDbType.Decimal, 10, 2).Value = v.PrecioDeArticuloVenta
+            .Add("@Cantidad", SqlDbType.Int).Value = v.CantidadDeVenta
+            .Add("@Descuento", SqlDbType.Decimal, 5, 2).Value = v.DescuentoDeVenta
+            .Add("@Fecha", SqlDbType.Date).Value = v.FechaDeVenta
+            .Add("@Codigo", SqlDbType.Int).Value = v.CodigoDeVenta
+        End With
+        Try
+            cmd.ExecuteNonQuery()
+            updateListaVentas()
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
         End Try
     End Sub
     Public Sub cambiarEliminadoVenta(venta As Venta)

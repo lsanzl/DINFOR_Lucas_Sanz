@@ -15,6 +15,7 @@
     Public ventaAux As Venta = New Venta()
     Public movimientoAux As Movimiento = New Movimiento()
     Public impuestoAux As Impuesto = New Impuesto()
+    Public facturaAux As Factura = New Factura()
 
     ' ----- MANAGERS AUXILIARES DE CADA CLASE -----
     Public managerEmpAux As ManagerEmpresa = New ManagerEmpresa()
@@ -31,6 +32,7 @@
     Public managerConfiguracionAux As ManagerConfiguracion = New ManagerConfiguracion()
     Public managerMovimientoAux As ManagerMovimiento = New ManagerMovimiento()
     Public managerImpuestoAux As ManagerImpuesto = New ManagerImpuesto()
+    Public managerFacturaAux As ManagerFactura = New ManagerFactura()
 
     ' ----- LISTAS AUXILIARES DE CADA CLASE -----
     'ARTÍCULOS
@@ -74,6 +76,16 @@
     End Sub
     Public Function getCompraPorCodigo(codigo As Integer)
         Return listaComprasAux.Find(Function(c) c.CodigoDeCompra = codigo)
+    End Function
+
+    'FACTURAS
+    Public listaFacturasAux As List(Of Factura) = New List(Of Factura)
+    Public Sub updateListaFacturas()
+        listaFacturasAux = New List(Of Factura)
+        listaFacturasAux = managerFacturaAux.getFacturas()
+    End Sub
+    Public Function getFacturaPorCodigo(codigo As Integer) As Factura
+        Return listaFacturasAux.Find(Function(f) f.CodigoDeFactura = codigo)
     End Function
 
     'FAMILIAS

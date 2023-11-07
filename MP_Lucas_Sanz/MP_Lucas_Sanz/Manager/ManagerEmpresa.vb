@@ -200,6 +200,11 @@ Public Class ManagerEmpresa
                             IMPUESTO DECIMAL(5,2)
                             );", connectionDBManager)
         cmd.ExecuteNonQuery()
+        ' ---------------------- FACTURAS -------------------------
+        cmd = New SqlCommand("CREATE TABLE FACTURAS(
+                            ID_FACTURA INT PRIMARY KEY,
+                            ALBARANES_FACTURA VARCHAR(200)
+                            );", connectionDBManager)
     End Sub
     Public Function checkEmpresa(nombreEmpresa As String) As Boolean
         cmd = New SqlCommand("SELECT NAME
@@ -246,5 +251,6 @@ Public Class ManagerEmpresa
         VariablesGlobales.updateListaBancos()
         VariablesGlobales.updateListaGrupos()
         VariablesGlobales.updateListaInventarios()
+        VariablesGlobales.updateListaFacturas()
     End Sub
 End Class

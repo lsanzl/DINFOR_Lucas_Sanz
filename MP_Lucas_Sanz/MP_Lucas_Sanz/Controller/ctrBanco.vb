@@ -82,7 +82,7 @@
     End Sub
     Private Function lookForText(textoOrigen As String, textoBusqueda As String) As Boolean
         Dim resultado As Integer
-        resultado = InStr(1, textoOrigen, textoBusqueda)
+        resultado = InStr(1, textoOrigen.ToUpper(), textoBusqueda.ToUpper())
         If resultado > 0 Then
             Return True
         Else

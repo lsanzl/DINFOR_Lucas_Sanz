@@ -33,7 +33,7 @@ Public Class ManagerCompra
                 cantidad = Convert.ToInt32(dr(5))
                 descuento = Convert.ToDouble(dr(6))
                 fecha = Convert.ToDateTime(dr(7))
-                eliminado = Convert.ToInt32(dr(8))
+                eliminadoInt = Convert.ToInt32(dr(8))
                 factura = dr(9).ToString().Trim()
 
                 If eliminadoInt = 0 Then
@@ -126,6 +126,7 @@ Public Class ManagerCompra
         Try
             cmd.ExecuteNonQuery()
             updateListaCompras()
+            'MessageBox.Show($"Estado cambiado a {eliminado}")
         Catch ex As Exception
             MessageBox.Show(ex.ToString())
         End Try

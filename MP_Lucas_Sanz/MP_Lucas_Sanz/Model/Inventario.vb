@@ -39,7 +39,7 @@
     Public Sub New()
         MyBase.New()
     End Sub
-    Public Sub New(codigoArticuloP As String, unidadesPasadas As Integer)
+    Public Sub New(codigoArticuloP As Integer, unidadesPasadas As Integer)
         MyBase.New()
         CodigoDeArticulo = codigoArticuloP
         UnidadesDisponibles = unidadesPasadas

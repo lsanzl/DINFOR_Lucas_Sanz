@@ -368,7 +368,12 @@ Public Class frmCompra
                 item.addCompra()
             End If
             Dim articuloFind As Articulo = VariablesGlobales.getArticuloPorCodigo(item.ArticuloDeCompra)
-            managerInventarioAux.addUnidades(item.CantidadDeCompra, articuloFind.CodigoDeArticulo)
+            If Not managerInventarioAux.checkInventario(articuloFind) Then
+                Dim inventarioTemp As Inventario = New Inventario(articuloFind.CodigoDeArticulo, item.CantidadDeCompra)
+                inventarioTemp.addInventario()
+            Else
+                managerInventarioAux.addUnidades(item.CantidadDeCompra, articuloFind.CodigoDeArticulo)
+            End If
             stockActual = managerInventarioAux.checkStock(articuloFind.CodigoDeArticulo)
             movimientoTemp = New Movimiento("C", facturaGenerada, item.ProveedorDeCompra, fechaCompra, articuloFind.CodigoDeArticulo, stockActual, item.CantidadDeCompra)
             movimientoTemp.addMovimiento()

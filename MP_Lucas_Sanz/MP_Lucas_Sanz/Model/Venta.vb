@@ -162,6 +162,9 @@
     Public Sub addVenta()
         managerVentaAux.addVenta(Me)
     End Sub
+    Public Sub modifyVenta()
+        managerVentaAux.modifyVenta(Me)
+    End Sub
     Public Sub deleteVenta()
         managerVentaAux.cambiarEliminadoVenta(Me)
     End Sub

@@ -117,6 +117,7 @@
     <Compile Include="Manager\ManagerCompra.vb" />
     <Compile Include="Manager\ManagerConfiguracion.vb" />
     <Compile Include="Manager\ManagerEmpresa.vb" />
+    <Compile Include="Manager\ManagerFactura.vb" />
     <Compile Include="Manager\ManagerFamilia.vb" />
     <Compile Include="Manager\ManagerFormaPago.vb" />
     <Compile Include="Manager\ManagerGrupo.vb" />
@@ -129,6 +130,7 @@
     <Compile Include="Model\Banco.vb" />
     <Compile Include="Model\Cliente.vb" />
     <Compile Include="Model\Compra.vb" />
+    <Compile Include="Model\Factura.vb" />
     <Compile Include="Model\Familia.vb" />
     <Compile Include="Model\FormaPago.vb" />
     <Compile Include="Model\Grupo.vb" />
