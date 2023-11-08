@@ -105,6 +105,7 @@
     <Compile Include="Controller\ctrArticulo.vb" />
     <Compile Include="Controller\ctrCliente.vb" />
     <Compile Include="Controller\ctrConfiguraciones.vb" />
+    <Compile Include="Controller\ctrFactura.vb" />
     <Compile Include="Controller\ctrFormaPago.vb" />
     <Compile Include="Controller\ctrGrupo.vb" />
     <Compile Include="Controller\ctrInventario.vb" />
@@ -213,6 +214,12 @@
       <DependentUpon>frmNuevoNombreEmpresa.vb</DependentUpon>
     </Compile>
     <Compile Include="View\Empresa\frmNuevoNombreEmpresa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Factura\frmFactura.Designer.vb">
+      <DependentUpon>frmFactura.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\Factura\frmFactura.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Familia\frmFamilias.Designer.vb">
@@ -358,6 +365,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Empresa\frmNuevoNombreEmpresa.resx">
       <DependentUpon>frmNuevoNombreEmpresa.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Factura\frmFactura.resx">
+      <DependentUpon>frmFactura.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Familia\frmFamilias.resx">
       <DependentUpon>frmFamilias.vb</DependentUpon>

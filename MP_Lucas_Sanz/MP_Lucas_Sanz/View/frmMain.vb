@@ -18,5 +18,6 @@ Public Class frmMain
         Dim ctrConfiguraciones As ctrConfiguraciones = New ctrConfiguraciones(Me)
         Dim ctrMovimiento As ctrMovimiento = New ctrMovimiento(Me)
         Dim ctrAlbaran As ctrAlbaran = New ctrAlbaran(Me)
+        Dim ctrFactura As ctrFactura = New ctrFactura(Me)
     End Sub
 End Class

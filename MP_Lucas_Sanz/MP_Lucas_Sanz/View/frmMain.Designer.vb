@@ -37,6 +37,7 @@ Partial Class frmMain
         Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.tab_main = New System.Windows.Forms.TabControl()
         Me.tab_menu_principal = New System.Windows.Forms.TabPage()
@@ -192,6 +193,17 @@ Partial Class frmMain
         Me.txt_busqueda_albaran_entidad = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txt_busqueda_albaran_factura = New System.Windows.Forms.TextBox()
+        Me.tab_facturas = New System.Windows.Forms.TabPage()
+        Me.TableLayoutPanel20 = New System.Windows.Forms.TableLayoutPanel()
+        Me.dg_facturas = New System.Windows.Forms.DataGridView()
+        Me.idFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.entidadFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.listaAlbaranesFactura = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.estadoFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TableLayoutPanel21 = New System.Windows.Forms.TableLayoutPanel()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.tab_configuraciones = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel9 = New System.Windows.Forms.TableLayoutPanel()
         Me.btn_actualizacion_campo_extra = New System.Windows.Forms.Button()
@@ -206,6 +218,10 @@ Partial Class frmMain
         Me.ClienteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.BancoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GrupoBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.tab_main.SuspendLayout()
         Me.tab_menu_principal.SuspendLayout()
         Me.tlp_menu_main.SuspendLayout()
@@ -252,6 +268,10 @@ Partial Class frmMain
         Me.TableLayoutPanel19.SuspendLayout()
         Me.gb_ver_estado_albaranes.SuspendLayout()
         Me.gb_ver_albaranes.SuspendLayout()
+        Me.tab_facturas.SuspendLayout()
+        Me.TableLayoutPanel20.SuspendLayout()
+        CType(Me.dg_facturas, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TableLayoutPanel21.SuspendLayout()
         Me.tab_configuraciones.SuspendLayout()
         Me.TableLayoutPanel9.SuspendLayout()
         CType(Me.ProveedorBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -275,6 +295,7 @@ Partial Class frmMain
         Me.tab_main.Controls.Add(Me.tab_articulos_proveedores)
         Me.tab_main.Controls.Add(Me.tab_inventario)
         Me.tab_main.Controls.Add(Me.tab_albaranes)
+        Me.tab_main.Controls.Add(Me.tab_facturas)
         Me.tab_main.Controls.Add(Me.tab_configuraciones)
         Me.tab_main.ImageList = Me.ImageList1
         Me.tab_main.ItemSize = New System.Drawing.Size(78, 50)
@@ -2201,6 +2222,151 @@ Partial Class frmMain
         Me.txt_busqueda_albaran_factura.Size = New System.Drawing.Size(161, 20)
         Me.txt_busqueda_albaran_factura.TabIndex = 8
         '
+        'tab_facturas
+        '
+        Me.tab_facturas.Controls.Add(Me.TableLayoutPanel20)
+        Me.tab_facturas.ImageIndex = 6
+        Me.tab_facturas.Location = New System.Drawing.Point(4, 54)
+        Me.tab_facturas.Name = "tab_facturas"
+        Me.tab_facturas.Padding = New System.Windows.Forms.Padding(3)
+        Me.tab_facturas.Size = New System.Drawing.Size(791, 388)
+        Me.tab_facturas.TabIndex = 7
+        Me.tab_facturas.Text = "FACTURAS"
+        Me.tab_facturas.UseVisualStyleBackColor = True
+        '
+        'TableLayoutPanel20
+        '
+        Me.TableLayoutPanel20.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel20.ColumnCount = 2
+        Me.TableLayoutPanel20.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70.0!))
+        Me.TableLayoutPanel20.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.0!))
+        Me.TableLayoutPanel20.Controls.Add(Me.dg_facturas, 0, 0)
+        Me.TableLayoutPanel20.Controls.Add(Me.TableLayoutPanel21, 1, 0)
+        Me.TableLayoutPanel20.Location = New System.Drawing.Point(0, 0)
+        Me.TableLayoutPanel20.Name = "TableLayoutPanel20"
+        Me.TableLayoutPanel20.RowCount = 1
+        Me.TableLayoutPanel20.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel20.Size = New System.Drawing.Size(791, 388)
+        Me.TableLayoutPanel20.TabIndex = 0
+        '
+        'dg_facturas
+        '
+        Me.dg_facturas.AllowUserToAddRows = False
+        Me.dg_facturas.AllowUserToDeleteRows = False
+        Me.dg_facturas.AllowUserToResizeColumns = False
+        Me.dg_facturas.AllowUserToResizeRows = False
+        Me.dg_facturas.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_facturas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle15
+        Me.dg_facturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dg_facturas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idFactura, Me.entidadFactura, Me.listaAlbaranesFactura, Me.estadoFactura})
+        Me.dg_facturas.Location = New System.Drawing.Point(3, 3)
+        Me.dg_facturas.MultiSelect = False
+        Me.dg_facturas.Name = "dg_facturas"
+        Me.dg_facturas.RowHeadersVisible = False
+        Me.dg_facturas.Size = New System.Drawing.Size(547, 382)
+        Me.dg_facturas.TabIndex = 0
+        '
+        'idFactura
+        '
+        Me.idFactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.idFactura.HeaderText = "ID"
+        Me.idFactura.Name = "idFactura"
+        Me.idFactura.ReadOnly = True
+        '
+        'entidadFactura
+        '
+        Me.entidadFactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.entidadFactura.HeaderText = "Entidad"
+        Me.entidadFactura.Name = "entidadFactura"
+        Me.entidadFactura.ReadOnly = True
+        '
+        'listaAlbaranesFactura
+        '
+        Me.listaAlbaranesFactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.listaAlbaranesFactura.HeaderText = "Albaranes"
+        Me.listaAlbaranesFactura.Name = "listaAlbaranesFactura"
+        Me.listaAlbaranesFactura.ReadOnly = True
+        '
+        'estadoFactura
+        '
+        Me.estadoFactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.estadoFactura.HeaderText = "Estado"
+        Me.estadoFactura.Name = "estadoFactura"
+        Me.estadoFactura.ReadOnly = True
+        '
+        'TableLayoutPanel21
+        '
+        Me.TableLayoutPanel21.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel21.ColumnCount = 1
+        Me.TableLayoutPanel21.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel21.Controls.Add(Me.DateTimePicker1, 0, 0)
+        Me.TableLayoutPanel21.Controls.Add(Me.DateTimePicker2, 0, 1)
+        Me.TableLayoutPanel21.Controls.Add(Me.Button1, 0, 4)
+        Me.TableLayoutPanel21.Controls.Add(Me.Label3, 0, 2)
+        Me.TableLayoutPanel21.Controls.Add(Me.TextBox1, 0, 3)
+        Me.TableLayoutPanel21.Controls.Add(Me.Button2, 0, 5)
+        Me.TableLayoutPanel21.Controls.Add(Me.Button3, 0, 6)
+        Me.TableLayoutPanel21.Location = New System.Drawing.Point(556, 3)
+        Me.TableLayoutPanel21.Name = "TableLayoutPanel21"
+        Me.TableLayoutPanel21.RowCount = 8
+        Me.TableLayoutPanel21.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
+        Me.TableLayoutPanel21.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
+        Me.TableLayoutPanel21.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
+        Me.TableLayoutPanel21.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
+        Me.TableLayoutPanel21.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
+        Me.TableLayoutPanel21.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
+        Me.TableLayoutPanel21.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
+        Me.TableLayoutPanel21.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.0!))
+        Me.TableLayoutPanel21.Size = New System.Drawing.Size(232, 382)
+        Me.TableLayoutPanel21.TabIndex = 1
+        '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DateTimePicker1.CustomFormat = "Día inicio"
+        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.DateTimePicker1.Location = New System.Drawing.Point(15, 9)
+        Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(202, 20)
+        Me.DateTimePicker1.TabIndex = 0
+        '
+        'DateTimePicker2
+        '
+        Me.DateTimePicker2.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DateTimePicker2.CustomFormat = "Día fin"
+        Me.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.DateTimePicker2.Location = New System.Drawing.Point(15, 47)
+        Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
+        Me.DateTimePicker2.Name = "DateTimePicker2"
+        Me.DateTimePicker2.Size = New System.Drawing.Size(202, 20)
+        Me.DateTimePicker2.TabIndex = 1
+        '
+        'Button1
+        '
+        Me.Button1.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(142, 159)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 2
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'tab_configuraciones
         '
         Me.tab_configuraciones.Controls.Add(Me.TableLayoutPanel9)
@@ -2283,6 +2449,7 @@ Partial Class frmMain
         Me.ImageList1.Images.SetKeyName(3, "inventario.ico")
         Me.ImageList1.Images.SetKeyName(4, "configuraciones.ico")
         Me.ImageList1.Images.SetKeyName(5, "albaran.png")
+        Me.ImageList1.Images.SetKeyName(6, "factura.png")
         '
         'ProveedorBindingSource
         '
@@ -2315,6 +2482,52 @@ Partial Class frmMain
         'GrupoBindingSource1
         '
         Me.GrupoBindingSource1.DataSource = GetType(MP_Lucas_Sanz.Grupo)
+        '
+        'Label3
+        '
+        Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(15, 101)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(15, 0, 15, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(118, 13)
+        Me.Label3.TabIndex = 3
+        Me.Label3.Text = "Cliente / Proveedor"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TextBox1.Location = New System.Drawing.Point(15, 123)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(202, 20)
+        Me.TextBox1.TabIndex = 4
+        '
+        'Button2
+        '
+        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Location = New System.Drawing.Point(15, 197)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(202, 23)
+        Me.Button2.TabIndex = 5
+        Me.Button2.Text = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.Location = New System.Drawing.Point(15, 235)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(202, 23)
+        Me.Button3.TabIndex = 6
+        Me.Button3.Text = "Button3"
+        Me.Button3.UseVisualStyleBackColor = True
         '
         'frmMain
         '
@@ -2387,6 +2600,11 @@ Partial Class frmMain
         Me.gb_ver_estado_albaranes.PerformLayout()
         Me.gb_ver_albaranes.ResumeLayout(False)
         Me.gb_ver_albaranes.PerformLayout()
+        Me.tab_facturas.ResumeLayout(False)
+        Me.TableLayoutPanel20.ResumeLayout(False)
+        CType(Me.dg_facturas, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TableLayoutPanel21.ResumeLayout(False)
+        Me.TableLayoutPanel21.PerformLayout()
         Me.tab_configuraciones.ResumeLayout(False)
         Me.TableLayoutPanel9.ResumeLayout(False)
         CType(Me.ProveedorBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2569,4 +2787,19 @@ Partial Class frmMain
     Public WithEvents dp_busqueda_fin_albaran As DateTimePicker
     Public WithEvents txt_busqueda_albaran_entidad As TextBox
     Public WithEvents txt_busqueda_albaran_factura As TextBox
+    Friend WithEvents tab_facturas As TabPage
+    Friend WithEvents TableLayoutPanel20 As TableLayoutPanel
+    Friend WithEvents dg_facturas As DataGridView
+    Friend WithEvents idFactura As DataGridViewTextBoxColumn
+    Friend WithEvents entidadFactura As DataGridViewTextBoxColumn
+    Friend WithEvents listaAlbaranesFactura As DataGridViewComboBoxColumn
+    Friend WithEvents estadoFactura As DataGridViewTextBoxColumn
+    Friend WithEvents TableLayoutPanel21 As TableLayoutPanel
+    Friend WithEvents Label3 As Label
+    Public WithEvents TextBox1 As TextBox
+    Public WithEvents Button2 As Button
+    Public WithEvents Button3 As Button
+    Public WithEvents DateTimePicker1 As DateTimePicker
+    Public WithEvents DateTimePicker2 As DateTimePicker
+    Public WithEvents Button1 As Button
 End Class
