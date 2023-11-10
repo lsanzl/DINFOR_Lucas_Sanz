@@ -216,6 +216,12 @@
     <Compile Include="View\Empresa\frmNuevoNombreEmpresa.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\Factura\frmBusquedaClienteProveedor.Designer.vb">
+      <DependentUpon>frmBusquedaClienteProveedor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\Factura\frmBusquedaClienteProveedor.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\Factura\frmFactura.Designer.vb">
       <DependentUpon>frmFactura.vb</DependentUpon>
     </Compile>
@@ -366,6 +372,9 @@
     <EmbeddedResource Include="View\Empresa\frmNuevoNombreEmpresa.resx">
       <DependentUpon>frmNuevoNombreEmpresa.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Factura\frmBusquedaClienteProveedor.resx">
+      <DependentUpon>frmBusquedaClienteProveedor.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Factura\frmFactura.resx">
       <DependentUpon>frmFactura.vb</DependentUpon>
     </EmbeddedResource>
@@ -480,6 +489,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\configuraciones.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\factura.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

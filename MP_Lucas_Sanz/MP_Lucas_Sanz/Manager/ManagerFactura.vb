@@ -18,12 +18,19 @@ Public Class ManagerFactura
         If dr.HasRows Then
             Dim idFactura As Integer
             Dim listaAlbaranes As String
+            Dim estado As String
+            Dim fecha As DateTime
+            Dim tipo As String
             dr.Read()
             Do
                 idFactura = Convert.ToInt32(dr(0))
                 listaAlbaranes = dr(1).ToString()
+                estado = dr(2).ToString()
+                fecha = CDate(dr(3))
+                tipo = dr(4).ToString()
 
-                Dim factura As Factura = New Factura(idFactura, listaAlbaranes)
+                Dim factura As Factura = New Factura(idFactura, listaAlbaranes, fecha, estado, tipo)
+                listaFacturas.Add(factura)
             Loop While dr.Read()
         End If
         dr.Close()
@@ -32,10 +39,13 @@ Public Class ManagerFactura
 
     Public Sub addFactura(f As Factura)
         Dim codigoNuevo As Integer = getIDFactura()
-        cmd = New SqlCommand("INSERT INTO FACTURAS VALUES (@Codigo, @Albaranes);", connectionDBManager)
+        cmd = New SqlCommand("INSERT INTO FACTURAS VALUES (@Codigo, @Albaranes, @Estado, @Fecha);", connectionDBManager)
         With cmd.Parameters
             .Add("@Codigo", SqlDbType.Int).Value = codigoNuevo
             .Add("@Albaranes", SqlDbType.Char, 200).Value = f.StringDeAlbaranes
+            .Add("@Estado", SqlDbType.Char, 1).Value = f.EstadoDeFactura
+            .Add("@Fecha", SqlDbType.Date).Value = f.FechaDeCobro
+            .Add("@Tipo", SqlDbType.Char, 1).Value = f.TipoDeFactura
         End With
         Try
             cmd.ExecuteNonQuery()
@@ -46,11 +56,17 @@ Public Class ManagerFactura
     End Sub
     Public Sub modifyFactura(f As Factura)
         cmd = New SqlCommand("UPDATE FACTURAS SET
-                            ALBARANES_FACTURA = @Albaranes
+                            ALBARANES_FACTURA = @Albaranes,
+                            ESTADO_FACTURA = @Estado,
+                            FECHA_FACTURA = @Fecha,
+                            TIPO_FACTURA = @Tipo
                             WHERE ID_FACTURA = @Codigo;", connectionDBManager)
         With cmd.Parameters
             .Add("@Codigo", SqlDbType.Int).Value = f.CodigoDeFactura
             .Add("@Albaranes", SqlDbType.Char, 200).Value = f.StringDeAlbaranes
+            .Add("@Estado", SqlDbType.Char, 1).Value = f.EstadoDeFactura
+            .Add("@Fecha", SqlDbType.Date).Value = f.FechaDeCobro
+            .Add("@Tipo", SqlDbType.Char, 1).Value = f.TipoDeFactura
         End With
         Try
             cmd.ExecuteNonQuery()

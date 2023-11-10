@@ -19,7 +19,6 @@
         AddHandler frmFormasPago.rdb_nombre_forma_pago.CheckedChanged, AddressOf checked_changed_gb_formas_pago
         AddHandler frmFormasPago.txt_busqueda_forma_pago.TextChanged, AddressOf text_changed_txt_busqueda_forma_pago
     End Sub
-
     Public Sub fillDGFormasPago()
         Dim dg As DataGridView = frmFormasPago.dg_formas_pago
         formaPagoTemp = Nothing

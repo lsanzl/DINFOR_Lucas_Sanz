@@ -77,6 +77,9 @@
     Public Function getCompraPorCodigo(codigo As Integer)
         Return listaComprasAux.Find(Function(c) c.CodigoDeCompra = codigo)
     End Function
+    Public Function getCompraPorFactura(factura As String) As Compra
+        Return listaComprasAux.Find(Function(c) c.FacturaDeCompra = factura)
+    End Function
 
     'FACTURAS
     Public listaFacturasAux As List(Of Factura) = New List(Of Factura)
@@ -165,6 +168,9 @@
     End Sub
     Public Function getVentaPorCodigo(codigo As Integer)
         Return listaVentasAux.Find(Function(v) v.CodigoDeVenta = codigo)
+    End Function
+    Public Function getVentaPorFactura(factura As String) As Venta
+        Return listaVentasAux.Find(Function(v) v.FacturaDeVenta = factura)
     End Function
 
 
