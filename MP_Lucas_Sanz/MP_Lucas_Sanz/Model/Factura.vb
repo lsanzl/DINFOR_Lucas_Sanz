@@ -2,7 +2,7 @@
     Private idFactura As Integer
     Private stringAlbaranes As String
     Private listaAlbaranes As List(Of String)
-    Private fechaCobro As DateTime
+    Private fechaCobro As Date
     Private estadoFactura As String
     Private tipoFactura As String
 
@@ -30,11 +30,11 @@
             listaAlbaranes = value
         End Set
     End Property
-    Public Property FechaDeCobro() As DateTime
+    Public Property FechaDeCobro() As Date
         Get
             Return fechaCobro
         End Get
-        Set(value As DateTime)
+        Set(value As Date)
             fechaCobro = value
         End Set
     End Property
@@ -58,27 +58,30 @@
     Public Sub New()
         MyBase.New()
     End Sub
-    Public Sub New(stringAlbaranesP As String, fechaP As DateTime, estadoP As String, tipo As String)
+    Public Sub New(stringAlbaranesP As String, fechaP As Date, estadoP As String, tipo As String)
         MyBase.New()
         stringAlbaranes = stringAlbaranesP
         listaAlbaranes = getListaAlbaranes(stringAlbaranes)
         estadoFactura = estadoP
         tipoFactura = tipo
+        fechaCobro = fechaP
     End Sub
-    Public Sub New(listaAlbaranesP As List(Of String), fechaP As DateTime, estadoP As String, tipo As String)
+    Public Sub New(listaAlbaranesP As List(Of String), fechaP As Date, estadoP As String, tipo As String)
         MyBase.New()
         listaAlbaranes = listaAlbaranesP
         stringAlbaranes = getStringAlbaranes(listaAlbaranes)
         estadoFactura = estadoP
         tipoFactura = tipo
+        fechaCobro = fechaP
     End Sub
-    Public Sub New(codigoP As Integer, stringAlbaranesP As String, fechaP As DateTime, estadoP As String, tipo As String)
+    Public Sub New(codigoP As Integer, stringAlbaranesP As String, fechaP As Date, estadoP As String, tipo As String)
         MyBase.New()
         idFactura = codigoP
         stringAlbaranes = stringAlbaranesP
         listaAlbaranes = getListaAlbaranes(stringAlbaranes)
         estadoFactura = estadoP
         tipoFactura = tipo
+        fechaCobro = fechaP
     End Sub
     Public Sub addFactura()
         managerFacturaAux.addFactura(Me)
@@ -94,6 +97,9 @@
         Dim listaNumerosFac As List(Of String) = New List(Of String)
         Dim listaSplit As String() = stringAlbaranesP.Split(",")
         For Each s As String In listaSplit
+            If s.Equals("") Then
+                Continue For
+            End If
             listaNumerosFac.Add(s)
         Next
         Return listaNumerosFac

@@ -19,14 +19,14 @@ Public Class ManagerFactura
             Dim idFactura As Integer
             Dim listaAlbaranes As String
             Dim estado As String
-            Dim fecha As DateTime
+            Dim fecha As Date
             Dim tipo As String
             dr.Read()
             Do
                 idFactura = Convert.ToInt32(dr(0))
                 listaAlbaranes = dr(1).ToString()
                 estado = dr(2).ToString()
-                fecha = CDate(dr(3))
+                fecha = Convert.ToDateTime(dr(3))
                 tipo = dr(4).ToString()
 
                 Dim factura As Factura = New Factura(idFactura, listaAlbaranes, fecha, estado, tipo)
@@ -39,12 +39,12 @@ Public Class ManagerFactura
 
     Public Sub addFactura(f As Factura)
         Dim codigoNuevo As Integer = getIDFactura()
-        cmd = New SqlCommand("INSERT INTO FACTURAS VALUES (@Codigo, @Albaranes, @Estado, @Fecha);", connectionDBManager)
+        cmd = New SqlCommand("INSERT INTO FACTURAS VALUES (@Codigo, @Albaranes, @Estado, @Fecha, @Tipo);", connectionDBManager)
         With cmd.Parameters
             .Add("@Codigo", SqlDbType.Int).Value = codigoNuevo
             .Add("@Albaranes", SqlDbType.Char, 200).Value = f.StringDeAlbaranes
             .Add("@Estado", SqlDbType.Char, 1).Value = f.EstadoDeFactura
-            .Add("@Fecha", SqlDbType.Date).Value = f.FechaDeCobro
+            .Add("@Fecha", SqlDbType.Date).Value = CDate(f.FechaDeCobro.ToShortDateString)
             .Add("@Tipo", SqlDbType.Char, 1).Value = f.TipoDeFactura
         End With
         Try
@@ -78,6 +78,26 @@ Public Class ManagerFactura
     Public Sub deleteFactura(f As Factura)
         cmd = New SqlCommand("DELETE FROM FACTURAS WHERE ID_FACTURA = @Codigo;", connectionDBManager)
         cmd.Parameters.Add("@Codigo", SqlDbType.Int).Value = f.CodigoDeFactura
+        Try
+            cmd.ExecuteNonQuery()
+            updateListaFacturas()
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
+        End Try
+    End Sub
+    Public Sub cambiarEstadoFactura(f As Factura)
+        Dim nuevoEstado As String
+        If f.EstadoDeFactura = "C" Then
+            nuevoEstado = "P"
+        Else
+            nuevoEstado = "C"
+        End If
+        cmd = New SqlCommand("UPDATE FACTURAS SET ESTADO_FACTURA = @Estado 
+                            WHERE ID_FACTURA = @Codigo;", connectionDBManager)
+        With cmd.Parameters
+            .Add("@Codigo", SqlDbType.Int).Value = f.CodigoDeFactura
+            .Add("@Estado", SqlDbType.Char, 1).Value = nuevoEstado
+        End With
         Try
             cmd.ExecuteNonQuery()
             updateListaFacturas()

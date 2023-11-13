@@ -23,22 +23,23 @@ Partial Class frmMain
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle33 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle34 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle35 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle38 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle39 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle41 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle42 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle40 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle43 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle44 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle45 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.tab_main = New System.Windows.Forms.TabControl()
         Me.tab_menu_principal = New System.Windows.Forms.TabPage()
         Me.tlp_menu_main = New System.Windows.Forms.TableLayoutPanel()
@@ -196,17 +197,16 @@ Partial Class frmMain
         Me.tab_facturas = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel20 = New System.Windows.Forms.TableLayoutPanel()
         Me.dg_facturas = New System.Windows.Forms.DataGridView()
-        Me.idFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.entidadFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.listaAlbaranesFactura = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.estadoFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TableLayoutPanel21 = New System.Windows.Forms.TableLayoutPanel()
-        Me.btn_busqueda_factura = New System.Windows.Forms.Button()
-        Me.btn_facturar_albaran = New System.Windows.Forms.Button()
+        Me.gb_tipos_factura = New System.Windows.Forms.GroupBox()
+        Me.rdb_facturas_venta = New System.Windows.Forms.RadioButton()
+        Me.rdb_facturas_compra = New System.Windows.Forms.RadioButton()
         Me.btn_cambiar_estado_factura = New System.Windows.Forms.Button()
-        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.btn_facturar_albaran = New System.Windows.Forms.Button()
+        Me.btn_busqueda_factura = New System.Windows.Forms.Button()
+        Me.dp_busqueda_fin_factura = New System.Windows.Forms.DateTimePicker()
+        Me.dp_busqueda_inicio_factura = New System.Windows.Forms.DateTimePicker()
+        Me.txt_busqueda_factura = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.tab_configuraciones = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel9 = New System.Windows.Forms.TableLayoutPanel()
@@ -222,9 +222,11 @@ Partial Class frmMain
         Me.ClienteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.BancoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GrupoBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.gb_tipos_factura = New System.Windows.Forms.GroupBox()
-        Me.rdb_facturas_venta = New System.Windows.Forms.RadioButton()
-        Me.rdb_facturas_compra = New System.Windows.Forms.RadioButton()
+        Me.idFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.entidadFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.listaAlbaranesFactura = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.fechaFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.estadoFactura = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tab_main.SuspendLayout()
         Me.tab_menu_principal.SuspendLayout()
         Me.tlp_menu_main.SuspendLayout()
@@ -275,6 +277,7 @@ Partial Class frmMain
         Me.TableLayoutPanel20.SuspendLayout()
         CType(Me.dg_facturas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel21.SuspendLayout()
+        Me.gb_tipos_factura.SuspendLayout()
         Me.tab_configuraciones.SuspendLayout()
         Me.TableLayoutPanel9.SuspendLayout()
         CType(Me.ProveedorBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -285,7 +288,6 @@ Partial Class frmMain
         CType(Me.ClienteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BancoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GrupoBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gb_tipos_factura.SuspendLayout()
         Me.SuspendLayout()
         '
         'tab_main
@@ -888,14 +890,14 @@ Partial Class frmMain
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dg_clientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        DataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle32.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg_clientes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle32
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_clientes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dg_clientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dg_clientes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idCliente, Me.nombreCliente, Me.nifCliente, Me.fechaNacimientoCliente, Me.direccionCliente, Me.emailCliente, Me.grupoCliente, Me.bancoCliente})
         Me.dg_clientes.Location = New System.Drawing.Point(281, 6)
@@ -929,9 +931,9 @@ Partial Class frmMain
         'fechaNacimientoCliente
         '
         Me.fechaNacimientoCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle33.Format = "d"
-        DataGridViewCellStyle33.NullValue = Nothing
-        Me.fechaNacimientoCliente.DefaultCellStyle = DataGridViewCellStyle33
+        DataGridViewCellStyle2.Format = "d"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.fechaNacimientoCliente.DefaultCellStyle = DataGridViewCellStyle2
         Me.fechaNacimientoCliente.HeaderText = "Fecha nacimiento"
         Me.fechaNacimientoCliente.Name = "fechaNacimientoCliente"
         Me.fechaNacimientoCliente.ReadOnly = True
@@ -1081,14 +1083,14 @@ Partial Class frmMain
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dg_grupos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        DataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle34.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg_grupos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle34
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_grupos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.dg_grupos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dg_grupos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idGrupo, Me.nombreGrupo})
         Me.dg_grupos.Location = New System.Drawing.Point(6, 6)
@@ -1582,9 +1584,9 @@ Partial Class frmMain
         'datos
         '
         Me.datos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle35.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.datos.DefaultCellStyle = DataGridViewCellStyle35
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.datos.DefaultCellStyle = DataGridViewCellStyle4
         Me.datos.HeaderText = " "
         Me.datos.Name = "datos"
         Me.datos.ReadOnly = True
@@ -1698,35 +1700,35 @@ Partial Class frmMain
         Me.dg_inventario.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        DataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle36.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg_inventario.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle36
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_inventario.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.dg_inventario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dg_inventario.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idInventario, Me.nombreArticulo, Me.stockActual})
-        DataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle37.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle37.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle37.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg_inventario.DefaultCellStyle = DataGridViewCellStyle37
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg_inventario.DefaultCellStyle = DataGridViewCellStyle6
         Me.dg_inventario.Location = New System.Drawing.Point(6, 6)
         Me.dg_inventario.MultiSelect = False
         Me.dg_inventario.Name = "dg_inventario"
-        DataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle38.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle38.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle38.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle38.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg_inventario.RowHeadersDefaultCellStyle = DataGridViewCellStyle38
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_inventario.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.dg_inventario.RowHeadersVisible = False
         Me.dg_inventario.Size = New System.Drawing.Size(190, 376)
         Me.dg_inventario.TabIndex = 0
@@ -1837,35 +1839,35 @@ Partial Class frmMain
         Me.dg_movimientos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        DataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle39.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg_movimientos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle39
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_movimientos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.dg_movimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dg_movimientos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idMovimiento, Me.usuarioMovimiento, Me.articuloMovimiento, Me.cantidadMovimiento, Me.tipoMovimiento, Me.facturaMovimiento, Me.fechaMovimiento, Me.stockMovimiento})
-        DataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle41.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle41.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle41.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle41.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle41.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dg_movimientos.DefaultCellStyle = DataGridViewCellStyle41
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dg_movimientos.DefaultCellStyle = DataGridViewCellStyle10
         Me.dg_movimientos.Location = New System.Drawing.Point(296, 6)
         Me.dg_movimientos.MultiSelect = False
         Me.dg_movimientos.Name = "dg_movimientos"
-        DataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle42.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle42.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle42.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg_movimientos.RowHeadersDefaultCellStyle = DataGridViewCellStyle42
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_movimientos.RowHeadersDefaultCellStyle = DataGridViewCellStyle11
         Me.dg_movimientos.RowHeadersVisible = False
         Me.dg_movimientos.Size = New System.Drawing.Size(490, 376)
         Me.dg_movimientos.TabIndex = 3
@@ -1914,9 +1916,9 @@ Partial Class frmMain
         'fechaMovimiento
         '
         Me.fechaMovimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle40.Format = "d"
-        DataGridViewCellStyle40.NullValue = Nothing
-        Me.fechaMovimiento.DefaultCellStyle = DataGridViewCellStyle40
+        DataGridViewCellStyle9.Format = "d"
+        DataGridViewCellStyle9.NullValue = Nothing
+        Me.fechaMovimiento.DefaultCellStyle = DataGridViewCellStyle9
         Me.fechaMovimiento.HeaderText = "Fecha"
         Me.fechaMovimiento.Name = "fechaMovimiento"
         Me.fechaMovimiento.ReadOnly = True
@@ -1965,14 +1967,14 @@ Partial Class frmMain
         Me.dg_albaranes.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        DataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle43.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle43.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle43.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle43.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle43.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg_albaranes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle43
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_albaranes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
         Me.dg_albaranes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dg_albaranes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idAlbaran, Me.personaAlbaran, Me.formaPagoAlbaran, Me.fechaAlbaran, Me.tipoAlbaran, Me.facturaAlbaran, Me.verAlbaran})
         Me.dg_albaranes.Location = New System.Drawing.Point(6, 6)
@@ -2008,9 +2010,9 @@ Partial Class frmMain
         'fechaAlbaran
         '
         Me.fechaAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle44.Format = "d"
-        DataGridViewCellStyle44.NullValue = Nothing
-        Me.fechaAlbaran.DefaultCellStyle = DataGridViewCellStyle44
+        DataGridViewCellStyle13.Format = "d"
+        DataGridViewCellStyle13.NullValue = Nothing
+        Me.fechaAlbaran.DefaultCellStyle = DataGridViewCellStyle13
         Me.fechaAlbaran.HeaderText = "Fecha"
         Me.fechaAlbaran.Name = "fechaAlbaran"
         Me.fechaAlbaran.ReadOnly = True
@@ -2032,9 +2034,9 @@ Partial Class frmMain
         'verAlbaran
         '
         Me.verAlbaran.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle45.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.verAlbaran.DefaultCellStyle = DataGridViewCellStyle45
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.verAlbaran.DefaultCellStyle = DataGridViewCellStyle14
         Me.verAlbaran.HeaderText = ""
         Me.verAlbaran.Name = "verAlbaran"
         Me.verAlbaran.ReadOnly = True
@@ -2264,50 +2266,22 @@ Partial Class frmMain
         Me.dg_facturas.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        DataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle31.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg_facturas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle31
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_facturas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle15
         Me.dg_facturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_facturas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idFactura, Me.entidadFactura, Me.listaAlbaranesFactura, Me.estadoFactura})
+        Me.dg_facturas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idFactura, Me.entidadFactura, Me.listaAlbaranesFactura, Me.fechaFactura, Me.estadoFactura})
         Me.dg_facturas.Location = New System.Drawing.Point(3, 3)
         Me.dg_facturas.MultiSelect = False
         Me.dg_facturas.Name = "dg_facturas"
         Me.dg_facturas.RowHeadersVisible = False
         Me.dg_facturas.Size = New System.Drawing.Size(547, 382)
         Me.dg_facturas.TabIndex = 0
-        '
-        'idFactura
-        '
-        Me.idFactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.idFactura.HeaderText = "ID"
-        Me.idFactura.Name = "idFactura"
-        Me.idFactura.ReadOnly = True
-        '
-        'entidadFactura
-        '
-        Me.entidadFactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.entidadFactura.HeaderText = "Entidad"
-        Me.entidadFactura.Name = "entidadFactura"
-        Me.entidadFactura.ReadOnly = True
-        '
-        'listaAlbaranesFactura
-        '
-        Me.listaAlbaranesFactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.listaAlbaranesFactura.HeaderText = "Albaranes"
-        Me.listaAlbaranesFactura.Name = "listaAlbaranesFactura"
-        Me.listaAlbaranesFactura.ReadOnly = True
-        '
-        'estadoFactura
-        '
-        Me.estadoFactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.estadoFactura.HeaderText = "Estado"
-        Me.estadoFactura.Name = "estadoFactura"
-        Me.estadoFactura.ReadOnly = True
         '
         'TableLayoutPanel21
         '
@@ -2320,9 +2294,9 @@ Partial Class frmMain
         Me.TableLayoutPanel21.Controls.Add(Me.btn_cambiar_estado_factura, 0, 8)
         Me.TableLayoutPanel21.Controls.Add(Me.btn_facturar_albaran, 0, 7)
         Me.TableLayoutPanel21.Controls.Add(Me.btn_busqueda_factura, 0, 5)
-        Me.TableLayoutPanel21.Controls.Add(Me.DateTimePicker2, 0, 4)
-        Me.TableLayoutPanel21.Controls.Add(Me.DateTimePicker1, 0, 3)
-        Me.TableLayoutPanel21.Controls.Add(Me.TextBox1, 0, 2)
+        Me.TableLayoutPanel21.Controls.Add(Me.dp_busqueda_fin_factura, 0, 4)
+        Me.TableLayoutPanel21.Controls.Add(Me.dp_busqueda_inicio_factura, 0, 3)
+        Me.TableLayoutPanel21.Controls.Add(Me.txt_busqueda_factura, 0, 2)
         Me.TableLayoutPanel21.Controls.Add(Me.Label3, 0, 1)
         Me.TableLayoutPanel21.Location = New System.Drawing.Point(556, 3)
         Me.TableLayoutPanel21.Name = "TableLayoutPanel21"
@@ -2339,29 +2313,44 @@ Partial Class frmMain
         Me.TableLayoutPanel21.Size = New System.Drawing.Size(232, 382)
         Me.TableLayoutPanel21.TabIndex = 1
         '
-        'btn_busqueda_factura
+        'gb_tipos_factura
         '
-        Me.btn_busqueda_factura.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.btn_busqueda_factura.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_busqueda_factura.Location = New System.Drawing.Point(142, 239)
-        Me.btn_busqueda_factura.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
-        Me.btn_busqueda_factura.Name = "btn_busqueda_factura"
-        Me.btn_busqueda_factura.Size = New System.Drawing.Size(75, 23)
-        Me.btn_busqueda_factura.TabIndex = 2
-        Me.btn_busqueda_factura.Text = "Buscar"
-        Me.btn_busqueda_factura.UseVisualStyleBackColor = True
+        Me.gb_tipos_factura.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.gb_tipos_factura.Controls.Add(Me.rdb_facturas_venta)
+        Me.gb_tipos_factura.Controls.Add(Me.rdb_facturas_compra)
+        Me.gb_tipos_factura.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gb_tipos_factura.Location = New System.Drawing.Point(3, 3)
+        Me.gb_tipos_factura.Name = "gb_tipos_factura"
+        Me.gb_tipos_factura.Size = New System.Drawing.Size(226, 78)
+        Me.gb_tipos_factura.TabIndex = 9
+        Me.gb_tipos_factura.TabStop = False
+        Me.gb_tipos_factura.Text = "Mostrar"
         '
-        'btn_facturar_albaran
+        'rdb_facturas_venta
         '
-        Me.btn_facturar_albaran.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_facturar_albaran.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_facturar_albaran.Location = New System.Drawing.Point(15, 311)
-        Me.btn_facturar_albaran.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
-        Me.btn_facturar_albaran.Name = "btn_facturar_albaran"
-        Me.btn_facturar_albaran.Size = New System.Drawing.Size(202, 23)
-        Me.btn_facturar_albaran.TabIndex = 5
-        Me.btn_facturar_albaran.Text = "FACTURAR ALBARÁN"
-        Me.btn_facturar_albaran.UseVisualStyleBackColor = True
+        Me.rdb_facturas_venta.AutoSize = True
+        Me.rdb_facturas_venta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rdb_facturas_venta.Location = New System.Drawing.Point(56, 48)
+        Me.rdb_facturas_venta.Name = "rdb_facturas_venta"
+        Me.rdb_facturas_venta.Size = New System.Drawing.Size(112, 17)
+        Me.rdb_facturas_venta.TabIndex = 1
+        Me.rdb_facturas_venta.TabStop = True
+        Me.rdb_facturas_venta.Text = "Facturas de Venta"
+        Me.rdb_facturas_venta.UseVisualStyleBackColor = True
+        '
+        'rdb_facturas_compra
+        '
+        Me.rdb_facturas_compra.AutoSize = True
+        Me.rdb_facturas_compra.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rdb_facturas_compra.Location = New System.Drawing.Point(56, 19)
+        Me.rdb_facturas_compra.Name = "rdb_facturas_compra"
+        Me.rdb_facturas_compra.Size = New System.Drawing.Size(120, 17)
+        Me.rdb_facturas_compra.TabIndex = 0
+        Me.rdb_facturas_compra.TabStop = True
+        Me.rdb_facturas_compra.Text = "Facturas de Compra"
+        Me.rdb_facturas_compra.UseVisualStyleBackColor = True
         '
         'btn_cambiar_estado_factura
         '
@@ -2375,36 +2364,60 @@ Partial Class frmMain
         Me.btn_cambiar_estado_factura.Text = "MARCAR COMO PAGADO"
         Me.btn_cambiar_estado_factura.UseVisualStyleBackColor = True
         '
-        'DateTimePicker2
+        'btn_facturar_albaran
         '
-        Me.DateTimePicker2.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DateTimePicker2.CustomFormat = "Día fin"
-        Me.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DateTimePicker2.Location = New System.Drawing.Point(15, 207)
-        Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
-        Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(202, 20)
-        Me.DateTimePicker2.TabIndex = 1
+        Me.btn_facturar_albaran.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_facturar_albaran.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_facturar_albaran.Location = New System.Drawing.Point(15, 311)
+        Me.btn_facturar_albaran.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
+        Me.btn_facturar_albaran.Name = "btn_facturar_albaran"
+        Me.btn_facturar_albaran.Size = New System.Drawing.Size(202, 23)
+        Me.btn_facturar_albaran.TabIndex = 5
+        Me.btn_facturar_albaran.Text = "FACTURAR ALBARÁN"
+        Me.btn_facturar_albaran.UseVisualStyleBackColor = True
         '
-        'TextBox1
+        'btn_busqueda_factura
         '
-        Me.TextBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox1.Location = New System.Drawing.Point(15, 131)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(202, 20)
-        Me.TextBox1.TabIndex = 4
+        Me.btn_busqueda_factura.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.btn_busqueda_factura.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_busqueda_factura.Location = New System.Drawing.Point(142, 239)
+        Me.btn_busqueda_factura.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
+        Me.btn_busqueda_factura.Name = "btn_busqueda_factura"
+        Me.btn_busqueda_factura.Size = New System.Drawing.Size(75, 23)
+        Me.btn_busqueda_factura.TabIndex = 2
+        Me.btn_busqueda_factura.Text = "Buscar"
+        Me.btn_busqueda_factura.UseVisualStyleBackColor = True
         '
-        'DateTimePicker1
+        'dp_busqueda_fin_factura
         '
-        Me.DateTimePicker1.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DateTimePicker1.CustomFormat = "Día inicio"
-        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DateTimePicker1.Location = New System.Drawing.Point(15, 169)
-        Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(202, 20)
-        Me.DateTimePicker1.TabIndex = 0
+        Me.dp_busqueda_fin_factura.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dp_busqueda_fin_factura.CustomFormat = "Día fin"
+        Me.dp_busqueda_fin_factura.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dp_busqueda_fin_factura.Location = New System.Drawing.Point(15, 207)
+        Me.dp_busqueda_fin_factura.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
+        Me.dp_busqueda_fin_factura.Name = "dp_busqueda_fin_factura"
+        Me.dp_busqueda_fin_factura.Size = New System.Drawing.Size(202, 20)
+        Me.dp_busqueda_fin_factura.TabIndex = 1
+        '
+        'dp_busqueda_inicio_factura
+        '
+        Me.dp_busqueda_inicio_factura.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dp_busqueda_inicio_factura.CustomFormat = "Día inicio"
+        Me.dp_busqueda_inicio_factura.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dp_busqueda_inicio_factura.Location = New System.Drawing.Point(15, 169)
+        Me.dp_busqueda_inicio_factura.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
+        Me.dp_busqueda_inicio_factura.Name = "dp_busqueda_inicio_factura"
+        Me.dp_busqueda_inicio_factura.Size = New System.Drawing.Size(202, 20)
+        Me.dp_busqueda_inicio_factura.TabIndex = 0
+        '
+        'txt_busqueda_factura
+        '
+        Me.txt_busqueda_factura.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_busqueda_factura.Location = New System.Drawing.Point(15, 131)
+        Me.txt_busqueda_factura.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
+        Me.txt_busqueda_factura.Name = "txt_busqueda_factura"
+        Me.txt_busqueda_factura.Size = New System.Drawing.Size(202, 20)
+        Me.txt_busqueda_factura.TabIndex = 4
         '
         'Label3
         '
@@ -2535,44 +2548,42 @@ Partial Class frmMain
         '
         Me.GrupoBindingSource1.DataSource = GetType(MP_Lucas_Sanz.Grupo)
         '
-        'gb_tipos_factura
+        'idFactura
         '
-        Me.gb_tipos_factura.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.gb_tipos_factura.Controls.Add(Me.rdb_facturas_venta)
-        Me.gb_tipos_factura.Controls.Add(Me.rdb_facturas_compra)
-        Me.gb_tipos_factura.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.gb_tipos_factura.Location = New System.Drawing.Point(3, 3)
-        Me.gb_tipos_factura.Name = "gb_tipos_factura"
-        Me.gb_tipos_factura.Size = New System.Drawing.Size(226, 78)
-        Me.gb_tipos_factura.TabIndex = 9
-        Me.gb_tipos_factura.TabStop = False
-        Me.gb_tipos_factura.Text = "Mostrar"
+        Me.idFactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.idFactura.HeaderText = "ID"
+        Me.idFactura.Name = "idFactura"
+        Me.idFactura.ReadOnly = True
         '
-        'rdb_facturas_venta
+        'entidadFactura
         '
-        Me.rdb_facturas_venta.AutoSize = True
-        Me.rdb_facturas_venta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rdb_facturas_venta.Location = New System.Drawing.Point(56, 48)
-        Me.rdb_facturas_venta.Name = "rdb_facturas_venta"
-        Me.rdb_facturas_venta.Size = New System.Drawing.Size(112, 17)
-        Me.rdb_facturas_venta.TabIndex = 1
-        Me.rdb_facturas_venta.TabStop = True
-        Me.rdb_facturas_venta.Text = "Facturas de Venta"
-        Me.rdb_facturas_venta.UseVisualStyleBackColor = True
+        Me.entidadFactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.entidadFactura.HeaderText = "Entidad"
+        Me.entidadFactura.Name = "entidadFactura"
+        Me.entidadFactura.ReadOnly = True
         '
-        'rdb_facturas_compra
+        'listaAlbaranesFactura
         '
-        Me.rdb_facturas_compra.AutoSize = True
-        Me.rdb_facturas_compra.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rdb_facturas_compra.Location = New System.Drawing.Point(56, 19)
-        Me.rdb_facturas_compra.Name = "rdb_facturas_compra"
-        Me.rdb_facturas_compra.Size = New System.Drawing.Size(120, 17)
-        Me.rdb_facturas_compra.TabIndex = 0
-        Me.rdb_facturas_compra.TabStop = True
-        Me.rdb_facturas_compra.Text = "Facturas de Compra"
-        Me.rdb_facturas_compra.UseVisualStyleBackColor = True
+        Me.listaAlbaranesFactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.listaAlbaranesFactura.HeaderText = "Albaranes"
+        Me.listaAlbaranesFactura.Name = "listaAlbaranesFactura"
+        '
+        'fechaFactura
+        '
+        Me.fechaFactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        DataGridViewCellStyle16.Format = "d"
+        DataGridViewCellStyle16.NullValue = Nothing
+        Me.fechaFactura.DefaultCellStyle = DataGridViewCellStyle16
+        Me.fechaFactura.HeaderText = "Fecha"
+        Me.fechaFactura.Name = "fechaFactura"
+        Me.fechaFactura.ReadOnly = True
+        '
+        'estadoFactura
+        '
+        Me.estadoFactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.estadoFactura.HeaderText = "Estado"
+        Me.estadoFactura.Name = "estadoFactura"
+        Me.estadoFactura.ReadOnly = True
         '
         'frmMain
         '
@@ -2650,6 +2661,8 @@ Partial Class frmMain
         CType(Me.dg_facturas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel21.ResumeLayout(False)
         Me.TableLayoutPanel21.PerformLayout()
+        Me.gb_tipos_factura.ResumeLayout(False)
+        Me.gb_tipos_factura.PerformLayout()
         Me.tab_configuraciones.ResumeLayout(False)
         Me.TableLayoutPanel9.ResumeLayout(False)
         CType(Me.ProveedorBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2660,8 +2673,6 @@ Partial Class frmMain
         CType(Me.ClienteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BancoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GrupoBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.gb_tipos_factura.ResumeLayout(False)
-        Me.gb_tipos_factura.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2837,19 +2848,20 @@ Partial Class frmMain
     Friend WithEvents tab_facturas As TabPage
     Friend WithEvents TableLayoutPanel20 As TableLayoutPanel
     Friend WithEvents dg_facturas As DataGridView
-    Friend WithEvents idFactura As DataGridViewTextBoxColumn
-    Friend WithEvents entidadFactura As DataGridViewTextBoxColumn
-    Friend WithEvents listaAlbaranesFactura As DataGridViewComboBoxColumn
-    Friend WithEvents estadoFactura As DataGridViewTextBoxColumn
     Friend WithEvents TableLayoutPanel21 As TableLayoutPanel
     Friend WithEvents Label3 As Label
-    Public WithEvents TextBox1 As TextBox
+    Public WithEvents txt_busqueda_factura As TextBox
     Public WithEvents btn_facturar_albaran As Button
     Public WithEvents btn_cambiar_estado_factura As Button
-    Public WithEvents DateTimePicker1 As DateTimePicker
-    Public WithEvents DateTimePicker2 As DateTimePicker
+    Public WithEvents dp_busqueda_inicio_factura As DateTimePicker
+    Public WithEvents dp_busqueda_fin_factura As DateTimePicker
     Public WithEvents btn_busqueda_factura As Button
     Friend WithEvents gb_tipos_factura As GroupBox
     Friend WithEvents rdb_facturas_venta As RadioButton
     Friend WithEvents rdb_facturas_compra As RadioButton
+    Friend WithEvents idFactura As DataGridViewTextBoxColumn
+    Friend WithEvents entidadFactura As DataGridViewTextBoxColumn
+    Friend WithEvents listaAlbaranesFactura As DataGridViewComboBoxColumn
+    Friend WithEvents fechaFactura As DataGridViewTextBoxColumn
+    Friend WithEvents estadoFactura As DataGridViewTextBoxColumn
 End Class

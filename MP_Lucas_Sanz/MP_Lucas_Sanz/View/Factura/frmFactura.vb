@@ -1,8 +1,8 @@
 ﻿Public Class frmFactura
     Private listaAlbaranes As List(Of String)
-    Private clienteSeleccionado As Cliente
-    Private proveedorSeleccionado As Proveedor
-    Private entidadSeleccionada As String
+    Public clienteSeleccionado As Cliente
+    Public proveedorSeleccionado As Proveedor
+    Public entidadSeleccionada As String
     Private brutoTotal As Double
     Private brutoParcial As Double
     Private baseImponibleTotal As Double
@@ -12,6 +12,7 @@
     Private descuentoTotal As Double
     Private descuentoParcial As Double
     Private precioTotal As Double
+    Private duplicado As Boolean
     Private dg As DataGridView
 
     Public Sub New(nuevo As Boolean)
@@ -23,6 +24,7 @@
         impuestoTotal = 0
         descuentoTotal = 0
         precioTotal = 0
+        duplicado = False
 
         If nuevo Then
             Dim idFactura As Integer = managerFacturaAux.getIDFactura()
@@ -57,10 +59,13 @@
         End If
     End Sub
     Private Sub checkCell(dgCurrent As DataGridViewCell)
-        If dgCurrent.Value Then
+        If dgCurrent.Value And Not duplicado Then
             listaAlbaranes.Add(dg.Rows(dgCurrent.RowIndex).Cells("idAlbaran").Value)
-        Else
+            duplicado = True
+        ElseIf Not dgCurrent.Value Then
             listaAlbaranes.Remove(dg.Rows(dgCurrent.RowIndex).Cells("idAlbaran").Value)
+        ElseIf duplicado Then
+            duplicado = False
         End If
         recalcularTotales()
     End Sub
@@ -86,6 +91,18 @@
             End If
         Next
     End Sub
+    Public Sub fillDGCompras(listaCompras As List(Of String))
+        Dim compraTemp As Compra
+        For Each c As String In listaCompras
+            If c.StartsWith(" ") Then
+                Continue For
+            End If
+            Dim index As Integer = dg.Rows.Add()
+            compraTemp = getCompraPorFactura(c)
+            dg.Rows(index).Cells("idAlbaran").Value = compraTemp.FacturaDeCompra
+            dg.Rows(index).Cells("fechaAlbaran").Value = compraTemp.FechaDeCompra
+        Next
+    End Sub
     Private Sub fillDGVentas()
         If listaVentasAux.Count = 0 Then
             MessageBox.Show("Sin ventas que facturar")
@@ -101,7 +118,19 @@
             End If
         Next
     End Sub
-    Private Sub fillDatosCliente()
+    Public Sub fillDGVentas(listaVentasPasada As List(Of String))
+        Dim ventaTemp As Venta
+        For Each v As String In listaVentasPasada
+            If v.StartsWith(" ") Then
+                Continue For
+            End If
+            Dim index As Integer = dg.Rows.Add()
+            ventaTemp = getVentaPorFactura(v)
+            dg.Rows(index).Cells("idAlbaran").Value = ventaTemp.FacturaDeVenta
+            dg.Rows(index).Cells("fechaAlbaran").Value = ventaTemp.FechaDeVenta
+        Next
+    End Sub
+    Public Sub fillDatosCliente()
         lbl_telefono.Visible = False
         txt_telefono_cliente_factura.Visible = False
         lbl_nombre.Text = "Cliente"
@@ -115,7 +144,7 @@
         txt_direccion_cliente_factura.Text = clienteSeleccionado.DireccionDelCliente
         txt_banco_factura.Text = getBancoPorCodigo(clienteSeleccionado.BancoDelCliente).NombreDeBanco
     End Sub
-    Private Sub fillDatosProveedor()
+    Public Sub fillDatosProveedor()
         lbl_email.Text = "Población"
         lbl_grupo.Visible = False
         txt_grupo_cliente_factura.Visible = False
@@ -181,9 +210,54 @@
         txt_impuestos_factura.Text = impuestoTotal.ToString("N2")
         txt_total_factura.Text = precioTotal.ToString("N2")
     End Sub
+    Public Sub recalcularTotales(listadoAlbaranes As List(Of String))
+        If entidadSeleccionada.Equals("Cliente") Then
+            For Each s As String In listadoAlbaranes
+                If s.StartsWith(" ") Then
+                    Continue For
+                End If
+                Dim ventaTemp As Venta = getVentaPorFactura(s)
+                Dim articuloTemp As Articulo = getArticuloPorCodigo(ventaTemp.ArticuloDeVenta)
+
+                brutoParcial = ventaTemp.PrecioDeArticuloVenta * ventaTemp.CantidadDeVenta
+                baseImponibleParcial = brutoParcial * (1 - ventaTemp.DescuentoDeVenta / 100)
+                impuestoParcial = brutoParcial * articuloTemp.ImpuestoDeArticulo / 100
+                descuentoParcial = brutoParcial * (ventaTemp.DescuentoDeVenta / 100)
+
+                brutoTotal += brutoParcial
+                baseImponibleTotal += baseImponibleParcial
+                impuestoTotal += impuestoParcial
+                descuentoTotal += descuentoParcial
+                precioTotal += baseImponibleParcial + impuestoParcial
+            Next
+        Else
+            For Each s As String In listadoAlbaranes
+                If s.StartsWith(" ") Then
+                    Continue For
+                End If
+                Dim compraTemp As Compra = getCompraPorFactura(s)
+                Dim articuloTemp As Articulo = getArticuloPorCodigo(compraTemp.ArticuloDeCompra)
+                brutoParcial = compraTemp.PrecioDeArticuloCompra * compraTemp.CantidadDeCompra
+                baseImponibleParcial = brutoParcial * (1 - compraTemp.DescuentoDeCompra / 100)
+                impuestoParcial = brutoParcial * articuloTemp.ImpuestoDeArticulo / 100
+                descuentoParcial = brutoParcial * (compraTemp.DescuentoDeCompra / 100)
+
+                brutoTotal += brutoParcial
+                baseImponibleTotal += baseImponibleParcial
+                impuestoTotal += impuestoParcial
+                descuentoTotal += descuentoParcial
+                precioTotal += baseImponibleParcial + impuestoParcial
+            Next
+        End If
+        txt_bruto_factura.Text = brutoTotal.ToString("N2")
+        txt_base_imponible_factura.Text = baseImponibleTotal.ToString("N2")
+        txt_descuento_factura.Text = descuentoTotal.ToString("N2")
+        txt_impuestos_factura.Text = impuestoTotal.ToString("N2")
+        txt_total_factura.Text = precioTotal.ToString("N2")
+    End Sub
     Private Sub click_btn_facturar_factura(sender As Object, e As EventArgs) Handles btn_facturar_factura.Click
         Dim codigoNuevo As Integer = Convert.ToInt32(txt_referencia_factura.Text)
-        Dim fechaFactura As DateTime = dp_factura.Value
+        Dim fechaFactura As Date = dp_factura.Value
         Dim tipoFactura As String
         If entidadSeleccionada.Equals("Cliente") Then
             tipoFactura = "V"
@@ -195,7 +269,7 @@
             stringFacturas += $"{s},"
         Next
 
-        Dim facturaNueva As Factura = New Factura(codigoNuevo, stringFacturas, fechaFactura, "Pagada", tipoFactura)
+        Dim facturaNueva As Factura = New Factura(codigoNuevo, stringFacturas, fechaFactura, "C", tipoFactura)
         facturaNueva.addFactura()
         MessageBox.Show("Factura cobrada")
         Me.Close()
