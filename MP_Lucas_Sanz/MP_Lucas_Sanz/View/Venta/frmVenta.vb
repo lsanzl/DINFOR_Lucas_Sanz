@@ -8,10 +8,12 @@ Public Class frmVenta
     Dim borrado As Boolean
     Dim modificacion As Boolean = False
     Dim verAlbaran As Boolean = False
+    Dim facturado As Boolean = False
     Dim ventaTemp As Venta = New Venta()
     Dim dt As New DataTable()
     Dim clienteSeleccionado As Cliente = Nothing
     Dim articuloSeleccionado As Articulo = Nothing
+    Dim formaPagoSeleccionada As Boolean
     Dim facturaGenerada As String
     Dim doubleParse As Double
     Dim brutoTotal As Double
@@ -23,6 +25,7 @@ Public Class frmVenta
         If Not verAlbaran Then
             listaVentas = New List(Of Venta)
         End If
+        formaPagoSeleccionada = False
         facturaGenerada = ventaAux.getRandomFactura()
         fillFields()
     End Sub
@@ -119,7 +122,7 @@ Public Class frmVenta
             MessageBox.Show("Seleccione primero artículo")
             Return False
         End If
-        If cb_forma_pago_seleccionada_venta.SelectedIndex = -1 Then
+        If cb_forma_pago_seleccionada_venta.SelectedIndex = -1 And Not formaPagoSeleccionada Then
             MessageBox.Show("Seleccione primero forma de pago")
             Return False
         End If
@@ -197,9 +200,6 @@ Public Class frmVenta
         End If
     End Sub
     Private Sub fillDGVentas()
-        If listaVentas.Count = 0 Then
-            Return
-        End If
         Dim clienteTemp As Cliente = VariablesGlobales.getClientePorCodigo(clienteSeleccionado.CodigoDelCliente)
         dg_ventas.Rows.Clear()
         Dim articuloItem As Articulo
@@ -225,10 +225,12 @@ Public Class frmVenta
             btn_confirmar_venta.Enabled = True
             btn_busqueda_cliente.Enabled = False
             cb_forma_pago_seleccionada_venta.Enabled = False
+            formaPagoSeleccionada = True
         Else
             btn_confirmar_venta.Enabled = False
             btn_busqueda_cliente.Enabled = True
             cb_forma_pago_seleccionada_venta.Enabled = True
+            formaPagoSeleccionada = False
         End If
         dg_ventas.ClearSelection()
     End Sub
@@ -353,6 +355,26 @@ Public Class frmVenta
         End Try
     End Sub
     Private Sub click_btn_confirmar_venta(sender As Object, e As EventArgs) Handles btn_confirmar_venta.Click
+        confirmarVenta()
+    End Sub
+    Private Sub click_btn_facturar_venta(sender As Object, e As EventArgs) Handles btn_facturar_venta.Click
+        facturado = True
+        confirmarVenta()
+        Dim frmF As frmFactura = New frmFactura(True)
+        frmF.clienteSeleccionado = clienteSeleccionado
+        frmF.fillDatosCliente()
+        Dim listaFacturas As List(Of String) = New List(Of String)
+        For Each v As Venta In listaVentas
+            listaFacturas.Add(v.FacturaDeVenta)
+        Next
+        frmF.fillDGVentas(listaFacturas)
+        frmF.txt_forma_pago_factura.Text = getFormaPagoPorCodigo(listaVentas(0).FormaDePagoVenta).NombreDePago
+        frmF.entidadSeleccionada = "Cliente"
+        frmF.recalcularTotales(listaFacturas)
+        frmF.ShowDialog()
+        Me.Close()
+    End Sub
+    Private Sub confirmarVenta()
         If dg_ventas.RowCount = 0 Then
             MessageBox.Show("Introduzca primero alguna venta")
             Return
@@ -376,12 +398,17 @@ Public Class frmVenta
             movimientoTemp = New Movimiento("V", facturaGenerada, item.ClienteDeVenta, fechaVenta, articuloFind.CodigoDeArticulo, stockActual, item.CantidadDeVenta)
             movimientoTemp.addMovimiento()
         Next
-
-        Dim informe As infVenta = New infVenta(listaVentas, fechaVenta, brutoTotal, baseImponibleTotal, impuestoTotal, precioTotal)
-        informe.showReport()
+        Dim result As DialogResult = MessageBox.Show("¿Desea ver el albarán de venta?", "Albarán generado", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+        If result = DialogResult.Yes Then
+            verInformeAlbaran()
+        End If
         clearFields()
     End Sub
-
+    Private Sub verInformeAlbaran()
+        Dim fechaVenta As Date = dp_fecha_venta.Value
+        Dim informe As infVenta = New infVenta(listaVentas, fechaVenta, brutoTotal, baseImponibleTotal, impuestoTotal, precioTotal)
+        informe.showReport()
+    End Sub
     Private Sub cell_end_edit_dg_ventas(sender As Object, e As DataGridViewCellEventArgs) Handles dg_ventas.CellEndEdit
         Dim precioBrutoNuevo As Double
         Dim porcentajeNuevo As Double
@@ -406,4 +433,5 @@ Public Class frmVenta
         listaVentas = New List(Of Venta)
         fillDGVentas()
     End Sub
+
 End Class

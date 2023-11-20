@@ -16,6 +16,7 @@
         frm.rdb_facturas_compra.Checked = True
 
         AddHandler frm.btn_facturar_albaran.Click, AddressOf click_btn_facturar_albaran
+        AddHandler frm.btn_eliminar_factura.Click, AddressOf click_btn_eliminar_factura
         AddHandler frm.rdb_facturas_compra.CheckedChanged, AddressOf checked_changed_gb_facturas
         AddHandler frm.rdb_facturas_venta.CheckedChanged, AddressOf checked_changed_gb_facturas
         AddHandler frm.dg_facturas.CellClick, AddressOf cell_click_dg_facturas
@@ -51,6 +52,7 @@
         frm.dp_busqueda_inicio_factura.CustomFormat = "Día inicio"
         frm.dp_busqueda_fin_factura.Format = DateTimePickerFormat.Custom
         frm.dp_busqueda_fin_factura.CustomFormat = "Día fin"
+        frm.btn_cambiar_estado_factura.Enabled = False
     End Sub
     Private Sub fillDGFacturasCompras(listaFacturas As List(Of Factura))
         Dim cbAlbaranes As DataGridViewComboBoxCell
@@ -148,6 +150,10 @@
         Dim dg As DataGridView = frm.dg_facturas
         Dim fechaInicio As Date = frm.dp_busqueda_inicio_factura.Value
         Dim fechaFin As Date = frm.dp_busqueda_fin_factura.Value
+        If fechaInicio > fechaFin Then
+            MessageBox.Show("Error de fecha")
+            Return
+        End If
 
         If Not textoBusqueda.Equals("") Then
             For Each fila As DataGridViewRow In dg.Rows
@@ -180,6 +186,12 @@
             Return
         End If
         facturaSeleccionada = getFacturaPorCodigo(dg.Rows(e.RowIndex).Cells("idFactura").Value)
+        frm.btn_cambiar_estado_factura.Enabled = True
+        If facturaSeleccionada.EstadoDeFactura.Equals("P") Then
+            frm.btn_cambiar_estado_factura.Text = "MARCAR COMO COBRADO"
+        Else
+            frm.btn_cambiar_estado_factura.Text = "MARCAR COMO PENDIENTE"
+        End If
     End Sub
     Private Sub cell_double_click_dg_facturas(sender As Object, e As DataGridViewCellEventArgs)
         If e.RowIndex < 0 Then
@@ -212,9 +224,20 @@
             frmF.recalcularTotales(facturaSeleccionada.ListaDeAlbaranes)
         End If
         frmF.ShowDialog()
+        fillDGFacturas()
     End Sub
     Private Sub click_btn_cambiar_estado_factura(sender As Object, e As EventArgs)
         managerFacturaAux.cambiarEstadoFactura(facturaSeleccionada)
+        fillDGFacturas()
+        If frm.btn_cambiar_estado_factura.Text.Equals("MARCAR COMO PAGADO") Then
+            frm.btn_cambiar_estado_factura.Text = "MARCAR COMO PENDIENTE"
+        Else
+            frm.btn_cambiar_estado_factura.Text = "MARCAR COMO COBRADO"
+        End If
+        frm.btn_cambiar_estado_factura.Enabled = False
+    End Sub
+    Private Sub click_btn_eliminar_factura(sender As Object, e As EventArgs)
+        facturaSeleccionada.deleteFactura()
         fillDGFacturas()
     End Sub
     Private Sub selected_index_changed_tab_main(sender As Object, e As EventArgs)

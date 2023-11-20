@@ -8,6 +8,7 @@
         AddHandler frmMenu.btn_efectuar_compra.Click, AddressOf click_btn_efectuar_compra
         AddHandler frmMenu.btn_efectuar_venta.Click, AddressOf click_btn_efectuar_venta
         AddHandler frmMenu.btn_menu_factura.Click, AddressOf click_btn_menu_factura
+        AddHandler frmMenu.btn_menu_vencimiento.Click, AddressOf click_btn_menu_vencimiento
         AddHandler frmMenu.btn_menu_configuraciones.Click, AddressOf click_btn_menu_configuraciones
         AddHandler frmMenu.btn_ver_ventas.Click, AddressOf click_btn_ver_ventas
         AddHandler frmMenu.btn_ver_compras.Click, AddressOf click_btn_ver_compras
@@ -21,6 +22,9 @@
     End Sub
     Private Sub click_btn_menu_factura(sender As Object, e As EventArgs)
         frmMenu.tab_main.SelectTab("tab_facturas")
+    End Sub
+    Private Sub click_btn_menu_vencimiento(sender As Object, e As EventArgs)
+        frmMenu.tab_main.SelectTab("tab_vencimientos")
     End Sub
     Private Sub click_btn_menu_configuraciones(sender As Object, e As EventArgs)
         frmMenu.tab_main.SelectTab("tab_configuraciones")

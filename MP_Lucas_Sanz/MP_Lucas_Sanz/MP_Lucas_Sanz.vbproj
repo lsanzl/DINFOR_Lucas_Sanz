@@ -112,6 +112,7 @@
     <Compile Include="Controller\ctrMenu.vb" />
     <Compile Include="Controller\ctrMovimiento.vb" />
     <Compile Include="Controller\ctrProveedor.vb" />
+    <Compile Include="Controller\ctrVencimiento.vb" />
     <Compile Include="Manager\ManagerArticulo.vb" />
     <Compile Include="Manager\ManagerBanco.vb" />
     <Compile Include="Manager\ManagerCliente.vb" />
@@ -126,6 +127,7 @@
     <Compile Include="Manager\ManagerInventario.vb" />
     <Compile Include="Manager\ManagerMovimiento.vb" />
     <Compile Include="Manager\ManagerProveedor.vb" />
+    <Compile Include="Manager\ManagerVencimiento.vb" />
     <Compile Include="Manager\ManagerVenta.vb" />
     <Compile Include="Model\Articulo.vb" />
     <Compile Include="Model\Banco.vb" />
@@ -139,6 +141,7 @@
     <Compile Include="Model\Inventario.vb" />
     <Compile Include="Model\Movimiento.vb" />
     <Compile Include="Model\Proveedor.vb" />
+    <Compile Include="Model\Vencimiento.vb" />
     <Compile Include="Model\Venta.vb" />
     <Compile Include="Report\Compra\dsCompra.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -323,6 +326,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\VariablesGlobales.vb" />
+    <Compile Include="View\Vencimiento\frmCobroParcial.Designer.vb">
+      <DependentUpon>frmCobroParcial.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\Vencimiento\frmCobroParcial.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\Venta\frmBusquedaVenta.Designer.vb">
       <DependentUpon>frmBusquedaVenta.vb</DependentUpon>
     </Compile>
@@ -417,6 +426,9 @@
     <EmbeddedResource Include="View\Reportes\viewerRPTVenta.resx">
       <DependentUpon>viewerRPTVenta.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Vencimiento\frmCobroParcial.resx">
+      <DependentUpon>frmCobroParcial.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Venta\frmBusquedaVenta.resx">
       <DependentUpon>frmBusquedaVenta.vb</DependentUpon>
     </EmbeddedResource>
@@ -492,6 +504,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\factura.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rostro.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

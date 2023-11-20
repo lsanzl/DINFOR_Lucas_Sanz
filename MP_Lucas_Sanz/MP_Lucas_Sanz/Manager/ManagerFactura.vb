@@ -57,16 +57,12 @@ Public Class ManagerFactura
     Public Sub modifyFactura(f As Factura)
         cmd = New SqlCommand("UPDATE FACTURAS SET
                             ALBARANES_FACTURA = @Albaranes,
-                            ESTADO_FACTURA = @Estado,
-                            FECHA_FACTURA = @Fecha,
-                            TIPO_FACTURA = @Tipo
+                            FECHA_FACTURA = @Fecha
                             WHERE ID_FACTURA = @Codigo;", connectionDBManager)
         With cmd.Parameters
             .Add("@Codigo", SqlDbType.Int).Value = f.CodigoDeFactura
             .Add("@Albaranes", SqlDbType.Char, 200).Value = f.StringDeAlbaranes
-            .Add("@Estado", SqlDbType.Char, 1).Value = f.EstadoDeFactura
             .Add("@Fecha", SqlDbType.Date).Value = f.FechaDeCobro
-            .Add("@Tipo", SqlDbType.Char, 1).Value = f.TipoDeFactura
         End With
         Try
             cmd.ExecuteNonQuery()

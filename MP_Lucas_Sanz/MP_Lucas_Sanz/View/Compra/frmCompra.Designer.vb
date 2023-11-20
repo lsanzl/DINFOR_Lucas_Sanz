@@ -69,6 +69,7 @@ Partial Class frmCompra
         Me.lbl_bruto = New System.Windows.Forms.Label()
         Me.btn_confirmar_compra = New System.Windows.Forms.Button()
         Me.CompraBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.btn_facturar_compra = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
@@ -452,19 +453,21 @@ Partial Class frmCompra
         Me.TableLayoutPanel4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel4.ColumnCount = 6
+        Me.TableLayoutPanel4.ColumnCount = 7
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.0!))
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.0!))
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.0!))
         Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.0!))
-        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.0!))
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.0!))
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.0!))
         Me.TableLayoutPanel4.Controls.Add(Me.btn_guardar_pdf, 4, 0)
         Me.TableLayoutPanel4.Controls.Add(Me.lbl_impuesto, 0, 0)
         Me.TableLayoutPanel4.Controls.Add(Me.lbl_base_imponible, 0, 0)
         Me.TableLayoutPanel4.Controls.Add(Me.lbl_total_compra, 1, 0)
         Me.TableLayoutPanel4.Controls.Add(Me.lbl_bruto, 0, 0)
         Me.TableLayoutPanel4.Controls.Add(Me.btn_confirmar_compra, 5, 0)
+        Me.TableLayoutPanel4.Controls.Add(Me.btn_facturar_compra, 6, 0)
         Me.TableLayoutPanel4.Location = New System.Drawing.Point(3, 360)
         Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
         Me.TableLayoutPanel4.RowCount = 1
@@ -478,7 +481,7 @@ Partial Class frmCompra
         Me.btn_guardar_pdf.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_guardar_pdf.Location = New System.Drawing.Point(531, 6)
         Me.btn_guardar_pdf.Name = "btn_guardar_pdf"
-        Me.btn_guardar_pdf.Size = New System.Drawing.Size(170, 23)
+        Me.btn_guardar_pdf.Size = New System.Drawing.Size(108, 23)
         Me.btn_guardar_pdf.TabIndex = 14
         Me.btn_guardar_pdf.Text = "GUARDAR PDF"
         Me.btn_guardar_pdf.UseVisualStyleBackColor = True
@@ -488,7 +491,7 @@ Partial Class frmCompra
         Me.lbl_impuesto.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbl_impuesto.AutoSize = True
         Me.lbl_impuesto.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_impuesto.Location = New System.Drawing.Point(135, 11)
+        Me.lbl_impuesto.Location = New System.Drawing.Point(267, 11)
         Me.lbl_impuesto.Name = "lbl_impuesto"
         Me.lbl_impuesto.Size = New System.Drawing.Size(126, 13)
         Me.lbl_impuesto.TabIndex = 12
@@ -501,7 +504,7 @@ Partial Class frmCompra
         Me.lbl_base_imponible.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbl_base_imponible.AutoSize = True
         Me.lbl_base_imponible.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_base_imponible.Location = New System.Drawing.Point(267, 11)
+        Me.lbl_base_imponible.Location = New System.Drawing.Point(3, 11)
         Me.lbl_base_imponible.Name = "lbl_base_imponible"
         Me.lbl_base_imponible.Size = New System.Drawing.Size(126, 13)
         Me.lbl_base_imponible.TabIndex = 11
@@ -528,7 +531,7 @@ Partial Class frmCompra
         Me.lbl_bruto.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbl_bruto.AutoSize = True
         Me.lbl_bruto.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_bruto.Location = New System.Drawing.Point(3, 11)
+        Me.lbl_bruto.Location = New System.Drawing.Point(135, 11)
         Me.lbl_bruto.Name = "lbl_bruto"
         Me.lbl_bruto.Size = New System.Drawing.Size(126, 13)
         Me.lbl_bruto.TabIndex = 10
@@ -540,16 +543,27 @@ Partial Class frmCompra
         '
         Me.btn_confirmar_compra.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_confirmar_compra.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_confirmar_compra.Location = New System.Drawing.Point(707, 6)
+        Me.btn_confirmar_compra.Location = New System.Drawing.Point(645, 6)
         Me.btn_confirmar_compra.Name = "btn_confirmar_compra"
-        Me.btn_confirmar_compra.Size = New System.Drawing.Size(174, 23)
+        Me.btn_confirmar_compra.Size = New System.Drawing.Size(108, 23)
         Me.btn_confirmar_compra.TabIndex = 4
-        Me.btn_confirmar_compra.Text = "CONFIRMAR COMPRA"
+        Me.btn_confirmar_compra.Text = "CONFIRMAR"
         Me.btn_confirmar_compra.UseVisualStyleBackColor = True
         '
         'CompraBindingSource
         '
         Me.CompraBindingSource.DataSource = GetType(MP_Lucas_Sanz.Compra)
+        '
+        'btn_facturar_compra
+        '
+        Me.btn_facturar_compra.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_facturar_compra.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_facturar_compra.Location = New System.Drawing.Point(759, 6)
+        Me.btn_facturar_compra.Name = "btn_facturar_compra"
+        Me.btn_facturar_compra.Size = New System.Drawing.Size(122, 23)
+        Me.btn_facturar_compra.TabIndex = 15
+        Me.btn_facturar_compra.Text = "FACTURAR"
+        Me.btn_facturar_compra.UseVisualStyleBackColor = True
         '
         'frmCompra
         '
@@ -617,4 +631,5 @@ Partial Class frmCompra
     Friend WithEvents precioTotalCompra As DataGridViewTextBoxColumn
     Friend WithEvents btn_guardar_pdf As Button
     Friend WithEvents lbl_base_imponible As Label
+    Friend WithEvents btn_facturar_compra As Button
 End Class

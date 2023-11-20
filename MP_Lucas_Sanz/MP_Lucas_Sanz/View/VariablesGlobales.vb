@@ -16,6 +16,7 @@
     Public movimientoAux As Movimiento = New Movimiento()
     Public impuestoAux As Impuesto = New Impuesto()
     Public facturaAux As Factura = New Factura()
+    Public vencimientoAux As Vencimiento = New Vencimiento()
 
     ' ----- MANAGERS AUXILIARES DE CADA CLASE -----
     Public managerEmpAux As ManagerEmpresa = New ManagerEmpresa()
@@ -33,6 +34,7 @@
     Public managerMovimientoAux As ManagerMovimiento = New ManagerMovimiento()
     Public managerImpuestoAux As ManagerImpuesto = New ManagerImpuesto()
     Public managerFacturaAux As ManagerFactura = New ManagerFactura()
+    Public managerVencimientoAux As ManagerVencimiento = New ManagerVencimiento()
 
     ' ----- LISTAS AUXILIARES DE CADA CLASE -----
     'ARTÍCULOS
@@ -160,13 +162,23 @@
         Return listaProveedoresAux.Find(Function(p) p.CodigoDeProveedor = codigo)
     End Function
 
+    'VENCIMIENTOS
+    Public listaVencimientosAux As List(Of Vencimiento) = New List(Of Vencimiento)
+    Public Sub updateListaVencimientos()
+        listaVencimientosAux = New List(Of Vencimiento)
+        listaVencimientosAux = managerVencimientoAux.getVencimientos()
+    End Sub
+    Public Function getVencimientoPorCodigo(codigo As Integer) As Vencimiento
+        Return listaVencimientosAux.Find(Function(v) v.CodigoDeVencimiento = codigo)
+    End Function
+
     'VENTAS
     Public listaVentasAux As List(Of Venta) = New List(Of Venta)
     Public Sub updateListaVentas()
         listaVentasAux = New List(Of Venta)
         listaVentasAux = managerVentaAux.getVentas()
     End Sub
-    Public Function getVentaPorCodigo(codigo As Integer)
+    Public Function getVentaPorCodigo(codigo As Integer) As Venta
         Return listaVentasAux.Find(Function(v) v.CodigoDeVenta = codigo)
     End Function
     Public Function getVentaPorFactura(factura As String) As Venta

@@ -60,6 +60,7 @@ Partial Class frmFactura
         Me.txt_total_factura = New System.Windows.Forms.TextBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel5 = New System.Windows.Forms.TableLayoutPanel()
+        Me.btn_modificar_factura = New System.Windows.Forms.Button()
         Me.btn_facturar_factura = New System.Windows.Forms.Button()
         Me.btn_guardar_factura = New System.Windows.Forms.Button()
         Me.btn_cancelar_factura = New System.Windows.Forms.Button()
@@ -542,6 +543,7 @@ Partial Class frmFactura
         Me.TableLayoutPanel5.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
         Me.TableLayoutPanel5.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
         Me.TableLayoutPanel5.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel5.Controls.Add(Me.btn_modificar_factura, 0, 1)
         Me.TableLayoutPanel5.Controls.Add(Me.btn_facturar_factura, 3, 1)
         Me.TableLayoutPanel5.Controls.Add(Me.btn_guardar_factura, 2, 1)
         Me.TableLayoutPanel5.Controls.Add(Me.btn_cancelar_factura, 0, 1)
@@ -552,6 +554,18 @@ Partial Class frmFactura
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel5.Size = New System.Drawing.Size(373, 97)
         Me.TableLayoutPanel5.TabIndex = 2
+        '
+        'btn_modificar_factura
+        '
+        Me.btn_modificar_factura.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_modificar_factura.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_modificar_factura.Location = New System.Drawing.Point(96, 61)
+        Me.btn_modificar_factura.Name = "btn_modificar_factura"
+        Me.btn_modificar_factura.Size = New System.Drawing.Size(87, 23)
+        Me.btn_modificar_factura.TabIndex = 3
+        Me.btn_modificar_factura.Text = "MODIFICAR"
+        Me.btn_modificar_factura.UseVisualStyleBackColor = True
+        Me.btn_modificar_factura.Visible = False
         '
         'btn_facturar_factura
         '
@@ -786,4 +800,5 @@ Partial Class frmFactura
     Friend WithEvents btn_facturar_factura As Button
     Friend WithEvents btn_guardar_factura As Button
     Friend WithEvents btn_cancelar_factura As Button
+    Friend WithEvents btn_modificar_factura As Button
 End Class

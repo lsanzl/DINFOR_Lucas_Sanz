@@ -13,9 +13,10 @@
     Private descuentoParcial As Double
     Private precioTotal As Double
     Private duplicado As Boolean
+    Private nuevo As Boolean
     Private dg As DataGridView
 
-    Public Sub New(nuevo As Boolean)
+    Public Sub New(nuevoP As Boolean)
         InitializeComponent()
         dg = dg_albaranes_factura
         listaAlbaranes = New List(Of String)
@@ -25,10 +26,12 @@
         descuentoTotal = 0
         precioTotal = 0
         duplicado = False
-
+        nuevo = nuevoP
         If nuevo Then
             Dim idFactura As Integer = managerFacturaAux.getIDFactura()
             txt_referencia_factura.Text = idFactura
+        Else
+            btn_modificar_factura.Visible = True
         End If
     End Sub
     Private Sub click_busqueda_cliente(sender As Object, e As EventArgs) Handles btn_busqueda_cliente.Click
@@ -48,9 +51,6 @@
             fillDatosProveedor()
             fillDGAlbaranes()
         End If
-    End Sub
-    Private Sub click_btn_cancelar_factura(sender As Object, e As EventArgs)
-        Me.Close()
     End Sub
     Private Sub current_cell_dirty_state_changed_dg_albaranes(sender As Object, e As EventArgs) Handles dg_albaranes_factura.CurrentCellDirtyStateChanged
         If TypeOf dg.CurrentCell Is DataGridViewCheckBoxCell Then
@@ -77,6 +77,7 @@
         End If
     End Sub
     Private Sub fillDGCompras()
+        dg.Rows.Clear()
         If listaComprasAux.Count = 0 Then
             MessageBox.Show("Sin compras que facturar")
             Return
@@ -91,19 +92,22 @@
             End If
         Next
     End Sub
-    Public Sub fillDGCompras(listaCompras As List(Of String))
-        Dim compraTemp As Compra
-        For Each c As String In listaCompras
-            If c.StartsWith(" ") Then
-                Continue For
+    Public Sub fillDGCompras(listaComprasPasada As List(Of String))
+        dg.Rows.Clear()
+        Dim listaComprasMod As List(Of Compra) = listaComprasAux
+        For Each c As Compra In listaComprasMod
+            If c.ProveedorDeCompra = proveedorSeleccionado.CodigoDeProveedor Then
+                Dim index As Integer = dg.Rows.Add()
+                dg.Rows(index).Cells("idAlbaran").Value = c.FacturaDeCompra
+                dg.Rows(index).Cells("fechaAlbaran").Value = c.FechaDeCompra
+                If listaComprasPasada.Contains(c.FacturaDeCompra) Then
+                    dg.Rows(index).Cells("incluidoAlbaran").Value = True
+                End If
             End If
-            Dim index As Integer = dg.Rows.Add()
-            compraTemp = getCompraPorFactura(c)
-            dg.Rows(index).Cells("idAlbaran").Value = compraTemp.FacturaDeCompra
-            dg.Rows(index).Cells("fechaAlbaran").Value = compraTemp.FechaDeCompra
         Next
     End Sub
     Private Sub fillDGVentas()
+        dg.Rows.Clear()
         If listaVentasAux.Count = 0 Then
             MessageBox.Show("Sin ventas que facturar")
             Return
@@ -119,15 +123,17 @@
         Next
     End Sub
     Public Sub fillDGVentas(listaVentasPasada As List(Of String))
-        Dim ventaTemp As Venta
-        For Each v As String In listaVentasPasada
-            If v.StartsWith(" ") Then
-                Continue For
+        dg.Rows.Clear()
+        Dim listaVentasMod As List(Of Venta) = listaVentasAux
+        For Each v As Venta In listaVentasMod
+            If v.ClienteDeVenta = clienteSeleccionado.CodigoDelCliente Then
+                Dim index As Integer = dg.Rows.Add()
+                dg.Rows(index).Cells("idAlbaran").Value = v.FacturaDeVenta
+                dg.Rows(index).Cells("fechaAlbaran").Value = v.FechaDeVenta
+                If listaVentasPasada.Contains(v.FacturaDeVenta) Then
+                    dg.Rows(index).Cells("incluidoAlbaran").Value = True
+                End If
             End If
-            Dim index As Integer = dg.Rows.Add()
-            ventaTemp = getVentaPorFactura(v)
-            dg.Rows(index).Cells("idAlbaran").Value = ventaTemp.FacturaDeVenta
-            dg.Rows(index).Cells("fechaAlbaran").Value = ventaTemp.FechaDeVenta
         Next
     End Sub
     Public Sub fillDatosCliente()
@@ -256,6 +262,15 @@
         txt_total_factura.Text = precioTotal.ToString("N2")
     End Sub
     Private Sub click_btn_facturar_factura(sender As Object, e As EventArgs) Handles btn_facturar_factura.Click
+        facturar(True)
+    End Sub
+    Private Sub click_btn_modificar(sender As Object, e As EventArgs) Handles btn_modificar_factura.Click
+        facturar(True)
+    End Sub
+    Private Sub click_btn_guardar_factura(sender As Object, e As EventArgs) Handles btn_guardar_factura.Click
+        facturar(False)
+    End Sub
+    Private Sub facturar(cobrado As Boolean)
         Dim codigoNuevo As Integer = Convert.ToInt32(txt_referencia_factura.Text)
         Dim fechaFactura As Date = dp_factura.Value
         Dim tipoFactura As String
@@ -264,14 +279,43 @@
         Else
             tipoFactura = "C"
         End If
+
         Dim stringFacturas As String = ""
-        For Each s As String In listaAlbaranes
+        For Each s As String In getListaCompra()
             stringFacturas += $"{s},"
         Next
 
-        Dim facturaNueva As Factura = New Factura(codigoNuevo, stringFacturas, fechaFactura, "C", tipoFactura)
-        facturaNueva.addFactura()
-        MessageBox.Show("Factura cobrada")
+        Dim estado As String
+        Dim msg As String
+        If cobrado Then
+            estado = "C"
+            msg = "Factura cobrada"
+        Else
+            estado = "P"
+            msg = "Factura guardada, pendiente de cobro"
+        End If
+
+        Dim facturaNueva As Factura = New Factura(codigoNuevo, stringFacturas, fechaFactura, estado, tipoFactura)
+        If Not nuevo Then
+            facturaNueva.modifyFactura()
+            msg = "Factura modificada"
+        Else
+            facturaNueva.addFactura()
+        End If
+        MessageBox.Show(msg)
         Me.Close()
     End Sub
+    Private Function getListaCompra() As List(Of String)
+        Dim listaMarcados As List(Of String) = New List(Of String)
+        For Each fila As DataGridViewRow In dg.Rows
+            If fila.Cells("incluidoAlbaran").Value Then
+                listaMarcados.Add(fila.Cells("idAlbaran").Value)
+            End If
+        Next
+        Return listaMarcados
+    End Function
+    Private Sub click_btn_cancelar_factura(sender As Object, e As EventArgs) Handles btn_cancelar_factura.Click
+        Me.Close()
+    End Sub
+
 End Class

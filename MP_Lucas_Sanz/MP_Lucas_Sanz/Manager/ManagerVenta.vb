@@ -84,6 +84,7 @@ Public Class ManagerVenta
         End With
         Try
             cmd.ExecuteNonQuery()
+            VariablesGlobales.updateListaVentas()
         Catch ex As Exception
             MessageBox.Show("Error al introducir una venta: " + vbCrLf + ex.ToString())
         End Try

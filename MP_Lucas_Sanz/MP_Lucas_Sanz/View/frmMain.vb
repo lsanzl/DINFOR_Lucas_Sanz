@@ -19,5 +19,6 @@ Public Class frmMain
         Dim ctrMovimiento As ctrMovimiento = New ctrMovimiento(Me)
         Dim ctrAlbaran As ctrAlbaran = New ctrAlbaran(Me)
         Dim ctrFactura As ctrFactura = New ctrFactura(Me)
+        Dim ctrVencimiento As ctrVencimiento = New ctrVencimiento(Me)
     End Sub
 End Class

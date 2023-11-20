@@ -11,6 +11,8 @@ Public Class frmCompra
     Dim dt As New DataTable()
     Dim proveedorSeleccionado As Proveedor
     Dim articuloSeleccionado As Articulo
+    Dim formaPagoSeleccionada As Boolean
+    Dim facturado As Boolean
     Dim facturaGenerada As String
     Dim doubleParse As Double
     Dim brutoTotal As Double
@@ -21,6 +23,8 @@ Public Class frmCompra
     Private Sub frmCompra_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         listaComprasEliminadas = New List(Of Compra)
         facturaGenerada = compraAux.getRandomFactura()
+        formaPagoSeleccionada = False
+        facturado = False
         fillFields()
     End Sub
 
@@ -105,7 +109,6 @@ Public Class frmCompra
         cb_forma_pago_seleccionada.ValueMember = "Codigo"
         cb_forma_pago_seleccionada.SelectedIndex = -1
     End Sub
-
     Public Function checkCampos() As Boolean
         If String.IsNullOrEmpty(txt_proveedor_seleccionado.Text) Then
             MessageBox.Show("Seleccione primero proveedor")
@@ -115,7 +118,7 @@ Public Class frmCompra
             MessageBox.Show("Seleccione primero artículo")
             Return False
         End If
-        If cb_forma_pago_seleccionada.SelectedIndex = -1 Then
+        If cb_forma_pago_seleccionada.SelectedIndex = -1 And Not formaPagoSeleccionada Then
             MessageBox.Show("Seleccione primero forma de pago")
             Return False
         End If
@@ -219,10 +222,12 @@ Public Class frmCompra
             btn_confirmar_compra.Enabled = True
             btn_busqueda_proveedor.Enabled = False
             cb_forma_pago_seleccionada.Enabled = False
+            formaPagoSeleccionada = True
         Else
             btn_confirmar_compra.Enabled = False
             btn_busqueda_proveedor.Enabled = True
             cb_forma_pago_seleccionada.Enabled = True
+            formaPagoSeleccionada = False
         End If
         dg_compras.ClearSelection()
     End Sub
@@ -344,6 +349,26 @@ Public Class frmCompra
         End Try
     End Sub
     Private Sub click_btn_confirmar_compra(sender As Object, e As EventArgs) Handles btn_confirmar_compra.Click
+        confirmarCompra()
+    End Sub
+    Private Sub click_btn_facturar_compra(sender As Object, e As EventArgs) Handles btn_facturar_compra.Click
+        facturado = True
+        confirmarCompra()
+        Dim frmF As frmFactura = New frmFactura(True)
+        frmF.proveedorSeleccionado = proveedorSeleccionado
+        frmF.fillDatosProveedor()
+        Dim listaFacturas As List(Of String) = New List(Of String)
+        For Each c As Compra In listaCompras
+            listaFacturas.Add(c.FacturaDeCompra)
+        Next
+        frmF.fillDGCompras(listaFacturas)
+        frmF.txt_forma_pago_factura.Text = getFormaPagoPorCodigo(listaCompras(0).FormaDePagoCompra).NombreDePago
+        frmF.entidadSeleccionada = "Proveedor"
+        frmF.recalcularTotales(listaFacturas)
+        frmF.ShowDialog()
+        Me.Close()
+    End Sub
+    Private Sub confirmarCompra()
         If dg_compras.RowCount = 0 Then
             MessageBox.Show("Introduzca primero alguna compra")
             Return
@@ -379,15 +404,32 @@ Public Class frmCompra
             movimientoTemp.addMovimiento()
         Next
 
-        Dim result As DialogResult = MessageBox.Show("¿Desea ver la factura de compra?", "Factura generada", MessageBoxButtons.YesNo)
-        If result = DialogResult.No Then
-            clearFields()
-            Me.Close()
-            Exit Sub
+        crearVencimiento()
+
+        Dim result As DialogResult = MessageBox.Show("¿Desea ver el albarán de compra?", "Albarán generado", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+        If result = DialogResult.Yes Then
+            verInformeAlbaran()
         End If
+        clearFields()
+        If Not facturado Then
+            Me.Close()
+        End If
+    End Sub
+    Private Sub crearVencimiento()
+        Dim formaSeleccionada As FormaPago = VariablesGlobales.getFormaPagoPorCodigo(listaCompras(0).FormaDePagoCompra)
+        Dim plazosTotales As Integer = formaSeleccionada.NumeroPlazosPago
+        Dim importePorPago As Double = precioTotal / plazosTotales
+        Dim fechaCobro As Date = dp_fecha_compra.Value.AddDays(formaSeleccionada.PrimerPlazo)
+
+        For i As Integer = 1 To plazosTotales
+            Dim venc As Vencimiento = New Vencimiento(proveedorSeleccionado, formaSeleccionada, plazosTotales, i, importePorPago, fechaCobro.AddDays((i - 1) * formaSeleccionada.DiasPlazos), 0, 0)
+            venc.addVencimiento()
+        Next
+    End Sub
+    Private Sub verInformeAlbaran()
+        Dim fechaCompra As Date = dp_fecha_compra.Value
         Dim informe As infCompra = New infCompra(listaCompras, fechaCompra, brutoTotal, baseImponibleTotal, impuestoTotal, precioTotal)
         informe.showReport()
-        clearFields()
     End Sub
     Private Sub cell_end_edit_dg_compras(sender As Object, e As DataGridViewCellEventArgs) Handles dg_compras.CellEndEdit
         Dim precioBrutoNuevo As Double
