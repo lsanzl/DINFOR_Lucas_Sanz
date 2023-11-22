@@ -1,5 +1,6 @@
 ﻿Public Class Vencimiento
     Dim idVencimiento As Integer
+    Dim idFactura As Integer
     Dim tipoEntidad As String
     Dim clienteVencimiento As Cliente
     Dim proveedorVencimiento As Proveedor
@@ -18,6 +19,14 @@
         End Get
         Set(value As Integer)
             idVencimiento = value
+        End Set
+    End Property
+    Property CodigoDeFactura() As Integer
+        Get
+            Return idFactura
+        End Get
+        Set(value As Integer)
+            idFactura = value
         End Set
     End Property
     Property TipoDeEntidad() As String
@@ -112,8 +121,9 @@
     Public Sub New()
         MyBase.New()
     End Sub
-    Public Sub New(cliente As Cliente, formaPago As FormaPago, numPlazos As Integer, plazoActualP As Integer, importe As Double, fecha As Date, estado As Integer, importePagado As Double)
+    Public Sub New(idFacturaP As Integer, cliente As Cliente, formaPago As FormaPago, numPlazos As Integer, plazoActualP As Integer, importe As Double, fecha As Date, estado As Integer, importePagado As Double)
         MyBase.New()
+        idFactura = idFacturaP
         clienteVencimiento = cliente
         tipoEntidad = "C"
         formaPagoVencimiento = formaPago
@@ -123,10 +133,11 @@
         fechaVencimiento = fecha
         estadoVencimiento = estado
         importePagadoVencimiento = importePagado
-        importePendienteVencimiento = importe - importePagado
+        importePendienteVencimiento = Math.Round(importe - importePagado, 2)
     End Sub
-    Public Sub New(proveedor As Proveedor, formaPago As FormaPago, numPlazos As Integer, plazoActualP As Integer, importe As Double, fecha As Date, estado As Integer, importePagado As Double)
+    Public Sub New(idFacturaP As Integer, proveedor As Proveedor, formaPago As FormaPago, numPlazos As Integer, plazoActualP As Integer, importe As Double, fecha As Date, estado As Integer, importePagado As Double)
         MyBase.New()
+        idFactura = idFacturaP
         proveedorVencimiento = proveedor
         tipoEntidad = "P"
         formaPagoVencimiento = formaPago
@@ -136,11 +147,12 @@
         fechaVencimiento = fecha
         estadoVencimiento = estado
         importePagadoVencimiento = importePagado
-        importePendienteVencimiento = importe - importePagado
+        importePendienteVencimiento = Math.Round(importe - importePagado, 2)
     End Sub
-    Public Sub New(id As Integer, cliente As Cliente, formaPago As FormaPago, numPlazos As Integer, plazoActualP As Integer, importe As Double, fecha As Date, estado As Integer, importePagado As Double)
+    Public Sub New(id As Integer, idFacturaP As Integer, cliente As Cliente, formaPago As FormaPago, numPlazos As Integer, plazoActualP As Integer, importe As Double, fecha As Date, estado As Integer, importePagado As Double)
         MyBase.New()
         idVencimiento = id
+        idFactura = idFacturaP
         tipoEntidad = "C"
         clienteVencimiento = cliente
         formaPagoVencimiento = formaPago
@@ -150,11 +162,12 @@
         fechaVencimiento = fecha
         estadoVencimiento = estado
         importePagadoVencimiento = importePagado
-        importePendienteVencimiento = importe - importePagado
+        importePendienteVencimiento = Math.Round(importe - importePagado, 2)
     End Sub
-    Public Sub New(id As Integer, proveedor As Proveedor, formaPago As FormaPago, numPlazos As Integer, plazoActualP As Integer, importe As Double, fecha As Date, estado As Integer, importePagado As Double)
+    Public Sub New(id As Integer, idFacturaP As Integer, proveedor As Proveedor, formaPago As FormaPago, numPlazos As Integer, plazoActualP As Integer, importe As Double, fecha As Date, estado As Integer, importePagado As Double)
         MyBase.New()
         idVencimiento = id
+        idFactura = idFacturaP
         tipoEntidad = "P"
         proveedorVencimiento = proveedor
         formaPagoVencimiento = formaPago
@@ -164,7 +177,7 @@
         fechaVencimiento = fecha
         estadoVencimiento = estado
         importePagadoVencimiento = importePagado
-        importePendienteVencimiento = importe - importePagado
+        importePendienteVencimiento = Math.Round(importe - importePagado, 2)
     End Sub
     Public Sub addVencimiento()
         managerVencimientoAux.addVencimiento(Me)

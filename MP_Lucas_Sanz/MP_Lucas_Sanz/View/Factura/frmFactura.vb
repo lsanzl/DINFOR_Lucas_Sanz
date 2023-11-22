@@ -2,7 +2,9 @@
     Private listaAlbaranes As List(Of String)
     Public clienteSeleccionado As Cliente
     Public proveedorSeleccionado As Proveedor
+    Public formaPagoSeleccionada As FormaPago
     Public entidadSeleccionada As String
+    Private codigoNuevo As Integer
     Private brutoTotal As Double
     Private brutoParcial As Double
     Private baseImponibleTotal As Double
@@ -175,7 +177,8 @@
             For Each s As String In listaAlbaranes
                 Dim ventaTemp As Venta = getVentaPorFactura(s)
                 If txtFormaPago.Equals("") Then
-                    txtFormaPago = getFormaPagoPorCodigo(ventaTemp.FormaDePagoVenta).NombreDePago
+                    formaPagoSeleccionada = getFormaPagoPorCodigo(ventaTemp.FormaDePagoVenta)
+                    txtFormaPago = formaPagoSeleccionada.NombreDePago
                 End If
                 Dim articuloTemp As Articulo = getArticuloPorCodigo(ventaTemp.ArticuloDeVenta)
 
@@ -194,7 +197,8 @@
             For Each s As String In listaAlbaranes
                 Dim compraTemp As Compra = getCompraPorFactura(s)
                 If txtFormaPago.Equals("") Then
-                    txtFormaPago = getFormaPagoPorCodigo(compraTemp.FormaDePagoCompra).NombreDePago
+                    formaPagoSeleccionada = getFormaPagoPorCodigo(compraTemp.FormaDePagoCompra)
+                    txtFormaPago = formaPagoSeleccionada.NombreDePago
                 End If
                 Dim articuloTemp As Articulo = getArticuloPorCodigo(compraTemp.ArticuloDeCompra)
                 brutoParcial = compraTemp.PrecioDeArticuloCompra * compraTemp.CantidadDeCompra
@@ -271,7 +275,7 @@
         facturar(False)
     End Sub
     Private Sub facturar(cobrado As Boolean)
-        Dim codigoNuevo As Integer = Convert.ToInt32(txt_referencia_factura.Text)
+        codigoNuevo = Convert.ToInt32(txt_referencia_factura.Text)
         Dim fechaFactura As Date = dp_factura.Value
         Dim tipoFactura As String
         If entidadSeleccionada.Equals("Cliente") Then
@@ -301,9 +305,30 @@
             msg = "Factura modificada"
         Else
             facturaNueva.addFactura()
+            crearVencimiento()
         End If
         MessageBox.Show(msg)
         Me.Close()
+    End Sub
+    Private Sub crearVencimiento()
+        Dim plazosTotales As Integer = formaPagoSeleccionada.NumeroPlazosPago
+        Dim importePorPago As Double = Math.Round(precioTotal / plazosTotales, 2)
+        Dim fechaCobro As Date = dp_factura.Value.AddDays(formaPagoSeleccionada.PrimerPlazo)
+        Dim venc As Vencimiento
+
+        Dim totalParcial As Double = 0
+        For i As Integer = 1 To plazosTotales
+            If i = plazosTotales Then
+                importePorPago = precioTotal - totalParcial
+            End If
+            totalParcial += importePorPago
+            If entidadSeleccionada.Equals("Cliente") Then
+                venc = New Vencimiento(codigoNuevo, clienteSeleccionado, formaPagoSeleccionada, plazosTotales, i, importePorPago, fechaCobro.AddDays((i - 1) * formaPagoSeleccionada.DiasPlazos), 0, 0)
+            Else
+                venc = New Vencimiento(codigoNuevo, proveedorSeleccionado, formaPagoSeleccionada, plazosTotales, i, importePorPago, fechaCobro.AddDays((i - 1) * formaPagoSeleccionada.DiasPlazos), 0, 0)
+            End If
+            venc.addVencimiento()
+        Next
     End Sub
     Private Function getListaCompra() As List(Of String)
         Dim listaMarcados As List(Of String) = New List(Of String)

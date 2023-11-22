@@ -16,6 +16,7 @@ Public Class ManagerVencimiento
         dr = cmd.ExecuteReader()
 
         Dim codigoNuevo As Integer
+        Dim codigoFactura As Integer
         Dim tipoEntidad As String
         Dim clienteInt As Integer
         Dim cliente As Cliente
@@ -35,27 +36,28 @@ Public Class ManagerVencimiento
             dr.Read()
             Do
                 codigoNuevo = Convert.ToInt32(dr(0))
-                tipoEntidad = dr(1).ToString().Trim()
+                codigoFactura = Convert.ToInt32(dr(1))
+                tipoEntidad = dr(2).ToString().Trim()
                 If tipoEntidad.Equals("C") Then
-                    clienteInt = Convert.ToInt32(dr(2))
+                    clienteInt = Convert.ToInt32(dr(3))
                     cliente = getClientePorCodigo(clienteInt)
                 Else
-                    proveedorInt = Convert.ToInt32(dr(3))
+                    proveedorInt = Convert.ToInt32(dr(4))
                     proveedor = getProveedorPorCodigo(proveedorInt)
                 End If
-                formaPagoInt = Convert.ToInt32(dr(4))
+                formaPagoInt = Convert.ToInt32(dr(5))
                 formaPago = getFormaPagoPorCodigo(formaPagoInt)
-                numPlazos = Convert.ToInt32(dr(5))
-                plazoActual = Convert.ToInt32(dr(6))
-                importe = Convert.ToDouble(dr(7))
-                fecha = Convert.ToDateTime(dr(8))
-                estado = Convert.ToInt32(dr(9))
-                importePagado = Convert.ToDouble(dr(10))
+                numPlazos = Convert.ToInt32(dr(6))
+                plazoActual = Convert.ToInt32(dr(7))
+                importe = Math.Round(Convert.ToDouble(dr(8)), 2)
+                fecha = Convert.ToDateTime(dr(9))
+                estado = Convert.ToInt32(dr(10))
+                importePagado = Math.Round(Convert.ToDouble(dr(11)), 2)
 
                 If tipoEntidad.Equals("C") Then
-                    vencimientoTemp = New Vencimiento(codigoNuevo, cliente, formaPago, numPlazos, plazoActual, importe, fecha, estado, importePagado)
+                    vencimientoTemp = New Vencimiento(codigoNuevo, codigoFactura, cliente, formaPago, numPlazos, plazoActual, importe, fecha, estado, importePagado)
                 Else
-                    vencimientoTemp = New Vencimiento(codigoNuevo, proveedor, formaPago, numPlazos, plazoActual, importe, fecha, estado, importePagado)
+                    vencimientoTemp = New Vencimiento(codigoNuevo, codigoFactura, proveedor, formaPago, numPlazos, plazoActual, importe, fecha, estado, importePagado)
                 End If
                 listaVencimientos.Add(vencimientoTemp)
             Loop While dr.Read()
@@ -73,7 +75,8 @@ Public Class ManagerVencimiento
             proveedor = v.ProveedorDeVencimiento.CodigoDeProveedor
         End If
         cmd = New SqlCommand("INSERT INTO VENCIMIENTOS VALUES 
-                            (@Codigo, 
+                            (@Codigo,
+                            @Factura,
                             @Tipo,
                             @Cliente,
                             @Proveedor, 
@@ -86,6 +89,7 @@ Public Class ManagerVencimiento
                             @ImportePagado);", connectionDBManager)
         With cmd.Parameters
             .Add("@Codigo", SqlDbType.Int).Value = codigoNuevo
+            .Add("@Factura", SqlDbType.Int).Value = v.CodigoDeFactura
             .Add("@Tipo", SqlDbType.Char).Value = v.TipoDeEntidad
             .Add("@Cliente", SqlDbType.Int).Value = cliente
             .Add("@Proveedor", SqlDbType.Int).Value = proveedor
@@ -125,13 +129,13 @@ Public Class ManagerVencimiento
                             FECHA_VENCIMIENTO = @Fecha,
                             ESTADO_VENCIMIENTO = @Estado,
                             IMPORTE_PAGADO_VENCIMIENTO = @ImportePagado
-                            WHERE ID_VENCIMIENTO = @Codigo);", connectionDBManager)
+                            WHERE ID_VENCIMIENTO = @Codigo;", connectionDBManager)
         With cmd.Parameters
             .Add("@Codigo", SqlDbType.Int).Value = v.CodigoDeVencimiento
             .Add("@Tipo", SqlDbType.Char).Value = v.TipoDeEntidad
             .Add("@Cliente", SqlDbType.Int).Value = cliente
             .Add("@Proveedor", SqlDbType.Int).Value = proveedor
-            .Add("@FormaPago", SqlDbType.Int).Value = v.FormaPagoDeVencimiento
+            .Add("@FormaPago", SqlDbType.Int).Value = v.FormaPagoDeVencimiento.CodigoDePago
             .Add("@NumPlazos", SqlDbType.Int).Value = v.PlazosDeVencimiento
             .Add("@PlazoActual", SqlDbType.Int).Value = v.PlazoActualDeVencimiento
             .Add("@Importe", SqlDbType.Decimal, 12, 2).Value = v.ImporteDeVencimiento
@@ -158,7 +162,7 @@ Public Class ManagerVencimiento
     End Sub
     Public Sub cobrarVencimiento(v As Vencimiento)
         Dim estado As Integer = 0
-        If v.ImportePendiente = 0 Then
+        If v.ImportePagado = v.ImporteDeVencimiento Then
             estado = 1
         End If
         cmd = New SqlCommand("UPDATE VENCIMIENTOS SET 

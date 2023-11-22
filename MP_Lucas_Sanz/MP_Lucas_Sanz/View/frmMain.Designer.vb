@@ -39,9 +39,9 @@ Partial Class frmMain
         Dim DataGridViewCellStyle34 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle35 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.tab_main = New System.Windows.Forms.TabControl()
         Me.tab_menu_principal = New System.Windows.Forms.TabPage()
         Me.tlp_menu_main = New System.Windows.Forms.TableLayoutPanel()
@@ -220,8 +220,28 @@ Partial Class frmMain
         Me.btn_cambiar_estado_factura = New System.Windows.Forms.Button()
         Me.tab_vencimientos = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel23 = New System.Windows.Forms.TableLayoutPanel()
+        Me.TableLayoutPanel24 = New System.Windows.Forms.TableLayoutPanel()
+        Me.btn_consultar_vencimiento = New System.Windows.Forms.Button()
+        Me.btn_eliminar_vencimiento = New System.Windows.Forms.Button()
+        Me.btn_cobro_parcial_vencimiento = New System.Windows.Forms.Button()
+        Me.btn_cobrar_vencimiento = New System.Windows.Forms.Button()
+        Me.gb_tipo_busqueda_vencimientos = New System.Windows.Forms.GroupBox()
+        Me.rdb_proveedor_vencimiento = New System.Windows.Forms.RadioButton()
+        Me.rdb_cliente_vencimiento = New System.Windows.Forms.RadioButton()
+        Me.dp_fecha_fin_vencimiento = New System.Windows.Forms.DateTimePicker()
+        Me.dp_fecha_inicio_vencimiento = New System.Windows.Forms.DateTimePicker()
+        Me.txt_busqueda_entidad_vencimiento = New System.Windows.Forms.TextBox()
+        Me.btn_buscar_vencimiento = New System.Windows.Forms.Button()
+        Me.tab_configuraciones = New System.Windows.Forms.TabPage()
+        Me.TableLayoutPanel9 = New System.Windows.Forms.TableLayoutPanel()
+        Me.btn_actualizacion_campo_extra = New System.Windows.Forms.Button()
+        Me.btn_actualizacion_añadir_tabla = New System.Windows.Forms.Button()
+        Me.btn_actualizacion_añadir_fk = New System.Windows.Forms.Button()
+        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.TableLayoutPanel25 = New System.Windows.Forms.TableLayoutPanel()
         Me.dg_vencimientos = New System.Windows.Forms.DataGridView()
         Me.idVencimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.idFacturaVencimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.clienteVencimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.proveedorVencimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.formaPagoVencimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -230,17 +250,10 @@ Partial Class frmMain
         Me.fechaVencimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.estadoVencimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.importePendienteVencimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TableLayoutPanel24 = New System.Windows.Forms.TableLayoutPanel()
-        Me.tab_configuraciones = New System.Windows.Forms.TabPage()
-        Me.TableLayoutPanel9 = New System.Windows.Forms.TableLayoutPanel()
-        Me.btn_actualizacion_campo_extra = New System.Windows.Forms.Button()
-        Me.btn_actualizacion_añadir_tabla = New System.Windows.Forms.Button()
-        Me.btn_actualizacion_añadir_fk = New System.Windows.Forms.Button()
-        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
-        Me.btn_cobrar_vencimiento = New System.Windows.Forms.Button()
-        Me.btn_cobro_parcial_vencimiento = New System.Windows.Forms.Button()
-        Me.btn_eliminar_vencimiento = New System.Windows.Forms.Button()
-        Me.btn_consultar_vencimiento = New System.Windows.Forms.Button()
+        Me.TableLayoutPanel26 = New System.Windows.Forms.TableLayoutPanel()
+        Me.lbl_pendiente_vencimiento = New System.Windows.Forms.Label()
+        Me.lbl_cobrado_vencimiento = New System.Windows.Forms.Label()
+        Me.lbl_balance_vencimiento = New System.Windows.Forms.Label()
         Me.tab_main.SuspendLayout()
         Me.tab_menu_principal.SuspendLayout()
         Me.tlp_menu_main.SuspendLayout()
@@ -295,10 +308,13 @@ Partial Class frmMain
         Me.gb_tipos_factura.SuspendLayout()
         Me.tab_vencimientos.SuspendLayout()
         Me.TableLayoutPanel23.SuspendLayout()
-        CType(Me.dg_vencimientos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel24.SuspendLayout()
+        Me.gb_tipo_busqueda_vencimientos.SuspendLayout()
         Me.tab_configuraciones.SuspendLayout()
         Me.TableLayoutPanel9.SuspendLayout()
+        Me.TableLayoutPanel25.SuspendLayout()
+        CType(Me.dg_vencimientos, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TableLayoutPanel26.SuspendLayout()
         Me.SuspendLayout()
         '
         'tab_main
@@ -2550,106 +2566,14 @@ Partial Class frmMain
         Me.TableLayoutPanel23.ColumnCount = 2
         Me.TableLayoutPanel23.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.0!))
         Me.TableLayoutPanel23.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.TableLayoutPanel23.Controls.Add(Me.dg_vencimientos, 0, 0)
         Me.TableLayoutPanel23.Controls.Add(Me.TableLayoutPanel24, 1, 0)
+        Me.TableLayoutPanel23.Controls.Add(Me.TableLayoutPanel25, 0, 0)
         Me.TableLayoutPanel23.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel23.Name = "TableLayoutPanel23"
         Me.TableLayoutPanel23.RowCount = 1
         Me.TableLayoutPanel23.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel23.Size = New System.Drawing.Size(791, 388)
         Me.TableLayoutPanel23.TabIndex = 0
-        '
-        'dg_vencimientos
-        '
-        Me.dg_vencimientos.AllowUserToAddRows = False
-        Me.dg_vencimientos.AllowUserToDeleteRows = False
-        Me.dg_vencimientos.AllowUserToResizeRows = False
-        Me.dg_vencimientos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dg_vencimientos.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dg_vencimientos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle19
-        Me.dg_vencimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dg_vencimientos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idVencimiento, Me.clienteVencimiento, Me.proveedorVencimiento, Me.formaPagoVencimiento, Me.plazoVencimiento, Me.importeVencimiento, Me.fechaVencimiento, Me.estadoVencimiento, Me.importePendienteVencimiento})
-        Me.dg_vencimientos.Location = New System.Drawing.Point(3, 3)
-        Me.dg_vencimientos.MultiSelect = False
-        Me.dg_vencimientos.Name = "dg_vencimientos"
-        Me.dg_vencimientos.RowHeadersVisible = False
-        DataGridViewCellStyle20.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dg_vencimientos.RowsDefaultCellStyle = DataGridViewCellStyle20
-        Me.dg_vencimientos.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dg_vencimientos.Size = New System.Drawing.Size(587, 382)
-        Me.dg_vencimientos.TabIndex = 0
-        '
-        'idVencimiento
-        '
-        Me.idVencimiento.HeaderText = "ID"
-        Me.idVencimiento.Name = "idVencimiento"
-        Me.idVencimiento.ReadOnly = True
-        Me.idVencimiento.Visible = False
-        '
-        'clienteVencimiento
-        '
-        Me.clienteVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.clienteVencimiento.HeaderText = "Cliente"
-        Me.clienteVencimiento.Name = "clienteVencimiento"
-        Me.clienteVencimiento.ReadOnly = True
-        '
-        'proveedorVencimiento
-        '
-        Me.proveedorVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.proveedorVencimiento.HeaderText = "Proveedor"
-        Me.proveedorVencimiento.Name = "proveedorVencimiento"
-        Me.proveedorVencimiento.ReadOnly = True
-        '
-        'formaPagoVencimiento
-        '
-        Me.formaPagoVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.formaPagoVencimiento.HeaderText = "Forma de pago"
-        Me.formaPagoVencimiento.Name = "formaPagoVencimiento"
-        Me.formaPagoVencimiento.ReadOnly = True
-        '
-        'plazoVencimiento
-        '
-        Me.plazoVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.plazoVencimiento.HeaderText = "Plazo"
-        Me.plazoVencimiento.Name = "plazoVencimiento"
-        Me.plazoVencimiento.ReadOnly = True
-        '
-        'importeVencimiento
-        '
-        Me.importeVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.importeVencimiento.HeaderText = "Importe"
-        Me.importeVencimiento.Name = "importeVencimiento"
-        Me.importeVencimiento.ReadOnly = True
-        '
-        'fechaVencimiento
-        '
-        Me.fechaVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.fechaVencimiento.HeaderText = "Fecha"
-        Me.fechaVencimiento.Name = "fechaVencimiento"
-        Me.fechaVencimiento.ReadOnly = True
-        '
-        'estadoVencimiento
-        '
-        Me.estadoVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.estadoVencimiento.HeaderText = "Estado"
-        Me.estadoVencimiento.Name = "estadoVencimiento"
-        Me.estadoVencimiento.ReadOnly = True
-        '
-        'importePendienteVencimiento
-        '
-        Me.importePendienteVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.importePendienteVencimiento.HeaderText = "Importe pendiente"
-        Me.importePendienteVencimiento.Name = "importePendienteVencimiento"
-        Me.importePendienteVencimiento.ReadOnly = True
         '
         'TableLayoutPanel24
         '
@@ -2662,16 +2586,153 @@ Partial Class frmMain
         Me.TableLayoutPanel24.Controls.Add(Me.btn_eliminar_vencimiento, 0, 3)
         Me.TableLayoutPanel24.Controls.Add(Me.btn_cobro_parcial_vencimiento, 0, 2)
         Me.TableLayoutPanel24.Controls.Add(Me.btn_cobrar_vencimiento, 0, 1)
+        Me.TableLayoutPanel24.Controls.Add(Me.gb_tipo_busqueda_vencimientos, 0, 4)
+        Me.TableLayoutPanel24.Controls.Add(Me.dp_fecha_fin_vencimiento, 0, 7)
+        Me.TableLayoutPanel24.Controls.Add(Me.dp_fecha_inicio_vencimiento, 0, 6)
+        Me.TableLayoutPanel24.Controls.Add(Me.txt_busqueda_entidad_vencimiento, 0, 5)
+        Me.TableLayoutPanel24.Controls.Add(Me.btn_buscar_vencimiento, 0, 8)
         Me.TableLayoutPanel24.Location = New System.Drawing.Point(596, 3)
         Me.TableLayoutPanel24.Name = "TableLayoutPanel24"
-        Me.TableLayoutPanel24.RowCount = 5
+        Me.TableLayoutPanel24.RowCount = 9
         Me.TableLayoutPanel24.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
         Me.TableLayoutPanel24.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
         Me.TableLayoutPanel24.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
         Me.TableLayoutPanel24.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
-        Me.TableLayoutPanel24.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60.0!))
+        Me.TableLayoutPanel24.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.TableLayoutPanel24.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
+        Me.TableLayoutPanel24.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
+        Me.TableLayoutPanel24.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
+        Me.TableLayoutPanel24.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
         Me.TableLayoutPanel24.Size = New System.Drawing.Size(192, 382)
         Me.TableLayoutPanel24.TabIndex = 1
+        '
+        'btn_consultar_vencimiento
+        '
+        Me.btn_consultar_vencimiento.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_consultar_vencimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_consultar_vencimiento.Location = New System.Drawing.Point(15, 7)
+        Me.btn_consultar_vencimiento.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
+        Me.btn_consultar_vencimiento.Name = "btn_consultar_vencimiento"
+        Me.btn_consultar_vencimiento.Size = New System.Drawing.Size(162, 23)
+        Me.btn_consultar_vencimiento.TabIndex = 4
+        Me.btn_consultar_vencimiento.Text = "CONSULTAR"
+        Me.btn_consultar_vencimiento.UseVisualStyleBackColor = True
+        '
+        'btn_eliminar_vencimiento
+        '
+        Me.btn_eliminar_vencimiento.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_eliminar_vencimiento.Enabled = False
+        Me.btn_eliminar_vencimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_eliminar_vencimiento.Location = New System.Drawing.Point(15, 121)
+        Me.btn_eliminar_vencimiento.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
+        Me.btn_eliminar_vencimiento.Name = "btn_eliminar_vencimiento"
+        Me.btn_eliminar_vencimiento.Size = New System.Drawing.Size(162, 23)
+        Me.btn_eliminar_vencimiento.TabIndex = 2
+        Me.btn_eliminar_vencimiento.Text = "ELIMINAR"
+        Me.btn_eliminar_vencimiento.UseVisualStyleBackColor = True
+        '
+        'btn_cobro_parcial_vencimiento
+        '
+        Me.btn_cobro_parcial_vencimiento.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_cobro_parcial_vencimiento.Enabled = False
+        Me.btn_cobro_parcial_vencimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_cobro_parcial_vencimiento.Location = New System.Drawing.Point(15, 83)
+        Me.btn_cobro_parcial_vencimiento.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
+        Me.btn_cobro_parcial_vencimiento.Name = "btn_cobro_parcial_vencimiento"
+        Me.btn_cobro_parcial_vencimiento.Size = New System.Drawing.Size(162, 23)
+        Me.btn_cobro_parcial_vencimiento.TabIndex = 1
+        Me.btn_cobro_parcial_vencimiento.Text = "COBRO PARCIAL"
+        Me.btn_cobro_parcial_vencimiento.UseVisualStyleBackColor = True
+        '
+        'btn_cobrar_vencimiento
+        '
+        Me.btn_cobrar_vencimiento.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_cobrar_vencimiento.Enabled = False
+        Me.btn_cobrar_vencimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_cobrar_vencimiento.Location = New System.Drawing.Point(15, 45)
+        Me.btn_cobrar_vencimiento.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
+        Me.btn_cobrar_vencimiento.Name = "btn_cobrar_vencimiento"
+        Me.btn_cobrar_vencimiento.Size = New System.Drawing.Size(162, 23)
+        Me.btn_cobrar_vencimiento.TabIndex = 0
+        Me.btn_cobrar_vencimiento.Text = "COBRAR"
+        Me.btn_cobrar_vencimiento.UseVisualStyleBackColor = True
+        '
+        'gb_tipo_busqueda_vencimientos
+        '
+        Me.gb_tipo_busqueda_vencimientos.Controls.Add(Me.rdb_proveedor_vencimiento)
+        Me.gb_tipo_busqueda_vencimientos.Controls.Add(Me.rdb_cliente_vencimiento)
+        Me.gb_tipo_busqueda_vencimientos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gb_tipo_busqueda_vencimientos.Location = New System.Drawing.Point(3, 155)
+        Me.gb_tipo_busqueda_vencimientos.Name = "gb_tipo_busqueda_vencimientos"
+        Me.gb_tipo_busqueda_vencimientos.Size = New System.Drawing.Size(186, 70)
+        Me.gb_tipo_busqueda_vencimientos.TabIndex = 5
+        Me.gb_tipo_busqueda_vencimientos.TabStop = False
+        Me.gb_tipo_busqueda_vencimientos.Text = "Tipo"
+        '
+        'rdb_proveedor_vencimiento
+        '
+        Me.rdb_proveedor_vencimiento.AutoSize = True
+        Me.rdb_proveedor_vencimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rdb_proveedor_vencimiento.Location = New System.Drawing.Point(37, 41)
+        Me.rdb_proveedor_vencimiento.Name = "rdb_proveedor_vencimiento"
+        Me.rdb_proveedor_vencimiento.Size = New System.Drawing.Size(85, 17)
+        Me.rdb_proveedor_vencimiento.TabIndex = 1
+        Me.rdb_proveedor_vencimiento.TabStop = True
+        Me.rdb_proveedor_vencimiento.Text = "Proveedores"
+        Me.rdb_proveedor_vencimiento.UseVisualStyleBackColor = True
+        '
+        'rdb_cliente_vencimiento
+        '
+        Me.rdb_cliente_vencimiento.AutoSize = True
+        Me.rdb_cliente_vencimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rdb_cliente_vencimiento.Location = New System.Drawing.Point(37, 18)
+        Me.rdb_cliente_vencimiento.Name = "rdb_cliente_vencimiento"
+        Me.rdb_cliente_vencimiento.Size = New System.Drawing.Size(62, 17)
+        Me.rdb_cliente_vencimiento.TabIndex = 0
+        Me.rdb_cliente_vencimiento.TabStop = True
+        Me.rdb_cliente_vencimiento.Text = "Clientes"
+        Me.rdb_cliente_vencimiento.UseVisualStyleBackColor = True
+        '
+        'dp_fecha_fin_vencimiento
+        '
+        Me.dp_fecha_fin_vencimiento.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dp_fecha_fin_vencimiento.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dp_fecha_fin_vencimiento.Location = New System.Drawing.Point(15, 313)
+        Me.dp_fecha_fin_vencimiento.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
+        Me.dp_fecha_fin_vencimiento.Name = "dp_fecha_fin_vencimiento"
+        Me.dp_fecha_fin_vencimiento.Size = New System.Drawing.Size(162, 20)
+        Me.dp_fecha_fin_vencimiento.TabIndex = 7
+        '
+        'dp_fecha_inicio_vencimiento
+        '
+        Me.dp_fecha_inicio_vencimiento.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dp_fecha_inicio_vencimiento.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dp_fecha_inicio_vencimiento.Location = New System.Drawing.Point(15, 275)
+        Me.dp_fecha_inicio_vencimiento.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
+        Me.dp_fecha_inicio_vencimiento.Name = "dp_fecha_inicio_vencimiento"
+        Me.dp_fecha_inicio_vencimiento.Size = New System.Drawing.Size(162, 20)
+        Me.dp_fecha_inicio_vencimiento.TabIndex = 6
+        '
+        'txt_busqueda_entidad_vencimiento
+        '
+        Me.txt_busqueda_entidad_vencimiento.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_busqueda_entidad_vencimiento.Location = New System.Drawing.Point(15, 237)
+        Me.txt_busqueda_entidad_vencimiento.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
+        Me.txt_busqueda_entidad_vencimiento.Name = "txt_busqueda_entidad_vencimiento"
+        Me.txt_busqueda_entidad_vencimiento.Size = New System.Drawing.Size(162, 20)
+        Me.txt_busqueda_entidad_vencimiento.TabIndex = 8
+        '
+        'btn_buscar_vencimiento
+        '
+        Me.btn_buscar_vencimiento.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.btn_buscar_vencimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_buscar_vencimiento.Location = New System.Drawing.Point(15, 350)
+        Me.btn_buscar_vencimiento.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
+        Me.btn_buscar_vencimiento.Name = "btn_buscar_vencimiento"
+        Me.btn_buscar_vencimiento.Size = New System.Drawing.Size(81, 23)
+        Me.btn_buscar_vencimiento.TabIndex = 9
+        Me.btn_buscar_vencimiento.Text = "BUSCAR"
+        Me.btn_buscar_vencimiento.UseVisualStyleBackColor = True
         '
         'tab_configuraciones
         '
@@ -2758,56 +2819,182 @@ Partial Class frmMain
         Me.ImageList1.Images.SetKeyName(6, "factura.png")
         Me.ImageList1.Images.SetKeyName(7, "rostro.png")
         '
-        'btn_cobrar_vencimiento
+        'TableLayoutPanel25
         '
-        Me.btn_cobrar_vencimiento.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_cobrar_vencimiento.Enabled = False
-        Me.btn_cobrar_vencimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_cobrar_vencimiento.Location = New System.Drawing.Point(15, 45)
-        Me.btn_cobrar_vencimiento.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
-        Me.btn_cobrar_vencimiento.Name = "btn_cobrar_vencimiento"
-        Me.btn_cobrar_vencimiento.Size = New System.Drawing.Size(162, 23)
-        Me.btn_cobrar_vencimiento.TabIndex = 0
-        Me.btn_cobrar_vencimiento.Text = "COBRAR"
-        Me.btn_cobrar_vencimiento.UseVisualStyleBackColor = True
+        Me.TableLayoutPanel25.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel25.ColumnCount = 1
+        Me.TableLayoutPanel25.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel25.Controls.Add(Me.dg_vencimientos, 0, 0)
+        Me.TableLayoutPanel25.Controls.Add(Me.TableLayoutPanel26, 0, 1)
+        Me.TableLayoutPanel25.Location = New System.Drawing.Point(0, 0)
+        Me.TableLayoutPanel25.Margin = New System.Windows.Forms.Padding(0)
+        Me.TableLayoutPanel25.Name = "TableLayoutPanel25"
+        Me.TableLayoutPanel25.RowCount = 2
+        Me.TableLayoutPanel25.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.0!))
+        Me.TableLayoutPanel25.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
+        Me.TableLayoutPanel25.Size = New System.Drawing.Size(593, 388)
+        Me.TableLayoutPanel25.TabIndex = 2
         '
-        'btn_cobro_parcial_vencimiento
+        'dg_vencimientos
         '
-        Me.btn_cobro_parcial_vencimiento.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_cobro_parcial_vencimiento.Enabled = False
-        Me.btn_cobro_parcial_vencimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_cobro_parcial_vencimiento.Location = New System.Drawing.Point(15, 83)
-        Me.btn_cobro_parcial_vencimiento.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
-        Me.btn_cobro_parcial_vencimiento.Name = "btn_cobro_parcial_vencimiento"
-        Me.btn_cobro_parcial_vencimiento.Size = New System.Drawing.Size(162, 23)
-        Me.btn_cobro_parcial_vencimiento.TabIndex = 1
-        Me.btn_cobro_parcial_vencimiento.Text = "COBRO PARCIAL"
-        Me.btn_cobro_parcial_vencimiento.UseVisualStyleBackColor = True
+        Me.dg_vencimientos.AllowUserToAddRows = False
+        Me.dg_vencimientos.AllowUserToDeleteRows = False
+        Me.dg_vencimientos.AllowUserToResizeRows = False
+        Me.dg_vencimientos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dg_vencimientos.BorderStyle = System.Windows.Forms.BorderStyle.None
+        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dg_vencimientos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle19
+        Me.dg_vencimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dg_vencimientos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idVencimiento, Me.idFacturaVencimiento, Me.clienteVencimiento, Me.proveedorVencimiento, Me.formaPagoVencimiento, Me.plazoVencimiento, Me.importeVencimiento, Me.fechaVencimiento, Me.estadoVencimiento, Me.importePendienteVencimiento})
+        Me.dg_vencimientos.Location = New System.Drawing.Point(3, 3)
+        Me.dg_vencimientos.MultiSelect = False
+        Me.dg_vencimientos.Name = "dg_vencimientos"
+        Me.dg_vencimientos.RowHeadersVisible = False
+        DataGridViewCellStyle20.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dg_vencimientos.RowsDefaultCellStyle = DataGridViewCellStyle20
+        Me.dg_vencimientos.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dg_vencimientos.Size = New System.Drawing.Size(587, 343)
+        Me.dg_vencimientos.TabIndex = 1
         '
-        'btn_eliminar_vencimiento
+        'idVencimiento
         '
-        Me.btn_eliminar_vencimiento.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_eliminar_vencimiento.Enabled = False
-        Me.btn_eliminar_vencimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_eliminar_vencimiento.Location = New System.Drawing.Point(15, 121)
-        Me.btn_eliminar_vencimiento.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
-        Me.btn_eliminar_vencimiento.Name = "btn_eliminar_vencimiento"
-        Me.btn_eliminar_vencimiento.Size = New System.Drawing.Size(162, 23)
-        Me.btn_eliminar_vencimiento.TabIndex = 2
-        Me.btn_eliminar_vencimiento.Text = "ELIMINAR"
-        Me.btn_eliminar_vencimiento.UseVisualStyleBackColor = True
+        Me.idVencimiento.HeaderText = "ID"
+        Me.idVencimiento.Name = "idVencimiento"
+        Me.idVencimiento.ReadOnly = True
+        Me.idVencimiento.Visible = False
         '
-        'btn_consultar_vencimiento
+        'idFacturaVencimiento
         '
-        Me.btn_consultar_vencimiento.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_consultar_vencimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_consultar_vencimiento.Location = New System.Drawing.Point(15, 7)
-        Me.btn_consultar_vencimiento.Margin = New System.Windows.Forms.Padding(15, 3, 15, 3)
-        Me.btn_consultar_vencimiento.Name = "btn_consultar_vencimiento"
-        Me.btn_consultar_vencimiento.Size = New System.Drawing.Size(162, 23)
-        Me.btn_consultar_vencimiento.TabIndex = 4
-        Me.btn_consultar_vencimiento.Text = "CONSULTAR"
-        Me.btn_consultar_vencimiento.UseVisualStyleBackColor = True
+        Me.idFacturaVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.idFacturaVencimiento.HeaderText = "Factura"
+        Me.idFacturaVencimiento.Name = "idFacturaVencimiento"
+        Me.idFacturaVencimiento.ReadOnly = True
+        '
+        'clienteVencimiento
+        '
+        Me.clienteVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.clienteVencimiento.HeaderText = "Cliente"
+        Me.clienteVencimiento.Name = "clienteVencimiento"
+        Me.clienteVencimiento.ReadOnly = True
+        '
+        'proveedorVencimiento
+        '
+        Me.proveedorVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.proveedorVencimiento.HeaderText = "Proveedor"
+        Me.proveedorVencimiento.Name = "proveedorVencimiento"
+        Me.proveedorVencimiento.ReadOnly = True
+        '
+        'formaPagoVencimiento
+        '
+        Me.formaPagoVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.formaPagoVencimiento.HeaderText = "Forma de pago"
+        Me.formaPagoVencimiento.Name = "formaPagoVencimiento"
+        Me.formaPagoVencimiento.ReadOnly = True
+        '
+        'plazoVencimiento
+        '
+        Me.plazoVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.plazoVencimiento.HeaderText = "Plazo"
+        Me.plazoVencimiento.Name = "plazoVencimiento"
+        Me.plazoVencimiento.ReadOnly = True
+        '
+        'importeVencimiento
+        '
+        Me.importeVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.importeVencimiento.HeaderText = "Importe"
+        Me.importeVencimiento.Name = "importeVencimiento"
+        Me.importeVencimiento.ReadOnly = True
+        '
+        'fechaVencimiento
+        '
+        Me.fechaVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.fechaVencimiento.HeaderText = "Fecha"
+        Me.fechaVencimiento.Name = "fechaVencimiento"
+        Me.fechaVencimiento.ReadOnly = True
+        '
+        'estadoVencimiento
+        '
+        Me.estadoVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.estadoVencimiento.HeaderText = "Estado"
+        Me.estadoVencimiento.Name = "estadoVencimiento"
+        Me.estadoVencimiento.ReadOnly = True
+        '
+        'importePendienteVencimiento
+        '
+        Me.importePendienteVencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.importePendienteVencimiento.HeaderText = "Importe pendiente"
+        Me.importePendienteVencimiento.Name = "importePendienteVencimiento"
+        Me.importePendienteVencimiento.ReadOnly = True
+        '
+        'TableLayoutPanel26
+        '
+        Me.TableLayoutPanel26.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel26.ColumnCount = 4
+        Me.TableLayoutPanel26.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel26.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel26.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel26.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel26.Controls.Add(Me.lbl_pendiente_vencimiento, 1, 0)
+        Me.TableLayoutPanel26.Controls.Add(Me.lbl_cobrado_vencimiento, 2, 0)
+        Me.TableLayoutPanel26.Controls.Add(Me.lbl_balance_vencimiento, 3, 0)
+        Me.TableLayoutPanel26.Location = New System.Drawing.Point(0, 349)
+        Me.TableLayoutPanel26.Margin = New System.Windows.Forms.Padding(0)
+        Me.TableLayoutPanel26.Name = "TableLayoutPanel26"
+        Me.TableLayoutPanel26.RowCount = 1
+        Me.TableLayoutPanel26.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel26.Size = New System.Drawing.Size(593, 39)
+        Me.TableLayoutPanel26.TabIndex = 2
+        '
+        'lbl_pendiente_vencimiento
+        '
+        Me.lbl_pendiente_vencimiento.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_pendiente_vencimiento.AutoSize = True
+        Me.lbl_pendiente_vencimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_pendiente_vencimiento.Location = New System.Drawing.Point(163, 13)
+        Me.lbl_pendiente_vencimiento.Margin = New System.Windows.Forms.Padding(15, 0, 15, 0)
+        Me.lbl_pendiente_vencimiento.Name = "lbl_pendiente_vencimiento"
+        Me.lbl_pendiente_vencimiento.Size = New System.Drawing.Size(118, 13)
+        Me.lbl_pendiente_vencimiento.TabIndex = 0
+        Me.lbl_pendiente_vencimiento.Text = "Pendiente:"
+        Me.lbl_pendiente_vencimiento.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lbl_cobrado_vencimiento
+        '
+        Me.lbl_cobrado_vencimiento.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_cobrado_vencimiento.AutoSize = True
+        Me.lbl_cobrado_vencimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_cobrado_vencimiento.Location = New System.Drawing.Point(311, 13)
+        Me.lbl_cobrado_vencimiento.Margin = New System.Windows.Forms.Padding(15, 0, 15, 0)
+        Me.lbl_cobrado_vencimiento.Name = "lbl_cobrado_vencimiento"
+        Me.lbl_cobrado_vencimiento.Size = New System.Drawing.Size(118, 13)
+        Me.lbl_cobrado_vencimiento.TabIndex = 1
+        Me.lbl_cobrado_vencimiento.Text = "Cobrado:"
+        Me.lbl_cobrado_vencimiento.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lbl_balance_vencimiento
+        '
+        Me.lbl_balance_vencimiento.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_balance_vencimiento.AutoSize = True
+        Me.lbl_balance_vencimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_balance_vencimiento.Location = New System.Drawing.Point(459, 13)
+        Me.lbl_balance_vencimiento.Margin = New System.Windows.Forms.Padding(15, 0, 15, 0)
+        Me.lbl_balance_vencimiento.Name = "lbl_balance_vencimiento"
+        Me.lbl_balance_vencimiento.Size = New System.Drawing.Size(119, 13)
+        Me.lbl_balance_vencimiento.TabIndex = 2
+        Me.lbl_balance_vencimiento.Text = "Balance:"
+        Me.lbl_balance_vencimiento.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'frmMain
         '
@@ -2891,10 +3078,16 @@ Partial Class frmMain
         Me.gb_tipos_factura.PerformLayout()
         Me.tab_vencimientos.ResumeLayout(False)
         Me.TableLayoutPanel23.ResumeLayout(False)
-        CType(Me.dg_vencimientos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel24.ResumeLayout(False)
+        Me.TableLayoutPanel24.PerformLayout()
+        Me.gb_tipo_busqueda_vencimientos.ResumeLayout(False)
+        Me.gb_tipo_busqueda_vencimientos.PerformLayout()
         Me.tab_configuraciones.ResumeLayout(False)
         Me.TableLayoutPanel9.ResumeLayout(False)
+        Me.TableLayoutPanel25.ResumeLayout(False)
+        CType(Me.dg_vencimientos, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TableLayoutPanel26.ResumeLayout(False)
+        Me.TableLayoutPanel26.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -3084,7 +3277,21 @@ Partial Class frmMain
     Friend WithEvents btn_menu_factura As Button
     Friend WithEvents TableLayoutPanel23 As TableLayoutPanel
     Friend WithEvents TableLayoutPanel24 As TableLayoutPanel
+    Public WithEvents btn_consultar_vencimiento As Button
+    Public WithEvents btn_eliminar_vencimiento As Button
+    Public WithEvents btn_cobro_parcial_vencimiento As Button
+    Public WithEvents btn_cobrar_vencimiento As Button
+    Public WithEvents gb_tipo_busqueda_vencimientos As GroupBox
+    Public WithEvents rdb_proveedor_vencimiento As RadioButton
+    Public WithEvents rdb_cliente_vencimiento As RadioButton
+    Public WithEvents dp_fecha_inicio_vencimiento As DateTimePicker
+    Public WithEvents dp_fecha_fin_vencimiento As DateTimePicker
+    Public WithEvents txt_busqueda_entidad_vencimiento As TextBox
+    Public WithEvents btn_buscar_vencimiento As Button
+    Friend WithEvents TableLayoutPanel25 As TableLayoutPanel
+    Public WithEvents dg_vencimientos As DataGridView
     Friend WithEvents idVencimiento As DataGridViewTextBoxColumn
+    Friend WithEvents idFacturaVencimiento As DataGridViewTextBoxColumn
     Friend WithEvents clienteVencimiento As DataGridViewTextBoxColumn
     Friend WithEvents proveedorVencimiento As DataGridViewTextBoxColumn
     Friend WithEvents formaPagoVencimiento As DataGridViewTextBoxColumn
@@ -3093,9 +3300,8 @@ Partial Class frmMain
     Friend WithEvents fechaVencimiento As DataGridViewTextBoxColumn
     Friend WithEvents estadoVencimiento As DataGridViewTextBoxColumn
     Friend WithEvents importePendienteVencimiento As DataGridViewTextBoxColumn
-    Public WithEvents dg_vencimientos As DataGridView
-    Public WithEvents btn_consultar_vencimiento As Button
-    Public WithEvents btn_eliminar_vencimiento As Button
-    Public WithEvents btn_cobro_parcial_vencimiento As Button
-    Public WithEvents btn_cobrar_vencimiento As Button
+    Friend WithEvents TableLayoutPanel26 As TableLayoutPanel
+    Public WithEvents lbl_pendiente_vencimiento As Label
+    Public WithEvents lbl_cobrado_vencimiento As Label
+    Public WithEvents lbl_balance_vencimiento As Label
 End Class

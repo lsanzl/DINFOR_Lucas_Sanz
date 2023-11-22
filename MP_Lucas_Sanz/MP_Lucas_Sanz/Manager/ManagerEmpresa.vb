@@ -192,6 +192,7 @@ Public Class ManagerEmpresa
         ' --------------------- VENCIMIENTOS -------------------------
         cmd = New SqlCommand("CREATE TABLE VENCIMIENTOS(
                             ID_VENCIMIENTO INT PRIMARY KEY,
+                            ID_FACTURA INT,
                             TIPO_ENTIDAD_VENCIMIENTO CHAR,
                             CLIENTE_VENCIMIENTO INT,
                             PROVEEDOR_VENCIMIENTO INT,
@@ -201,7 +202,8 @@ Public Class ManagerEmpresa
                             IMPORTE_VENCIMIENTO DECIMAL(12,2),
                             FECHA_VENCIMIENTO DATE,
                             ESTADO_VENCIMIENTO INT,
-                            IMPORTE_PAGADO_VENCIMIENTO DECIMAL(12,2)
+                            IMPORTE_PAGADO_VENCIMIENTO DECIMAL(12,2),
+                            FOREIGN KEY(ID_FACTURA) REFERENCES FACTURAS(ID_FACTURA)
                             );", connectionDBManager)
         cmd.ExecuteNonQuery()
         ' ---------------------- VENTAS --------------------------

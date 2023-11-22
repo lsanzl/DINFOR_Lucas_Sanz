@@ -11,7 +11,7 @@
             MessageBox.Show("Introduzca cantidad válida")
             Return
         End If
-        Dim cantidadPago As Double = Convert.ToDouble(txt_pago_pacial.Text)
+        Dim cantidadPago As Double = Math.Round(Convert.ToDouble(txt_pago_pacial.Text), 2)
         If cantidadPago > v.ImportePendiente Then
             MessageBox.Show("El pago excede lo pendiente")
             Return

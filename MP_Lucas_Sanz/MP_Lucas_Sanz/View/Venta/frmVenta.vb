@@ -362,6 +362,7 @@ Public Class frmVenta
         confirmarVenta()
         Dim frmF As frmFactura = New frmFactura(True)
         frmF.clienteSeleccionado = clienteSeleccionado
+        frmF.formaPagoSeleccionada = getFormaPagoPorCodigo(listaVentas(0).FormaDePagoVenta)
         frmF.fillDatosCliente()
         Dim listaFacturas As List(Of String) = New List(Of String)
         For Each v As Venta In listaVentas

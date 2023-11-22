@@ -355,6 +355,7 @@ Public Class frmCompra
         facturado = True
         confirmarCompra()
         Dim frmF As frmFactura = New frmFactura(True)
+        frmF.formaPagoSeleccionada = getFormaPagoPorCodigo(listaCompras(0).FormaDePagoCompra)
         frmF.proveedorSeleccionado = proveedorSeleccionado
         frmF.fillDatosProveedor()
         Dim listaFacturas As List(Of String) = New List(Of String)
@@ -404,8 +405,6 @@ Public Class frmCompra
             movimientoTemp.addMovimiento()
         Next
 
-        crearVencimiento()
-
         Dim result As DialogResult = MessageBox.Show("¿Desea ver el albarán de compra?", "Albarán generado", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
         If result = DialogResult.Yes Then
             verInformeAlbaran()
@@ -414,17 +413,6 @@ Public Class frmCompra
         If Not facturado Then
             Me.Close()
         End If
-    End Sub
-    Private Sub crearVencimiento()
-        Dim formaSeleccionada As FormaPago = VariablesGlobales.getFormaPagoPorCodigo(listaCompras(0).FormaDePagoCompra)
-        Dim plazosTotales As Integer = formaSeleccionada.NumeroPlazosPago
-        Dim importePorPago As Double = precioTotal / plazosTotales
-        Dim fechaCobro As Date = dp_fecha_compra.Value.AddDays(formaSeleccionada.PrimerPlazo)
-
-        For i As Integer = 1 To plazosTotales
-            Dim venc As Vencimiento = New Vencimiento(proveedorSeleccionado, formaSeleccionada, plazosTotales, i, importePorPago, fechaCobro.AddDays((i - 1) * formaSeleccionada.DiasPlazos), 0, 0)
-            venc.addVencimiento()
-        Next
     End Sub
     Private Sub verInformeAlbaran()
         Dim fechaCompra As Date = dp_fecha_compra.Value
